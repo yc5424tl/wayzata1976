@@ -1,0 +1,13 @@
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>DS3 Image Upload</title>
+    {{ form.media }}
+</head>
+<body>
+    <form action='' method='post'>
+        {% csrf_token %}
+        {{ form.as_p }}
+    </form>
+</body>
+</html>

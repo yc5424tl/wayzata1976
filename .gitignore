@@ -1,0 +1,10 @@
+.env
+.vscode
+/.vscode
+./.vscode
+/venv
+/wayzata1976_app/media/1981/*
+/wayzata1976_app/media/1986/*
+wayzata1976_app/db.sqlite3
+*.pyc
+notes.txt
