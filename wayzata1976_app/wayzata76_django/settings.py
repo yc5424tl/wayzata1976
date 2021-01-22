@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+from django.contrib import messages
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     's3direct',
+    # 'sorl.thumbnail',
+    # 'upload_form',
+    'widget_tweaks',
     'wayzata76_web',
 ]
 
@@ -118,10 +123,18 @@ USE_L10N = True
 USE_TZ = True
 
 
+# TEMPLATE_LOADERS = (
+    # 'django.template.loaders.filesystem.Loader',
+    # 'django.template.loaders.app_directories.Loader',
+# )
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+PROJECT_DIR=os.path.dirname(__file__)
+
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -139,6 +152,19 @@ AWS_SECRET_ACCESS_KEY = 'aws-secret-access-key'
 AWS_STORAGE_BUCKET_NAME = 's3-bucket-name'
 AWS_S3_REGION_NAME = 'eu-west-1'
 AWS_S3_ENDPOINT_URL = 'https://s3.eu-west-1.amazonaws.com'
+
+# MULTI_FILES_DELETE_URL = 'multi_delete'
+# MULTI_IMAGE_URL = 'multi_image'
+# MULTI_IMAGES_FOLDER = 'multiuploader_images'
+
+# ADMIN_MEDIA_PREFIX = '/media/'
+
+
+UPLOAD_FORM_MAX_FILE_SIZE = 12
+UPLOAD_FORM_ALLOWED_FILE_TYPES = ".png .jpg .jpeg .gif .tiff .psd .pdf .ai .eps .indd .cr2 .crw .nef .pef .avif .apng .jpeg .jfif .pjpeg .pjp .svg .webp"
+UPLOAD_FORM_PARALLEL_UPLOAD = False
+MY_UPLOAD_FORM_ACCEPT = "image/*"
+MY_UPLOAD_FORM_MAX_IMAGE_SIZE = 3640
 
 S3DIRECT_DESTINATIONS = {
     'example_destination': {
@@ -191,10 +217,18 @@ S3DIRECT_DESTINATIONS = {
         #                                returns the URL to the object if so (no upload)
         #                                Boolean: True, False
         'allow_existence_optimization': False,
-    },
+    },  # 'sorl.thumbnail',
     'example_destination_two': {
         'key': lambda filename, args: args + '/' + filename,
     	'key_args': 'uploads/images',
     }
+}
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger'
 }
 

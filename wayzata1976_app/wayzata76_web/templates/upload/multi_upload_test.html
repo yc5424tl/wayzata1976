@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ multi_upload_test_form|crispy }} <br/>
+        <label for="gallery_select">Select Destination Gallery</label>
+        <select name="gallery" id="gallery_select">
+            {% for gallery in galleries %}
+                <option value="{{ gallery }}">{{ gallery.working_name }}</option>
+            {% endfor %}
+        </select>
+        <!-- <input type="text" name="subtitle" aria-label="subtitle"> -->
+        <!-- <input type="text" name="filename" aria-label="filename"> -->
+        <input type="file" name="images" multiple aria-label="images">
+        <input type="submit" value="Submit">
+    </form>
+
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+<!-- {% load static %} -->
+
+{% block title %}{{ block.super }} - Questionnaire{% endblock %}
+
+{% block content %}
+<h2 class="page-header">QUESTIONNAIRE</h2>
+<form>
+    <div class="form-group">
+        <label for="keepTextArea">If you attended the 40th reunion, what did you like most about it?</label>
+        <textarea class="form-control" id="keepTextArea" rows="3" name='likedInput'></textarea>
+    </div>
+    <div class="form-group">
+        <label for="changeTextArea">If you attended the 40th reunion, what would you have changed to make it better?</label>
+        <textarea class="form-control" id="changeTextArea" rows="3" name='dislikedInput'></textarea>
+    </div>
+    <div class="form-group">
+        <label for="locationTextArea">Where would you like the 45th reunion to be held?</label>
+        <textarea class="form-control" id="locationTextArea" rows="3" name='locationInput'></textarea>
+    </div>
+    <div class="form-group">
+        <label for="musicSelect">What would you choose for musical enjoyment at the 45th reunion?</label>
+        <select class="form-control" id="musicSelect" name='musicInput'>
+            <option value='band'>Live Band</option>
+            <option value='dj'>Professional DJ</option>
+            <option value='karoke'>Karoke</option>
+            <option value='playlist'>Playlist of 70's Music</option>
+            <option value='other'>Other (select to explain)</option>
+        </select>
+    </div>
+    <div class="form-row" id='otherDiv'>
+        <div class="col">
+            <textarea class="form-control" rows="3" placeholder="Tell us your idea here." name='otherInput'></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="foodTextArea">What kind of food yould you prefer at the 45th reunion?</label>
+        <textarea class="form-control" id="foodTextArea" rows="3" name='foodInput'></textarea>
+    </div>
+    <div class="form-group">
+        <label for="miscTextArea">Any other ideas, requests, or suggestions for the 45th reunion?</label>
+        <textarea class="form-control" id="miscTextArea" rows="3" name='miscInput'></textarea>
+    </div>
+    <div class="form-row">
+        <div class="col">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your Name" name='nameInput'>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <input type="email" class="form-control" id="emailInput" name='emailInput' placeholder="Your Email">
+            </div>
+        </div>
+    </div>
+    <button type='submit' class='btn btn-block btn-primary'>Submit</button>
+</form>
+
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="{% static 'js/questionnaire.js' %}"></script>
+{% endblock %}

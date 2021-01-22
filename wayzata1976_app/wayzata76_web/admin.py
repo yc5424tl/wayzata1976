@@ -3,7 +3,7 @@ from django.contrib.auth.admin import UserAdmin
 
 
 from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import CustomUser, Gallery, Image, GalleryImage, NewsPostImage, NewsPost, Person, SurveyResult, Address
+from .models import CustomUser, Gallery, Image, GalleryImage, NewsPostImage, NewsPost, Person, SurveyResult, Address, ContactInfo
 
 
 class CustomUserAdmin(UserAdmin):
@@ -18,13 +18,13 @@ admin.site.register(CustomUser, CustomUserAdmin)
 @admin.register(Address)
 class AddressAdmin(admin.ModelAdmin):
     list_display = (
-        'street', 'city', 'state_province', 'country', 'latitude', 'longitude'
+        'street', 'city', 'state_province', 'zip_code', 'country', 'latitude', 'longitude'
     )
     list_editable = (
-        'street', 'city', 'state_province', 'country', 'latitude', 'longitude'
+        'street', 'city', 'state_province', 'zip_code', 'country', 'latitude', 'longitude'
     )
     list_filter = (
-        'city', 'state_province', 'country', 'latitude', 'longitude'
+        'city', 'state_province', 'zip_code', 'country', 'latitude', 'longitude'
     )
     list_display_links = None
 
@@ -46,7 +46,7 @@ class GalleryAdmin(admin.ModelAdmin):
 @admin.register(GalleryImage)
 class GalleryImageAdmin(admin.ModelAdmin):
     list_display = (
-        'uuid', 'date_created', 'title', 'subtitle', 'uploaded_by', 'image'
+        'uuid', 'date_created', 'title', 'subtitle', 'uploaded_by', 'file'
     )
     list_editable = (
         'title', 'subtitle'
@@ -112,12 +112,19 @@ class PersonAdmin(admin.ModelAdmin):
 @admin.register(SurveyResult)
 class SurveyResultAdmin(admin.ModelAdmin):
     list_display = (
-        'liked', 'disliked', 'location_idea', 'music_idea', 'misc_idea', 'submitted_by', 'email', 'date_created'
+        'liked', 'disliked', 'location', 'music', 'music_other', 'misc', 'submitted_by', 'email', 'date_created'
     )
     list_editable = (
-        'liked', 'disliked', 'location_idea', 'music_idea', 'misc_idea', 'email'
+        'liked', 'disliked', 'location', 'music', 'music_other',  'misc', 'email'
     )
     list_filter = (
         'email', 'submitted_by', 'date_created'
     )
+    list_display_links = None
+
+
+@admin.register(ContactInfo)
+class ContactInfoAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'middle_initial', 'last_name', 'street_address', 'city', 'state_province', 'country', 'phone', 'email', 'spouse_is_classmate', 'spouse_is_alumni', 'spouse_first_name', 'spouse_middle_initial', 'spouse_last_name', 'user')
+    list_editable = ('first_name', 'middle_initial', 'last_name', 'street_address', 'city', 'state_province', 'country', 'phone', 'email', 'spouse_is_classmate', 'spouse_is_alumni', 'spouse_first_name', 'spouse_middle_initial', 'spouse_last_name', 'user')
     list_display_links = None

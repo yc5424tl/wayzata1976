@@ -24,7 +24,7 @@ urlpatterns = [
     path('s3direct/', include('s3direct.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', include('wayzata76_web.urls'))
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

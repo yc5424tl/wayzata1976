@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <h2 class="page-header">Your Contact Info</h2>
+
+    <form>
+        <div class="form-row">
+            <div class="form-group col-lg-5 col-xs-9">
+                <label for="firstNameField">First Name</label>
+                <input type="text" class="form-control" id="firstNameField">
+            </div>
+            <div class="form-group col-2">
+                <label for="middleInitialField">Middle Initial</label>
+                <input type="text" class="form-control" id="middleInitialField">
+            </div>
+            <div class="form-group col-lg-5 col-xs-12">
+                <label for="lastNameField">Last Name</label>
+                <input type="text" class="form-control" id="lastNameField">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-lg-6 col-xs-12 form-group">
+                <input type="text" class="form-control" id="phoneField" placeholder="Phone Number">
+            </div>
+            <div class="col-lg-6 col-xs-12 form-group">
+                <input type="email" class="form-control" id="emailField" placeholder="Email">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-2"></div>
+            <div class="col form-check form-check-inline">
+                <input type="checkbox" class="form-check-input" value="" id="isClassmate">
+                <label class="form-check-label" for="isClassmate">Spouse is Classmate</label>
+            </div>
+            <div class="col-2"></div>
+            <div class="col form-check form-check-inline">
+                <input type="checkbox" class="form-check-input" value="" id="isAlumni">
+                <label class="form-check-label" for="isAlumni">Spouse is Alumni</label>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <br>
+        <div class="form-row" id="spouse-form-row" hidden>
+            <div class="form-group col-lg-5 col-xs-9">
+                <label for="spouseFirstNameField">First Name of Spouse</label>
+                <input type="text" class="form-control" id="spouseFirstNameField">
+            </div>
+            <div class="form-group col-2">
+                <label for="spouseMiddleInitialField">Middle Initial of Spouse</label>
+                <input type="text" class="form-control" id="spouseMiddleInitialField">
+            </div>
+            <div class="form-group col-lg-5 col-xs-12">
+                <label for="spouseLastNameField">Last Name of Spouse</label>
+                <input type="text" class="form-control" id="spouseLastNameField"> 
+            </div>
+        </div>
+        <div class="form-row">
+            <button type="submit" class="btn btn-block btn-primary">Submit</button>
+        </div>
+        </form>
+
+    <form method='POST'>
+        {% csrf_token %}
+        <!-- <table border="1">
+            {{ form.as_table }}
+        </table> -->
+        <ul>
+            {{ form.as_ul }}
+        </ul>
+        <button type='submit' class='btn btn-block btn-info' value='Submit'>Submit</button>
+    </form>
+
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="{% static 'js/contact.js' %}"></script>
+{% endblock %}
+
+
+
+{% if form.non_field_errors %}
+    <ul>
+        {% for error in form.non_field_errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% for hidden_field in form.hidden_fields %}
+    {% if hidden_fields.errors %}
+        <ul>
+            {% for error in hidden_fields.errors %}
+                <li>(Hidden field {{ hidden_field.name }}) {{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {{ hidden_field }}
+{% endfor %}
+
+<h2 class="page-header">{{ form.name.label_tag }}</h2>
+
+<form>
+    <div class="form-row">
+        <div class="form-group col-lg-5 col-xs-9">
+            <label for="firstNameField">First Name</label>
+            <input  type="text"
+                    name="{{ form.first_name.name }}"
+                    id="{{ form.first_name.id_for_label }}"
+                    {% if form.first_name.value != None %}
+                        value="{{ form.first_name.value|stringformat:'s' }}"
+                    {% endif %}
+                    maxlength="{{ form.first_name.field.max_length }}"
+                    {% if form.first_name.field.required %}
+                        required
+                    {% endif %}>
+
+
+        </div>
+        <div class="form-group col-2">
+            <label for="middleInitialField">Middle Initial</label>
+            <input type="text" class="form-control" id="middleInitialField">
+        </div>
+        <div class="form-group col-lg-5 col-xs-12">
+            <label for="lastNameField">Last Name</label>
+            <input type="text" class="form-control" id="lastNameField">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-lg-6 col-xs-12 form-group">
+            <input type="text" class="form-control" id="phoneField" placeholder="Phone Number">
+        </div>
+        <div class="col-lg-6 col-xs-12 form-group">
+            <input type="email" class="form-control" id="emailField" placeholder="Email">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-2"></div>
+        <div class="col form-check form-check-inline">
+            <input type="checkbox" class="form-check-input" value="" id="isClassmate">
+            <label class="form-check-label" for="isClassmate">Spouse is Classmate</label>
+        </div>
+        <div class="col-2"></div>
+        <div class="col form-check form-check-inline">
+            <input type="checkbox" class="form-check-input" value="" id="isAlumni">
+            <label class="form-check-label" for="isAlumni">Spouse is Alumni</label>
+        </div>
+        <div class="col-2"></div>
+    </div>
+    <br>
+    <div class="form-row" id="spouse-form-row" hidden>
+        <div class="form-group col-lg-5 col-xs-9">
+            <label for="spouseFirstNameField">First Name of Spouse</label>
+            <input type="text" class="form-control" id="spouseFirstNameField">
+        </div>
+        <div class="form-group col-2">
+            <label for="spouseMiddleInitialField">Middle Initial of Spouse</label>
+            <input type="text" class="form-control" id="spouseMiddleInitialField">
+        </div>
+        <div class="form-group col-lg-5 col-xs-12">
+            <label for="spouseLastNameField">Last Name of Spouse</label>
+            <input type="text" class="form-control" id="spouseLastNameField"> 
+        </div>
+    </div>
+    <div class="form-row">
+        <button type="submit" class="btn btn-block btn-primary">Submit</button>
+    </div>
+</form>
+
+
+{% block content %}
+<form method='post'>
+    {% csrf_token %}
+
+    {% for hidden_field in form.hidden_fields %}
+        {{ hidden_field }}
+    {% endfor %}
+
+    {% if form.non_field_errors %}
+        <div class="alert alert-danger" role="alert">
+            {% for error in form.non_field_errors %}
+                {{ error }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+
+
+    {% for field in form.visible_fields %}
+        <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field|add_class:'form-control' }}
+            {% for error in field.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+        </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-block btn-primary">Submit</button>
+    </form>
+    {% endblock %}
+
+<!--  -->

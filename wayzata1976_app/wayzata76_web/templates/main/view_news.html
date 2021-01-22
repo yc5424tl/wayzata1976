@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+    {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+    <h2 class="page-header">News & Updates</h2>
+
+    {% for post in posts %}
+        <div class="card" style="width: 60%;">
+            {% if post.news_post_image %}
+                <img class="card-img-top" src="{{ post.news_post_image.image.url }}">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">{{ post.body }}</p>
+                {% if post.link %}
+                    <a href="{{ post.link }}" class="btn btn-primary">{{ post.link_text }}</a>
+                {% endif %}
+            </div>
+        </div>
+        <hr>
+    {% empty %}
+        <h5>Coming Soon!</h5>
+    {% endfor %}
+
+{% endblock %}

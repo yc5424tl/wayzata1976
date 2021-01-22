@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <label class="button">
+        <input style="display: none;" type="file" name="files[]" accept="{{accept}}" multiple onchange="UploadForm.handleFiles(this.False)">
+        <img src="{% static 'upload_form/icons/cloud-upload-svgrepo-com.svg' %}" alt="{% trans 'upload' %}">
+        <p>
+            {% trans 'Select Images' %}
+        </p>
+    </label>
+
+{% endblock %}

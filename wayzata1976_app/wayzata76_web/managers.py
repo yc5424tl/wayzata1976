@@ -1,4 +1,4 @@
-from wayzata76_web.models import Address, Person
+from .models import Address, Person
 import json
 
 
