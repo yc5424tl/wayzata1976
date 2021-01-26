@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     's3direct',
     # 'sorl.thumbnail',
     # 'upload_form',
+    'fontawesome-free',
     'widget_tweaks',
     'wayzata76_web',
 ]

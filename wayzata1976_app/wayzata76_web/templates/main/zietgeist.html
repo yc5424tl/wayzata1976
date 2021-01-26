@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+    {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="accordion">
+        <div class="card">
+            <div class="card-header" id="topSongsHeader">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#topSongsCollapse" aria-expanded="false" aria-controls="topSongsCollapse">Top 100 Songs of '76</button>
+                </h5>
+            </div>
+            <div id="topSongsCollapse" class="collapse" aria-labelledby="topSongsHeader" data-parent="accordion">
+                <div class="card-body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Position</th>
+                                <th>Single</th>
+                                <th>Artist</th>
+                                <th>Peak</th>
+                                <th>Weeks @ Peak</th>
+                                <th>Weeks Top 10</th>
+                                <th>Weeks Top 40</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for song in songs %}
+                                <tr>
+                                    <td>{{ song.position }}</td>
+                                    <td>{{ song.single }}</td>
+                                    <td>{{ song.artist }}</td>
+                                    <td>{{ song.peak }}</td>
+                                    <td>{{ song.weeks_peak }}</td>
+                                    <td>{{ song.weeks_10 }}</td>
+                                    <td>{{ song.weeks_40 }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="topTvHeader">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#topTvCollapse" aria-expanded=false aria-controls="topTvCollapse">Top TV Shows of '76</button>
+                </h5>
+            </div>
+            <div id="topTvCollapse" class="collapse" aria-labelledby="topTvHeader" data-parent="accordion">
+                <div class="card-body">
+                    <ol>
+                        <li>ABC Monday Night Movie</li>
+                        <li>ABC Sunday Night Movie</li>
+                        <li>Barretta</li>
+                        <li>The Big Event</li>
+                        <li>Charlie's Angels</li>
+                        <li>Happy Days</li>
+                        <li>Lavern & Shirley</li>
+                        <li>Mash</li>
+                        <li>One Day at a Time</li>
+                        <li>Six Million Dollar Man</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="topMoviesHeader">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#topMoviesCollapse" aria-expanded="false" aria-controls="topMoviesCollapse">Top Movies of '76</button>
+                </h5>
+            </div>
+            <div id="topMoviesCollapse" class="collapse" aria-labelledby="topMoviesHeader" data-parent="accordion">
+                <div class="card-body">
+                    <ol>
+                        <li>Rocky</li>
+                        <li>To Fly!</li>
+                        <li>All the President's Men</li>
+                        <li>A Star is Born</li>
+                        <li>King Kong</li>
+                        <li>Silver Streak</li>
+                        <li>The Omen</li>
+                        <li>The Enforcer</li>
+                        <li>Midway</li>
+                        <li>The Bad News Bears</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="academyHeader">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#academyCollapse" aria-expanded="false" aria-controls="academyCollapse">'76 Academy Awards</button>
+                </h5>
+                <div id="academyCollapse" class="collapse" aria-labelledby="academyHeader" data-parent="accordion">
+                    <div class="card-body">
+                        <table>
+                            {% for award in awards %}
+                                <tr>
+                                    <td>{{ award.award }}</td>
+                                    <td>{{ award.winner }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="sportsHeader">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#sportsCollapse" aria-expanded="false" aria-controls="sportsCollapse">'76 Sports Champions</button>
+                </h5>
+            </div>
+            <div id="sportsCollapse" class="collapse" aria-labelledby="sportsHeader" data-parent="accordion">
+                <table>
+                    <tr>
+                        <td>Super Bowl X</td>
+                        <td>Pittsburgh Steelers (vs. Dallas Cowboys 21-17)</td>
+                    </tr>
+                    <tr>
+                        <td>World Series, 73rd Edition</td>
+                        <td>Cincinnatti Reds (vs. New York Yankees 4-0)</td>
+                    </tr>
+                    <tr>
+                        <td>Stanley Cup Finals</td>
+                        <td>Montreal Canadiens (vs. Philadelphia Flyers 4-0)</td>
+                    </tr>
+                    <tr>
+                        <td>NBA Championship Series</td>
+                        <td>Boston Celtics (vs. Pheonix Suns 4-2)</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="yearbookHeader">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#yearbookCollapse" aria-expanded="false" aria-controls="yearbookCollapse">Yearbooks</button>
+            </h5>
+        </div>
+        <div id="yearbookCollapse" class="collapse" aria-labelledby="yearbookHeader" data-parent="accordion">
+            <div class="row">
+                {% for yearbook in yearbooks %}
+                    <div class="col-xs-12 col-md-6 col-lg 4">
+                        <div class="card">
+                            <img class="card-img-top" src="{{ yearbook.cover.url }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ yearbook.display_name }}</h5>
+                                {% if yearbook.gallery %}
+                                    <a href="{{ yearbook.gallery.url }}" class="btn btn-primary">View Pages</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

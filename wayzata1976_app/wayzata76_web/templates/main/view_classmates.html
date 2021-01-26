@@ -1,22 +1,196 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load get_dict_key %}
 
 {% block content %}
-
-
-    {% if is_paginated %}
-        <div class="pagination pagination-centered">
-            <span class="step-links">
-                {% if page_obj.has_previous %}
-                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-                {% endif %}
-                <span class="current_page">
-                    {{ page_obj.number }}
-                </span>
-                {% if page_obj.has_next %}
-                    <a href="?page={{ page_obj.next_page_number }}">next</a>
-                {% endif %}
-            </span>
+    <div class="content-wrapper container">
+        <h2 class="page-header">Members of Wayzata Class of '76</h2>
+        <div style="margin: auto; text-align: center;">
+            <select class="table-view-select">
+                <option value='.complete_list' selected>All Classmates</option>
+                <option value='.mia_list'>MIA Classmates</option>
+                <option value='.passed_list'>Passed Classmates</option>
+                <option value='.in_contact_list'>In-Contact Classmates</option>
+            </select>
         </div>
-    {% endif %}
+        <hr/>
 
+        <div class="table-wrapper text-center complete_list toggle-hidden">
+            <div class="btn-group btn-group-sm">
+                {% for letter in alphabet %}
+                    <a class="btn" href="#{{ letter }}">{{ letter }}</a>
+                {% endfor %}
+            </div>
+            <table class="table table-striped table-dark table-bordered">
+                <title>All Classmates</title>
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Middle</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">City</th>
+                        <th scope="col">State/Province</th>
+                        <th scope="col">Zip Code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for classmate in classmates %}
+                        {% if link_dict|get_item:classmate.last_name.0 == classmate %}
+                            <tr id="{{ classmate.last_name.0 }}">
+                        {% else %}
+                            <tr>
+                        {% endif %}
+                                <td>{{ classmate.last_name }}</td>
+                                {% if classmate.middle_initial %}
+                                    <td>{{ classmate.middle_initial }}</td>
+                                {% else %}
+                                    <td> -- </td>
+                                {% endif %}
+                                <td>{{ classmate.first_name }}</td>
+                                {% if classmate.address.city %}
+                                    <td>{{ classmate.address.city }}</td>
+                                {% else %}
+                                    <td> -- </td>
+                                {% endif %}
+                                {% if classmate.address.state_province %}
+                                    <td>{{ classmate.address.state_province }}</td>
+                                {% else %}
+                                    <td> -- </td>
+                                {% endif %}
+                                {% if classmate.address.zip_code %}
+                                    <td>{{ classmate.address.zip_code }}</td>
+                                {% else %}
+                                    <td> -- </td>
+                                {% endif %}
+                            </tr>
+                    {% endfor  %}
+                </tbody>
+            </table>
+        </div>
+        <div class="table-wrapper text-center mia_list toggle-hidden">
+            <div class="btn-group btn-group-sm">
+                {% for letter in alphabet %}
+                    <a class="btn" href="#{{ letter }}-MIA">{{ letter }}</a>
+                {% endfor %}
+            </div>
+            <table class="table table-striped table-dark table-bordered">
+                <title>M.I.A Classmates</title>
+                <thead class="thead-light">
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Middle</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">City</th>
+                    <th scope="col">State/Province</th>
+                    <th scope="col">Zip Code</th>
+                </thead>
+                <tbody>
+                    {% for classmate in mia_list %}
+                        {% if mia_link_dict|get_item:classmate.last_name.0 == classmate %}
+                            <tr id="{{ classmate.last_name.0 }}-MIA">
+                        {% else %}
+                            <tr>
+                        {% endif %}
+                            <td>{{ classmate.last_name }}</td>
+                            {% if classmate.middle_initial %}
+                                <td>{{ classmate.middle_initial }}</td>
+                            {% else %}
+                                <td> --</td>
+                            {% endif %}
+                            <td>{{ classmate.first_name }}</td>
+                            <td> -- </td>
+                            <td> -- </td>
+                            <td> -- </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="table-wrapper passed_list toggle-hidden">
+            <table class="table table-striped table-dark table-bordered">
+                <title>Passed Classmates</title>
+                <thead class="thead-light">
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Middle</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">City</th>
+                    <th scope="col">State/Province</th>
+                    <th scope="col">Zip Code</th>
+                </thead>
+                <tbody>
+                    {% for classmate in passed_list %}
+                        <tr>
+                            <td>{{ classmate.last_name }}</td>
+                            {% if classmate.middle_initial %}
+                                <td>{{ classmate.middle_initial }}</td>
+                            {% else %}
+                                <td> -- </td>
+                            {% endif %}
+                            <td>{{ classmate.first_name }}</td>
+                            <td> -- </td>
+                            <td> -- </td>
+                            <td> -- </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="table-wrapper in_contact_list toggle-hidden text-center">
+            <div class="btn-group btn-group-sm">
+                {% for letter in alphabet %}
+                    <a class="btn" href="#{{ letter }}-IN-C">{{ letter }}</a>
+                {% endfor %}
+            </div>
+            <table class="table table-striped table-dark table-bordered">
+                <title>In-Contact Classmates</title>
+                <thead class="thead-light">
+                    <th>Last Name</th>
+                    <th>Middle</th>
+                    <th>First Name</th>
+                    <th>City</th>
+                    <th>State/Province</th>
+                    <th>Zip Code</th>
+                </thead>
+                <tbody>
+                    {% for classmate in in_contact_list %}
+                        {% if in_c_link_dict|get_item:classmate.last_name.0 == classmate %}
+                            <tr id="{{ classmate.last_name.0 }}-IN-C">
+                        {% else %}
+                            <tr>
+                        {% endif %}
+                            <td>{{ classmate.last_name }}</td>
+                            {% if classmate.middle_initial %}
+                                <td>{{ classmate.middle_initial }}</td>
+                            {% else %}
+                                <td> -- </td>
+                            {% endif %}
+                            <td>{{ classmate.first_name }}</td>
+                            <td>{{ classmate.address.city }}</td>
+                            <td>{{ classmate.address.state_province }}</td>
+                            <td>{{ classmate.address.zip_code }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% if is_paginated %}
+            <div class="pagination pagination-centered">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+                    <span class="current_page">
+                        {{ page_obj.number }}
+                    </span>
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    {% endif %}
+                </span>
+            </div>
+        {% endif %}
+    </div>
+    <button id="to-top-btn" title="Go to Top">Top</button>
+{% endblock %}
+
+{% block javascript %}
+        <script type="text/javascript" src="{% static 'js/view_classmates.js' %}"></script>
 {% endblock %}

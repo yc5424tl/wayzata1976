@@ -1,0 +1,77 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block title %}
+    {{ block.super }} - {{ gallery.display_name }} Gallery
+{% endblock %}
+
+{% block style %}
+    {{ block.super }}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="{% static 'fontawesome_free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/main/view_gallery.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="container gal-container">
+            <div class="row">
+                {% for image in gallery.gallery_images.all %}
+                    <div class="col-lg-4 col-md-6 col-xs-12 gal-item">
+                        <div class="thumbnail-container">
+                            <a href="#" data-toggle="modal" data-target="#{{ image.uuid }}">
+                                <img src="{{ image.image.url }}">
+                            </a>
+                            <div class="modal fade" id="{{ image.uuid }}" tabindex="-1" aria-labelledby="{{ image.uuid }}-label" aria-hidden="true" role="dialog">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="{{ image.uuid }}-label"></h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img src="{{ image.image.url }}">
+                                        </div>
+                                        <div class="modal-footer description">
+                                            {% if image.subtitle %}
+                                                <h5>{{ image.subtitle }}</h5>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+                <!--
+                {% for image in gallery.gallery_images.all %}
+                    <div class="col-lg-4 col-md-6 col-xs-12 gal-item">
+                        <div class="box">
+                            <a href="#" data-toggle="modal" data-target="#{{ image.uuid }}">
+                                <img src="{{ image.image.url }}">
+                            </a>
+                            <div class="modal fade" id="{{ image.uuid }}" tabindex="-1" aria-hidden="false">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <div class="modal-body">
+                                            <img src="{{ image.image.url }}">
+                                        </div>
+                                        <div class="col-md-12 description modal-footer">
+                                            <h4>{{ image.subtitle }}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                -->
+            </div>
+        </div>
+    </section>
+{% endblock %}

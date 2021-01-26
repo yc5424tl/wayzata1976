@@ -1,0 +1,902 @@
+[
+    {
+        "position": "1",
+        "single": "If You Leave Me Now",
+        "artist": "Chicago",
+        "peak": "1",
+        "weeks_peak": "7",
+        "weeks_10": "11",
+        "weeks_40": "18"
+    },
+    {
+        "position": "2",
+        "single": "Right Back Where We Started From",
+        "artist": "Maxine Nightingale",
+        "peak": "1",
+        "weeks_peak": "5",
+        "weeks_10": "9",
+        "weeks_40": "15"
+    },
+    {
+        "position": "3",
+        "single": "Don't Go Breaking My Heart",
+        "artist": "Elton John & Kiki Dee",
+        "peak": "1",
+        "weeks_peak": "4",
+        "weeks_10": "11",
+        "weeks_40": "21"
+    },
+    {
+        "position": "4",
+        "single": "Silly Love Songs",
+        "artist": "Paul McCartney & Wings",
+        "peak": "1",
+        "weeks_peak": "4",
+        "weeks_10": "8",
+        "weeks_40": "16"
+    },
+    {
+        "position": "5",
+        "single": "Rhiannon",
+        "artist": "Fleetwood Mac",
+        "peak": "1",
+        "weeks_peak": "4",
+        "weeks_10": "8",
+        "weeks_40": "15"
+    },
+    {
+        "position": "6",
+        "single": "Tracks Of My Tears",
+        "artist": "Linda Ronstadt",
+        "peak": "1",
+        "weeks_peak": "3",
+        "weeks_10": "9",
+        "weeks_40": "18"
+    },
+    {
+        "position": "7",
+        "single": "Tonight's The Night",
+        "artist": "Rod Stewart",
+        "peak": "1",
+        "weeks_peak": "3",
+        "weeks_10": "8",
+        "weeks_40": "16"
+    },
+    {
+        "position": "8",
+        "single": "Fanny (Be Tender With My Love)",
+        "artist": "Bee Gees",
+        "peak": "1",
+        "weeks_peak": "2",
+        "weeks_10": "8",
+        "weeks_40": "17"
+    },
+    {
+        "position": "9",
+        "single": "Theme from 'Mahagony'",
+        "artist": "Diana Ross",
+        "peak": "1",
+        "weeks_peak": "2",
+        "weeks_10": "7",
+        "weeks_40": "14"
+    },
+    {
+        "position": "10",
+        "single": "Fifty Ways To Leave Your Lover",
+        "artist": "Paul Simon",
+        "peak": "1",
+        "weeks_peak": "2",
+        "weeks_10": "7",
+        "weeks_40": "14"
+    },
+    {
+        "position": "11",
+        "single": "Afternoon Delight",
+        "artist": "Starland Vocal Band",
+        "peak": "1",
+        "weeks_peak": "2",
+        "weeks_10": "5",
+        "weeks_40": "14"
+    },
+    {
+        "position": "12",
+        "single": "Love So Right",
+        "artist": "Bee Gees",
+        "peak": "1",
+        "weeks_peak": "1",
+        "weeks_10": "10",
+        "weeks_40": "20"
+    },
+    {
+        "position": "13",
+        "single": "December 1963 (Oh What A Night)",
+        "artist": "4 Seasons",
+        "peak": "1",
+        "weeks_peak": "1",
+        "weeks_10": "10",
+        "weeks_40": "18"
+    },
+    {
+        "position": "14",
+        "single": "Takin' It To The Street",
+        "artist": "Doobie Brothers",
+        "peak": "1",
+        "weeks_peak": "1",
+        "weeks_10": "10",
+        "weeks_40": "18"
+    },
+    {
+        "position": "15",
+        "single": "More, More, More",
+        "artist": "Andrea True Connection",
+        "peak": "1",
+        "weeks_peak": "1",
+        "weeks_10": "9",
+        "weeks_40": "16"
+    },
+    {
+        "position": "16",
+        "single": "Let 'Em In",
+        "artist": "Paul McCartney & Wings",
+        "peak": "1",
+        "weeks_peak": "1",
+        "weeks_10": "9",
+        "weeks_40": "14"
+    },
+    {
+        "position": "17",
+        "single": "Misty Blue",
+        "artist": "Dorothy Moore",
+        "peak": "1",
+        "weeks_peak": "1",
+        "weeks_10": "8",
+        "weeks_40": "16"
+    },
+    {
+        "position": "18",
+        "single": "Get Closer",
+        "artist": "Seals & Crofts",
+        "peak": "1",
+        "weeks_peak": "1",
+        "weeks_10": "8",
+        "weeks_40": "16"
+    },
+    {
+        "position": "19",
+        "single": "Love Hangover",
+        "artist": "Diana Ross",
+        "peak": "1",
+        "weeks_peak": "1",
+        "weeks_10": "8",
+        "weeks_40": "14"
+    },
+    {
+        "position": "20",
+        "single": "I'll Be Good To You",
+        "artist": "Brothers Johnson",
+        "peak": "1",
+        "weeks_peak": "1",
+        "weeks_10": "8",
+        "weeks_40": "14"
+    },
+    {
+        "position": "21",
+        "single": "Fly Away",
+        "artist": "John Denver",
+        "peak": "1",
+        "weeks_peak": "1",
+        "weeks_10": "6",
+        "weeks_40": "15"
+    },
+    {
+        "position": "22",
+        "single": "Get Up & Boogie",
+        "artist": "Silver Convention",
+        "peak": "2",
+        "weeks_peak": "3",
+        "weeks_10": "10",
+        "weeks_40": "16"
+    },
+    {
+        "position": "23",
+        "single": "Take It To The Limit",
+        "artist": "Eagles",
+        "peak": "2",
+        "weeks_peak": "3",
+        "weeks_10": "8",
+        "weeks_40": "17"
+    },
+    {
+        "position": "24",
+        "single": "Love To Love Ya Baby",
+        "artist": "Donna Summer",
+        "peak": "2",
+        "weeks_peak": "3",
+        "weeks_10": "7",
+        "weeks_40": "15"
+    },
+    {
+        "position": "25",
+        "single": "You'll Never Find Another Love Like Mine",
+        "artist": "Lou Rawls",
+        "peak": "2",
+        "weeks_peak": "3",
+        "weeks_10": "6",
+        "weeks_40": "16"
+    },
+    {
+        "position": "26",
+        "single": "Love Is Alive",
+        "artist": "Gary Wright",
+        "peak": "2",
+        "weeks_peak": "2",
+        "weeks_10": "8",
+        "weeks_40": "18"
+    },
+    {
+        "position": "27",
+        "single": "Let Your Love Flow",
+        "artist": "Bellamy Brothers",
+        "peak": "2",
+        "weeks_peak": "2",
+        "weeks_10": "8",
+        "weeks_40": "17"
+    },
+    {
+        "position": "28",
+        "single": "Feelings",
+        "artist": "Albert Morris",
+        "peak": "2",
+        "weeks_peak": "2",
+        "weeks_10": "8",
+        "weeks_40": "15"
+    },
+    {
+        "position": "29",
+        "single": "Just You And I",
+        "artist": "Melissa Manchester",
+        "peak": "2",
+        "weeks_peak": "2",
+        "weeks_10": "7",
+        "weeks_40": "16"
+    },
+    {
+        "position": "30",
+        "single": "I Write The Songs",
+        "artist": "Barry Manilow",
+        "peak": "2",
+        "weeks_peak": "2",
+        "weeks_10": "6",
+        "weeks_40": "16"
+    },
+    {
+        "position": "31",
+        "single": "She's Gone",
+        "artist": "Hall and Oates",
+        "peak": "2",
+        "weeks_peak": "2",
+        "weeks_10": "6",
+        "weeks_40": "16"
+    },
+    {
+        "position": "32",
+        "single": "Still The One",
+        "artist": "Orleans",
+        "peak": "2",
+        "weeks_peak": "2",
+        "weeks_10": "6",
+        "weeks_40": "15"
+    },
+    {
+        "position": "33",
+        "single": "Show Me The Way",
+        "artist": "Peter Frampton",
+        "peak": "2",
+        "weeks_peak": "1",
+        "weeks_10": "7",
+        "weeks_40": "14"
+    },
+    {
+        "position": "34",
+        "single": "Turn The Beat Around",
+        "artist": "Vicki Sue Robinson",
+        "peak": "2",
+        "weeks_peak": "1",
+        "weeks_10": "5",
+        "weeks_40": "17"
+    },
+    {
+        "position": "35",
+        "single": "Lonely Night (Angel Face)",
+        "artist": "Captain & Tennille",
+        "peak": "3",
+        "weeks_peak": "3",
+        "weeks_10": "7",
+        "weeks_40": "16"
+    },
+    {
+        "position": "36",
+        "single": "Sarah Smile",
+        "artist": "Hall and Oates",
+        "peak": "3",
+        "weeks_peak": "3",
+        "weeks_10": "7",
+        "weeks_40": "13"
+    },
+    {
+        "position": "37",
+        "single": "Lowdown",
+        "artist": "Boz Scaggs",
+        "peak": "3",
+        "weeks_peak": "3",
+        "weeks_10": "4",
+        "weeks_40": "14"
+    },
+    {
+        "position": "38",
+        "single": "You Should Be Dancing",
+        "artist": "Bee Gees",
+        "peak": "3",
+        "weeks_peak": "2",
+        "weeks_10": "7",
+        "weeks_40": "18"
+    },
+    {
+        "position": "39",
+        "single": "Moonlight Feels Right",
+        "artist": "Starbuck",
+        "peak": "3",
+        "weeks_peak": "2",
+        "weeks_10": "6",
+        "weeks_40": "16"
+    },
+    {
+        "position": "40",
+        "single": "Break Away",
+        "artist": "Art Garfunkel",
+        "peak": "3",
+        "weeks_peak": "1",
+        "weeks_10": "6",
+        "weeks_40": "15"
+    },
+    {
+        "position": "41",
+        "single": "Fly Robin Fly",
+        "artist": "Silver Convention",
+        "peak": "3",
+        "weeks_peak": "1",
+        "weeks_10": "6",
+        "weeks_40": "12"
+    },
+    {
+        "position": "42",
+        "single": "Fooled Around And Fell In Love",
+        "artist": "Elvis Bishop",
+        "peak": "3",
+        "weeks_peak": "1",
+        "weeks_10": "6",
+        "weeks_40": "12"
+    },
+    {
+        "position": "43",
+        "single": "Dream Weaver",
+        "artist": "Gary Wright",
+        "peak": "3",
+        "weeks_peak": "1",
+        "weeks_10": "5",
+        "weeks_40": "14"
+    },
+    {
+        "position": "44",
+        "single": "You Are The Woman",
+        "artist": "Firefall",
+        "peak": "3",
+        "weeks_peak": "1",
+        "weeks_10": "5",
+        "weeks_40": "14"
+    },
+    {
+        "position": "45",
+        "single": "I Do, I Do, I Do, I Do, I Do",
+        "artist": "ABBA",
+        "peak": "4",
+        "weeks_peak": "1",
+        "weeks_10": "6",
+        "weeks_40": "15"
+    },
+    {
+        "position": "46",
+        "single": "Come On Over",
+        "artist": "Olivia Newton-John",
+        "peak": "4",
+        "weeks_peak": "1",
+        "weeks_10": "6",
+        "weeks_40": "12"
+    },
+    {
+        "position": "47",
+        "single": "You're My Best Friend",
+        "artist": "Queen",
+        "peak": "4",
+        "weeks_peak": "1",
+        "weeks_10": "5",
+        "weeks_40": "15"
+    },
+    {
+        "position": "48",
+        "single": "Inseperable",
+        "artist": "Natalie Cole",
+        "peak": "4",
+        "weeks_peak": "1",
+        "weeks_10": "4",
+        "weeks_40": "14"
+    },
+    {
+        "position": "49",
+        "single": "Over My Head",
+        "artist": "Fleetwood Mac",
+        "peak": "4",
+        "weeks_peak": "1",
+        "weeks_10": "4",
+        "weeks_40": "13"
+    },
+    {
+        "position": "50",
+        "single": "I'd Really Love To See You Tonight",
+        "artist": "England Dan & John Ford Coley",
+        "peak": "4",
+        "weeks_peak": "1",
+        "weeks_10": "4",
+        "weeks_40": "13"
+    },
+    {
+        "position": "51",
+        "single": "Play That Funky Music",
+        "artist": "Wild Cherry",
+        "peak": "4",
+        "weeks_peak": "1",
+        "weeks_10": "3",
+        "weeks_40": "14"
+    },
+    {
+        "position": "52",
+        "single": "Breaking Up Is Hard To Do",
+        "artist": "Neil Sedaka",
+        "peak": "5",
+        "weeks_peak": "2",
+        "weeks_10": "6",
+        "weeks_40": "14"
+    },
+    {
+        "position": "53",
+        "single": "Let's Do It Again",
+        "artist": "Staple Singers",
+        "peak": "5",
+        "weeks_peak": "2",
+        "weeks_10": "4",
+        "weeks_40": "15"
+    },
+    {
+        "position": "54",
+        "single": "Rock 'N Me",
+        "artist": "Steve Miller Band",
+        "peak": "5",
+        "weeks_peak": "2",
+        "weeks_10": "4",
+        "weeks_40": "14"
+    },
+    {
+        "position": "55",
+        "single": "Best Disco In Town",
+        "artist": "Ritchie Family",
+        "peak": "5",
+        "weeks_peak": "2",
+        "weeks_10": "4",
+        "weeks_40": "14"
+    },
+    {
+        "position": "56",
+        "single": "All By Myself",
+        "artist": "Eric Carmen",
+        "peak": "5",
+        "weeks_peak": "1",
+        "weeks_10": "6",
+        "weeks_40": "14"
+    },
+    {
+        "position": "57",
+        "single": "Beth",
+        "artist": "KISS",
+        "peak": "5",
+        "weeks_peak": "1",
+        "weeks_10": "4",
+        "weeks_40": "14"
+    },
+    {
+        "position": "58",
+        "single": "This Will Be",
+        "artist": "Natalie Cole",
+        "peak": "5",
+        "weeks_peak": "1",
+        "weeks_10": "4",
+        "weeks_40": "13"
+    },
+    {
+        "position": "59",
+        "single": "Skyhigh",
+        "artist": "Jigsaw",
+        "peak": "5",
+        "weeks_peak": "1",
+        "weeks_10": "4",
+        "weeks_40": "13"
+    },
+    {
+        "position": "60",
+        "single": "Summer",
+        "artist": "War",
+        "peak": "5",
+        "weeks_peak": "1",
+        "weeks_10": "3",
+        "weeks_40": "16"
+    },
+    {
+        "position": "61",
+        "single": "Baby I Love Your Way",
+        "artist": "Peter Frampton",
+        "peak": "6",
+        "weeks_peak": "2",
+        "weeks_10": "4",
+        "weeks_40": "14"
+    },
+    {
+        "position": "62",
+        "single": "Let The Music Play",
+        "artist": "Barry White",
+        "peak": "6",
+        "weeks_peak": "2",
+        "weeks_10": "4",
+        "weeks_40": "12"
+    },
+    {
+        "position": "63",
+        "single": "You've Got Someone",
+        "artist": "Tanya Tucker",
+        "peak": "6",
+        "weeks_peak": "2",
+        "weeks_10": "4",
+        "weeks_40": "11"
+    },
+    {
+        "position": "64",
+        "single": "Disco Lady",
+        "artist": "Johnnie Taylor",
+        "peak": "6",
+        "weeks_peak": "2",
+        "weeks_10": "3",
+        "weeks_40": "11"
+    },
+    {
+        "position": "65",
+        "single": "The Wreck of the Edmund Fitzgerald",
+        "artist": "Gordon Lightfoot",
+        "peak": "6",
+        "weeks_peak": "1",
+        "weeks_10": "4",
+        "weeks_40": "15"
+    },
+    {
+        "position": "66",
+        "single": "Only Love Is Real",
+        "artist": "Carole King",
+        "peak": "6",
+        "weeks_peak": "1",
+        "weeks_10": "4",
+        "weeks_40": "14"
+    },
+    {
+        "position": "67",
+        "single": "Fool To Cry",
+        "artist": "Rolling Stones",
+        "peak": "6",
+        "weeks_peak": "1",
+        "weeks_10": "4",
+        "weeks_40": "9"
+    },
+    {
+        "position": "68",
+        "single": "That'll Be The Day",
+        "artist": "Linda Ronstadt",
+        "peak": "6",
+        "weeks_peak": "1",
+        "weeks_10": "3",
+        "weeks_40": "14"
+    },
+    {
+        "position": "69",
+        "single": "Do You Feel Like We Do",
+        "artist": "Peter Frampton",
+        "peak": "6",
+        "weeks_peak": "1",
+        "weeks_10": "3",
+        "weeks_40": "13"
+    },
+    {
+        "position": "70",
+        "single": "Devil Woman",
+        "artist": "Cliff Richard",
+        "peak": "6",
+        "weeks_peak": "1",
+        "weeks_10": "3",
+        "weeks_40": "10"
+    },
+    {
+        "position": "71",
+        "single": "Shower The People",
+        "artist": "James Taylor",
+        "peak": "6",
+        "weeks_peak": "1",
+        "weeks_10": "2",
+        "weeks_40": "15"
+    },
+    {
+        "position": "72",
+        "single": "Got To Get You Into My Life",
+        "artist": "Beatles",
+        "peak": "7",
+        "weeks_peak": "2",
+        "weeks_10": "3",
+        "weeks_40": "16"
+    },
+    {
+        "position": "73",
+        "single": "Fox On The Run",
+        "artist": "Sweet",
+        "peak": "7",
+        "weeks_peak": "2",
+        "weeks_10": "3",
+        "weeks_40": "12"
+    },
+    {
+        "position": "74",
+        "single": "Dream On",
+        "artist": "Aerosmith",
+        "peak": "7",
+        "weeks_peak": "2",
+        "weeks_10": "3",
+        "weeks_40": "12"
+    },
+    {
+        "position": "75",
+        "single": "Can't Hide Love",
+        "artist": "Earth, Wind, & Fire",
+        "peak": "7",
+        "weeks_peak": "2",
+        "weeks_10": "3",
+        "weeks_40": "12"
+    },
+    {
+        "position": "76",
+        "single": "You Sexy Thing",
+        "artist": "Hot Chocolate",
+        "peak": "7",
+        "weeks_peak": "1",
+        "weeks_10": "3",
+        "weeks_40": "14"
+    },
+    {
+        "position": "77",
+        "single": "Kiss And Say Goodbye",
+        "artist": "Manhattens",
+        "peak": "7",
+        "weeks_peak": "1",
+        "weeks_10": "3",
+        "weeks_40": "11"
+    },
+    {
+        "position": "78",
+        "single": "I Never Cry",
+        "artist": "Alice Cooper",
+        "peak": "7",
+        "weeks_peak": "1",
+        "weeks_10": "2",
+        "weeks_40": "12"
+    },
+    {
+        "position": "79",
+        "single": "Strange Magic",
+        "artist": "ELO",
+        "peak": "7",
+        "weeks_peak": "1",
+        "weeks_10": "2",
+        "weeks_40": "10"
+    },
+    {
+        "position": "80",
+        "single": "Shake Your Booty",
+        "artist": "K.C. & The Sunshine Band",
+        "peak": "8",
+        "weeks_peak": "2",
+        "weeks_10": "4",
+        "weeks_40": "14"
+    },
+    {
+        "position": "81",
+        "single": "Evil Woman",
+        "artist": "ELO",
+        "peak": "8",
+        "weeks_peak": "2",
+        "weeks_10": "3",
+        "weeks_40": "11"
+    },
+    {
+        "position": "82",
+        "single": "Getaway",
+        "artist": "Earth, Wind, & Fire",
+        "peak": "8",
+        "weeks_peak": "2",
+        "weeks_10": "3",
+        "weeks_40": "11"
+    },
+    {
+        "position": "83",
+        "single": "My Little Town",
+        "artist": "Simon & Garfunkel",
+        "peak": "8",
+        "weeks_peak": "2",
+        "weeks_10": "2",
+        "weeks_40": "16"
+    },
+    {
+        "position": "84",
+        "single": "Sophisticated Lady",
+        "artist": "Natalie Cole",
+        "peak": "8",
+        "weeks_peak": "1",
+        "weeks_10": "2",
+        "weeks_40": "13"
+    },
+    {
+        "position": "85",
+        "single": "Walk Away From Love",
+        "artist": "David Ruffin",
+        "peak": "8",
+        "weeks_peak": "1",
+        "weeks_10": "2",
+        "weeks_40": "12"
+    },
+    {
+        "position": "86",
+        "single": "Love Hurts",
+        "artist": "Nazareth",
+        "peak": "8",
+        "weeks_peak": "1",
+        "weeks_10": "2",
+        "weeks_40": "12"
+    },
+    {
+        "position": "87",
+        "single": "Sweet Thing",
+        "artist": "Rufus",
+        "peak": "8",
+        "weeks_peak": "1",
+        "weeks_10": "2",
+        "weeks_40": "11"
+    },
+    {
+        "position": "88",
+        "single": "Boogie Fever",
+        "artist": "Sylvers",
+        "peak": "8",
+        "weeks_peak": "1",
+        "weeks_10": "2",
+        "weeks_40": "10"
+    },
+    {
+        "position": "89",
+        "single": "I'm Easy",
+        "artist": "Keith Carradine",
+        "peak": "9",
+        "weeks_peak": "2",
+        "weeks_10": "3",
+        "weeks_40": "12"
+    },
+    {
+        "position": "90",
+        "single": "Heaven Must Be Missing An Angel",
+        "artist": "Tavares",
+        "peak": "9",
+        "weeks_peak": "2",
+        "weeks_10": "2",
+        "weeks_40": "15"
+    },
+    {
+        "position": "91",
+        "single": "Saturday Night",
+        "artist": "Bay City Rollers",
+        "peak": "9",
+        "weeks_peak": "2",
+        "weeks_10": "2",
+        "weeks_40": "11"
+    },
+    {
+        "position": "92",
+        "single": "Sailing",
+        "artist": "Rod Stewart",
+        "peak": "9",
+        "weeks_peak": "2",
+        "weeks_10": "2",
+        "weeks_40": "8"
+    },
+    {
+        "position": "93",
+        "single": "Mamma Mia",
+        "artist": "ABBA",
+        "peak": "9",
+        "weeks_peak": "1",
+        "weeks_10": "2",
+        "weeks_40": "12"
+    },
+    {
+        "position": "94",
+        "single": "(Don't Fear) The Reaper",
+        "artist": "Blue Oyster Cult",
+        "peak": "9",
+        "weeks_peak": "1",
+        "weeks_10": "2",
+        "weeks_40": "12"
+    },
+    {
+        "position": "95",
+        "single": "It's Over",
+        "artist": "Boz Scaggs",
+        "peak": "10",
+        "weeks_peak": "2",
+        "weeks_10": "2",
+        "weeks_40": "10"
+    },
+    {
+        "position": "96",
+        "single": "There's A Kind Of Hush",
+        "artist": "Carpenters",
+        "peak": "10",
+        "weeks_peak": "1",
+        "weeks_10": "1",
+        "weeks_40": "14"
+    },
+    {
+        "position": "97",
+        "single": "Say You Love Me",
+        "artist": "Fleetwood Mac",
+        "peak": "10",
+        "weeks_peak": "1",
+        "weeks_10": "1",
+        "weeks_40": "13"
+    },
+    {
+        "position": "98",
+        "single": "Magic Man",
+        "artist": "Heart",
+        "peak": "10",
+        "weeks_peak": "1",
+        "weeks_10": "1",
+        "weeks_40": "13"
+    },
+    {
+        "position": "99",
+        "single": "Squeeze Box",
+        "artist": "The Who",
+        "peak": "10",
+        "weeks_peak": "1",
+        "weeks_10": "1",
+        "weeks_40": "12"
+    },
+    {
+        "position": "100",
+        "single": "This Masquerade",
+        "artist": "George Benson",
+        "peak": "10",
+        "weeks_peak": "1",
+        "weeks_10": "1",
+        "weeks_40": "12"
+    }
+]

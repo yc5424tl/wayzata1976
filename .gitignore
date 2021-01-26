@@ -8,3 +8,7 @@
 wayzata1976_app/db.sqlite3
 *.pyc
 notes.txt
+db.sqlite3
+/sorl
+/media/*
+*/static/s3direct

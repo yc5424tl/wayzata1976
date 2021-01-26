@@ -1,13 +1,17 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import CreateView
 from django.views.generic import ListView
-from .models import GalleryImage, Person, CustomUser, NewsPostImage, SurveyResult, ContactInfo, NewsPost
+from .models import GalleryImage, Person, CustomUser, NewsPostImage, SurveyResult, ContactInfo, NewsPost, Yearbook, Gallery
 from .forms import UploadGalleryImageForm, CustomUserCreationForm, MultiUploadGalleryImageForm, UploadNewsPostImageForm, TestUploadForm, ContactUpdateForm
 from django.http import HttpResponse, JsonResponse
 from django.urls import reverse_lazy, reverse
 from django.contrib import messages
 from django.core.paginator import Paginator
-
+from django.conf import settings
+from django.db.models import Q
+import os
+import json
+import string
 
 # class UploadImageS3(FormView):
 #     template_name = 's3_direct_upload.html'
@@ -62,7 +66,7 @@ def questionnaire(request):
         else:
             new_result.delete()
             messages.warning(request, 'A blank questionnaire cannot be submitted, please try again.')
-            return render(request, 'main/questionnaire.html')
+            return render(request, 'main/questionnaire.h{% block content %}tml')
     else:
         return render(request, 'main/questionnaire.html')
 
@@ -91,26 +95,95 @@ def contact_info(request):
     return render(request, 'main/contact_update.html', {'form': form})
 
 
-def view_gallery(request):
-    pass
+def view_gallery(request, pk):
+    gallery = get_object_or_404(Gallery, pk=pk)
+    return render(request, 'main/view_gallery.html', {'gallery': gallery })
+
 
 
 def view_zietgeist(request):
-    pass
+    awards =[
+        {'award': 'Best Picture', 'winner': 'Rocky'},
+        {'award': 'Best Actor', 'winner': 'Peter Finch (Network)'},
+        {'award': 'Best Actress', 'winner': 'Faye Dunaway (Network)'},
+        {'award': 'Best Supporting Actor', 'winner': 'Jason Robards (All the President\'s Men)'},
+        {'award': 'Best Supporting Actress', 'winner': 'Beatrice Straight (Network)'},
+        {'award': 'Best Director', 'winner': 'John Avildsen (Rocky)'}
+    ]
+    yearbooks = Yearbook.objects.all()
+    songs = None
+    with open(os.path.join(settings.STATIC_ROOT, 'json/songs.json')) as file:
+        songs = json.load(file)
+    return render(request, 'main/zietgeist.html', {'yearbooks': yearbooks, 'songs': songs, 'awards': awards})
 
 
-# def view_classmates(request):
-#     # classmates = Person.objects.only('is_classmate', 'first_name', 'last_name', 'middle_initial', 'address').filter('is_classmate').order_by('last_name').select_related('address')
-#     classmates = Person.objects.filter('is_classmate'== True).only('last_name', 'first_name', 'middle_initial', 'address').order_by('last_name').select_related('address')o
+def view_classmates(request):
 
+    classmates = Person.objects.filter(is_classmate=True).only('last_name', 'first_name', 'middle_initial', 'address', 'is_classmate').order_by('last_name').select_related('address')
+    mia_list = Person.objects.filter(address=None, is_classmate=True).only('last_name', 'first_name', 'middle_initial', 'address', 'is_classmate').order_by('last_name').select_related('address')
+    passed_list = Person.objects.filter(address__city='passed').only('last_name', 'first_name', 'middle_initial', 'address', 'is_classmate').order_by('last_name').select_related('address')
+    in_contact_list = Person.objects.exclude(Q(address__city='passed') | Q(address=None)).order_by('last_name').select_related('address')
 
-def ClassmateList(ListView):
+    alphabet = list(string.ascii_uppercase)
+
+    all_link_dict = {letter:None for letter in alphabet}
+    for letter_key in all_link_dict:
+        if letter_key == 'X':
+            continue
+        else:
+            for classmate in classmates:
+                if classmate.last_name[0] ==  letter_key:
+                    all_link_dict[letter_key] = classmate
+                    break
+
+    mia_link_dict =  {letter:None for letter in alphabet}
+    for letter_key in mia_link_dict:
+        if letter_key in ['X', 'Q', 'U', 'X', 'Y', 'Z']:
+            continue
+        else:
+            for classmate in mia_list:
+                if classmate.last_name[0] == letter_key:
+                    mia_link_dict[letter_key] = classmate
+                    break
+
+    in_c_link_dict = {letter:None for letter in alphabet}
+    for letter_key in in_c_link_dict:
+        if letter_key in ['I', 'U', 'X']:
+            continue
+        else:
+            for classmate in in_contact_list:
+                if classmate.last_name[0] == letter_key:
+                    in_c_link_dict[letter_key] = classmate
+                    break
+
+    return render(request, 'main/view_classmates.html', {
+        'classmates': classmates,
+        'mia_list': mia_list,
+        'passed_list': passed_list,
+        'in_contact_list': in_contact_list,
+        'link_dict': all_link_dict,
+        'mia_link_dict': mia_link_dict,
+        'in_c_link_dict': in_c_link_dict,
+        'alphabet': alphabet
+        }
+    )
+
+class ClassmateList(ListView):
     template_name = 'main/view_classmates.html'
     paginate_by = 50
+    context_object_name = 'classmates'
 
     def get_queryset(self):
-        queryset = Person.objects.filter('is_classmate' == True).only('last_name', 'first_name', 'middle_initial', 'address', 'is_classmate').order_by('last_name').select_related('address')
-        return queryset
+        self.queryset = Person.objects.filter(address=None).only('last_name', 'first_name', 'middle_initial', 'address', 'is_classmate').order_by('last_name').select_related('address')
+        return self.queryset
+
+    def get_context_data(self, **kwargs):
+        context = super(ClassmateList, self).get_context_data(**kwargs)
+        context['classmates'] = self.queryset
+        context['mia_list'] = Person.objects.filter(address=None).only('last_name', 'first_name', 'middle_initial', 'address', 'is_classmate').order_by('last_name').select_related('address')
+        context['passed_list'] = Person.objects.filter(address__city='passed').only('last_name', 'first_name', 'middle_initial', 'address', 'is_classmate').order_by('last_name').select_related('address')
+        context['in_contact_list'] = Person.objects.exclude(address__city='passed', address=None).order_by('last_name').select_related('address')
+        return context
 
 
 def view_links(request):
@@ -178,7 +251,7 @@ def multi_upload_gallery_image(request):
         else:
             data = {'is_valid': False}
         return JsonResponse(data)
-# class
+
 
 
 def success(request):

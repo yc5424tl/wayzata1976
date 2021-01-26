@@ -112,7 +112,7 @@ class UploadGalleryImageForm(forms.ModelForm):
 
     class Meta:
         model = GalleryImage
-        fields = ('title', 'subtitle', 'gallery', 'file')
+        fields = ('title', 'subtitle', 'gallery', 'image')
 
 
 class MultiUploadGalleryImageForm(forms.ModelForm):
@@ -121,7 +121,7 @@ class MultiUploadGalleryImageForm(forms.ModelForm):
 
     class Meta:
         model = GalleryImage
-        fields = ('file', 'gallery')
+        fields = ('image', 'gallery')
 
 
 class CreateGalleryForm(forms.ModelForm):
@@ -156,7 +156,7 @@ class TestUploadForm(forms.ModelForm):
 
     class Meta:
         model = GalleryImage
-        fields = ('file', 'gallery', 'title', 'subtitle')
+        fields = ('image', 'gallery', 'title', 'subtitle')
 
     def form_valid(self, request):
         self.dump()

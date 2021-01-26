@@ -3,7 +3,7 @@ from django.contrib.auth.admin import UserAdmin
 
 
 from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import CustomUser, Gallery, Image, GalleryImage, NewsPostImage, NewsPost, Person, SurveyResult, Address, ContactInfo
+from .models import CustomUser, Gallery, Image, GalleryImage, NewsPostImage, NewsPost, Person, SurveyResult, Address, ContactInfo, Yearbook, SubGallery
 
 
 class CustomUserAdmin(UserAdmin):
@@ -29,16 +29,30 @@ class AddressAdmin(admin.ModelAdmin):
     list_display_links = None
 
 
-@admin.register(Gallery)
-class GalleryAdmin(admin.ModelAdmin):
+@admin.register(SubGallery)
+class SubGalleryAdmin(admin.ModelAdmin):
     list_display = (
-        'working_name', 'display_name', 'date_created', 'date_last_modified'
+        'working_name', 'display_name', 'date_created', 'date_last_modified', 'parent'
     )
     list_editable = (
         'working_name', 'display_name'
     )
     list_filter = (
-        'working_name', 'display_name', 'date_created', 'date_last_modified'
+        'working_name', 'display_name', 'date_created', 'date_last_modified', 'parent'
+    )
+    list_display_links = ('parent',)
+
+
+@admin.register(Gallery)
+class GalleryAdmin(admin.ModelAdmin):
+    list_display = (
+        'working_name', 'display_name', 'date_created', 'date_last_modified', 'section'
+    )
+    list_editable = (
+        'working_name', 'display_name', 'section'
+    )
+    list_filter = (
+        'working_name', 'display_name', 'date_created', 'date_last_modified', 'section'
     )
     list_display_links = None
 
@@ -46,7 +60,7 @@ class GalleryAdmin(admin.ModelAdmin):
 @admin.register(GalleryImage)
 class GalleryImageAdmin(admin.ModelAdmin):
     list_display = (
-        'uuid', 'date_created', 'title', 'subtitle', 'uploaded_by', 'file'
+        'uuid', 'date_created', 'title', 'subtitle', 'uploaded_by', 'image'
     )
     list_editable = (
         'title', 'subtitle'
@@ -89,7 +103,10 @@ class NewsPostImageAdmin(admin.ModelAdmin):
     list_display_links = (
         'uploaded_by', 'news_post'
     )
-
+def news_post_image_path(instance, filename):
+    name, ext = filename.split('.')
+    file_path = f'news_post_image/{instance.uuid}.{ext}'
+    return file_path
 
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
@@ -128,3 +145,10 @@ class ContactInfoAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'middle_initial', 'last_name', 'street_address', 'city', 'state_province', 'country', 'phone', 'email', 'spouse_is_classmate', 'spouse_is_alumni', 'spouse_first_name', 'spouse_middle_initial', 'spouse_last_name', 'user')
     list_editable = ('first_name', 'middle_initial', 'last_name', 'street_address', 'city', 'state_province', 'country', 'phone', 'email', 'spouse_is_classmate', 'spouse_is_alumni', 'spouse_first_name', 'spouse_middle_initial', 'spouse_last_name', 'user')
     list_display_links = None
+
+
+@admin.register(Yearbook)
+class YearbookAdmin(admin.ModelAdmin):
+    list_display = ('school', 'year', 'cover', 'gallery', 'created_by', 'date_created')
+    list_editable = ('school', 'year', 'cover')
+    list_display_links = ('created_by', 'gallery')

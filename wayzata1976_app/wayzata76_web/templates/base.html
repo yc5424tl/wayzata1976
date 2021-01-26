@@ -1,38 +1,156 @@
 {% load static %}
 <!doctype html>
+
 <html lang='en'>
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{% block title %}Wayzata Class of 1976{% endblock %}</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="{% static 'css/base.css' %}">
-        {% block style %}{% endblock %}
+        {% block style %}
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        {% endblock %}
+        {% block header-scripts %}
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+            <script type="text/javascript" src="{% static 'js/offcanvas.js' %}"></script>
+            <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
+        {% endblock %}
     </head>
+
     <body>
-        <div class='container'>
+        <nav class="navbar navbar-expand-xl fixed-top navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'img/wide_logo.png' %}" class="logo" height="90px">
+            </a>
+            <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse offcanvas-collapse" id="offcanvas-div">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">
+                            Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'view_news' %}">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'view_classmates' %}">Classmates</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'view_zietgeist' %}">The Wayback Machine</a>
+                    </li>
+                    <li class="nav-item dropdown dropdown-accordion" data-accordion="#accordion">
+                        <a class="nav-link dropdown-toggle" href="#" id="nav-pics-dropdown" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">Pictures</a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="nav-pics-dropdown">
+                            <li>
+                                <div class="panel-group" id="accordion">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h6 class="panel-title">
+                                                <a href="#reunionsCollapse" data-toggle="collapse" data-parent="#accordion">
+                                                    Reunions
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div class="panel-collapse collapse" id="reunionsCollapse">
+                                            <div class="panel-body">
+                                                <a href="{% url 'view_gallery' pk=1 %}"> 5th (1981)</a>
+                                                <a href="{% url 'view_gallery' pk=2 %}">10th (1886)</a>
+                                                <a href="{% url 'view_gallery' pk=3 %}">15th (1991)</a>
+                                                <a href="{% url 'view_gallery' pk=4 %}">20th (1996)</a>
+                                                <a href="{% url 'view_gallery' pk=5 %}">25th (2001)</a>
+                                                <a href="{% url 'view_gallery' pk=6 %}">30th (2006)</a>
+                                                <a href="{% url 'view_gallery' pk=7 %}">35th (2011)</a>
+                                                <a href="{% url 'view_gallery' pk=8 %}">40th (2016)</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h6 class="panel-title">
+                                                <a href="#studentLifeCollapse" data-toggle="collapse" data-parent="#accordion">
+                                                    Student Life
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div class="panel-collapse collapse" id="studentLifeCollapse">
+                                            <div class="panel-body">
+                                                <a href="{% url 'view_gallery' pk=9 %}">Band</a>
+                                                <a href="{% url 'view_gallery' pk=10 %}">Cheer & Dance</a>
+                                                <a href="{% url 'view_gallery' pk=11 %}">Class Pictures</a>
+                                                <a href="{% url 'view_gallery' pk=12 %}">Drama</a>
+                                                <a href="{% url 'view_gallery' pk=13 %}">Graduation</a>
+                                                <a href="{% url 'view_gallery' pk=14 %}">Pep Fests & Parades</a>
+                                                <a href="{% url 'view_gallery' pk=15 %}">School Pictures</a>
+                                                <!-- # sports -->
+                                                <a href="{% url 'view_gallery' pk=17 %}">Learning Enforcement Staff</a>
+                                                <!-- # yearbooks  -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="nav-links-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Links</a>
+                        <div class="dropdown-menu" aria-labelledby="nav-links-dropdown">
+                            <a class="dropdown-item" href="http://www.wayzata.k12.mn.us/whs/">
+                                Wayzata High School Website</a>
+                            <a class="dropdown-item" href="http://www.wayzata-alumni.com/1976.html">
+                                Wayzata Alumni Page</a>
+                            <a class="dropdown-item" href="http://www.classmates.com/cmo/user/school/list.jsp?startYear=1976&communityId=7000010706&endYear=1976">
+                                Our Class @ Classmates.com</a>
+                            <a class="dropdown-item" href="http://www.wayzata.k12.mn.us/directory/?&MMN_position=10:10">
+                                Wayzata Public Schools Staff Directory</a>
+                        </div>
+                    </li>
+                    <li class="nav-item inside" >
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control form-control-sm mr-sm-2" type="text" placeholder="username" aria-label="username">
+                            <input class="form-control form-control-sm mr-sm-2" type="password" placeholder="password" aria-label="password">
+                            <button class="btn btn-outline-warning btn-sm my-2 my-sm-0" type="submit">Log In</button>
+                        </form>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0 outside mr-0">
+                    <input class="form-control form-control-sm mr-sm-2" type="text" placeholder="username" aria-label="username">
+                    <input class="form-control form-control-sm mr-sm-2" type="password" placeholder="password" aria-label="password">
+                    <button class="btn btn-outline-warning btn-sm my-2 my-sm-0" type="submit">Log In</button>
+                </form>
+            </div>
+        </nav>
+        <div class='container content'>
+
+            {% for message in messages %}
+                <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+
             {% block content %}
-                {% for message in messages %}
-                    <div class="alert {{ message.tags }} alert-dismissible" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        {{ message }}
-                    </div>
-                {% endfor %}
-                {% if user.is_authenticated %}
+
+                <!-- {% if user.is_authenticated %}
                     Hello, {{ user.username }}
                     <p><a href="{% url 'logout' %}">Log Out</a></p>
                     <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
                 {% else %}
                     <p>You Are Not Logged In</p>
                     <a href="{% url 'login' %}">Log In</a>
-                {% endif %}
+                {% endif %} -->
             {% endblock %}
         </div>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         {% block javascript %}
         {% endblock %}
     </body>

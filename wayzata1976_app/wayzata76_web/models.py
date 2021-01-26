@@ -45,10 +45,14 @@ class Address(models.Model):
 
 
 class Gallery(models.Model):
+
+    SECTIONS = (('REUNIONS', 'Reunions'), ('STUDENT_LIFE', 'Student Life'), ('STOMPING_GROUNDS', 'The Stomping Grounds'))
+
     working_name = models.CharField(max_length=100, null=False, blank=False)
     display_name = models.CharField(max_length=100, null=False, blank=False)
     date_created = models.DateTimeField(auto_now_add=True)
     date_last_modified = models.DateTimeField(default=None, null=True, blank=True)
+    section = models.TextField(choices=SECTIONS, null=True, blank=False)
 
     def __str__(self):
         return self.display_name
@@ -88,8 +92,8 @@ def gallery_for_image(instance, filename):
 class GalleryImage(Image):
     gallery = models.ForeignKey(Gallery, on_delete=models.PROTECT, related_name='gallery_images')
     # image = S3DirectField(dest='example_destination') # TODO update destination
-    # image = models.ImageField(upload_to=gallery_for_image)
-    file = models.FileField(upload_to=gallery_for_image)
+    image = models.ImageField(upload_to=gallery_for_image, null=True, blank=False)
+    # file = models.FileField(upload_to=gallery_for_image)
     uploaded_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name='gallery_images')
 
 
@@ -132,6 +136,17 @@ class Person(models.Model):
     is_relative = models.BooleanField(default=False)
     is_faculty = models.BooleanField(default=False)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, blank=True, null=True, default=None)
+
+    def __str__(self):
+        return f'{self.first_name} {self.middle_initial} {self.last_name}, {self.address}'
+
+
+class SubGallery(Gallery):
+    parent = models.ForeignKey(Gallery, on_delete=models.PROTECT, related_name='sub_galleries', null="False", blank="False")
+
+
+    def __str__(self):
+        return self.working_name
 
 
 class ContactInfo(models.Model):
@@ -179,6 +194,30 @@ class SurveyResult(models.Model):
     @property
     def readable_date_created(self):
         return f'{self.date_created.month}, {self.date_created.day}, {self.date_created.year}'
+
+
+def yearbook_cover_path(instance, filename):
+    name, ext = filename.split('.')
+    file_path = f'yearbooks/cover/{instance.uuid}.{ext}'
+    return file_path
+
+
+class Yearbook(models.Model):
+    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    school = models.CharField(max_length=100, null=False, blank=False)
+    year = models.PositiveSmallIntegerField(null=False, blank=False)
+    cover = models.ImageField(upload_to=yearbook_cover_path)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, blank=False, null=False, on_delete=models.PROTECT, related_name='yearbooks')
+    gallery = models.OneToOneField(Gallery, null=True, blank=True, on_delete=models.PROTECT, related_name='yearbook')
+    date_created = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def display_name(self):
+        return f'{self.school} ({self.year})'
+
+    @property
+    def working_name(self):
+        return f'{self.school}_{self.year}'
 
 
 # class Survey(models.Model):
