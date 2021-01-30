@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     $('.table-view-select').on('change', function() {
         $('.toggle-hidden').hide();
         let selection = (this.value);
@@ -10,21 +11,18 @@ $(document).ready(function() {
     $('.in_contact_list').hide();
 
 
-    // let toTop = document.getElementById("to-top-btn");
-    window.onscroll = function() {scrollFunction()}
-
-    function scrollFunction() {
-      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        toTop.style.display = "block";
+    $(window).scroll(function() {
+      if ($(this).scrollTop() > 100) {
+        $('#scroll').fadeIn();
       } else {
-        toTop.style.display = "none";
+        $('#scroll').fadeIn();
       }
-    };
+    })
 
-    $('#to-top-btn').on('click', function() {
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-    });
+    $('#scroll').click(function() {
+      $('html', 'body').animate({ scrollTop: 0 }, 600);
+      return false;    
+    })
 
 
 });

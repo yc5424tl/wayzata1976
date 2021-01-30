@@ -22,14 +22,14 @@
             <div class="form-row">
                 <div class="form-group col">
                     {% if form.first_name.errors %}
-                        {% render_field form.first_name|append_attr:"required" class="form-control is-invalid" placeholder="First Name" %}
+                        {% render_field form.first_name|append_attr:"required" class="form-control is-invalid" placeholder="* First Name" %}
                         {% for error in form.first_name.errors %}
                             <div class="invalid-feedback">
                                 {{ error }}
                             </div>
                         {% endfor %}
                     {% else %}
-                        {% render_field form.first_name|append_attr:"required" class="form-control" placeholder="First Name" %}
+                        {% render_field form.first_name|append_attr:"required" class="form-control" placeholder="* First Name" %}
                     {% endif %}
                 </div>
                 <div class="form-group col">
@@ -38,14 +38,14 @@
                 </div>
                 <div class="form-group col">
                     {% if form.last_name.errors %}
-                        {% render_field form.last_name|append_attr:"required" class="form-control is-invalid" placeholder="Last Name" %}
+                        {% render_field form.last_name|append_attr:"required" class="form-control is-invalid" placeholder="* Last Name" %}
                         {% for error in form.last_name.errors %}
                         <div class="invalid-feedback">
                             {{ error }}
                         </div>
                     {% endfor %}
                 {% else %}
-                    {% render_field form.last_name|append_attr:"required" class="form-control" placeholder="Last Name" %}
+                    {% render_field form.last_name|append_attr:"required" class="form-control" placeholder="* Last Name" %}
                 {% endif %}
                 </div>
             </div>

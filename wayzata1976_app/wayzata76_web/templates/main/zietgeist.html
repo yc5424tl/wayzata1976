@@ -8,16 +8,18 @@
 {% block content %}
 
     <div class="accordion">
-        <div class="card">
+       
+
+        <div class="card bg-dark text-white">
             <div class="card-header" id="topSongsHeader">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#topSongsCollapse" aria-expanded="false" aria-controls="topSongsCollapse">Top 100 Songs of '76</button>
-                </h5>
+                <h1 class="mb-0 text-center">
+                    <button class="btn btn-link btn-wide" data-toggle="collapse" data-target="#topSongsCollapse" aria-expanded="false" aria-controls="topSongsCollapse">Top 100 Songs of '76</button>
+                </h1>
             </div>
             <div id="topSongsCollapse" class="collapse" aria-labelledby="topSongsHeader" data-parent="accordion">
-                <div class="card-body">
-                    <table>
-                        <thead>
+                <div class="card-body text-center">
+                    <table class="table table-striped table-dark table-bordered">
+                        <thead class="thead-light">
                             <tr>
                                 <th>Position</th>
                                 <th>Single</th>
@@ -45,60 +47,64 @@
                 </div>
             </div>
         </div>
-        <div class="card">
+
+
+        <div class="card bg-dark text-white">
             <div class="card-header" id="topTvHeader">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#topTvCollapse" aria-expanded=false aria-controls="topTvCollapse">Top TV Shows of '76</button>
-                </h5>
+                <h1 class="mb-0 text-center">
+                    <button class="btn btn-link btn-wide" data-toggle="collapse" data-target="#topTvCollapse" aria-expanded=false aria-controls="topTvCollapse">Top TV Shows of '76</button>
+                </h1>
             </div>
             <div id="topTvCollapse" class="collapse" aria-labelledby="topTvHeader" data-parent="accordion">
                 <div class="card-body">
-                    <ol>
-                        <li>ABC Monday Night Movie</li>
-                        <li>ABC Sunday Night Movie</li>
-                        <li>Barretta</li>
-                        <li>The Big Event</li>
-                        <li>Charlie's Angels</li>
-                        <li>Happy Days</li>
-                        <li>Lavern & Shirley</li>
-                        <li>Mash</li>
-                        <li>One Day at a Time</li>
-                        <li>Six Million Dollar Man</li>
+                    <ol class="list-group list-group-flush text-center">
+                        <li class="list-group-item list-group-item-dark">ABC Monday Night Movie</li>
+                        <li class="list-group-item list-group-item-dark">ABC Sunday Night Movie</li>
+                        <li class="list-group-item list-group-item-dark">Barretta</li>
+                        <li class="list-group-item list-group-item-dark">The Big Event</li>
+                        <li class="list-group-item list-group-item-dark">Charlie's Angels</li>
+                        <li class="list-group-item list-group-item-dark">Happy Days</li>
+                        <li class="list-group-item list-group-item-dark">Lavern & Shirley</li>
+                        <li class="list-group-item list-group-item-dark">Mash</li>
+                        <li class="list-group-item list-group-item-dark">One Day at a Time</li>
+                        <li class="list-group-item list-group-item-dark">Six Million Dollar Man</li>
                     </ol>
                 </div>
             </div>
         </div>
-        <div class="card">
+        <div class="card bg-dark text-white">
             <div class="card-header" id="topMoviesHeader">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#topMoviesCollapse" aria-expanded="false" aria-controls="topMoviesCollapse">Top Movies of '76</button>
-                </h5>
+                <h1 class="mb-0 text-center">
+                    <button class="btn btn-link btn-wide" data-toggle="collapse" data-target="#topMoviesCollapse" aria-expanded="false" aria-controls="topMoviesCollapse">Top Movies of '76</button>
+                </h1>
             </div>
             <div id="topMoviesCollapse" class="collapse" aria-labelledby="topMoviesHeader" data-parent="accordion">
                 <div class="card-body">
-                    <ol>
-                        <li>Rocky</li>
-                        <li>To Fly!</li>
-                        <li>All the President's Men</li>
-                        <li>A Star is Born</li>
-                        <li>King Kong</li>
-                        <li>Silver Streak</li>
-                        <li>The Omen</li>
-                        <li>The Enforcer</li>
-                        <li>Midway</li>
-                        <li>The Bad News Bears</li>
+                    <ol class="list-group list-group-flush list-group-lg">
+                        <li class="list-group-item list-group-item-dark">Rocky</li>
+                        <li class="list-group-item list-group-item-dark">To Fly!</li>
+                        <li class="list-group-item list-group-item-dark">All the President's Men</li>
+                        <li class="list-group-item list-group-item-dark">A Star is Born</li>
+                        <li class="list-group-item list-group-item-dark">King Kong</li>
+                        <li class="list-group-item list-group-item-dark">Silver Streak</li>
+                        <li class="list-group-item list-group-item-dark">The Omen</li>
+                        <li class="list-group-item list-group-item-dark">The Enforcer</li>
+                        <li class="list-group-item list-group-item-dark">Midway</li>
+                        <li class="list-group-item list-group-item-dark">The Bad News Bears</li>
                     </ol>
                 </div>
             </div>
         </div>
-        <div class="card">
+
+
+        <div class="card bg-dark text-white">
             <div class="card-header" id="academyHeader">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#academyCollapse" aria-expanded="false" aria-controls="academyCollapse">'76 Academy Awards</button>
-                </h5>
+                <h1 class="mb-0 text-center">
+                    <button class="btn btn-link btn-wide" data-toggle="collapse" data-target="#academyCollapse" aria-expanded="false" aria-controls="academyCollapse">'76 Academy Awards</button>
+                </h1>
                 <div id="academyCollapse" class="collapse" aria-labelledby="academyHeader" data-parent="accordion">
                     <div class="card-body">
-                        <table>
+                        <table class="table table-dark table-striped table-bordered">
                             {% for award in awards %}
                                 <tr>
                                     <td>{{ award.award }}</td>
@@ -110,14 +116,16 @@
                 </div>
             </div>
         </div>
-        <div class="card">
+
+
+        <div class="card bg-dark text-white">
             <div class="card-header" id="sportsHeader">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#sportsCollapse" aria-expanded="false" aria-controls="sportsCollapse">'76 Sports Champions</button>
-                </h5>
+                <h1 class="mb-0 text-center">
+                    <button class="btn btn-link btn-wide" data-toggle="collapse" data-target="#sportsCollapse" aria-expanded="false" aria-controls="sportsCollapse">'76 Sports Champions</button>
+                </h1>
             </div>
             <div id="sportsCollapse" class="collapse" aria-labelledby="sportsHeader" data-parent="accordion">
-                <table>
+                <table class="table table-striped table-dark table-bordered">
                     <tr>
                         <td>Super Bowl X</td>
                         <td>Pittsburgh Steelers (vs. Dallas Cowboys 21-17)</td>
@@ -137,28 +145,30 @@
                 </table>
             </div>
         </div>
-    </div>
-    <div class="card">
-        <div class="card-header" id="yearbookHeader">
-            <h5 class="mb-0">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#yearbookCollapse" aria-expanded="false" aria-controls="yearbookCollapse">Yearbooks</button>
-            </h5>
-        </div>
-        <div id="yearbookCollapse" class="collapse" aria-labelledby="yearbookHeader" data-parent="accordion">
-            <div class="row">
-                {% for yearbook in yearbooks %}
-                    <div class="col-xs-12 col-md-6 col-lg 4">
-                        <div class="card">
-                            <img class="card-img-top" src="{{ yearbook.cover.url }}">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ yearbook.display_name }}</h5>
-                                {% if yearbook.gallery %}
-                                    <a href="{{ yearbook.gallery.url }}" class="btn btn-primary">View Pages</a>
-                                {% endif %}
+
+        
+        <div class="card bg-dark text-white">
+            <div class="card-header" id="yearbookHeader">
+                <h1 class="mb-0 text-center">
+                    <button class="btn btn-link btn-wide" data-toggle="collapse" data-target="#yearbookCollapse" aria-expanded="false" aria-controls="yearbookCollapse">Yearbooks</button>
+                </h1>
+            </div>
+            <div id="yearbookCollapse" class="collapse" aria-labelledby="yearbookHeader" data-parent="accordion">
+                <div class="row">
+                    {% for yearbook in yearbooks %}
+                        <div class="col-xs-12 col-md-6 col-lg 4">
+                            <div class="card bg-dark text-center">
+                                <img class="card-img-top" src="{{ yearbook.cover.url }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ yearbook.display_name }}</h5>
+                                    {% if yearbook.gallery %}
+                                        <a href="{{ yearbook.gallery.url }}" class="btn btn-primary">View Pages</a>
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>

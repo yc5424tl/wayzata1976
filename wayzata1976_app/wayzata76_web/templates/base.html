@@ -23,7 +23,8 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-xl fixed-top navbar-dark bg-dark">
+        <wrapper class="d-flex flex-column">
+        <nav class="navbar navbar-expand-xl fixed-top navbar-dark bg-dark" id="header">
             <a class="navbar-brand" href="#">
                 <img src="{% static 'img/wide_logo.png' %}" class="logo" height="90px">
             </a>
@@ -32,7 +33,7 @@
             </button>
             <div class="navbar-collapse offcanvas-collapse" id="offcanvas-div">
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="#">
                             Home
                             <span class="sr-only">(current)</span>
@@ -55,21 +56,23 @@
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h6 class="panel-title">
-                                                <a href="#reunionsCollapse" data-toggle="collapse" data-parent="#accordion">
+                                                <a href="#reunionsCollapse" id="reunionsHeading" data-toggle="collapse" data-parent="#accordion" type="button" class="btn btn-link" aria-expanded="false" aria-controls="reunionsCollapse">
                                                     Reunions
                                                 </a>
                                             </h6>
                                         </div>
-                                        <div class="panel-collapse collapse" id="reunionsCollapse">
-                                            <div class="panel-body">
-                                                <a href="{% url 'view_gallery' pk=1 %}"> 5th (1981)</a>
-                                                <a href="{% url 'view_gallery' pk=2 %}">10th (1886)</a>
-                                                <a href="{% url 'view_gallery' pk=3 %}">15th (1991)</a>
-                                                <a href="{% url 'view_gallery' pk=4 %}">20th (1996)</a>
-                                                <a href="{% url 'view_gallery' pk=5 %}">25th (2001)</a>
-                                                <a href="{% url 'view_gallery' pk=6 %}">30th (2006)</a>
-                                                <a href="{% url 'view_gallery' pk=7 %}">35th (2011)</a>
-                                                <a href="{% url 'view_gallery' pk=8 %}">40th (2016)</a>
+                                        <div class="panel-collapse collapse" id="reunionsCollapse" aria-labelledby="reunionsHeading" data-parent="#accordion">
+                                            <div class="panel-body text-center">
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-item list-item-dark"><a href="{% url 'view_gallery' pk=1 %}"> 5th (1981)</a></li>
+                                                    <li class="list-item list-item-dark"><a href="{% url 'view_gallery' pk=2 %}">10th (1886)</a></li>
+                                                    <li class="list-item list-item-dark"><a href="{% url 'view_gallery' pk=3 %}">15th (1991)</a></li>
+                                                    <li class="list-item list-item-dark"><a href="{% url 'view_gallery' pk=4 %}">20th (1996)</a></li>
+                                                    <li class="list-item list-item-dark"><a href="{% url 'view_gallery' pk=5 %}">25th (2001)</a></li>
+                                                    <li class="list-item list-item-dark"><a href="{% url 'view_gallery' pk=6 %}">30th (2006)</a></li>
+                                                    <li class="list-item list-item-dark"><a href="{% url 'view_gallery' pk=7 %}">35th (2011)</a></li>
+                                                    <li class="list-item list-item-dark"><a href="{% url 'view_gallery' pk=8 %}">40th (2016)</a></li>
+                                                </ul>    
                                             </div>
                                         </div>
                                     </div>
@@ -82,17 +85,19 @@
                                             </h6>
                                         </div>
                                         <div class="panel-collapse collapse" id="studentLifeCollapse">
-                                            <div class="panel-body">
-                                                <a href="{% url 'view_gallery' pk=9 %}">Band</a>
-                                                <a href="{% url 'view_gallery' pk=10 %}">Cheer & Dance</a>
-                                                <a href="{% url 'view_gallery' pk=11 %}">Class Pictures</a>
-                                                <a href="{% url 'view_gallery' pk=12 %}">Drama</a>
-                                                <a href="{% url 'view_gallery' pk=13 %}">Graduation</a>
-                                                <a href="{% url 'view_gallery' pk=14 %}">Pep Fests & Parades</a>
-                                                <a href="{% url 'view_gallery' pk=15 %}">School Pictures</a>
-                                                <!-- # sports -->
-                                                <a href="{% url 'view_gallery' pk=17 %}">Learning Enforcement Staff</a>
-                                                <!-- # yearbooks  -->
+                                            <div class="panel-body text-center">
+                                                <ul class="list-group list-group-flush list-group-dark">
+                                                    <li class="list-item list-item-dark mx-0"><a class="btn btn-dark mx-0" role="button" href="{% url 'view_gallery' pk=9 %}">Band</a></li>
+                                                    <li class="list-item list-item-dark mx-0"><a class="btn btn-dark mx-0" role="button" href="{% url 'view_gallery' pk=10 %}">Cheer & Dance</a></li>
+                                                    <li class="list-item list-item-dark mx-0"><a class="btn btn-dark" role="button" href="{% url 'view_gallery' pk=11 %}">Class Pictures</a></li>
+                                                    <li class="list-item list-item-dark mx-0"><a class="btn btn-dark" role="button" href="{% url 'view_gallery' pk=12 %}">Drama</a></li>
+                                                    <li class="list-item list-item-dark mx-0"><a class="btn btn-dark" role="button" href="{% url 'view_gallery' pk=13 %}">Graduation</a></li>
+                                                    <li class="list-item list-item-dark mx-0"><a class="btn btn-dark" role="button" href="{% url 'view_gallery' pk=14 %}">Pep Fests & Parades</a></li>
+                                                    <li class="list-item list-item-dark mx-0"><a class="btn btn-dark" role="button" href="{% url 'view_gallery' pk=15 %}">School Pictures</a></li>
+                                                    <!-- # sports -->
+                                                    <li class="list-item list-item-dark mx-0"><a class="btn btn-dark" role="button" href="{% url 'view_gallery' pk=17 %}">Learning Enforcement Staff</a></li>
+                                                    <!-- # yearbooks  -->
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -138,21 +143,37 @@
                     {{ message }}
                 </div>
             {% endfor %}
+            
+                {% block content %}
+                    <!-- {% if user.is_authenticated %}
+                        Hello, {{ user.username }}
+                        <p><a href="{% url 'logout' %}">Log Out</a></p>
+                        <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
+                    {% else %}
+                        <p>You Are Not Logged In</p>
+                        <a href="{% url 'login' %}">Log In</a>
+                    {% endif %} -->
+                {% endblock %}
 
-            {% block content %}
-
-                <!-- {% if user.is_authenticated %}
-                    Hello, {{ user.username }}
-                    <p><a href="{% url 'logout' %}">Log Out</a></p>
-                    <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
-                {% else %}
-                    <p>You Are Not Logged In</p>
-                    <a href="{% url 'login' %}">Log In</a>
-                {% endif %} -->
-            {% endblock %}
         </div>
+        <footer>
+            <nav class="navbar navbar-dark navbar-expand-xl bg-dark text-white">
+                <hr>
+                <div class="text-center container row footer-row">
+                    <!-- <p class="my-1 col-xs-12 col-lg-4"><a href="mailto:classof76@wayzata76.com" target="_blank">Email Us</a></p> -->
+                    <!-- <p class="my-1 col-xs-12 col-lg-4">Reunion Committee @ P.O. Box 124</p> -->
+                    <!-- <p class="my-1 col-xs-12 col-lg-4">Wayzata, MN 55391</p> -->
+                    <ul id="footer-ul" class="list-group list-group-flush">
+                        <li class="list-item list-item-dark"><a href="mailto:classof76@wayzata76.com" target="_blank">Email Us</a></li>
+                        <li class="list-item list-item-dark">Reunion Committee @ P.O. Box 124</li>
+                        <li class="list-item list-item-dark">Wayzata, MN 55391</li>
+                    </ul>
+                </div>
+            </nav>
+        </footer>
         {% block javascript %}
         {% endblock %}
+        </wrapper>
     </body>
 </html>
 

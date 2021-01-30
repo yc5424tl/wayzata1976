@@ -28,5 +28,6 @@ urlpatterns = [
         name="password_reset"
     ),
 
-    path('upload_form/', views.test_view, name='test_upload_form')
+    path('upload_form/', views.test_view, name='test_upload_form'),
+    path('test/classmates', views.test_classmates, name="test_classmates"),
 ]

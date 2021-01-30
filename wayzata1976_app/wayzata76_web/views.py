@@ -85,9 +85,19 @@ def contact_info(request):
             # TODO - check Person for matching first/last name, creating a new entry if they do not -- same for spouse fields 
             return redirect('success')
         else:
-            message = ''
-            for error in form.errors:
-                message += f'{error}: {form.errors[error]}\n'
+            message = form.errors.as_data()
+            print(f'type(message) = {type(message)}')
+            for error_data in form.errors.as_data():
+                print(f'error_data = {error_data}')
+                print(f'type(error_data) = {type(error_data)}')
+                print(f'type(message[error_data]) = {type(message[error_data])}')
+                print(f'message[error_data] = {message[error_data]}')
+                print(f'len(message[error_data]) = {len(message[error_data])}')
+                print(f'message[error_data][0] = {message[error_data][0]}')
+                # print(f'type(error_value) = {type(error_value)} (err_value = {error_value}')
+            # message = ''
+            # for error in form.errors.as_data():
+            #     message += f'{error}: {form.errors[error]}\n'
             messages.warning(request, message)
     else:
         form = ContactUpdateForm()
@@ -311,3 +321,7 @@ def my_upload_target_view(request):
         else:
             return JsonResponse({'action': 'replace', 'html': form.as_html(request), })
     return render(request, 'test_view.html', {'form': form, 'form_as_html': form.as_html(request)} )
+
+
+def test_classmates(request):
+    return render(request, 'main/test_top_page.html')
