@@ -57,10 +57,6 @@ def index(request):
     return render(template_name="main/index.html", request=request)
 
 
-def upcoming(request):
-    pass
-
-
 def questionnaire(request):
     if request.method == "POST":
         liked = request.POST["liked"]
