@@ -53,9 +53,16 @@ class Gallery(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_last_modified = models.DateTimeField(default=None, null=True, blank=True)
     section = models.TextField(choices=SECTIONS, null=True, blank=False)
+    abstract_gallery = models.BooleanField(default=False)
+    subgallery = models.BooleanField(default=False)
+    parent_gallery = models.ForeignKey('self', on_delete=models.PROTECT, related_name="sub_galleries", null=True, blank=True)
 
     def __str__(self):
         return self.display_name
+
+    @property
+    def has_subgalleries(self):
+        return self.sub_galleries.exists()
 
     @property
     def readable_date_created(self):
@@ -95,7 +102,6 @@ class GalleryImage(Image):
     image = models.ImageField(upload_to=gallery_for_image, null=True, blank=False)
     # file = models.FileField(upload_to=gallery_for_image)
     uploaded_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name='gallery_images')
-
 
 class NewsPost(models.Model):
     header = models.CharField(max_length=100, null=False, blank=False)
@@ -137,16 +143,37 @@ class Person(models.Model):
     is_faculty = models.BooleanField(default=False)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, blank=True, null=True, default=None)
 
+    # class Meta:
+    #     unique_together = ('last_name', 'first_name', 'middle_initial')
+    #     constraints = [
+    #         models.UniqueConstraint(fields=['last_name', 'middle_initial', 'first_name'], name='unique_person_name'),
+    #     ]
+        # unique_together = (last_name, middle_initial, first_name)  # Planned Deprication
+
     def __str__(self):
         return f'{self.first_name} {self.middle_initial} {self.last_name}, {self.address}'
 
 
-class SubGallery(Gallery):
-    parent = models.ForeignKey(Gallery, on_delete=models.PROTECT, related_name='sub_galleries', null="False", blank="False")
 
+# class SubGallery(models.Model):
+#     parent = models.ForeignKey(Gallery, on_delete=models.PROTECT, related_name='sub_galleries', null="False", blank="False")
+#     working_name = models.CharField(max_length=100, null=False, blank=False)
+#     display_name = models.CharField(max_length=100, null=False, blank=False)
+#     date_created = models.DateTimeField(auto_now_add=True)
+#     date_last_modified = models.DateTimeField(default=None, null=True, blank=True)
 
-    def __str__(self):
-        return self.working_name
+#     def __str__(self):
+#         return self.working_name
+
+#     @property
+#     def readable_date_created(self):
+#         return f'{self.date_created.month}, {self.date_created.day}, {self.date_created.year}'
+
+#     @property
+#     def section(self):
+#         return self.parent.section
+
+    
 
 
 class ContactInfo(models.Model):

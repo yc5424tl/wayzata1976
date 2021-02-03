@@ -1,17 +1,70 @@
+
 .page-header {
     font-variant: small-caps;
     text-decoration: 3pt solid underline black;
-    margin-top: 100px;
+    margin-top: 5rem;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2rem;
     text-align: center;
     border: 0.5pt single black;
+    /* color: white; */
 }
+
+
+#header {
+  background-color:rgba(44, 48, 52, 0.7);
+}
+/* .white {
+  color: white;
+} */
+
+/* wrapper.d-flex.flex-column {
+  background-image : url(../img/wayzata_ice_arena.jpg);
+  background-position: top;
+  background-repeat: repeat-y;
+  background-size: contain;
+  width: 100%;
+} */
+
+div.d-flex.flex-column {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+address {
+  margin-bottom: 0;
+}
+
+div.content.container {
+  width: 70%;
+  max-width: 85%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+/* div.content.container {
+  background-color: rbga(0,0,0, 0.9);
+  backdrop-filter: blur(5px);
+  height: 100%;
+  margin: 0;
+  padding-top: 100px;
+} */
+
+/* div.bg-container.container {
+  background-color: rgba(0,0,0,0.2);
+  margin: auto;
+  margin-top: 1rem;
+  padding: 0;
+  height: 100%;
+  border-top-left-radius: 20pt;
+  border-top-right-radius: 20pt;
+} */
 
 html,
 body {
   overflow-x: hidden; /* Prevent scroll on narrow devices */
+  font-size: medium;
 }
 
 body {
@@ -175,6 +228,8 @@ body, wrapper, div.container.content {
 
 }
 
+
+
 /* .flex-fill {
   flex: 1 1 auto;
 } */
@@ -185,7 +240,11 @@ body, wrapper, div.container.content {
 }
 
 thead.thead-light {
-  border: 5pt solid darkslategray;
+  border: 5pt solid rgb(33, 37, 41);
+}
+
+th {
+  border: 1pt solid  rgb(44, 48, 52)
 }
 
 footer {
@@ -193,4 +252,8 @@ footer {
   margin-bottom: 0;
   width: 100%;
   bottom: 0;
+}
+
+table {
+  overflow-x: scroll;
 }

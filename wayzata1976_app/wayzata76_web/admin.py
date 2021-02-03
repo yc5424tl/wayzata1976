@@ -3,7 +3,7 @@ from django.contrib.auth.admin import UserAdmin
 
 
 from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import CustomUser, Gallery, Image, GalleryImage, NewsPostImage, NewsPost, Person, SurveyResult, Address, ContactInfo, Yearbook, SubGallery
+from .models import CustomUser, Gallery, Image, GalleryImage, NewsPostImage, NewsPost, Person, SurveyResult, Address, ContactInfo, Yearbook
 
 
 class CustomUserAdmin(UserAdmin):
@@ -29,30 +29,30 @@ class AddressAdmin(admin.ModelAdmin):
     list_display_links = None
 
 
-@admin.register(SubGallery)
-class SubGalleryAdmin(admin.ModelAdmin):
-    list_display = (
-        'working_name', 'display_name', 'date_created', 'date_last_modified', 'parent'
-    )
-    list_editable = (
-        'working_name', 'display_name'
-    )
-    list_filter = (
-        'working_name', 'display_name', 'date_created', 'date_last_modified', 'parent'
-    )
-    list_display_links = ('parent',)
+# @admin.register(SubGallery)
+# class SubGalleryAdmin(admin.ModelAdmin):
+#     list_display = (
+#         'working_name', 'display_name', 'date_created', 'date_last_modified', 'parent'
+#     )
+#     list_editable = (
+#         'working_name', 'display_name'
+#     )
+#     list_filter = (
+#         'working_name', 'display_name', 'date_created', 'date_last_modified', 'parent'
+#     )
+#     list_display_links = ('parent',)
 
 
 @admin.register(Gallery)
 class GalleryAdmin(admin.ModelAdmin):
     list_display = (
-        'working_name', 'display_name', 'date_created', 'date_last_modified', 'section'
+        'working_name', 'display_name', 'date_created', 'date_last_modified', 'section', 'abstract_gallery', 'subgallery', 'parent_gallery'
     )
     list_editable = (
-        'working_name', 'display_name', 'section'
+        'working_name', 'display_name', 'section',
     )
     list_filter = (
-        'working_name', 'display_name', 'date_created', 'date_last_modified', 'section'
+        'date_created', 'date_last_modified', 'section', 'parent_gallery'
     )
     list_display_links = None
 

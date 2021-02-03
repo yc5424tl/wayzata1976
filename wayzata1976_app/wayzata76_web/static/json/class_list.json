@@ -1162,8 +1162,8 @@
     {
     "last_name": "Geistfeld",
     "first_name": "Mark",
-    "middle_initial": "UNKNOWN",
-    "city": "",
+    "middle_initial": "",
+    "city": "UNKNOWN",
     "state": "",
     "zip": ""
     },
@@ -2330,8 +2330,8 @@
     {
     "last_name": "Manning",
     "first_name": "Michael",
-    "middle_initial": "UNKNOWN",
-    "city": "",
+    "middle_initial": "",
+    "city": "UNKNOWN",
     "state": "",
     "zip": ""
     },
@@ -3202,8 +3202,8 @@
     {
     "last_name": "Rosati",
     "first_name": "Guiseppe",
-    "middle_initial": "UNKNOWN",
-    "city": "",
+    "middle_initial": "",
+    "city": "UNKNOWN",
     "state": "",
     "zip": ""
     },

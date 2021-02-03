@@ -128,10 +128,17 @@ class CreateGalleryForm(forms.ModelForm):
 
     class Meta:
         model = Gallery
-        fields = ['working_name', 'display_name']
+        fields = ['working_name', 'display_name', 'abstract_gallery', 'section']
+        widgets = {
+            'section': forms.Select(choices=Gallery.SECTIONS, attrs={'class': 'form_control'}),
+        }
 
     working_name = forms.CharField(required=True, max_length=100)
     display_name = forms.CharField(required=True, max_length=100)
+    abstract_gallery = forms.CheckboxInput()
+    section = forms.ChoiceField
+    subgallery = forms.CheckboxInput()
+    parent_gallery = forms.ModelChoiceField(queryset=Gallery.objects.filter(abstract_gallery=True).all())
 
 
 # class S3DirectUploadForm(forms.Form):

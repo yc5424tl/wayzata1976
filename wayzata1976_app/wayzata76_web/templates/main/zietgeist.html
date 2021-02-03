@@ -3,11 +3,157 @@
 
 {% block style %}
     {{ block.super }}
+    <!-- <link rel="stylesheet" href="{% static 'css/main/zietgeist.css' %}"> -->
 {% endblock %}
 
 {% block content %}
 
-    <div class="accordion">
+
+    <section id="tabs">
+        <!-- <div class="container"> -->
+            <h2 class="page-header">The Wayback Machine<br><small>Happenings of 1976</small></h2>
+            
+            <div class="row">
+                <div class="col-12 full-col">
+                    <!-- <nav>
+                        <ul class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
+                            <li><a class="nav-item nav-link active show" id="nav-music-tab" data-toggle="tab" href="#nav-music" role="tab" aria-controls="nav-music" aria-selected="true">Top 100 Songs</a></li>
+                            <li><a class="nav-item nav-link" id="nav-tv-tab" data-toggle="tab" href="#nav-tv" role="tab" aria-controls="nav-tv" aria-selected="false">Top TV Shows</a></li>
+                            <li><a class="nav-item nav-link" id="nav-movie-tab" data-toggle="tab" href="#nav-movie" role="tab" aria-controls="nav-movie" aria-selected="false">Top Movies</a></li>
+                            <li><a class="nav-item nav-link" id="nav-academy-tab" data-toggle="tab" href="#nav-academy" role="tab" aria-controls="nav-academy" aria-selected="false">Academy Awards</a></li>
+                            <li><a class="nav-item nav-link" id="nav-sports-tab" data-toggle="tab" href="#nav-sports" role="tab" aria-controls="nav-sports" aria-selected="false">Sports Champions</a></li>
+                            <li><a class="nav-item nav-link" id="nav-yearbook-tab" data-toggle="tab" href="#nav-yearbook" role="tab" aria-controls="nav-yearbook" aria-selected="false">Yearbooks</a></li>
+                        </ul>
+                    </nav> -->
+                        <nav class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-music-tab" data-toggle="tab" href="#nav-music" role="tab" aria-controls="nav-music" aria-selected="true">Top 100 Songs</a>
+                            <a class="nav-item nav-link" id="nav-tv-tab" data-toggle="tab" href="#nav-tv" role="tab" aria-controls="nav-tv" aria-selected="false">Top TV Shows</a>
+                            <a class="nav-item nav-link" id="nav-movie-tab" data-toggle="tab" href="#nav-movie" role="tab" aria-controls="nav-movie" aria-selected="false">Top Movies</a>
+                            <a class="nav-item nav-link" id="nav-academy-tab" data-toggle="tab" href="#nav-academy" role="tab" aria-controls="nav-academy" aria-selected="false">Academy Awards</a>
+                            <a class="nav-item nav-link" id="nav-sports-tab" data-toggle="tab" href="#nav-sports" role="tab" aria-controls="nav-sports" aria-selected="false">Sports Champions</a>
+                            <a class="nav-item nav-link" id="nav-yearbook-tab" data-toggle="tab" href="#nav-yearbook" role="tab" aria-controls="nav-yearbook" aria-selected="false">Yearbooks</a>
+                        </nav>
+                    </div>
+                    <div class="col-12 full-col tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active bg-dark text-light" id="nav-music" role="tabpanel" aria-labelledby="nav-music-tab">
+                            <table class="table table-striped table-dark table-bordered">
+                                <thead class="thead-light text-center">
+                                    <tr>
+                                        <th>Position</th>
+                                        <th>Single</th>
+                                        <th>Artist</th>
+                                        <th>Peak</th>
+                                        <th>Weeks @ Peak</th>
+                                        <th>Weeks Top 10</th>
+                                        <th>Weeks Top 40</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for song in songs %}
+                                        <tr>
+                                            <td>{{ song.position }}</td>
+                                            <td>{{ song.single }}</td>
+                                            <td>{{ song.artist }}</td>
+                                            <td>{{ song.peak }}</td>
+                                            <td>{{ song.weeks_peak }}</td>
+                                            <td>{{ song.weeks_10 }}</td>
+                                            <td>{{ song.weeks_40 }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane fade bg-dark text-light" id="nav-tv" role="tabpanel" aria-labelledby="nav-tv-tab">
+                            <ol class="list-group text-center">
+                                <li class="list-item list-item-dark">ABC Monday Night Movie</li>
+                                <li class="list-item list-item-dark">ABC Sunday Night Movie</li>
+                                <li class="list-item list-item-dark">Barretta</li>
+                                <li class="list-item list-item-dark">The Big Event</li>
+                                <li class="list-item list-item-dark">Charlie's Angels</li>
+                                <li class="list-item list-item-dark">Happy Days</li>
+                                <li class="list-item list-item-dark">Lavern & Shirley</li>
+                                <li class="list-item list-item-dark">Mash</li>
+                                <li class="list-item list-item-dark">One Day at a Time</li>
+                                <li class="list-item list-item-dark">Six Million Dollar Man</li>
+                            </ol>
+                        </div>
+                        <div class="tab-pane fade bg-dark text-light" id="nav-movie" role="tabpanel" aria-labelledby="nav-movie-tab">
+                            <ol class="list-group text-center list-group-lg">
+                                <li class="list-item list-item-dark">Rocky</li>
+                                <li class="list-item list-item-dark">To Fly!</li>
+                                <li class="list-item list-item-dark">All the President's Men</li>
+                                <li class="list-item list-item-dark">A Star is Born</li>
+                                <li class="list-item list-item-dark">King Kong</li>
+                                <li class="list-item list-item-dark">Silver Streak</li>
+                                <li class="list-item list-item-dark">The Omen</li>
+                                <li class="list-item list-item-dark">The Enforcer</li>
+                                <li class="list-item list-item-dark">Midway</li>
+                                <li class="list-item list-item-dark">The Bad News Bears</li>
+                            </ol>
+                        </div>
+                        <div class="tab-pane fade bg-dark text-light" id="nav-academy" role="tabpanel" aria-labelledby="nav-academy-tab">
+                            <table class="table table-dark table-striped table-bordered">
+                                <thead class="thead-light text-center">
+                                    <th>Award</th>
+                                    <th>Recipient</th>
+                                </thead>
+                                {% for award in awards %}
+                                    <tr>
+                                        <td>{{ award.award }}</td>
+                                        <td>{{ award.winner }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                        <div class="tab-pane fade bg-dark text-light" id="nav-sports" role="tabpanel" aria-labelledby="nav-sports-tab">
+                            <table class="table table-striped table-dark table-bordered">
+                                <thead class="thead-light text-center">
+                                    <th>Championship</th>
+                                    <th>Winner (Result)</th>
+                                </thead>
+                                <tr>
+                                    <td>Super Bowl X</td>
+                                    <td>Pittsburgh Steelers (vs. Dallas Cowboys 21-17)</td>
+                                </tr>
+                                <tr>
+                                    <td>World Series, 73rd Edition</td>
+                                    <td>Cincinnatti Reds (vs. New York Yankees 4-0)</td>
+                                </tr>
+                                <tr>
+                                    <td>Stanley Cup Finals</td>
+                                    <td>Montreal Canadiens (vs. Philadelphia Flyers 4-0)</td>
+                                </tr>
+                                <tr>
+                                    <td>NBA Championship Series</td>
+                                    <td>Boston Celtics (vs. Pheonix Suns 4-2)</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="tab-pane fade bg-dark text-light" id="nav-yearbook" role="tabpanel" aria-labelledby="nav-yearbook-tab">
+                            <div class="row">
+                                {% for yearbook in yearbooks %}
+                                    <div class="col-xs-12 col-md-6 col-lg 4">
+                                        <div class="card bg-dark text-center">
+                                            <img class="card-img-top" src="{{ yearbook.cover.url }}">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ yearbook.display_name }}</h5>
+                                                {% if yearbook.gallery %}
+                                                    <a href="{{ yearbook.gallery.url }}" class="btn btn-primary">View Pages</a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- </div> -->
+    </section>
+
+
+   <!-- <div class="accordion">
        
 
         <div class="card bg-dark text-white">
@@ -172,5 +318,5 @@
             </div>
         </div>
     </div>
-
+-->
 {% endblock %}

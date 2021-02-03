@@ -26,6 +26,9 @@ class Command(BaseCommand):
                     new_address = Address(city=city, state_province=state, zip_code=zip_code)
                     new_address.save()
                     address_count += 1
+                if record['city'] == 'passed':
+                    new_address = Address(city='passed')
+                    new_address.save()
                 new_person = Person(last_name=last_name, first_name=first_name, middle_initial=middle_initial, address=new_address)
                 new_person.save()
                 classmate_count += 1

@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 from django.contrib import messages
+import django_heroku
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -71,6 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'wayzata76_web.context_processor.galleries',
             ],
         },
     },
@@ -233,3 +235,4 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger'
 }
 
+django_heroku.settings(locals())
