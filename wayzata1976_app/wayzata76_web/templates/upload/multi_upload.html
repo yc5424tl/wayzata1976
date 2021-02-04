@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+<!-- <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form }}
+    <input type="file" name="images" multiple>
+    <input type="submit" value="Submit">
+</form> -->
+    
+
+<div>
+    <fieldset>
+        <!-- {% if msg %} {% autoescape off %} {{ msg }} {% endautoescape %} {% endif %} -->
+        {{ form }}
+        <input type="submit" class="btn btn-default" role="button" value= "Upload">
+        <!-- <form method="post" action="/" enctype="multipart/form-data">
+            {% csrf_token %}
+            <dl>
+                <p>
+                    <label>Browse and Select a File</label>&nbsp;&nbsp;
+                    <input type="file" name="files" autocomplete="off" required multiple>
+                </p>
+            </dl>
+            <p>
+                <input type="submit" value="Upload">
+            </p>
+        </form> -->
+    </fieldset>
+</div>
+
+{% endblock %}

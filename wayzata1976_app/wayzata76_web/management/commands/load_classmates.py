@@ -8,7 +8,8 @@ class Command(BaseCommand):
     help = 'Instantiates Person objects from target JSON file'
 
     def handle(self, *args, **kwargs):
-        json_file = "/home/j/dev/repo/wayzata1976/wayzata1976_app"+static('json/class_list.json')
+        # json_file = "/home/j/dev/repo/wayzata1976/wayzata1976_app"+static('json/class_list.json')
+        json_file = 'staticfiles/json/class_list.json'
         with open(json_file) as class_list_json:
             json_data = json.load(class_list_json)
             classmate_count = 0

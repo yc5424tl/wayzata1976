@@ -4,21 +4,23 @@ import string
 
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth import authenticate
 from django.core.paginator import Paginator
 from django.db.models import Q
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
+from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView
 
 from .forms import (
     ContactUpdateForm,
     CustomUserCreationForm,
-    MultiUploadGalleryImageForm,
-    TestUploadForm,
     UploadGalleryImageForm,
     UploadNewsPostImageForm,
+    # MultiUploadForm
+    GalleryImageUploadForm
 )
 from .models import (
     ContactInfo,
@@ -39,18 +41,20 @@ def SignUpView(CreateView):
     template_name = "registration.signup.html"
 
 
-# def login(request):
-#     if request.method == 'GET':
-#         return render('registration/login.html')
-#     if request.method == 'POST':
-#         username = request.POST['username']
-#         password = request.POST['password']
-#         user = authenticate(request, username=username, password=password)
-#         if user is not None:
-#             login(request, user)
-#             return redirect('index')
-#         else:
-#             return redirect('login')
+def login(request):
+    if request.method == 'GET':
+        return render('registration/login.html')
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, "Login Successful")
+            return redirect('index')
+        else:
+            messages.warning(request, "Username/Password Incorrect")
+            return redirect('index')
 
 
 def index(request):
@@ -103,13 +107,13 @@ def contact_info(request):
                 contact_info.user = request.user
             contact_info.save()
             messages.success(
-                request,
+                request, message=
                 "Updated contact information has been submitted. Please allow 1-2 days for the  Thank you.",
             )
             # TODO - if submitter is logged in user, check to see if user is attatched to a person -- update corresponding fields
             # TODO - check if all Address fields contain data, create new Address if so, linking it to Person
 
-            messages.warning(request, message)
+            # messages.warning(request, message)
     else:
         form = ContactUpdateForm()
         # TODO -- if request.user.is_authenticated --> prefill email/name/address on form
@@ -266,25 +270,10 @@ class ClassmateList(ListView):
         return context
 
 
-def view_links(request):
-    pass
-
-
-def view_contact(request):
-    pass
-
 
 def view_news(request):
     posts = NewsPost.objects.all()
     return render(request, "main/view_news.html", {"posts": posts})
-
-
-def view_galleries(request):
-    pass
-
-
-def create_news_post(request):
-    pass
 
 
 def upload_news_post_image(request):
@@ -312,125 +301,110 @@ def upload_news_post_image(request):
 
 
 def upload_gallery_image(request):
+
     if request.method == "POST":
         form = UploadGalleryImageForm(request.POST, request.FILES, request=request)
-
+        
         if form.is_valid():
             gallery_image = form.save(commit=False)
             gallery_image.uploaded_by = request.user
             gallery_image.save()
-            return redirect("success")
+            return redirect("index")
     else:
         form = UploadGalleryImageForm()
     return render(request, "upload/local_image_upload.html", {"form": form})
 
 
-def multi_upload_gallery_image(request):
-    if request.method == "GET":
-        if request.user.is_authenticated:
-            form = MultiUploadGalleryImageForm()
-            prior_uploads = request.user.gallery_images.all()
-        return render(
-            request,
-            "upload/multi_upload_gallery_image_form.html",
-            {"prior_uploads": prior_uploads, "form": form},
-        )
-    elif request.method == "POST":
-        form = MultiUploadGalleryImageForm(request.POST, request.FILES)
+
+def s3FileUpload(request):
+    
+    if request.method == 'POST':
+        form = GalleryImageUploadForm(request.POST, request.FILES)
         if form.is_valid():
-            photo = form.save()
-            data = {
-                "is_valid": True,
-                "title": photo.image.title,
-                "url": photo.image.url,
-            }
-        else:
-            data = {"is_valid": False}
-        return JsonResponse(data)
+            form_gallery = request.POST['gallery']
+            gallery_instance = get_object_or_404(Gallery, pk=int(form_gallery))
+            upload_count = 0
+            for image_file in request.FILES.getlist('image'):
+                new_image = GalleryImage(
+                    image = image_file,
+                    gallery = gallery_instance,
+                    uploaded_by=request.user
+                )
+                new_image.save()
+                upload_count += 1
+            messages.info(request, message=f'Successfully Uploaded {upload_count} Image(s)')
+            return redirect('view_gallery', pk=int(form_gallery))
 
+            # print(f'form value from request.POST = {request.POST["gallery"]}')
+            # print(f'request.FILES = {request.FILES['image']}')
+            # gallery_image = form.save(commit=False)
+            # gallery_image.uploaded_by = request.user
+            # gallery_image.gallery = gallery_instance
+            # gallery_image.save()
+            # messages.info(request, message='Image Upload Success')
+            # return redirect('index')
+        # print(f'type(request.POST) = {type(request.POST)}')
+        # print(f'request.POST = {request.POST}')
+        # print(f'request.FILES = {request.FILES}')
+        # print(f'request.POST["gallery"] = {request.POST["gallery"]}')
+        # target_gallery = get_object_or_404(Gallery, pk=int(request.POST['gallery']))
+        # target_gallery = request.POST['gallery']
+        # upload_count = 0
+        # for image_file in request.POST['image']:
+            # print(f'type(image_file) = {type(image_file)}')
+            # print(f'image_file = {image_file}')
+            # new_image = GalleryImage(
+                # image=image_file,
+                # gallery=target_gallery,
+                # uploaded_by=request.user
+            # )
+            # new_image.save()
+            # upload_count += 1
+            # messages.info(request, message=f'Successfully Uploaded {upload_count} images')
+        # return redirect('view_gallery', pk=target_gallery.pk)
 
-def success(request):
-    return HttpResponse("successfully uploaded")
-
-
-def multi_upload_test(request, gallery):
-    if request.method == "POST":
-        for file in request.FILES.getlist("images"):
-            instance = GalleryImage(
-                gallery={{gallery}}, image=file, uploaded_by=request.user
-            )
-            instance.save()
-
+        # return redirect(reverse('view_classmates'))
     else:
-        return render(request, "upload/multi_upload_test.html")
+        form = GalleryImageUploadForm()
+        return render(request, 'upload/gallery_image_upload.html', {'form': form})
+    
+# request.POST = <QueryDict: {
+    # 'csrfmiddlewaretoken': ['a03Z1HdQ3RE69YSO70Xae1eMkyxFb3BVYcM6WtlvclYkKY5GXjLfu46g93eKYGhI'], 
+    # 'image': ['---_0056.jpg', '---_0059.jpg'], 
+    # 'gallery': ['9']}>
+# request.FILES = <MultiValueDict: {}>
+# request.POST["gallery"] = 9
+
+# def multi_upload_gallery(request, gallery_pk):
+    # gallery = get_object_or_404(Gallery, pk=gallery_pk)
+
+# def multi_upload(request):
+#     if request.method == 'GET':
+#         form = MultiUploadForm
+#         return render(request, 'upload/multi_upload.html', {"form": form})
 
 
-# class TestUploadForm(UploadForm):
+# @ensure_csrf_cookie
+# def upload_file(request):
+#     if request.method == 'POST':
+#         form = MultiUploadForm(request.POST, request.FILES)
+#         files = request.FILES.getlist('files')
+#         if form.is_valid():
+#             for f in files:
+#                 handle_uploaded_file(f)
+#             handle_uploaded_file(request.FILES['image'])
+#             messages.info(request, 'Files Successfully Uploaded')
+#             context = {'msg': '<span style="color: green;">File successfully uploaded</span>'}
+#             # return render(request, "upload/multi_upload.html", context)
+#             return redirect('index', message="successfull upload")
+#         else:
+#             messages.error(request, 'Error uploading files')
+#             return redirect('index')
+#     else:
+#         form = MultiUploadForm()
+#         return render(request, 'upload/multi_upload.html', {'form': form})
 
-#     def form_valid(self, request):
-#         self.dump()
-#         return self.get_success_url(request)
-
-#     def get_success_url(self, request=None):
-#         return '/'
-
-#     def get_action(self, request=None):
-#         return reverse('test_view')
-
-
-def test_view(request):
-    if request.method == "GET":
-        form = TestUploadForm()
-    else:
-        form = TestUploadForm(request.POST, request.FILES)
-        if form.is_valid():
-            url = form.form_valid(request)
-            return JsonResponse(
-                {
-                    "action": "redirect",
-                    "url": url,
-                }
-            )
-        else:
-            return JsonResponse(
-                {
-                    "action": "replace",
-                    "html": form.as_html(request),
-                }
-            )
-    return render(
-        request,
-        "test_view.html",
-        {
-            "form": form,
-            "form_as_html": form.as_html(request),
-        },
-    )
-
-
-def my_upload_target_view(request):
-    if request.method == "POST" and request.is_ajax():
-        form = TestUploadForm(request.POST, request.FILES)
-
-        if form.is_valid():
-            url = form.form_valid(request)
-            return JsonResponse(
-                {
-                    "action": "redirect",
-                    "url": url,
-                }
-            )
-        else:
-            return JsonResponse(
-                {
-                    "action": "replace",
-                    "html": form.as_html(request),
-                }
-            )
-    return render(
-        request, "test_view.html", {"form": form, "form_as_html": form.as_html(request)}
-    )
-
-
-def test_classmates(request):
-    return render(request, "main/test_top_page.html")
+# def handle_uploaded_file(f):
+#     with open(f.name, 'wb+') as destination:
+#         for chunk in f.chunks():
+#             destination.write(chunk)

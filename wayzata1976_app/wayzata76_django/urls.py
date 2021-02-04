@@ -17,17 +17,21 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-
+import os
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('s3direct/', include('s3direct.urls')),
+    # path('s3direct/', include('s3direct.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', include('wayzata76_web.urls'))
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-if settings.DEBUG:
+if os.getenv('USE_S3') != 'TRUE':
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 # accounts/login/ [name='login']

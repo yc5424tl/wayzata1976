@@ -14,9 +14,9 @@
         {% endif %}
     {% endif %}
 
-    <form method="POST" action="{% url 'login' %}">
+    <form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'login' %}">
         {% csrf_token %}
-        <table>
+        <!-- <table>
             <tr>
                 <td>{{ form.username.label_tag }}</td>
                 <td>{{ form.username }}</td>
@@ -25,9 +25,11 @@
                 <td>{{ form.password.label_tag }}</td>
                 <td>{{ form.password }}</td>
             </tr>
-        </table>
+        </table> -->
+        <input type="input" class="form-control form-control-sm mr-sm-2" name="username" placeholder="username">
+        <input type="password" class="form-control form-control-sm mr-sm-2" name="password" placeholder="password">
 
-        <input type="submit" value="login">
+        <input class="btn btn-outline-warning btn-sm my-2 my-sm-0" type="submit" value="login">
         <input type="hidden" name="next" value="{{ next }}">
     </form>
 

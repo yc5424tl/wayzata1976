@@ -52,9 +52,10 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Pictures</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="btn btn-dark dropdown-toggle" role="button" data-toggle="dropdown" href="#">Reunions</span></a>
-                                    <ul class="navbar-nav submenu dropdown-menu">
+                            <ul class="dropdown-menu" id='dropdown-1'>
+
+                                <li class="nav-item"><a class="btn btn-dark dropdown-toggle" role="button" data-toggle="dropdown" href="#">Reunions</a>
+                                    <ul class="submenu dropdown-menu">
 
                                         <li><a class="btn btn-dark" role="button" href="{% url 'view_gallery' pk=1 %}">5th Reunion (1981)</a></li>
                                         <li><a class="btn btn-dark" role="button" href="{% url 'view_gallery' pk=2 %}">10th Reunion (1986)</a></li>
@@ -84,7 +85,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="nav-item"><a class="btn btn-dark dropdown-toggle" role="button" data-toggle="dropdown"href="#">Student Life<span class="fas fa-angle-right"></span></a>
+                                <li class="nav-item"><a class="btn btn-dark dropdown-toggle" role="button" data-toggle="dropdown" href="#">Student Life</a>
                                     <ul class="submenu dropdown-menu">
                                         <li><a class="btn btn-dark" role="button" href="{% url 'view_gallery' pk=9 %}">Band</a></li>
                                         <li><a class="btn btn-dark" role="button" href="{% url 'view_gallery' pk=10 %}">Cheer & Dance Line</a></li>
@@ -135,19 +136,41 @@
                                     Wayzata Public Schools Staff Directory</a>
                             </div>
                         </li>
-                        <li class="nav-item inside">
-                            <form class="form-inline my-2 my-lg-0">
-                                <input class="form-control form-control-sm mr-sm-2" type="text" placeholder="username" aria-label="username">
-                                <input class="form-control form-control-sm mr-sm-2" type="password" placeholder="password" aria-label="password">
-                                <button class="btn btn-outline-warning btn-sm my-2 my-sm-0" type="submit">Log In</button>
-                            </form>
-                        </li>
+                        {% if request.user.is_authenticated %}
+                            <!-- <li class="nav-item inside">
+                                <a class="nav-header inside" href="#">Welcome {{ request.user.username }}</a>
+                            </li> -->
+                            <li class="nav-item inside">
+                                <a class="btn btn-outline-warning btn-sm inside" href="{% url 'logout' %}">Log Out</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item inside">
+                                <form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'login' %}">
+                                    {% csrf_token %}
+                                    <input type="input" class="form-control form-control-sm mr-sm-2" name="username" placeholder="username">
+                                    <input type="password" class="form-control form-control-sm mr-sm-2" name="password" placeholder="password">
+                                    <input class="btn btn-outline-warning btn-sm my-2 my-sm-0" type="submit" value="login">
+                                    <input type="hidden" name="next" value="{{ next }}">
+                                </form>
+                            </li>
+                        {% endif %}
                     </ul>
-                    <form class="form-inline my-2 my-lg-0 outside mr-0">
-                        <input class="form-control form-control-sm mr-sm-2" type="text" placeholder="username" aria-label="username">
-                        <input class="form-control form-control-sm mr-sm-2" type="password" placeholder="password" aria-label="password">
-                        <button class="btn btn-outline-warning btn-sm my-2 my-sm-0" type="submit">Log In</button>
-                    </form>
+                    {% if request.user.is_authenticated %}
+
+                       
+                                <span id='outside-username' class="navbar-text bg-dark text-light text-right ml-auto mr-1">Hello, {{ request.user.username }}</span> 
+                                <a id='outside-logout'class="outside btn btn-outline-warning btn-sm my-2 my-sm-0 ml-2" role="button" href="{% url 'logout' %}">Log Out</a>
+                            
+                    {% else %}
+                            <form action="{% url 'login' %}" method='POST', class="form-inline my-2 my-lg-0 outside">
+                                {% csrf_token %}
+                                <input type="input" class="form-control form-control-sm mr-sm-2" name="username" placeholder="username">
+                                <input type="password" class="form-control form-control-sm mr-sm-2" name="password" placeholder="password">
+                                <input class="btn btn-outline-warning btn-sm my-2 my-sm-0" type="submit" value="login">
+                                <input type="hidden" name="next" value="{{ next }}">
+                            </form>
+                    
+                    {% endif %}
                 </div>
             </nav>
 

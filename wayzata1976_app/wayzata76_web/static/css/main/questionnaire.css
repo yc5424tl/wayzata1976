@@ -1,0 +1,11 @@
+.form-group,
+.form-row {
+    margin: 3rem auto;
+}
+
+.form-wrapper {
+    background-color: rgba(8,12,15,0.8);
+    color: #f1f1f1;
+    padding: 2rem;
+    border-radius: 7pt;
+}

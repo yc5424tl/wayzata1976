@@ -14,6 +14,11 @@ from pathlib import Path
 import os
 from django.contrib import messages
 import django_heroku
+from django.urls import reverse_lazy
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,10 +29,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+fy3idg&mauy)601uozn-ixq!-p79*%2dz4b21w*=d9cky@wjd'
-
+# SECRET_KEY = '+fy3idg&mauy)601uozn-ixq!-p79*%2dz4b21w*=d9cky@wjd'
+SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = os.getenv('DEBUG') == 'TRUE'
 
 ALLOWED_HOSTS = []
 
@@ -41,12 +47,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    's3direct',
+    'wayzata76_web.apps.Wayzata76WebConfig',
+    # 's3direct',
+    's3file',
     # 'sorl.thumbnail',
     # 'upload_form',
     'fontawesome-free',
     'widget_tweaks',
-    'wayzata76_web',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    's3file.middleware.S3FileMiddleware',
 ]
 
 ROOT_URLCONF = 'wayzata76_django.urls'
@@ -73,6 +82,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'wayzata76_web.context_processor.galleries',
+                'accounts.context_processors.login_form',
             ],
         },
     },
@@ -136,96 +146,48 @@ USE_TZ = True
 
 PROJECT_DIR=os.path.dirname(__file__)
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
-
 AUTH_USER_MODEL = 'wayzata76_web.CustomUser'
 
-LOGIN_REDIRECT_URL = 'index'
-LOGOUT_REDIRECT_URL = 'index'
+
+LOGIN_URL = reverse_lazy('login')
+LOGIN_REDIRECT_URL = reverse_lazy('index')
+LOGOUT_REDIRECT_URL = reverse_lazy('index')
 
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = str(BASE_DIR.joinpath('sent_emails'))
 
-AWS_ACCESS_KEY_ID = 'your-aws-access-key-id'
-AWS_SECRET_ACCESS_KEY = 'aws-secret-access-key'
-AWS_STORAGE_BUCKET_NAME = 's3-bucket-name'
-AWS_S3_REGION_NAME = 'eu-west-1'
-AWS_S3_ENDPOINT_URL = 'https://s3.eu-west-1.amazonaws.com'
+if os.getenv('USE_S3') == 'TRUE':
 
-# MULTI_FILES_DELETE_URL = 'multi_delete'
-# MULTI_IMAGE_URL = 'multi_image'
-# MULTI_IMAGES_FOLDER = 'multiuploader_images'
+    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+    AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME')
+    AWS_S3_ENDPOINT_URL = os.getenv('AWS_S3_ENDPOINT_URL')
+    AWS_LOCATION='static'
+    AWS_S3_CUSTOM_DOMAIN = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+    AWS_DEFAULT_ACL = None
+    # STATIC_URL = '/static/'
 
-# ADMIN_MEDIA_PREFIX = '/media/'
+    #**
+    STATIC_URL = f'{AWS_S3_CUSTOM_DOMAIN}/static/'
+    #**
+    MEDIA_URL = f'{AWS_S3_CUSTOM_DOMAIN}/media/'
+    # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    STATICFILES_STORAGE = 'wayzata76_web.storage_backends.StaticStorage'
+    DEFAULT_FILE_STORAGE = 'wayzata76_web.storage_backends.PublicMediaStorage'
+    # STATICFILES_DIRS = os.path.join(BASE_DIR, 'wayzata76_web/static'),
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'wayzata76_web/static')]
+
+else:
+    STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-UPLOAD_FORM_MAX_FILE_SIZE = 12
-UPLOAD_FORM_ALLOWED_FILE_TYPES = ".png .jpg .jpeg .gif .tiff .psd .pdf .ai .eps .indd .cr2 .crw .nef .pef .avif .apng .jpeg .jfif .pjpeg .pjp .svg .webp"
-UPLOAD_FORM_PARALLEL_UPLOAD = False
-MY_UPLOAD_FORM_ACCEPT = "image/*"
-MY_UPLOAD_FORM_MAX_IMAGE_SIZE = 3640
+    # STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
-S3DIRECT_DESTINATIONS = {
-    'example_destination': {
-        # "key" [required] The location to upload file
-        #       1. String: folder path to upload to
-        #       2. Function: generate folder path + filename using a function  
-        'key': 'uploads/images',
-
-        # "auth" [optional] Limit to specfic Django users
-        #        Function: ACL function
-        'auth': lambda u: u.is_staff,
-
-        # "allowed" [optional] Limit to specific mime types
-        #           List: list of mime types
-        'allowed': ['image/jpeg', 'image/png', 'video/mp4'],
-
-        # "bucket" [optional] Bucket if different from AWS_STORAGE_BUCKET_NAME
-        #          String: bucket name
-        'bucket': 'custom-bucket',
-
-        # "endpoint" [optional] Endpoint if different from AWS_S3_ENDPOINT_URL
-        #            String: endpoint URL
-        'endpoint': 'custom-endpoint',
-
-        # "region" [optional] Region if different from AWS_S3_REGION_NAME
-        #          String: region name
-        'region': 'custom-region', # Default is 'AWS_S3_REGION_NAME'
-
-        # "acl" [optional] Custom ACL for object, default is 'public-read'
-        #       String: ACL
-        'acl': 'private',
-
-        # "cache_control" [optional] Custom cache control header
-        #                 String: header
-        'cache_control': 'max-age=2592000',
-
-        # "content_disposition" [optional] Custom content disposition header
-        #                       String: header
-        'content_disposition': lambda x: 'attachment; filename="{}"'.format(x),
-
-        # "content_length_range" [optional] Limit file size
-        #                        Tuple: (from, to) in bytes
-        'content_length_range': (5000, 20000000),
-
-        # "server_side_encryption" [optional] Use serverside encryption
-        #                          String: encrytion standard
-        'server_side_encryption': 'AES256',
-
-        # "allow_existence_optimization" [optional] Checks to see if file already exists,
-        #                                returns the URL to the object if so (no upload)
-        #                                Boolean: True, False
-        'allow_existence_optimization': False,
-    },  # 'sorl.thumbnail',
-    'example_destination_two': {
-        'key': lambda filename, args: args + '/' + filename,
-    	'key_args': 'uploads/images',
-    }
-}
 
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
@@ -234,5 +196,5 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger'
 }
-
-django_heroku.settings(locals())
+if 'ON_HEROKU' in os.environ:
+    django_heroku.settings(locals())

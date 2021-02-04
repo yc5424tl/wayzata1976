@@ -26,7 +26,14 @@
   background-size: contain;
   width: 100%;
 } */
-
+/* p.nav-item {
+  margin: 0 auto;
+  color:rgb(235, 235, 235);
+  text-decoration: 1pt solid underline;
+  font-weight: 800;
+  font-variant: small-caps;
+  display: inline-block;
+} */
 div.d-flex.flex-column {
   width: 100%;
   justify-content: center;
@@ -102,8 +109,14 @@ body {
         display: inline-block;
     }
 
-    .form-inline.my-2.my-lg-0.outside {
+    .nav-item.outside,
+    form.form-inline.my-2.my-lg-0.outside {
         display: none;
+    }
+
+    #outside-username,
+    #outside-logout {
+      display: none;
     }
 
     footer {
@@ -112,6 +125,11 @@ body {
 }
 
 @media (min-width: 1200px) {
+
+    #outside-logout,
+    #outside-username {
+      display: inline-block;
+    }
 
     .navbar-collapse.offcanvas-collapse {
         background-image: none;
@@ -122,7 +140,7 @@ body {
         margin-left: auto;
     }
 
-    .nav-item.inside {
+    li.nav-item.inside {
         display: none;
     }
 
@@ -302,8 +320,12 @@ a.nav-link.dropdown-toggle {
   }
 
 
+  
 }
 
+.dropdown-menu li a, .dropdown-menu li, .dropdown-menu {
+  border-collapse: collapse;
+}
 
 a.btn.btn-dark {
   width: 100%;
@@ -316,21 +338,23 @@ a.btn.btn-dark {
 }
 
 
-ul.dropdown-menu:hover,
+/* ul.dropdown-menu:hover,
 ul.dropdown-menu:focus,
 a.btn.btn-dark:hover,
 a.btn.btn-dark:focus {
-  border-left: none;
-  border-right: none;
-}
+  border-left: 1pt solid transparent;
+  border-right: 1pt solid transparent;
+  border-collapse: collapse;
+} */
 
 ul.dropdown-menu {
   background-color: rgb(52,58,64);
   padding-top: 0;
   padding-bottom: 0;
-  border-left: none;
-  border-right: none;
+  /* border-left: 1pt solid transparent;
+  border-right: 1pt solid transparent; */
   transition: 0.35s;
+  /* border-collapse: collapse; */
 }
 
 a.nav-link.dropdown-toggle {
@@ -338,3 +362,42 @@ a.nav-link.dropdown-toggle {
   transition: 0.35s;
 }
 
+h6.nav-header.outside {
+  margin-left: 100%;
+  color: royalblue;
+  display: inline-block;
+}
+
+
+.dropdown-menu li,
+.dropdown-menu {
+  /* border: 1pt solid transparent; */
+  /* border-left: 1pt solid transparent;
+  border-right: 1pt solid transparent; */
+  /* border-collapse: collapse; */
+}
+
+.dropdown-menu li:focus,
+.dropdown-menu li:hover {
+  /* border: 1pt solid rgb(240,179,17);
+  border-collapse: collapse; */
+  background-color:rgb(33, 37, 41);
+  color: rgb(240,179,17);
+}
+
+.dropdown-menu li:hover > a,
+.dropdown-menu li:focus > a {
+  color: rgb(240,179,17);
+}
+
+/* .dropdown-menu:focus,
+.dropdown-menu:hover,
+.dropdown-menu li:focus,
+.dropdown-menu li:hover {
+  border: 1pt solid  rgb(240,179,17);
+  border-left: 1pt solid rgb(240,179,17);
+  border-right: 1pt solid  rgb(240,179,17);
+  border-top: 1pt solid rgb(240,179,17);
+  border-bottom: 1pt solid rgb(240,179,17);
+  border-collapse: collapse;
+} */

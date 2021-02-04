@@ -41,10 +41,14 @@ class AddressAdmin(admin.ModelAdmin):
 #         'working_name', 'display_name', 'date_created', 'date_last_modified', 'parent'
 #     )
 #     list_display_links = ('parent',)
-
+class GalleryImageAdmin(admin.StackedInline):
+    model = GalleryImage
 
 @admin.register(Gallery)
 class GalleryAdmin(admin.ModelAdmin):
+
+    inlines = [GalleryImageAdmin]
+
     list_display = (
         'working_name', 'display_name', 'date_created', 'date_last_modified', 'section', 'abstract_gallery', 'subgallery', 'parent_gallery'
     )

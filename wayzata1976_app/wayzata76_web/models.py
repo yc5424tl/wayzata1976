@@ -5,6 +5,7 @@ from s3direct.fields import S3DirectField
 import uuid
 from geopy.geocoders import Nominatim
 from django import forms
+from wayzata76_web.storage_backends import PublicMediaStorage
 
 class CustomUser(AbstractUser):
     pass
@@ -99,7 +100,8 @@ def gallery_for_image(instance, filename):
 class GalleryImage(Image):
     gallery = models.ForeignKey(Gallery, on_delete=models.PROTECT, related_name='gallery_images')
     # image = S3DirectField(dest='example_destination') # TODO update destination
-    image = models.ImageField(upload_to=gallery_for_image, null=True, blank=False)
+    # image = models.ImageField(upload_to=gallery_for_image, null=True, blank=False)
+    image = models.ImageField(storage=PublicMediaStorage)
     # file = models.FileField(upload_to=gallery_for_image)
     uploaded_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name='gallery_images')
 
