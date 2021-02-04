@@ -12,3 +12,6 @@ db.sqlite3
 /sorl
 /media/*
 */static/s3direct
+/static_pull/
+/mediafiles/*
+/mediafiles/
