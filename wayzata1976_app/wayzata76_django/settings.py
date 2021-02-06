@@ -17,6 +17,7 @@ import django_heroku
 from django.contrib import messages
 from django.urls import reverse_lazy
 from dotenv import load_dotenv
+import dj_database_url
 
 load_dotenv()
 
@@ -88,13 +89,15 @@ WSGI_APPLICATION = "wayzata76_django.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+if 'ON_HEROKU' in os.environ():
+    DATABASES["default"] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
     }
-}
 
 
 # Password validation
@@ -184,6 +187,5 @@ MESSAGE_TAGS = {
 if "ON_HEROKU" in os.environ:
     django_heroku.settings(locals())
 
-    import dj_database_url
 
-    DATABASES["default"] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
