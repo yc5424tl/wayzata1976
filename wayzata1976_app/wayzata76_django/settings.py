@@ -100,19 +100,34 @@ WSGI_APPLICATION = "wayzata76_django.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-if 'ON_HEROKU' in os.environ:
+
 
     # db_from_env = dj_database_url.config(default=DATABASE_URL, conn_max_age=500, ssl_require=True)
     # DATABASES['default'].update(db_from_env)
 
-    DATABASES["default"] = dj_database_url.config(default=DATABASE_URL, conn_max_age=600, ssl_require=True)
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
-        }
+    
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
+}
+
+db_from_env = dj_database_url.config(default=DATABASE_URL, conn_max_age=600, ssl_require=True)
+DATABASES['default'].update(db_from_env)
+
+
+
+if 'ENABLE_SERVER_SIDE_CURSORS' in os.environ:
+    DISABLE_SERVER_SIDE_CURSORS = False
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'TIMEOUT': 86400
+    }
+}
 
 
 # Password validation
