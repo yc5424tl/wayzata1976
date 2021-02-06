@@ -77,6 +77,7 @@ class ContactUpdateForm(forms.ModelForm):
 
 
 class NewsPostForm(forms.ModelForm):
+
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop("request", None)
         super(NewsPostForm, self).__init__(*args, **kwargs)
@@ -84,7 +85,12 @@ class NewsPostForm(forms.ModelForm):
     class Meta:
         model = NewsPost
 
-        fields = ("link", "link_text", "body", "header")
+        fields = (
+            "link",
+            "link_text",
+            "body",
+            'header'
+        )
         widgets = {
             "body": forms.Textarea(
                 attrs={
@@ -99,16 +105,11 @@ class NewsPostForm(forms.ModelForm):
 
 class ExtendedNewsPostForm(NewsPostForm):
 
-    image = forms.ImageField(
-        allow_empty_file=True, required=False, label="Image (opt.)"
-    )
+    image = forms.ImageField(allow_empty_file=True, required=False, label="Image (opt.)")
     subtitle = forms.CharField(max_length=100, required=False)
 
     class Meta(NewsPostForm.Meta):
-        fields = NewsPostForm.Meta.fields + (
-            "image",
-            "subtitle",
-        )
+        fields = NewsPostForm.Meta.fields + ('image', 'subtitle', )
 
 
 #  For Adding to Existing News Post
@@ -130,6 +131,7 @@ class UploadGalleryImageForm(forms.ModelForm):
         self.request = kwargs.pop("request", None)
         super(UploadGalleryImageForm, self).__init__(*args, **kwargs)
 
+
     title = forms.CharField(required=False, label="title", max_length=100)
     subtitle = forms.CharField(required=False, label="Subtitle")
 
@@ -140,34 +142,33 @@ class UploadGalleryImageForm(forms.ModelForm):
             "image",
             "gallery",
         )
-        # widgets = {
-        #     "gallery": forms.Select(
-        #         choices=Gallery.objects.all().filter(abstract_gallery=False),
-        #         attrs={"class": "form-control"},
-        #     ),
-        # }
-
+        widgets = {
+            "gallery": forms.Select(
+                choices=Gallery.objects.all().filter(abstract_gallery=False),
+                attrs={"class": "form-control"},
+            ),
+        }
 
 class CreateGalleryForm(forms.ModelForm):
 
     working_name = forms.CharField(required=True, max_length=100)
     display_name = forms.CharField(required=True, max_length=100)
     subgallery = forms.CheckboxInput()
-    # parent_gallery = forms.ModelChoiceField(
-    #     queryset=Gallery.objects.filter(abstract_gallery=True).all()
-    # )
+    parent_gallery = forms.ModelChoiceField(
+        queryset=Gallery.objects.filter(abstract_gallery=True).all()
+    )
 
     class Meta:
         model = Gallery
         fields = (
             "abstract_gallery",
-            # "section",
+            "section",
         )
-        # widgets = {
-        #     "section": forms.Select(
-        #         choices=Gallery.SECTIONS, attrs={"class": "form_control"}
-        #     ),
-        # }
+        widgets = {
+            "section": forms.Select(
+                choices=Gallery.SECTIONS, attrs={"class": "form_control"}
+            ),
+        }
 
 
 def gallery_choices():
@@ -184,11 +185,11 @@ class GalleryImageUploadForm(forms.ModelForm):
     class Meta:
         model = GalleryImage
         fields = ("gallery",)
-        # widgets = {
-        #     "gallery": forms.Select(
-        #         choices=Gallery.objects.all().filter(abstract_gallery=False)
-        #     )
-        # }
+        widgets = {
+            "gallery": forms.Select(
+                choices=Gallery.objects.all().filter(abstract_gallery=False)
+            )
+        }
 
 
 class CustomAuthenticationForm(AuthenticationForm):
