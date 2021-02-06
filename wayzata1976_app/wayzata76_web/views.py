@@ -142,10 +142,10 @@ def view_zietgeist(request):
     songs = None
     with open(staticfiles_storage.url('json/songs.json')) as json_file:
         songs = json.load(json_file)
-        )
+        
     # with open(os.path.join(settings.STATIC_ROOT, "json/songs.json")) as file:
     #     songs = json.load(file)
-    # return render(
+    return render(
         request,
         "main/zietgeist.html",
         {"yearbooks": yearbooks, "songs": songs, "awards": awards},
