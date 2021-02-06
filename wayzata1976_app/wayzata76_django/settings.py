@@ -16,15 +16,16 @@ from pathlib import Path
 import django_heroku
 from django.contrib import messages
 from django.urls import reverse_lazy
-from dotenv import load_dotenv
+
 import dj_database_url
 
-load_dotenv()
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+DATABASE_URL = os.environ.get('DATABSE_URL')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -35,6 +36,16 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG") == "TRUE"
 
 ALLOWED_HOSTS = ["wayzata76.herokuapp.com", "wayzata76.com"]
+
+if DEBUG:
+    import dotenv
+
+    DJANGO_READ_DOT_ENV_FILE = True
+
+    dotenv_file = os.path.join(BASE_DIR, '../.env')
+
+    if os.path.isfile(dotenv_file):
+        dotenv.load_dotenv(dotenv_file)
 
 
 # Application definition
@@ -89,8 +100,12 @@ WSGI_APPLICATION = "wayzata76_django.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-if 'ON_HEROKU' in os.environ():
-    DATABASES["default"] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+if 'ON_HEROKU' in os.environ:
+
+    # db_from_env = dj_database_url.config(default=DATABASE_URL, conn_max_age=500, ssl_require=True)
+    # DATABASES['default'].update(db_from_env)
+
+    DATABASES["default"] = dj_database_url.config(default=DATABASE_URL, conn_max_age=600, ssl_require=True)
 else:
     DATABASES = {
         "default": {
