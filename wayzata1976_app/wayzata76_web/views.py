@@ -6,6 +6,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.staticfiles.storage import staticfiles_storage
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
@@ -139,9 +140,12 @@ def view_zietgeist(request):
     ]
     yearbooks = Yearbook.objects.all()
     songs = None
-    with open(os.path.join(settings.STATIC_ROOT, "json/songs.json")) as file:
-        songs = json.load(file)
-    return render(
+    with open(staticfiles_storage.url('json/songs.json')) as json_file:
+        songs = json.load(json_file)
+        )
+    # with open(os.path.join(settings.STATIC_ROOT, "json/songs.json")) as file:
+    #     songs = json.load(file)
+    # return render(
         request,
         "main/zietgeist.html",
         {"yearbooks": yearbooks, "songs": songs, "awards": awards},
