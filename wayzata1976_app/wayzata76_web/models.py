@@ -163,7 +163,7 @@ class Person(models.Model):
     )
     last_name = models.CharField(max_length=100, null=False, blank=False)
     first_name = models.CharField(max_length=100, null=False, blank=False)
-    middle_initial = models.CharField(max_length=1, null=True, blank=True, default=None)
+    middle_initial = models.CharField(max_length=10, null=True, blank=True, default=None)
     nickname = models.CharField(max_length=100, null=True, blank=True, default=None)
     phone = models.CharField(max_length=30, null=True, blank=True)
     email = models.EmailField(max_length=100, null=True, blank=True)
