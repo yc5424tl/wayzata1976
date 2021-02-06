@@ -73,3 +73,15 @@ table {
   overflow-y: scroll;
   max-height: 4000px;
 }
+
+div.table-wrapper.text-center.toggle-hidden {
+    max-width: 80%;
+    overflow-x: scroll;
+}
+
+table.table.table-striped.table-dark.table-bordered {
+    max-width: 100%;
+    overflow-x: scroll;
+}
+
+
