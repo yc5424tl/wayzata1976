@@ -12,3 +12,8 @@
     /* position: relative; */
 }
 
+a.btn.btn-warning-outline.btn-wide {
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+}

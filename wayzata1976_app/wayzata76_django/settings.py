@@ -49,12 +49,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'wayzata76_web.apps.Wayzata76WebConfig',
     # 's3direct',
-    's3file',
+    
     # 'sorl.thumbnail',
     # 'upload_form',
     'fontawesome-free',
     'widget_tweaks',
     'storages',
+    's3file',
 ]
 
 MIDDLEWARE = [
@@ -164,15 +165,15 @@ if os.getenv('USE_S3') == 'TRUE':
     AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME')
     AWS_S3_ENDPOINT_URL = os.getenv('AWS_S3_ENDPOINT_URL')
     AWS_LOCATION='static'
-    AWS_S3_CUSTOM_DOMAIN = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
     AWS_DEFAULT_ACL = None
-    # STATIC_URL = '/static/'
+    STATIC_URL = '/static/'
 
     #**
-    STATIC_URL = f'{AWS_S3_CUSTOM_DOMAIN}/static/'
+    # STATIC_URL = f'{AWS_S3_CUSTOM_DOMAIN}/static/'
     #**
-    MEDIA_URL = f'{AWS_S3_CUSTOM_DOMAIN}/media/'
+    # MEDIA_URL = f'{AWS_S3_CUSTOM_DOMAIN}/media/'
     # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     STATICFILES_STORAGE = 'wayzata76_web.storage_backends.StaticStorage'
     DEFAULT_FILE_STORAGE = 'wayzata76_web.storage_backends.PublicMediaStorage'

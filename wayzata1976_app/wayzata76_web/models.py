@@ -73,7 +73,7 @@ class Gallery(models.Model):
 class Image(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     date_created = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=100, blank=False, null=False)
+    title = models.CharField(max_length=100, blank=True, null=True)
     # uploaded_by = models.ForeignKey(
         # settings.AUTH_USER_MODEL,
         # on_delete=models.PROTECT,
@@ -101,7 +101,7 @@ class GalleryImage(Image):
     gallery = models.ForeignKey(Gallery, on_delete=models.PROTECT, related_name='gallery_images')
     # image = S3DirectField(dest='example_destination') # TODO update destination
     # image = models.ImageField(upload_to=gallery_for_image, null=True, blank=False)
-    image = models.ImageField(storage=PublicMediaStorage)
+    image = models.ImageField(storage=PublicMediaStorage, upload_to=gallery_for_image, null=True, blank=False)
     # file = models.FileField(upload_to=gallery_for_image)
     uploaded_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name='gallery_images')
 
@@ -117,6 +117,7 @@ class NewsPost(models.Model):
         ordering = ['-date_created']
 
 
+
 def news_post_image_path(instance, filename):
     name, ext = filename.split('.')
     file_path = f'news_post_image/{instance.uuid}.{ext}'
@@ -125,7 +126,7 @@ def news_post_image_path(instance, filename):
 
 class NewsPostImage(Image):
     news_post = models.OneToOneField(NewsPost, on_delete=models.CASCADE, related_name='news_post_image')
-    image = models.ImageField(upload_to=news_post_image_path, null=True, blank=True)
+    image = models.ImageField(storage=PublicMediaStorage, upload_to=news_post_image_path, null=True, blank=True)
     uploaded_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name='news_post_images')
 
     def __name__(self):
@@ -157,25 +158,7 @@ class Person(models.Model):
 
 
 
-# class SubGallery(models.Model):
-#     parent = models.ForeignKey(Gallery, on_delete=models.PROTECT, related_name='sub_galleries', null="False", blank="False")
-#     working_name = models.CharField(max_length=100, null=False, blank=False)
-#     display_name = models.CharField(max_length=100, null=False, blank=False)
-#     date_created = models.DateTimeField(auto_now_add=True)
-#     date_last_modified = models.DateTimeField(default=None, null=True, blank=True)
 
-#     def __str__(self):
-#         return self.working_name
-
-#     @property
-#     def readable_date_created(self):
-#         return f'{self.date_created.month}, {self.date_created.day}, {self.date_created.year}'
-
-#     @property
-#     def section(self):
-#         return self.parent.section
-
-    
 
 
 class ContactInfo(models.Model):

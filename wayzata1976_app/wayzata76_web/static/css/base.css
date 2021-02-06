@@ -99,6 +99,7 @@ body {
         background-position-y: 80%;
         background-position-x: center;
         background-repeat: no-repeat;
+        background-size: 40%;
     }
     .offcanvas-collapse.open {
         -webkit-transform: translateX(-1rem);
@@ -400,4 +401,11 @@ h6.nav-header.outside {
   border-top: 1pt solid rgb(240,179,17);
   border-bottom: 1pt solid rgb(240,179,17);
   border-collapse: collapse;
+} */
+
+
+/* @media (max-height: 780px) {
+  .navbar-collapse.offcanvas-collapse {
+    background-image: 
+  }
 } */

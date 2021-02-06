@@ -3,13 +3,18 @@
 
 {% block style %}
     {{ block.super }}
-    <link rel="stylesheet" href="{% static 'main/css/view_news.css">
+    <link rel="stylesheet" href="{% static 'main/css/view_news.css' %}">
 {% endblock %}
 
 {% block content %}
 
 
     <h2 class="page-header">News & Updates</h2>
+
+    {% if request.user.is_superuser %}
+        <a class="btn btn-danger-outline btn-block" role="button" href="{% url 'create_news_post' %}">Create New Post</a>
+    {% endif %}
+
     <div class="container news-container text-center">
         {% for post in posts %}
             <div class="card bg-dark text-white">

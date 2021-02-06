@@ -15,3 +15,7 @@ db.sqlite3
 /static_pull/
 /mediafiles/*
 /mediafiles/
+wayzata1976_app/media/
+wayzata1976_app/mediafiles/
+wayzata1976_app/static/
+wayzata1976_app/wayzata76_web/migrations/0002_auto_20210206_0029.py

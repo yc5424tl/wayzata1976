@@ -120,6 +120,9 @@
                                         </li>
                                     </ul>
                                 </li>
+                                {% if request.user.is_superuser %}
+                                    <li><a class="btn btn-dark" role="button" href="{% url 'upload_multi_gallery_image' %}">Add Photos</a></li>
+                                {% endif %}
                             </ul>
                         </li>
 
