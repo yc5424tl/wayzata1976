@@ -1,19 +1,13 @@
 .container.news-container.text-center {
-    text-align: center;
-    padding: 15px;
-    align-content: center;
-    align-items: center;
-    width: 50%;
-}
-
-.card {
-    /* width: 80%; */
-    /* margin: 0 auto; */
-    /* position: relative; */
+  text-align: center;
+  padding: 15px;
+  align-content: center;
+  align-items: center;
+  width: 50%;
 }
 
 a.btn.btn-warning-outline.btn-wide {
-    display: block;
-    margin: 0 auto;
-    width: 80%;
+  display: block;
+  margin: 0 auto;
+  width: 80%;
 }

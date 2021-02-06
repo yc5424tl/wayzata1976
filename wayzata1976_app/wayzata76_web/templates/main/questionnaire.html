@@ -1,26 +1,27 @@
 {% extends 'base.html' %}
-<!-- {% load static %} -->
+{% load static %}
 
 {% block title %}
-    {{ block.super }} - Questionnaire
+{{ block.super }} - Questionnaire
 {% endblock %}
 
 {% block style %}
-    {{ block.super }}
-    <link rel="stylesheet" href="{% static 'css/main/questionnaire.css' %}">
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/main/questionnaire.css' %}">
 {% endblock %}
 
 {% block content %}
 
-    <h2 class="page-header">QUESTIONNAIRE</h2>
-    <div class="form-wrapper">
+<h2 class="page-header">QUESTIONNAIRE</h2>
+<div class="form-wrapper">
     <form>
         <div class="form-group">
             <label for="keepTextArea">If you attended the 40th reunion, what did you like most about it?</label>
             <textarea class="form-control" id="keepTextArea" rows="3" name='likedInput'></textarea>
         </div>
         <div class="form-group">
-            <label for="changeTextArea">If you attended the 40th reunion, what would you have changed to make it better?</label>
+            <label for="changeTextArea">If you attended the 40th reunion, what would you have changed to make it
+                better?</label>
             <textarea class="form-control" id="changeTextArea" rows="3" name='dislikedInput'></textarea>
         </div>
         <div class="form-group">
@@ -39,7 +40,8 @@
         </div>
         <div class="form-row" id='otherDiv'>
             <div class="col">
-                <textarea class="form-control" rows="3" placeholder="Tell us your idea here." name='otherInput'></textarea>
+                <textarea class="form-control" rows="3" placeholder="Tell us your idea here."
+                    name='otherInput'></textarea>
             </div>
         </div>
         <div class="form-group">
@@ -47,7 +49,10 @@
             <textarea class="form-control" id="foodTextArea" rows="3" name='foodInput'></textarea>
         </div>
         <div class="form-group">
-            <label for="miscTextArea">Any other ideas, requests, suggestions, recommendations, remarks, ripostes, questions, perspectives, pontifiations, comments, addendums, declarations, decrees, anecdotes, elucidations, musings, witticisms, inquiries, sentiments, assessments,  or general observations you'd like to share?</label>
+            <label for="miscTextArea">Any other ideas, questions, requests, suggestions, recommendations, remarks,
+                revelations, declarations, perspectives, pontifiations, comments, addendums, declarations, decrees,
+                edicts, anecdotes, elucidations, musings, witticisms, inquiries, sentiments, assessments, allegories
+                and/or general observations you'd like to share?</label>
             <textarea class="form-control" id="miscTextArea" rows="3" name="miscInput"></textarea>
             <!-- utterances, pronouncements, dictums, decrees, edicts, assertions, remarks, affirmations, reflections, revelations, declarations, exclamations, notes, assessments, insights, notions, elucidations, promulgations*, testimoy, endorsemenets -->
         </div>
@@ -65,12 +70,12 @@
         </div>
         <button type='submit' class='btn btn-block btn-primary'>Submit</button>
     </form>
-    </div>
-    <br>
-    <hr>
+</div>
+<br>
+<hr>
 
 {% endblock %}
 
 {% block javascript %}
-    <script type="text/javascript" src="{% static 'js/questionnaire.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/questionnaire.js' %}"></script>
 {% endblock %}

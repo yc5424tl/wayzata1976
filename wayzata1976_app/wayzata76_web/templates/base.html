@@ -14,7 +14,6 @@
             <link rel="stylesheet" href="{% static 'css/base.css' %}">
         {% endblock %}
         {% block header-scripts %}
-            <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
             <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -49,6 +48,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'view_zietgeist' %}">The Wayback Machine</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'questionnaire' %}">Questionnaire</a>"
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Pictures</a>
@@ -120,6 +122,12 @@
                                         </li>
                                     </ul>
                                 </li>
+                                <li class="nav-item"><a class="btn btn-dark dropdown-toggle" role="button" data-toggle="dropdown" href="#">The Stomping Grounds</a>
+                                    <ul class="submenu dropdown-menu">
+                                        <li><a class="btn btn-dark" role="button" href="{% url 'view_gallery' pk=43 %}">Old Photographs</a></li>
+                                        <li><a class="btn btn-dark" role="button" href="{% url 'view_gallery' pk=44 %}">Misc.</a></li>
+                                    </ul>
+                                </li>
                                 {% if request.user.is_superuser %}
                                     <li><a class="btn btn-dark" role="button" href="{% url 'upload_multi_gallery_image' %}">Add Photos</a></li>
                                 {% endif %}
@@ -140,9 +148,6 @@
                             </div>
                         </li>
                         {% if request.user.is_authenticated %}
-                            <!-- <li class="nav-item inside">
-                                <a class="nav-header inside" href="#">Welcome {{ request.user.username }}</a>
-                            </li> -->
                             <li class="nav-item inside">
                                 <a class="btn btn-outline-warning btn-sm inside" href="{% url 'logout' %}">Log Out</a>
                             </li>
@@ -159,11 +164,8 @@
                         {% endif %}
                     </ul>
                     {% if request.user.is_authenticated %}
-
-                       
                                 <span id='outside-username' class="navbar-text bg-dark text-light text-right ml-auto mr-1">Hello, {{ request.user.username }}</span> 
                                 <a id='outside-logout'class="outside btn btn-outline-warning btn-sm my-2 my-sm-0 ml-2" role="button" href="{% url 'logout' %}">Log Out</a>
-                            
                     {% else %}
                             <form action="{% url 'login' %}" method='POST', class="form-inline my-2 my-lg-0 outside">
                                 {% csrf_token %}
@@ -172,7 +174,6 @@
                                 <input class="btn btn-outline-warning btn-sm my-2 my-sm-0" type="submit" value="login">
                                 <input type="hidden" name="next" value="{{ next }}">
                             </form>
-                    
                     {% endif %}
                 </div>
             </nav>

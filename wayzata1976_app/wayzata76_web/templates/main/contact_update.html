@@ -83,7 +83,6 @@
                 <div class="col"></div>
                 <div class="col">
                     <div class="form-check form-check-inline">
-                        <!-- {{ form.spouse_is_classmate|add_label_class:"form-check-label" }} -->
                         <label for="{{ form.spouse_is_classmate.id_for_label }}" class="form-check-label">Spouse is Classmate:</label>
                         {{ form.spouse_is_classmate.errors }}
                         {% render_field form.spouse_is_classmate class="form-check-input" %}
@@ -102,17 +101,14 @@
             </br>
             <div class="form-row" id="spouse-row">
                 <div class="form-group col">
-                    <!-- <label for="{{ form.spouse_first_name.id_for_label }}">First</label> -->
                     {{ form.spouse_first_name.errors }}
                     {% render_field form.spouse_first_name class="form-control" placeholder="Spouse First Name" %}
                 </div>
                 <div class="form-group col">
-                    <!-- <label for="{{ form.spouse_middle_initial.id_for_label }}">Middle</label> -->
                     {{ form.spouse_middle_initial.errors }}
                     {% render_field form.spouse_middle_initial class="form-control" placeholder="Middle Initinal" %}
                 </div>
                 <div class="form-group col">
-                    <!-- <label for="{{ form.spouse_last_name.id_for_label }}">Last</label> -->
                     {{ form.spouse_last_name.errors }}
                     {% render_field form.spouse_last_name class="form-control" placeholder="Last Name" %}
                 </div>

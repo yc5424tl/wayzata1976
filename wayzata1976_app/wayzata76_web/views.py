@@ -5,7 +5,7 @@ import string
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import authenticate
-from django.contrib.auth.decorators import user_passes_test, login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
@@ -18,12 +18,11 @@ from django.views.generic.edit import CreateView
 from .forms import (
     ContactUpdateForm,
     CustomUserCreationForm,
+    ExtendedNewsPostForm,
+    GalleryImageUploadForm,
+    NewsPostForm,
     UploadGalleryImageForm,
     UploadNewsPostImageForm,
-    # MultiUploadForm
-    NewsPostForm,
-    ExtendedNewsPostForm,
-    GalleryImageUploadForm
 )
 from .models import (
     ContactInfo,
@@ -45,19 +44,19 @@ def SignUpView(CreateView):
 
 
 def login(request):
-    if request.method == 'GET':
-        return render('registration/login.html')
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
+    if request.method == "GET":
+        return render("registration/login.html")
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
             messages.success(request, "Login Successful")
-            return redirect('index')
+            return redirect("index")
         else:
             messages.warning(request, "Username/Password Incorrect")
-            return redirect('index')
+            return redirect("index")
 
 
 def index(request):
@@ -110,13 +109,11 @@ def contact_info(request):
                 contact_info.user = request.user
             contact_info.save()
             messages.success(
-                request, message=
-                "Updated contact information has been submitted. Please allow 1-2 days for the  Thank you.",
+                request,
+                message="Updated contact information has been submitted. Please allow 1-2 days for the  Thank you.",
             )
             # TODO - if submitter is logged in user, check to see if user is attatched to a person -- update corresponding fields
             # TODO - check if all Address fields contain data, create new Address if so, linking it to Person
-
-            # messages.warning(request, message)
     else:
         form = ContactUpdateForm()
         # TODO -- if request.user.is_authenticated --> prefill email/name/address on form
@@ -273,7 +270,6 @@ class ClassmateList(ListView):
         return context
 
 
-
 def view_news(request):
     posts = NewsPost.objects.all()
     return render(request, "main/view_news.html", {"posts": posts})
@@ -283,34 +279,24 @@ def upload_news_post_image(request, pk):
     if request.method == "POST":
         form = UploadNewsPostImageForm(request.POST, request.FILES)
         if form.is_valid():
-            newspost = NewsPost.objects.get(pk=request.POST.get('newspost_id'))
-            print(f'newspost title/id = {newspost.header} @ {newspost.id}')
+            newspost = NewsPost.objects.get(pk=request.POST.get("newspost_id"))
             news_post_image = form.save(commit=False)
             news_post_image.uploaded_by = request.user
             news_post_image.news_post = newspost
             news_post_image.save()
             return redirect("view_news")
         else:
-            print('newsimageform is not valid')
-            print(f'form.errors = {form.errors}')
             form = UploadNewsPostImageForm()
-            return render(request, 'upload/upload_news_post_image.html', {'form': form, 'pk': pk})
+            return render(
+                request, "upload/upload_news_post_image.html", {"form": form, "pk": pk}
+            )
     else:
         newspost = get_object_or_404(NewsPost, pk=pk)
-        print(f'newspost header/id = {newspost.header} @ {newspost.id}')
         form = UploadNewsPostImageForm()
-        # user = CustomUser(pk=request.user.pk)
-        # uploaded_news_post_images = request.user.news_post_images.all()
-        # uploaded_gallery_images = request.user.gallery_images.all()
         return render(
             request,
             "upload/upload_news_post_image.html",
-            {
-                "form": form,
-                # "news_post_images": uploaded_news_post_images,
-                # "gallery_images": uploaded_gallery_images,
-                'newspost_pk': pk
-            }
+            {"form": form, "newspost_pk": pk},
         )
 
 
@@ -332,166 +318,61 @@ def upload_gallery_image(request):
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
 def create_news_post(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = ExtendedNewsPostForm(request.POST)
         if form.is_valid():
-            print('news post form is valid')
-            # print(f'form.cleaned_data.get(header) = {form.cleaned_data.get("header")}')
-            # print(f'form.cleaned_data.get(body) = {form.cleaned_data.get("body")}')
             new_post = form.save(commit=False)
             new_post.author = request.user
-            # new_post.header = form.cleaned_data.get('header')
-            # new_post.body = form.cleaned_data.get('body')
             new_post.save()
 
             new_post = NewsPost(
-                header=form.cleaned_data.get('header'),
-                body=form.cleaned_data.get('body'),
+                header=form.cleaned_data.get("header"),
+                body=form.cleaned_data.get("body"),
                 author=request.user,
-                link=form.cleaned_data.get('link'),
-                link_text = form.cleaned_data.get('link_text')
+                link=form.cleaned_data.get("link"),
+                link_text=form.cleaned_data.get("link_text"),
             )
 
             new_post.save()
-            print('saved new_post')
-            # if form.cleaned_data.get('image'):
-            #     print('inside form.cleaned_data.get(image)')
-            #     post_image = NewsPostImage(
-            #         news_post=new_post,
-            #         image=form.cleaned_data.get('image'),
-            #         uploaded_by=request.user,
-            #         title=form.cleaned_data.get('subtitle')
-            #     )
-            #     post_image.save()
-            # else:
-            #     print('image from form is not clean')
-            if request.FILES['image']:
-                print('inside if request.FILES["image"]')
+
+            if request.FILES["image"]:
                 post_image = NewsPostImage(
-                    image=request.FILES['image'],
-                    subtitle=form.cleaned_data['subtitle'],
+                    image=request.FILES["image"],
+                    subtitle=form.cleaned_data["subtitle"],
                     uploaded_by=request.user,
-                    news_post=new_post
+                    news_post=new_post,
                 )
                 post_image.save()
-                print('saved post_image')
-
-            # upload_news_image_form = UploadNewsPostImageForm()
-            print('returning from news post form is valid')
-            return redirect('view_news')
-            # return render(request, 'upload/upload_news_post_image.html', {'pk': new_post.pk, 'form': upload_news_image_form})
+            return redirect("view_news")
         else:
-            print('news_post_form is invalid')
-            print(form.errors)
-            # new_post = NewsPost(
-            #     author=request.user,
-            #     header=form.cleaned_data.get('header'),
-            #     body=form.cleaned_data.get('body'),
-            #     link=form.cleaned_data.get('link'),
-            #     link_text=form.cleaned_data.get('link-text')
-            # )
-            # new_post.save()
-            # messages.info(request, f"{', '.join([form.errors[error] for error in form.errors])}")
             messages.info(request, form.errors)
             form = ExtendedNewsPostForm()
-            print('returning from newspostform has errors')
-            return render(request, 'main/create_news_post.html', {'form': form})
+            return render(request, "main/create_news_post.html", {"form": form})
     else:
         form = ExtendedNewsPostForm()
-        print('returning from createnewspost GET requiest')
-        return render(request, 'main/create_news_post.html', {'form': form})
+        return render(request, "main/create_news_post.html", {"form": form})
 
 
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
 def upload_multi_gallery_image(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = GalleryImageUploadForm(request.POST, request.FILES)
         if form.is_valid():
-            form_gallery = request.POST['gallery']
+            form_gallery = request.POST["gallery"]
             gallery_instance = get_object_or_404(Gallery, pk=int(form_gallery))
             upload_count = 0
-            for image_file in request.FILES.getlist('image'):
+            for image_file in request.FILES.getlist("image"):
                 new_image = GalleryImage(
-                    image = image_file,
-                    gallery = gallery_instance,
-                    uploaded_by=request.user
+                    image=image_file, gallery=gallery_instance, uploaded_by=request.user
                 )
                 new_image.save()
                 upload_count += 1
-            messages.info(request, message=f'Successfully Uploaded {upload_count} Image(s)')
-            return redirect('view_gallery', pk=int(form_gallery))
+            messages.info(
+                request, message=f"Successfully Uploaded {upload_count} Image(s)"
+            )
+            return redirect("view_gallery", pk=int(form_gallery))
 
-            # print(f'form value from request.POST = {request.POST["gallery"]}')
-            # print(f'request.FILES = {request.FILES['image']}')
-            # gallery_image = form.save(commit=False)
-            # gallery_image.uploaded_by = request.user
-            # gallery_image.gallery = gallery_instance
-            # gallery_image.save()
-            # messages.info(request, message='Image Upload Success')
-            # return redirect('index')
-        # print(f'type(request.POST) = {type(request.POST)}')
-        # print(f'request.POST = {request.POST}')
-        # print(f'request.FILES = {request.FILES}')
-        # print(f'request.POST["gallery"] = {request.POST["gallery"]}')
-        # target_gallery = get_object_or_404(Gallery, pk=int(request.POST['gallery']))
-        # target_gallery = request.POST['gallery']
-        # upload_count = 0
-        # for image_file in request.POST['image']:
-            # print(f'type(image_file) = {type(image_file)}')
-            # print(f'image_file = {image_file}')
-            # new_image = GalleryImage(
-                # image=image_file,
-                # gallery=target_gallery,
-                # uploaded_by=request.user
-            # )
-            # new_image.save()
-            # upload_count += 1
-            # messages.info(request, message=f'Successfully Uploaded {upload_count} images')
-        # return redirect('view_gallery', pk=target_gallery.pk)
-
-        # return redirect(reverse('view_classmates'))
     else:
         form = GalleryImageUploadForm()
-        return render(request, 'upload/gallery_image_upload.html', {'form': form})
-    
-# request.POST = <QueryDict: {
-    # 'csrfmiddlewaretoken': ['a03Z1HdQ3RE69YSO70Xae1eMkyxFb3BVYcM6WtlvclYkKY5GXjLfu46g93eKYGhI'], 
-    # 'image': ['---_0056.jpg', '---_0059.jpg'], 
-    # 'gallery': ['9']}>
-# request.FILES = <MultiValueDict: {}>
-# request.POST["gallery"] = 9
-
-# def multi_upload_gallery(request, gallery_pk):
-    # gallery = get_object_or_404(Gallery, pk=gallery_pk)
-
-# def multi_upload(request):
-#     if request.method == 'GET':
-#         form = MultiUploadForm
-#         return render(request, 'upload/multi_upload.html', {"form": form})
-
-
-# @ensure_csrf_cookie
-# def upload_file(request):
-#     if request.method == 'POST':
-#         form = MultiUploadForm(request.POST, request.FILES)
-#         files = request.FILES.getlist('files')
-#         if form.is_valid():
-#             for f in files:
-#                 handle_uploaded_file(f)
-#             handle_uploaded_file(request.FILES['image'])
-#             messages.info(request, 'Files Successfully Uploaded')
-#             context = {'msg': '<span style="color: green;">File successfully uploaded</span>'}
-#             # return render(request, "upload/multi_upload.html", context)
-#             return redirect('index', message="successfull upload")
-#         else:
-#             messages.error(request, 'Error uploading files')
-#             return redirect('index')
-#     else:
-#         form = MultiUploadForm()
-#         return render(request, 'upload/multi_upload.html', {'form': form})
-
-# def handle_uploaded_file(f):
-#     with open(f.name, 'wb+') as destination:
-#         for chunk in f.chunks():
-#             destination.write(chunk)
+        return render(request, "upload/gallery_image_upload.html", {"form": form})

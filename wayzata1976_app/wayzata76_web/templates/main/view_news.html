@@ -2,38 +2,38 @@
 {% load static %}
 
 {% block style %}
-    {{ block.super }}
-    <link rel="stylesheet" href="{% static 'main/css/view_news.css' %}">
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'main/css/view_news.css' %}">
 {% endblock %}
 
 {% block content %}
 
 
-    <h2 class="page-header">News & Updates</h2>
+<h2 class="page-header">News & Updates</h2>
 
-    {% if request.user.is_superuser %}
-        <a class="btn btn-danger-outline btn-block" role="button" href="{% url 'create_news_post' %}">Create New Post</a>
-    {% endif %}
+{% if request.user.is_superuser %}
+<a class="btn btn-danger-outline btn-block" role="button" href="{% url 'create_news_post' %}">Create New Post</a>
+{% endif %}
 
-    <div class="container news-container text-center">
-        {% for post in posts %}
-            <div class="card bg-dark text-white">
-                {% if post.news_post_image %}
-                    <img class="card-img-top" src="{{ post.news_post_image.image.url }}">
-                {% endif %}
-                <div class="card-body">
-                    <h5 class="card-title">{{ post.title }}</h5>
-                    <p class="card-text">{{ post.body }}</p>
-                    {% if post.link %}
-                        <a href="{{ post.link }}" class="btn btn-primary">{{ post.link_text }}</a>
-                    {% endif %}
-                </div>
-            </div>
-            {% if not forloop.last %}
-                <hr>
+<div class="container news-container text-center">
+    {% for post in posts %}
+    <div class="card bg-dark text-white">
+        {% if post.news_post_image %}
+        <img class="card-img-top" src="{{ post.news_post_image.image.url }}">
+        {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.body }}</p>
+            {% if post.link %}
+            <a href="{{ post.link }}" class="btn btn-primary">{{ post.link_text }}</a>
             {% endif %}
-        {% empty %}
-            <h5>Coming Soon!</h5>
-        {% endfor %}
+        </div>
     </div>
+    {% if not forloop.last %}
+    <hr>
+    {% endif %}
+    {% empty %}
+    <h5>Coming Soon!</h5>
+    {% endfor %}
+</div>
 {% endblock %}

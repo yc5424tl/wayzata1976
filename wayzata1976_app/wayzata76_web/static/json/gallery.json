@@ -265,76 +265,92 @@
         "parent_working_name": "yearbooks"
     },
     {
-        "working_name": "reunion",
-        "display_name": "Reunion",
+        "working_name": "30_reunion",
+        "display_name": "30th Reunion",
         "section": null,
         "abstract_gallery": false,
         "subgallery": true,
         "parent_working_name": "2006"
     },
     {
-        "working_name": "tourney",
-        "display_name": "Tourney for Ted",
+        "working_name": "30_tourney",
+        "display_name": "Tourney for Ted (2006)",
         "section": null,
         "abstract_gallery": false,
         "subgallery": true,
         "parent_working_name": "2006"
     },
     {
-        "working_name": "legion",
-        "display_name": "Reunion Eve at the Wayzata Legion",
+        "working_name": "30_legion",
+        "display_name": "30th Reunion Eve at the Wayzata Legion",
         "section": null,
         "abstract_gallery": false,
         "subgallery": true,
         "parent_working_name": "2006"
     },
     {
-        "working_name": "reunion",
-        "display_name": "Reunion",
+        "working_name": "35_reunion",
+        "display_name": "35th Reunion",
         "section": null,
         "abstract_gallery": false,
         "subgallery": true,
         "parent_working_name": "2011"
     },
     {
-        "working_name": "reunion_committee",
-        "display_name": "Reunion Committee",
+        "working_name": "35_reunion_committee",
+        "display_name": "35th Reunion Committee",
         "section": null,
         "abstract_gallery": false,
         "subgallery": true,
         "parent_working_name": "2011"
     },
     {
-        "working_name": "tourney",
-        "display_name": "Tourney for Ted",
+        "working_name": "35_tourney",
+        "display_name": "Tourney for Ted (2011)",
         "section": null,
         "abstract_gallery": false,
         "subgallery": true,
         "parent_working_name": "2011"
     },
     {
-        "working_name": "legion",
-        "display_name": "Reunion Eve at the Wayzata Legion",
+        "working_name": "35_legion",
+        "display_name": "35th Reunion Eve at the Wayzata Legion",
         "section": null,
         "abstract_gallery": false,
         "subgallery": true,
         "parent_working_name": "2011"
     },
     {
-        "working_name": "reunion",
-        "display_name": "Reunion",
+        "working_name": "40_reunion",
+        "display_name": "40th Reunion",
         "section": null,
         "abstract_gallery": false,
         "subgallery": true,
         "parent_working_name": "2016"
     },
     {
-        "working_name": "legion",
-        "display_name": "Reunion Eve at the Wayzata Legion",
+        "working_name": "40_legion",
+        "display_name": "40th Reunion Eve at the Wayzata Legion",
         "section": null,
         "abstract_gallery": false,
         "subgallery": true,
         "parent_working_name": "2016"
+    },
+    {
+        "working_name": "old_photos",
+        "display_name": "Old Photographs",
+        "section": "STOMPING_GROUNDS",
+        "abstract_gallery": false,
+        "subgallery": false,
+        "parent_working_name": null
+    },
+    {
+        "working_name": "misc",
+        "display_name": "Misc.",
+        "section": "STOMPING_GROUNDS",
+        "abstract_gallery": false,
+        "subgallery": false,
+        "parent_working_name": null
     }
 ]
 

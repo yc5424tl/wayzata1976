@@ -77,24 +77,14 @@ class ContactUpdateForm(forms.ModelForm):
 
 
 class NewsPostForm(forms.ModelForm):
-
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop("request", None)
         super(NewsPostForm, self).__init__(*args, **kwargs)
 
-    # header = forms.CharField(placeholder="* Post Header")
-    # body = forms.Textarea()
-    # image = forms.ImageField(allow_empty_file=True, label="(Image (optional)")
-    # subtitle = forms.CharField(label="Image Subtitle (optional)")
     class Meta:
         model = NewsPost
-        # fields = ('header', 'body', 'link', 'link_text')
-        fields = (
-            "link",
-            "link_text",
-            "body",
-            'header'
-        )
+
+        fields = ("link", "link_text", "body", "header")
         widgets = {
             "body": forms.Textarea(
                 attrs={
@@ -109,11 +99,16 @@ class NewsPostForm(forms.ModelForm):
 
 class ExtendedNewsPostForm(NewsPostForm):
 
-    image = forms.ImageField(allow_empty_file=True, required=False, label="Image (opt.)")
+    image = forms.ImageField(
+        allow_empty_file=True, required=False, label="Image (opt.)"
+    )
     subtitle = forms.CharField(max_length=100, required=False)
 
     class Meta(NewsPostForm.Meta):
-        fields = NewsPostForm.Meta.fields + ('image', 'subtitle', )
+        fields = NewsPostForm.Meta.fields + (
+            "image",
+            "subtitle",
+        )
 
 
 #  For Adding to Existing News Post
@@ -127,7 +122,6 @@ class UploadNewsPostImageForm(forms.ModelForm):
 
     class Meta:
         model = NewsPostImage
-        # fields = ('title', 'subtitle', 'image')
         fields = ("image",)
 
 
@@ -136,16 +130,12 @@ class UploadGalleryImageForm(forms.ModelForm):
         self.request = kwargs.pop("request", None)
         super(UploadGalleryImageForm, self).__init__(*args, **kwargs)
 
-    # gallery = forms.ChoiceField
     title = forms.CharField(required=False, label="title", max_length=100)
     subtitle = forms.CharField(required=False, label="Subtitle")
 
-    # image = forms.URLField(widget=S3DirectWidget(dest='example_destination')) # TODO update destination
-    # gallery = forms.ModelChoiceField(queryset=Gallery.objects.all().filter(abstract_gallery=False))
-
     class Meta:
         model = GalleryImage
-        # fields = ('title', 'subtitle', 'gallery', 'image')
+
         fields = (
             "image",
             "gallery",
@@ -158,22 +148,10 @@ class UploadGalleryImageForm(forms.ModelForm):
         }
 
 
-class MultiUploadGalleryImageForm(forms.ModelForm):
-
-    gallery = forms.ModelChoiceField(queryset=Gallery.objects.all())
-
-    class Meta:
-        model = GalleryImage
-        # fields = ('image', 'gallery')
-        fields = ("image",)
-
-
 class CreateGalleryForm(forms.ModelForm):
 
     working_name = forms.CharField(required=True, max_length=100)
     display_name = forms.CharField(required=True, max_length=100)
-    # abstract_gallery = forms.CheckboxInput()
-    # section = forms.ChoiceField
     subgallery = forms.CheckboxInput()
     parent_gallery = forms.ModelChoiceField(
         queryset=Gallery.objects.filter(abstract_gallery=True).all()
@@ -181,7 +159,6 @@ class CreateGalleryForm(forms.ModelForm):
 
     class Meta:
         model = Gallery
-        # fields = ['working_name', 'display_name', 'abstract_gallery', 'section']
         fields = (
             "abstract_gallery",
             "section",
@@ -202,7 +179,6 @@ class GalleryImageUploadForm(forms.ModelForm):
         self.request = kwargs.pop("request", None)
         super(GalleryImageUploadForm, self).__init__(*args, **kwargs)
 
-    # gallery = forms.ModelChoiceField(queryset=Gallery.objects.all().filter(abstract_gallery=False))
     image = forms.FileField(widget=forms.ClearableFileInput(attrs={"multiple": True}))
 
     class Meta:
@@ -213,7 +189,6 @@ class GalleryImageUploadForm(forms.ModelForm):
                 choices=Gallery.objects.all().filter(abstract_gallery=False)
             )
         }
-        # fields = ('image', 'gallery')
 
 
 class CustomAuthenticationForm(AuthenticationForm):
