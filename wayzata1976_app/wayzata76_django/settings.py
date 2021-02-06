@@ -215,7 +215,7 @@ MESSAGE_TAGS = {
     messages.ERROR: "alert-danger",
 }
 if "ON_HEROKU" in os.environ:
-    django_heroku.settings(locals())
+    django_heroku.settings(locals(), staticfiles=False)
 
 
 
