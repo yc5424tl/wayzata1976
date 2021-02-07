@@ -129,7 +129,6 @@ def view_gallery(request, pk):
 
 
 def view_zietgeist(request):
-    opener = urllib.URLopener()
     awards = [
         {"award": "Best Picture", "winner": "Rocky"},
         {"award": "Best Actor", "winner": "Peter Finch (Network)"},
