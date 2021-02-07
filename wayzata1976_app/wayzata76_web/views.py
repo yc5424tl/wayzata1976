@@ -1,7 +1,7 @@
 import json
 import os
 import string
-import urllib
+from urllib.request import urlopen
 
 from django.conf import settings
 from django.contrib import messages
@@ -145,7 +145,7 @@ def view_zietgeist(request):
     songs = None
 #     with open(staticfiles_storage.url('json/songs.json')) as json_file:
     # with open(static('json/songs.json')) as json_file:
-    json_file = opener.open(static('json/songs.json'))
+    json_file = urlopen(static('json/songs.json'))
     songs = json.load(json_file)
         
     # with open(os.path.join(settings.STATIC_ROOT, "json/songs.json")) as file:
