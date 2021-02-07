@@ -108,6 +108,7 @@ def gallery_for_image(instance, filename):
     print(f'instance.gallery.working_name = {instance.gallery.working_name}')
     print(f'instance.uuid & ext = {instance.uuid} , ext = {ext}')
     name, ext = filename.replace(' ', '_').split(".")
+    print(f'instance.uuid & ext = {instance.uuid} , ext = {ext}')
     file_path = f"{instance.gallery.working_name}/{instance.uuid}.{ext}"
     return file_path
 
