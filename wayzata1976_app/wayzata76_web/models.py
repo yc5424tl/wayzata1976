@@ -100,6 +100,10 @@ class Image(models.Model):
 
 
 def gallery_for_image(instance, filename):
+    print(f'type(filename) = {type(filename)}')
+    print(f'type(instance) = {type(instance)}')
+    print(f'filename = {filename}')
+    print(f'instance = {instance}')
     name, ext = filename.replace(' ', '_').split(".")
     file_path = f"{instance.gallery.working_name}/{instance.uuid}.{ext}"
     return file_path
