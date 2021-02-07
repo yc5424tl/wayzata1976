@@ -146,7 +146,7 @@ def view_zietgeist(request):
 #     with open(staticfiles_storage.url('json/songs.json')) as json_file:
     # with open(static('json/songs.json')) as json_file:
     json_file = opener.open(static('json/songs.json'))
-        songs = json.load(json_file)
+    songs = json.load(json_file)
         
     # with open(os.path.join(settings.STATIC_ROOT, "json/songs.json")) as file:
     #     songs = json.load(file)
