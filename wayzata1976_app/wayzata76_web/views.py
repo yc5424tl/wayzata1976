@@ -1,6 +1,7 @@
 import json
 import os
 import string
+import urllib
 
 from django.conf import settings
 from django.contrib import messages
@@ -128,6 +129,7 @@ def view_gallery(request, pk):
 
 
 def view_zietgeist(request):
+    opener = urllib.URLopener()
     awards = [
         {"award": "Best Picture", "winner": "Rocky"},
         {"award": "Best Actor", "winner": "Peter Finch (Network)"},
@@ -142,7 +144,8 @@ def view_zietgeist(request):
     yearbooks = Yearbook.objects.all()
     songs = None
 #     with open(staticfiles_storage.url('json/songs.json')) as json_file:
-    with open(static('json/songs.json')) as json_file:
+    # with open(static('json/songs.json')) as json_file:
+    json_file = opener.open(static('json/songs.json'))
         songs = json.load(json_file)
         
     # with open(os.path.join(settings.STATIC_ROOT, "json/songs.json")) as file:
