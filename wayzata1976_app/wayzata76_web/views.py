@@ -11,6 +11,7 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.templatetags.static import static
 from django.urls import reverse, reverse_lazy
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.generic import ListView
@@ -140,7 +141,8 @@ def view_zietgeist(request):
     ]
     yearbooks = Yearbook.objects.all()
     songs = None
-    with open(staticfiles_storage.url('json/songs.json')) as json_file:
+#     with open(staticfiles_storage.url('json/songs.json')) as json_file:
+    with open(static('json/songs.json')) as json_file:
         songs = json.load(json_file)
         
     # with open(os.path.join(settings.STATIC_ROOT, "json/songs.json")) as file:
