@@ -99,16 +99,17 @@ class Image(models.Model):
         return f"{self.title} - {self.date_created} ({self.uploaded_by})"
 
 
+def remove_extra_periods(target_str):
+    for period in range(target_str.count('.')-1):
+        for x in target_str:
+            if x == '.':
+                if target_str.find(x) != target_str.rfind(x):
+                    target_str = target_str.replace(x, '_', 1)
+    return target_str
+    
 def gallery_for_image(instance, filename):
-    print(f'type(filename) = {type(filename)}')
-    print(f'type(instance) = {type(instance)}')
-    print(f'filename = {filename}')
-    print(f'instance = {instance}')
-    print(f'instance.gallery = {instance.gallery}')
-    print(f'instance.gallery.working_name = {instance.gallery.working_name}')
-#     print(f'instance.uuid & ext = {instance.uuid} , ext = {ext}')
-    name, ext = filename.replace(' ', '_').split(".")
-    print(f'instance.uuid & ext = {instance.uuid} , ext = {ext}')
+    cleaned_filename = remove_extra_periods(filename)
+    name, ext = cleaned_filename.replace(' ', '_').split(".")
     file_path = f"{instance.gallery.working_name}/{instance.uuid}.{ext}"
     return file_path
 
