@@ -130,7 +130,7 @@ def view_gallery(request, pk):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     # return render(request, "main/view_gallery.html", {"gallery": gallery})
-    return render(request, 'main/view_gallery.html', {'page_obj': page_obj})
+    return render(request, 'main/view_gallery.html', {'page_obj': page_obj, 'gallery': gallery})
 
 
 def view_zietgeist(request):
