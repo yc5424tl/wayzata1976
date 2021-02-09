@@ -5,7 +5,7 @@ from s3direct.fields import S3DirectField
 import uuid
 from geopy.geocoders import Nominatim
 from django import forms
-from wayzata76_web.storage_backends import PublicMediaStorage
+from .storage_backends import PublicMediaStorage
 
 
 class CustomUser(AbstractUser):

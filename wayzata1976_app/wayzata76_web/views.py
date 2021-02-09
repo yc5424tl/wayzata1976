@@ -125,7 +125,12 @@ def contact_info(request):
 
 def view_gallery(request, pk):
     gallery = get_object_or_404(Gallery, pk=pk)
-    return render(request, "main/view_gallery.html", {"gallery": gallery})
+    gallery_images = gallery.gallery_images
+    paginator = Paginator(gallery_images, 30)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    # return render(request, "main/view_gallery.html", {"gallery": gallery})
+    return render(request, 'main/view_gallery.html', {'page_obj': page_obj})
 
 
 def view_zietgeist(request):
@@ -133,22 +138,14 @@ def view_zietgeist(request):
         {"award": "Best Picture", "winner": "Rocky"},
         {"award": "Best Actor", "winner": "Peter Finch (Network)"},
         {"award": "Best Actress", "winner": "Faye Dunaway (Network)"},
-        {
-            "award": "Best Supporting Actor",
-            "winner": "Jason Robards (All the President's Men)",
-        },
+        {"award": "Best Supporting Actor", "winner": "Jason Robards (All the President's Men)"},
         {"award": "Best Supporting Actress", "winner": "Beatrice Straight (Network)"},
         {"award": "Best Director", "winner": "John Avildsen (Rocky)"},
     ]
     yearbooks = Yearbook.objects.all()
     songs = None
-#     with open(staticfiles_storage.url('json/songs.json')) as json_file:
-    # with open(static('json/songs.json')) as json_file:
     json_file = urlopen(static('json/songs.json'))
     songs = json.load(json_file)
-        
-    # with open(os.path.join(settings.STATIC_ROOT, "json/songs.json")) as file:
-    #     songs = json.load(file)
     return render(
         request,
         "main/zietgeist.html",
