@@ -84,40 +84,46 @@ table.table.table-striped.table-dark.table-bordered {
     overflow-x: scroll;
 }
 
-@media only screen and (max-width: 768px) {
+@media (max-width: 768px) {
 
-  table, thead, tbody, th, td, tr {
+  table.table.table-striped.table-dark.table-bordered ,
+  table.table.table-striped.table-dark.table-bordered thead,
+  table.table.table-striped.table-dark.table-bordered tbody,
+  table.table.table-striped.table-dark.table-bordered th,
+  table.table.table-striped.table-dark.table-bordered td,
+  table.table.table-striped.table-dark.table-bordered tr {
     display: block;
   }
 
-  thead, tr {
+  table.table.table-striped.table-dark.table-bordered thead,
+  table.table.table-striped.table-dark.table-bordered tr {
     position: absolute;
     top: -9999px;
     left: -9999px;
   }
 
-  td {
+  table.table.table-striped.table-dark.table-bordered td {
     border: none;
     border-bottom: 1px solid rgb(235,235,235);
     position: relative;
     padding-left: 50%;
   }
 
-  td:before {
-    position: ablsolute;
+  table.table.table-striped.table-dark.table-bordered td:before {
+    position: absolute;
     top: 0.75rem;
     left: 0.75rem;
     width: 45%;
     padding-right: 10px;
-    white-space: nowarp;
+    white-space: nowrap;
   }
 
-  td:nth-of-type(1):before { content: "Last Name"}
-  td:nth-of-type(2):before { content: "Middle"}
-  td:nth-of-type(3):before { content: "First Name"}
-  td:nth-of-type(4):before { content: "City"}
-  td:nth-of-type(5):before { content: "State/Province"}
-  td:nth-of-type(6):before { content: "Zip Code"}
+  table.table.table-striped.table-dark.table-bordered td:nth-of-type(1):before { content: "Last Name"}
+  table.table.table-striped.table-dark.table-bordered td:nth-of-type(2):before { content: "Middle"}
+  table.table.table-striped.table-dark.table-bordered td:nth-of-type(3):before { content: "First Name"}
+  table.table.table-striped.table-dark.table-bordered td:nth-of-type(4):before { content: "City"}
+  table.table.table-striped.table-dark.table-bordered td:nth-of-type(5):before { content: "State/Province"}
+  table.table.table-striped.table-dark.table-bordered td:nth-of-type(6):before { content: "Zip Code"}
 
 }
 
@@ -125,6 +131,10 @@ table.table.table-striped.table-dark.table-bordered {
   div.container.content {
     margin-left: 3vw;
     margin-right: 3vw;
+  }
+  div.table-wrapper.text-center.toggle-hidden {
+    width: 100%;
+    max-width: 100%;
   }
 }
 
