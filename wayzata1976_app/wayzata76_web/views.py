@@ -125,7 +125,7 @@ def contact_info(request):
 
 def view_gallery(request, pk):
     gallery = get_object_or_404(Gallery, pk=pk)
-    gallery_images = gallery.gallery_images
+    gallery_images = gallery.gallery_images.all()
     paginator = Paginator(gallery_images, 30)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
