@@ -125,10 +125,21 @@ def contact_info(request):
 
 def view_gallery(request, pk):
     gallery = get_object_or_404(Gallery, pk=pk)
-    gallery_images = gallery.gallery_images.all()
-    paginator = Paginator(gallery_images, 30)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    images = gallery.gallery_images.all()
+    page = request.GET.get('page', 1)
+    paginator = Paginator(images, 30)
+    try:
+        page_obj = paginator.page(page)
+    except PageNotAnInteger:
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        page_obj = paginator.page(paginator.num_pages)
+
+
+    # gallery_images = gallery.gallery_images.all()
+    # paginator = Paginator(gallery_images, 30)
+    # page_number = request.GET.get('page')
+    # page_obj = paginator.get_page(page_number)
     # return render(request, "main/view_gallery.html", {"gallery": gallery})
     return render(request, 'main/view_gallery.html', {'page_obj': page_obj, 'gallery': gallery})
 
