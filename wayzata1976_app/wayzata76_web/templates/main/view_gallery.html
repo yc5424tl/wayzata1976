@@ -19,7 +19,7 @@
         {% if gallery.parent_gallery %}
         <h6>Related Galleries</h6>
         <nav class="nav justify-content-center">
-            {% for sub_gallery in gallery.parent_gallery.sub_galleries %}
+            {% for sub_gallery in gallery.parent_gallery.sub_galleries.all %}
                 {% if sub_gallery != gallery %}
                 <a class="nav-link" href="{% url 'view_gallery' pk=sub_gallery.pk %}"> {{ sub_gallery.display_name }} </a>
                 {% endif %}

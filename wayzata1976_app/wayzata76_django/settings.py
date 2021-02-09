@@ -20,10 +20,21 @@ from django.urls import reverse_lazy
 import dj_database_url
 
 
-
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+if os.getenv('DEPLOYMENT') == 'DEV':
+    import dotenv
+
+    DJANGO_READ_DOT_ENV_FILE = True
+
+    dotenv_file = os.path.join(BASE_DIR, 'wayzata76_django/.env')
+
+    if os.path.isfile(dotenv_file):
+        dotenv.load_dotenv(dotenv_file)
+
+
+
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
 
@@ -35,17 +46,8 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG") == "TRUE"
 
-ALLOWED_HOSTS = ["wayzata76.herokuapp.com", "wayzata76.com"]
+ALLOWED_HOSTS = ["wayzata76.herokuapp.com", "wayzata76.com", 'localhost']
 
-if DEBUG:
-    import dotenv
-
-    DJANGO_READ_DOT_ENV_FILE = True
-
-    dotenv_file = os.path.join(BASE_DIR, '../.env')
-
-    if os.path.isfile(dotenv_file):
-        dotenv.load_dotenv(dotenv_file)
 
 
 # Application definition
