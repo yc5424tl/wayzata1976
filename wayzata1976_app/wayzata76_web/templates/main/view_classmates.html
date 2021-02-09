@@ -32,7 +32,7 @@
     <p><sub class="white">See anything that's incorrect or dated? Updates can be made <a
                 href="{% url 'contact_info' %}">here</a>.</sub></p>
     <hr>
-    <div class="table-responsive-lg mx-0">
+
         <table class="table table-striped table-dark table-bordered table-hover">
             <title>All Classmates</title>
             <thead class="thead-light">
@@ -83,7 +83,6 @@
                 {% endfor %}
             </tbody>
         </table>
-    </div>
 </div>
 <div class="table-wrapper text-center mia_list toggle-hidden">
     <div class="btn-group btn-group-sm">
@@ -91,7 +90,6 @@
         <a class="btn" href="#{{ letter }}-MIA">{{ letter }}</a>
         {% endfor %}
     </div>
-    <div class="table-responsive-lg mx-0">
         <table class="table table-striped table-dark table-bordered table-hover">
             <title>M.I.A Classmates</title>
             <thead class="thead-light">
@@ -123,9 +121,9 @@
                 {% endfor %}
             </tbody>
         </table>
-    </div>
+   
 </div>
-<div class="table-wrapper text-center passed_list toggle-hidden table-responsive-lg mx-0">
+<div class="table-wrapper text-center passed_list toggle-hidden">
     <table class="table table-striped table-dark table-bordered table-hover">
         <title>Passed Classmates</title>
         <thead class="thead-light">
@@ -160,8 +158,7 @@
         <a class="btn" href="#{{ letter }}-IN-C">{{ letter }}</a>
         {% endfor %}
     </div>
-    <div class="table-responsive-lg mx-0">
-        <table class="table table-striped table-dark table-bordered table-hover">
+        <table? class="table table-striped table-dark table-bordered table-hover">
             <title>In-Contact Classmates</title>
             <thead class="thead-light">
                 <th>Last Name</th>
@@ -192,7 +189,6 @@
                 {% endfor %}
             </tbody>
         </table>
-    </div>
 </div>
 {% if is_paginated %}
 <div class="pagination pagination-centered">
