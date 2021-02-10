@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
     "wayzata76_web.apps.Wayzata76WebConfig",
     "fontawesome-free",
     "widget_tweaks",
@@ -103,12 +104,6 @@ WSGI_APPLICATION = "wayzata76_django.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-
-    # db_from_env = dj_database_url.config(default=DATABASE_URL, conn_max_age=500, ssl_require=True)
-    # DATABASES['default'].update(db_from_env)
-
-    
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -120,9 +115,9 @@ db_from_env = dj_database_url.config(default=DATABASE_URL, conn_max_age=600, ssl
 DATABASES['default'].update(db_from_env)
 
 
-
 if 'ENABLE_SERVER_SIDE_CURSORS' in os.environ:
     DISABLE_SERVER_SIDE_CURSORS = False
+
 
 CACHES = {
     'default': {
@@ -136,18 +131,10 @@ CACHES = {
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",},
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
 ]
 
 
@@ -158,11 +145,8 @@ LANGUAGE_CODE = "en-us"
 
 # TIME_ZONE = 'UTC'
 TIME_ZONE = "US/Central"
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
@@ -177,7 +161,6 @@ USE_TZ = True
 PROJECT_DIR = os.path.dirname(__file__)
 
 AUTH_USER_MODEL = "wayzata76_web.CustomUser"
-
 
 LOGIN_URL = reverse_lazy("login")
 LOGIN_REDIRECT_URL = reverse_lazy("index")
@@ -202,7 +185,16 @@ if os.getenv("USE_S3") == "TRUE":
     DEFAULT_FILE_STORAGE = "wayzata76_web.storage_backends.PublicMediaStorage"
     STATICFILES_DIRS = [os.path.join(BASE_DIR, "wayzata76_web/static")]
 
+
 else:
+    AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+    AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME")
+    AWS_S3_REGION_NAME = os.getenv("AWS_S3_REGION_NAME")
+    AWS_S3_ENDPOINT_URL = os.getenv("AWS_S3_ENDPOINT_URL")
+    AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+    AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
+    DEFAULT_FILE_STORAGE = "wayzata76_web.storage_backends.PublicMediaStorage"
     STATIC_URL = "/static/"
     STATIC_ROOT = os.path.join(BASE_DIR, "static")
     MEDIA_URL = "/media/"

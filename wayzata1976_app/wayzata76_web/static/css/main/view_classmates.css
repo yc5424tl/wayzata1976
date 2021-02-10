@@ -10,21 +10,19 @@ select.table-view-select {
   align-content: center;
   text-align-last: center;
   font-weight: bolder;
-  border: 1pt solid black;
-  outline: 1pt solid black;
+  border: 2pt solid black;
 }
 
 select.table-view-select:hover,
 select.table-view-select:focus {
   font-weight: bolder;
-  border: 1pt solid black;
+  border: 2pt solid black;
 }
 
 option {
   font-weight: bolder;
   margin: 10px auto;
   display: inline-block;
-  width: 100%;
   align-content: center;
   text-align: center;
   text-align-last: center;
@@ -42,11 +40,12 @@ option {
   color: white;
   text-indent: -9999px;
   display: none;
-  --webkit-border-radius: 60px;
+  -webkit-border-radius: 60px;
   -moz-border-radius: 60px;
   border-radius: 60px;
   box-shadow: 0pt 0pt 30pt 20pt #088fb1c9;
   transition: 0.45s;
+  z-index: 400;
 }
 
 #scroll span {
@@ -68,22 +67,118 @@ option {
   transition: 0.45s;
 }
 
-table {
-  overflow-x: scroll;
-  overflow-y: scroll;
-  max-height: 4000px;
+div.btn.btn-group-sm {
+  width: 100%;
+  max-width: 100%
 }
 
-div.table-wrapper.text-center.toggle-hidden {
-    max-width: 80%;
-    overflow-x: scroll;
+div.btn.btn-group-sm a {
+  display: inline-block;
+  width: 5rem;
 }
+
+/* table { */
+  /* overflow-x: scroll; */
+  /* overflow-y: scroll; */
+  /* max-height: 4000px; */
+/* } */
+
+/* div.table-wrapper.text-center.toggle-hidden {
+    max-width: 1000; 
+    overflow-x: scroll;
+} */
 
 table.table.table-striped.table-dark.table-bordered {
     max-width: 100%;
     overflow-x: scroll;
 }
 
+@media (max-width: 991px) {
+  td, th {
+    padding: 4px;
+    font-size: 12pt;
+  }
+
+  table.table.table-striped.table-dark.table-bordered th,
+  table.table.table-striped.table-dark.table-bordered tr {
+    font-size: 10pt;
+    padding: 4px;
+  }
+
+  div.container.content {
+    margin: auto 2rem;
+    width: 100%;
+  }
+}
+
+div.col-12.row {
+  margin-right: 0;
+}
+
+@media only screen and (min-width: 1200px) {
+  div.btn-group.btn-group-sm.large-alpha {
+    display: block;
+  }
+  div.btn-group.btn-group-sm.small-alpha {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1199.9px) {
+  div.btn-group.btn-group-sm.small-alpha {
+    display: block;
+  }
+
+  div.btn-group.btn-group-sm.large-alpha {
+    display: none;
+  }
+  a.btn.col.scrollLink {
+    padding: 5px
+  }
+}
+
+
+@media only screen and (max-width: 991.9px) {
+  thead th:not(:first-child) {
+    display: none;
+  }
+
+  td, th {
+    display: inline-block;
+    width: 100%;
+    min-width: 100%;
+    margin: auto;
+    border-collapse: collapse;
+  }
+
+  tr {
+    width: 100%;
+    margin: 0 auto;
+    border-top: 2pt solid rgba(235,235,235,0.7);
+    border-bottom: 2pt solid rgba(235,235,235,0.7);
+  }
+
+  td:nth-of-type(1):before {content: 'Last Name'; min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left;}
+  td:nth-of-type(2):before {content: 'Middle'; min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left;}
+  td:nth-of-type(3):before {content: 'First Name'; min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left;}
+  td:nth-of-type(4):before {content: 'City'; min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left;}
+  td:nth-of-type(5):before {content: 'State/Province'; min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left;}
+  td:nth-of-type(6):before {content: 'Zip Code'; min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left;}
+
+  .btn-group.btn-group-sm {
+    padding: 4px;
+  }
+
+  td {
+    padding: 4px 4px 4px 0;
+  }
+
+}
+
+p.update-link {
+  width: 100%;
+  text-align: center;
+}
 
 
 

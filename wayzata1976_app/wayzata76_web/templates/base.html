@@ -10,11 +10,16 @@
         {% block style %}
             <link rel="preconnect" href="https://fonts.gstatic.com">
             <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet">
+            <!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" /> -->
+            <link rel="stylesheet" href="{% static 'css/jquery.mobile.custom.structure.css' %}">
+            <link rel="stylesheet" href="{% static 'css/jquery.mobile.custom.theme.css' %}">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
             <link rel="stylesheet" href="{% static 'css/base.css' %}">
         {% endblock %}
         {% block header-scripts %}
             <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+            <!-- <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+            <script src="{% static 'js/jquery.mobile.custom.js' %}"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
             <script src="{% static 'fontawesome_free/js/all.min.js' %}"></script>
@@ -27,7 +32,7 @@
             <div class="d-flex flex-column">
             <nav class="navbar navbar-expand-xl fixed-top navbar-dark bg-dark" id="header">
                 <a class="navbar-brand" href="#">
-                    <img src="{% static 'img/wide_logo.png' %}" class="logo" height="90px">
+                    <img src="{% static 'img/wide_logo.png' %}" class="logo" height="80px">
                 </a>
                 <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
                     <span class="navbar-toggler-icon"></span>
@@ -138,7 +143,8 @@
                                     {% csrf_token %}
                                     <input type="input" class="form-control form-control-sm mr-sm-2" name="username" placeholder="username">
                                     <input type="password" class="form-control form-control-sm mr-sm-2" name="password" placeholder="password">
-                                    <input class="btn btn-outline-warning btn-sm my-2 my-sm-0" type="submit" value="login">
+                                    <input class="btn btn-outline-warning btn-sm my-2 my-sm-0 non-block" type="submit" value="login">
+                                    <input class="btn btn-outline-warning btn-sm my-2 my-sm-0 btn-block" type="submit" value="login">
                                     <input type="hidden" name="next" value="{{ next }}">
                                 </form>
                             </li>

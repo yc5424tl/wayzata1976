@@ -2,6 +2,12 @@
 {% load static %}
 {% load get_dict_key %}
 
+
+{% block style %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/main/view_classmates.css' %}">
+{% endblock %}
+
 {% block content %}
 
 
@@ -24,73 +30,104 @@
 
 <div class="table-wrapper text-center complete_list toggle-hidden">
     <h5>Sorted Alphabetically by Last Name</h5>
-    <div class="btn-group btn-group-sm">
+    
+    <div class="btn-group btn-group-sm large-alpha">
         {% for letter in alphabet %}
-        <a class="btn scrollLink" href="#{{ letter }}">{{ letter }}</a>
+            <a class="btn scrollLink" href="{{ letter }}">{{ letter }}</a>
         {% endfor %}
     </div>
-    <p><sub class="white">See anything that's incorrect or dated? Updates can be made <a
-                href="{% url 'contact_info' %}">here</a>.</sub></p>
+    <div class="btn-group btn-group-sm row small-alpha">
+        {% for letter in alphabet %}
+
+            {% if forloop.counter0 == 0 or forloop.counter0 == 9 or forloop.counter0 == 17 %}
+                <div class="col-12 row">
+            {% endif %}
+
+            <a class="btn col scrollLink" href="#{{ letter }}">{{ letter }}</a>
+
+            {% if forloop.counter0 == 8 or forloop.counter0 == 16 or forloop.counter0 == 26 %}
+                </div>
+            {% endif %}
+
+        {% endfor %}
+    </div>
+    <p class="update-link"><sub>See anything that's incorrect or dated? Updates can be made 
+        <a href="{% url 'contact_info' %}">here</a>.</sub></p>
     <hr>
 
-        <table class="table table-striped table-dark table-bordered table-hover">
-            <title>All Classmates</title>
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Middle</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">City</th>
-                    <th scope="col">State/Province</th>
-                    <th scope="col">Zip Code</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for classmate in classmates %}
+    <table class="table table-striped table-dark table-bordered table-hover table-responsive-lg table-sm">
+        <title>All Classmates</title>
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Last Name</th>
+                <th scope="col">Middle</th>
+                <th scope="col">First Name</th>
+                <th scope="col">City</th>
+                <th scope="col">State/Province</th>
+                <th scope="col">Zip Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for classmate in classmates %}
                 {% if link_dict|get_item:classmate.last_name.0 == classmate %}
-                <tr id="{{ classmate.last_name.0 }}">
+                    <tr id="{{ classmate.last_name.0 }}">
                 {% else %}
-                <tr>
+                    <tr>
                 {% endif %}
-                    <td>{{ classmate.last_name }}</td>
+                <td>{{ classmate.last_name }}</td>
 
-                    {% if classmate.middle_initial %}
+                {% if classmate.middle_initial %}
                     <td>{{ classmate.middle_initial }}</td>
-                    {% else %}
+                {% else %}
                     <td> -- </td>
-                    {% endif %}
+                {% endif %}
 
-                    <td>{{ classmate.first_name }}</td>
+                <td>{{ classmate.first_name }}</td>
 
-                    {% if classmate.address.city %}
+                {% if classmate.address.city %}
                     <td>{{ classmate.address.city }}</td>
-                    {% else %}
+                {% else %}
                     <td> -- </td>
-                    {% endif %}
+                {% endif %}
 
-                    {% if classmate.address.state_province %}
+                {% if classmate.address.state_province %}
                     <td>{{ classmate.address.state_province }}</td>
-                    {% else %}
+                {% else %}
                     <td> -- </td>
-                    {% endif %}
+                {% endif %}
 
-                    {% if classmate.address.zip_code %}
+                {% if classmate.address.zip_code %}
                     <td>{{ classmate.address.zip_code }}</td>
-                    {% else %}
+                {% else %}
                     <td> -- </td>
-                    {% endif %}
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 <div class="table-wrapper text-center mia_list toggle-hidden">
-    <div class="btn-group btn-group-sm">
+    <div class="btn-group btn-group-sm large-alpha">
         {% for letter in alphabet %}
-        <a class="btn" href="#{{ letter }}-MIA">{{ letter }}</a>
+            <a class="btn scrollLink" href="{{ letter }}">{{ letter }}</a>
         {% endfor %}
     </div>
-        <table class="table table-striped table-dark table-bordered table-hover">
+    <div class="btn-group btn-group-sm small-alpha">
+        {% for letter in alphabet %}
+        
+            {% if forloop.counter0 == 0 or forloop.counter0 == 9 or forloop.counter0 == 17 %}
+                <div class="col-12 row">
+            {% endif %}
+
+            <a class="btn col" href="#{{ letter }}-MIA">{{ letter }}</a>
+
+            {% if forloop.counter0 == 8 or forloop.counter0 == 16 or forloop.counter0 == 26 %}
+                </div>
+            {% endif %}
+
+        {% endfor %}
+    </div>
+        <table class="table table-striped table-dark table-bordered table-hover table-responsive-lg table-sm">
             <title>M.I.A Classmates</title>
             <thead class="thead-light">
                 <th scope="col">Last Name</th>
@@ -102,14 +139,14 @@
             </thead>
             <tbody>
                 {% for classmate in mia_list %}
-                {% if mia_link_dict|get_item:classmate.last_name.0 == classmate %}
-                <tr id="{{ classmate.last_name.0 }}-MIA">
-                {% else %}
-                <tr>
-                {% endif %}
+                    {% if mia_link_dict|get_item:classmate.last_name.0 == classmate %}
+                        <tr id="{{ classmate.last_name.0 }}-MIA">
+                    {% else %}
+                        <tr>
+                    {% endif %}
                     <td>{{ classmate.last_name }}</td>
                     {% if classmate.middle_initial %}
-                    <td>{{ classmate.middle_initial }}</td>
+                        <td>{{ classmate.middle_initial }}</td>
                     {% else %}
                     <td> --</td>
                     {% endif %}
@@ -124,7 +161,7 @@
    
 </div>
 <div class="table-wrapper text-center passed_list toggle-hidden">
-    <table class="table table-striped table-dark table-bordered table-hover">
+    <table class="table table-striped table-dark table-bordered table-hover table-responsive-lg table-sm">
         <title>Passed Classmates</title>
         <thead class="thead-light">
             <th scope="col">Last Name</th>
@@ -153,12 +190,29 @@
     </table>
 </div>
 <div class="table-wrapper in_contact_list toggle-hidden text-center">
-    <div class="btn-group btn-group-sm">
+    <div class="btn-group btn-group-sm large-alpha">
         {% for letter in alphabet %}
-        <a class="btn" href="#{{ letter }}-IN-C">{{ letter }}</a>
+            <a class="btn scrollLink" href="{{ letter }}">{{ letter }}</a>
         {% endfor %}
     </div>
-        <table? class="table table-striped table-dark table-bordered table-hover">
+    <div class="btn-group btn-group-sm small-alpha">
+
+        {% for letter in alphabet %}
+        
+        {% if forloop.counter0 == 0 or forloop.counter0 == 9 or forloop.counter0 == 17 %}
+            <div class="col-12 row">
+        {% endif %}
+
+        <a class="btn col" href="#{{ letter }}-IN-C">{{ letter }}</a>
+
+        {% if forloop.counter0 == 8 or forloop.counter0 == 16 or forloop.counter0 == 26 %}
+            </div>
+        {% endif %}
+
+    {% endfor %}
+
+    </div>
+        <table class="table table-striped table-dark table-bordered table-hover table-responsive-lg table-sm">
             <title>In-Contact Classmates</title>
             <thead class="thead-light">
                 <th>Last Name</th>
@@ -209,11 +263,7 @@
 {% endblock %}
 
 {% block javascript %}
-{{ block.super }}
-<script type="text/javascript" src="{% static 'js/classmates.js' %}"></script>
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'js/classmates.js' %}"></script>
 {% endblock %}
 
-{% block style %}
-{{ block.super }}
-<link rel="stylesheet" href="{% static 'css/main/view_classmates.css' %}">
-{% endblock %}
