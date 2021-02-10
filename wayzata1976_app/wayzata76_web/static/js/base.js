@@ -14,7 +14,7 @@ $(document).ready(function() {
 
       $('.dropdown-menu a').click(function(e){
         e.preventDefault();
-          if($(this).next('.submenu').length){
+          if ($(this).next('.submenu').length){
             $(this).next('.submenu').toggle();
           }
           $('.dropdown').on('hide.bs.dropdown', function () {
@@ -25,7 +25,7 @@ $(document).ready(function() {
 
       $('.dropdown-menu a').tap(function(e){
         e.preventDefault();
-          if($(this).next('.submenu').length){
+          if ($(this).next('.submenu').length){
             $(this).next('.submenu').toggle();
           }
           $('.dropdown').on('hide.bs.dropdown', function() {
