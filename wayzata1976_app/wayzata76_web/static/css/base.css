@@ -142,9 +142,11 @@ body {
 }
 
 body,
-wrapper,
-div.container.content {
-  min-height: 100vh;
+div.container-fluid.content {
+  min-height: 100%;
+  height: 100%;
+  margin-bottom: 60px;
+  bottom: 0;
 }
 
 .footer-row {
@@ -161,10 +163,13 @@ th {
 }
 
 footer {
-  display: fixed;
-  margin-bottom: 0;
+  position: fixed;
+  height: 60px;
   width: 100%;
   bottom: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: 0;
 }
 
 table {
@@ -259,9 +264,9 @@ li.nav-item, a.nav-link {
     display: none;
   }
 
-  footer {
+  /* footer {
     display: inline;
-  }
+  } */
 }
 
 
@@ -337,7 +342,7 @@ li.nav-item, a.nav-link {
     position: fixed;
     /* top: 116px; Height of navbar */
     top: 60px;
-    bottom: 0;
+    bottom: 60px;
     width: 100%;
     padding-right: 1rem;
     padding-left: 1rem;
@@ -373,9 +378,9 @@ li.nav-item, a.nav-link {
     display: none;
   }
 
-  footer {
+  /* footer {
     display: none;
-  }
+  } */
 
   
 }

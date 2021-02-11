@@ -58,6 +58,7 @@ option {
   width: 0;
   border: 8px solid transparent;
   border-bottom-color: #ffffff;
+  z-index: 400;
 }
 
 #scroll:hover {
@@ -77,65 +78,64 @@ div.btn.btn-group-sm a {
   width: 5rem;
 }
 
-
-
-table.table.table-striped.table-dark.table-bordered {
-    max-width: 100%;
-    overflow-x: scroll;
-}
-
-@media (max-width: 991px) {
-  td, th {
-    padding: 4px;
-    font-size: 12pt;
-  }
-
-  table.table.table-striped.table-dark.table-bordered th,
-  table.table.table-striped.table-dark.table-bordered tr {
-    font-size: 10pt;
-    padding: 4px;
-  }
-
-  div.container.content {
-    margin: auto 2rem;
-    width: 100%;
-  }
-
-
-}
-
-div.col-12.row {
+div.btn-group.btn-group-small.row.small-alpha.text-center > div.col-12.row {
   margin-right: 0;
 }
 
-@media (min-width: 1200px) {
-  div.btn-group.btn-group-sm.large-alpha {
-    display: block;
-  }
-  div.btn-group.btn-group-sm.small-alpha {
-    display: none;
+div.col-12.row.text-center {
+  margin-right: 0;
+}
+
+p.update-link {
+  width: 100%;
+  text-align: center;
+}
+
+div.table-wrapper.text-center.toggle-hidden {
+  align-content: center;
+}
+
+
+table.table.table-striped.table-dark.table-bordered {
+  max-width: 100%;
+  overflow-x: scroll;
+}
+
+@media (min-width: 576px) {
+  table.table {
+    padding: 5rem;
+    width: 80%;
+    margin: 0 auto;
   }
 }
 
 
-@media only screen and (max-width: 1199.9px) {
-  div.btn-group.btn-group-sm.small-alpha {
-    display: block;
-  }
+@media (max-width: 991px) {
 
+    td, th {
+      padding: 4px;
+      font-size: 12pt;
+    }
 
+    table.table.table-striped.table-dark.table-bordered th,
+    table.table.table-striped.table-dark.table-bordered tr {
+        font-size: 10pt;
+        padding: 4px;
+    }
 
-  div.btn-group.btn-group-sm.large-alpha {
-    display: none;
-  }
-  a.btn.col.scrollLink {
-    padding: 5px
-  }
+    div.container-fluid.content {
+        margin: auto 2rem;
+        width: 100%;
+    }
+
 }
-
 
 @media only screen and (max-width: 991.9px) {
-  thead th:not(:first-child) {
+  /* thead th:not(:first-child) {
+    display: none;
+  } */
+
+  thead th {
     display: none;
   }
 
@@ -154,12 +154,18 @@ div.col-12.row {
     border-bottom: 2pt solid rgba(235,235,235,0.7);
   }
 
-  td:nth-of-type(1):before {content: 'Last Name'; min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left;}
-  td:nth-of-type(2):before {content: 'Middle'; min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left;}
-  td:nth-of-type(3):before {content: 'First Name'; min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left;}
-  td:nth-of-type(4):before {content: 'City'; min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left;}
-  td:nth-of-type(5):before {content: 'State/Province'; min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left;}
-  td:nth-of-type(6):before {content: 'Zip Code'; min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left;}
+  td:nth-of-type(1):before {content: 'Last Name';
+    min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left;}
+  td:nth-of-type(2):before {content: 'Middle';
+    min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left;}
+  td:nth-of-type(3):before {content: 'First Name';
+    min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left;}
+  td:nth-of-type(4):before {content: 'City';
+    min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left;}
+  td:nth-of-type(5):before {content: 'State/Province';
+    min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left;}
+  td:nth-of-type(6):before {content: 'Zip Code';
+    min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left;}
 
   .btn-group.btn-group-sm {
     padding: 4px;
@@ -171,10 +177,41 @@ div.col-12.row {
 
 }
 
-p.update-link {
-  width: 100%;
-  text-align: center;
+
+
+
+
+
+@media only screen and (max-width: 1199.9px) {
+  
+  div.btn-group.btn-group-sm.small-alpha {
+    display:inline-flex;
+  }
+
+  div.btn-group.btn-group-sm.large-alpha {
+    display: none;
+  }
+
+  a.btn.col.scrollLink {
+    padding: 5px
+  }
+
 }
+
+
+@media (min-width: 1200px) {
+
+  div.btn-group.btn-group-sm.large-alpha {
+    display: block;
+  }
+  div.btn-group.btn-group-sm.small-alpha {
+    display: none;
+  }
+
+}
+
+
+
 
 
 

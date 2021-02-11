@@ -28,7 +28,11 @@
             <h5>Sorted Alphabetically by Last Name</h5>
             <div class="btn-group btn-group-sm large-alpha">
                 {% for letter in alphabet %}
-                    <a class="btn scrollLink" href="{{ letter }}">{{ letter }}</a>
+                    {% if letter in no_target_all %}
+                        <a class="btn scrollLink" href="#">{{ letter }}</a>
+                    {% else %}
+                        <a class="btn scrollLink" href="#{{ letter }}">{{ letter }}</a>
+                    {% endif %}
                 {% endfor %}
             </div>
             <div class="btn-group btn-group-sm row small-alpha">
@@ -97,7 +101,11 @@
             <h5>Sorted Alphabetically by Last Name</h5>
             <div class="btn-group btn-group-sm large-alpha">
                 {% for letter in alphabet %}
-                    <a class="btn scrollLink" href="#{{ letter }}-MIA">{{ letter }}</a>
+                    {% if letter in no_target_mia %}
+                        <a class="btn scrollLink" href="#">{{ letter }}</a>
+                    {% else %}
+                        <a class="btn scrollLink" href="#{{ letter }}-MIA">{{ letter }}</a>
+                    {% endif %}
                 {% endfor %}
             </div>
             <div class="btn-group btn-group-sm row small-alpha">
@@ -183,13 +191,17 @@
             <h5>Sorted Alphabetically by Last Name</h5>
             <div class="btn-group btn-group-sm large-alpha">
                 {% for letter in alphabet %}
-                    <a class="btn scrollLink" href="#{{ letter }}-IN-C">{{ letter }}</a>
+                    {% if letter in no_target_inc %}
+                        <a class="btn scrollLink" href="#">{{ letter }}</a>
+                    {% else %}
+                        <a class="btn scrollLink" href="#{{ letter }}-IN-C">{{ letter }}</a>
+                    {% endif %}
                 {% endfor %}
             </div>
-            <div class="btn-group btn-group-sm row small-alpha">
+            <div class="btn-group btn-group-sm row small-alpha text-center">
                 {% for letter in alphabet %}
                 {% if forloop.counter0 == 0 or forloop.counter0 == 9 or forloop.counter0 == 17 %}
-                    <div class="col-12 row">
+                    <div class="col-12 row text-center">
                 {% endif %}
 
                     <a class="btn scrollLink col" href="#{{ letter }}-IN-C">{{ letter }}</a>

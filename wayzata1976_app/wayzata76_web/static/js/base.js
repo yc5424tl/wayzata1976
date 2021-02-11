@@ -23,7 +23,7 @@ $(document).ready(function() {
       });
 
 
-      $('.dropdown-menu a').tap(function(e){
+      $('.dropdown-menu a').on('tap', function(e){
         e.preventDefault();
           if ($(this).next('.submenu').length){
             $(this).next('.submenu').toggle();

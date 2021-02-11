@@ -155,8 +155,12 @@ def view_zietgeist(request):
     ]
     yearbooks = Yearbook.objects.all()
     songs = None
-    json_file = urlopen(static('json/songs.json'))
-    songs = json.load(json_file)
+    if os.getenv('USE_S3') == 'TRUE':
+        json_file = urlopen(static('json/songs.json'))
+        songs = json.load(json_file)
+    else:
+        json_file = staticfiles_storage.open('json/songs.json')
+        songs = json.load(json_file)
     return render(
         request,
         "main/zietgeist.html",
@@ -194,12 +198,14 @@ def view_classmates(request):
     )
 
     alphabet = list(string.ascii_uppercase)
-
+    no_target_all = ['X']
+    no_target_mia = ['X', 'Q', 'U', 'X', 'V', 'Z']
+    no_target_inc = ['I', 'U', 'X']
     #  Create a dictionary with null values to be replaced by the first student (alphabetically) for each letter, the resulting dictionary contains the Person objects to be targeted with anchor links in the classmates list jump menu.
 
     all_link_dict = {letter: None for letter in alphabet}
     for letter_key in all_link_dict:
-        if letter_key == "X":
+        if letter_key in no_target_all:
             continue
         else:
             for classmate in classmates:
@@ -209,7 +215,7 @@ def view_classmates(request):
 
     mia_link_dict = {letter: None for letter in alphabet}
     for letter_key in mia_link_dict:
-        if letter_key in ["X", "Q", "U", "X", "Y", "Z"]:
+        if letter_key in no_target_mia:
             continue
         else:
             for classmate in mia_list:
@@ -219,7 +225,7 @@ def view_classmates(request):
 
     in_c_link_dict = {letter: None for letter in alphabet}
     for letter_key in in_c_link_dict:
-        if letter_key in ["I", "U", "X"]:
+        if letter_key in no_target_inc:
             continue
         else:
             for classmate in in_contact_list:
@@ -238,6 +244,9 @@ def view_classmates(request):
             "link_dict": all_link_dict,
             "mia_link_dict": mia_link_dict,
             "in_c_link_dict": in_c_link_dict,
+            "no_target_all": no_target_all,
+            "no_target_mia": no_target_mia,
+            "no_target_inc": no_target_inc,
             "alphabet": alphabet,
         },
     )
