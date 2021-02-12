@@ -106,10 +106,13 @@ def questionnaire(request):
 
 
 def email_contact_update_notification(request, contact_info_instance):
-    email_msg = f'A contact information update form has been submitted:\n\n{contact_info_instance}\n\nPlease review the data. To update/add a Person/Address, please use the admin panel (wayzata76.herokuapp.com/admin).\n\nAutomatically Generated Email - Do Not Reply\nwayzata76.com'
-    email_subject = 'ADMIN: Contact Form Submission Received -- Review Required'
-    send_mail(email_subject, email_msg, 'wayzata1976.admin@gmail.com', ['jkboline@gmail.com', 'wayzata1976@gmail.com'])
-    return
+    try:
+        email_msg = f'A contact information update form has been submitted:\n\n{contact_info_instance}\n\nPlease review the data. To update/add a Person/Address, please use the admin panel (wayzata76.herokuapp.com/admin).\n\nAutomatically Generated Email - Do Not Reply\nwayzata76.com'
+        email_subject = 'ADMIN: Contact Form Submission Received -- Review Required'
+        send_mail(email_subject, email_msg, 'wayzata1976@gmail.com', ['jkboline@gmail.com', 'wayzata1976@gmail.com'])
+        return True
+    except:
+        return False
 
 
 def contact_info(request):
@@ -124,10 +127,14 @@ def contact_info(request):
                 request,
                 message="Updated contact information has been submitted. Please allow 1-2 days for the  Thank you.",
             )
-            email_contact_update_notification(request, contact_info)
-            if os.getenv('DEPLOYMENT') == 'DEV':
-                deleted = contact_info.delete()
-                print(f'deleted contact_info = {deleted}')
+            email_sent = email_contact_update_notification(request=request, contact_info_instance=contact_info)
+            if email_sent:
+                return redirect('index')
+            else:
+                print('email not sent')
+            # if os.getenv('DEPLOYMENT') == 'DEV':
+            #     deleted = contact_info.delete()
+            #     print(f'deleted contact_info = {deleted}')
             return redirect('index')
             # TODO - if submitter is logged in user, check to see if user is attatched to a person -- update corresponding fields
             # TODO - check if all Address fields contain data, create new Address if so, linking it to Person

@@ -44,7 +44,103 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'view_classmates' %}">Classmates</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'view_zietgeist' %}">The Wayback Machine</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'questionnaire' %}">Questionnaire</a></li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item"><a href="#">Pictures<span class="drop-icon">▾</span>
+                            <label title="Toggle Drop-Down" class="drop-icon" for="top-submenu">▾</label></a>
+                            <input type="checkbox" id="top-submenu">
+                            <ul class="sub-menu">
+                                <li><a href="#">Reunions<span class="drop-icon">▾</span>
+                                    <label title="Toggle Drop-Down" class="drop-icon" for="reunions-submenu">▾</label></a>
+                                    <input type=checkbox" id="reunions-submenu">
+                                    <ul class="sub-menu">
+                                        <li><a  href="{% url 'view_gallery' pk=1 %}">5th Reunion (1981)</a></li>
+                                        <li><a  href="{% url 'view_gallery' pk=2 %}">10th Reunion (1986)</a></li>
+                                        <li><a  href="{% url 'view_gallery' pk=3 %}">15th Reunion (1991)</a></li>
+                                        <li><a  href="{% url 'view_gallery' pk=4 %}">20th Reunion (1996)</a></li>
+                                        <li><a  href="{% url 'view_gallery' pk=5 %}">25th Reunion (2001)</a></li>
+                                        <li><a href="#">30th Reunion (2006)<span class="drop-icon">▾</span>
+                                            <label title="Toggle Drop-Down" class="drop-icon" for="30-submenu">▾</label></a>
+                                            <input type="checkbox" id="30-submenu">
+                                            <ul class="sub-menu">
+                                                <li><a href="{% url 'view_gallery' pk=34 %}">Reunion Party</a></li>
+                                                <li><a href="{% url 'view_gallery' pk=35 %}">Tourney for Ted</a></li>
+                                                <li><a href="{% url 'view_gallery' pk=36 %}">Reunion Eve at the Wayzata Legion</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">35th Reunion (2011)<span class="drop-icon">▾</span>
+                                            <label title="Toggle Drop-Down" class="drop-icon" for="35-submenu">▾</label></a>
+                                            <input type="checkbox" id="35-submenu">
+                                            <ul class="sub-menu">
+                                                <li><a href="{% url 'view_gallery' pk=37 %}">Reunion Party</a></li>
+                                                <li><a href="{% url 'view_gallery' pk=38 %}">Reunion Committee</a></li>
+                                                <li><a href="{% url 'view_gallery' pk=39 %}">Tourney for Ted</a></li>
+                                                <li><a href="{% url 'view_gallery' pk=40 %}">Reunion Eve at the Wayzata Legion</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">40th Reunion (2016)<span class="drop-icon">▾</span>
+                                            <label title="Toggle Drop-Down" class="drop-icon" for="40-submenu">▾</label></a>
+                                            <input type="checkbox" id="40-submenu">
+                                            <ul class="sub-menu">
+                                                <li><a href="{% url 'view_gallery' pk=41 %}">Reunion Party</a></li>
+                                                <li><a href="{% url 'view_gallery' pk=42 %}">Reunion Eve at the Wayzata Legion</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Student Life<span class="drop-icon">▾</span>
+                                    <label title="Toggle Drop-Down" class="drop-icon" for="student-life-submenu">▾</label></a>
+                                    <input type="checkbox" id="student-life-submenu">
+                                    <ul class="sub-menu">
+                                        <li><a href="{% url 'view_gallery' pk=9 %}">Band</a></li>
+                                        <li><a href="{% url 'view_gallery' pk=10 %}">Cheer & Dance Line</a></li>
+                                        <li><a href="{% url 'view_gallery' pk=11 %}">Class Pictures</a></li>
+                                        <li><a href="{% url 'view_gallery' pk=12 %}">Drama</a></li>
+                                        <li><a href="{% url 'view_gallery' pk=13 %}">Graduation</a></li>
+                                        <li><a href="{% url 'view_gallery' pk=14 %}">Pep Fests & Parades</a></li>
+                                        <li><a href="{% url 'view_gallery' pk=15 %}">School Pictures</a></li>
+                                        <li><a href="#">Sports<span class="drop-icon">▾</span>
+                                            <label title="Toggle Drop-Down" class="drop-icon" for="sports-submenu">▾</label></a>
+                                            <input type="checkbox" id="sports-submenu">
+                                            <ul class="sub-menu">
+                                                <li><a href="{% url 'view_gallery' pk=19 %}">Baseball</a></li>
+                                                <li><a href="{% url 'view_gallery' pk=20 %}">Basketball</a></li>
+                                                <li><a href="{% url 'view_gallery' pk=21 %}">Cross Country</a></li>
+                                                <li><a href="{% url 'view_gallery' pk=22 %}">Fencing</a></li>
+                                                <li><a href="{% url 'view_gallery' pk=23 %}">Football</a></li>
+                                                <li><a href="{% url 'view_gallery' pk=24 %}">Gymnastics</a></li>
+                                                <li><a href="{% url 'view_gallery' pk=25 %}">Hockey</a></li>
+                                                <li><a href="{% url 'view_gallery' pk=26 %}">Soccer</a></li>
+                                                <li><a href="{% url 'view_gallery' pk=27 %}">Track & Field</a></li>
+                                                <li><a href="{% url 'view_gallery' pk=28 %}">Volleyball</a></li>
+                                                <li><a href="{% url 'view_gallery' pk=29 %}">Wrestling</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a ref="{% url 'view_gallery' pk=17 %}">Learning Enforcement Staff</a></li>
+                                        <li><a href="#">Yearbooks<span class="drop-icon">▾</span>
+                                        <label title="Toggle Drop-Down" class="drop-icon" for="yearbook-submenu">▾</label></a>
+                                        <input type="checkbox" id="yearbook-submenu">
+                                            <ul class="submenu">
+                                                <li><a href="{% url 'view_gallery' pk=30 %}">Covers</a></li>
+                                                <li><a href="{% url 'view_gallery' pk=31 %}">Wayzata Junior High Yearbook 1970-71</a></li>
+                                                <li><a href="{% url 'view_gallery' pk=32 %}">Wayzata Junior High Yearbook 1971-72</a></li>
+                                                <li><a href="{% url 'view_gallery' pk=33 %}">Wayzata Junior High Yearbook 1972-73</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">The Stomping Grounds<span class="drop-icon">▾</span>
+                                    <label title="Toggle Drop-Down" class="drop-icon" for="tsg-submenu">▾</label></a>
+                                    <input type="checkbox" id="tsg-submenu">
+                                    <ul class="sub-menu">
+                                        <li><a href="{% url 'view_gallery' pk=43 %}">Old Photographs</a></li>
+                                        <li><a href="{% url 'view_gallery' pk=44 %}">Misc.</a></li>
+                                        {% if request.user.is_superuser %}
+                                            <li><a href="{% url 'upload_multi_gallery_image' %}">Add Photos</a></li>
+                                        {% endif %}
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Pictures</a>
                             <ul class="dropdown-menu" id='dropdown-1'>
 
@@ -124,7 +220,7 @@
                                     <li><a class="btn btn-dark" role="button" href="{% url 'upload_multi_gallery_image' %}">Add Photos</a></li>
                                 {% endif %}
                             </ul>
-                        </li>
+                        </li> -->
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="nav-links-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Links</a>

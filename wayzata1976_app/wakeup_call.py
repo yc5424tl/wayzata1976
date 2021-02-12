@@ -4,14 +4,7 @@ import http
 
 
 if __name__ == "__main__":
-    # os.environ.setdefault("DJANGO_SETTINGS_MODULE", "wayzata76_django.settings")
-    # import django
-
-    # django.setup()
-    # from wayzata76_agent_
-
-    # function()
-    # response = requests.get('url')
+ 
     send_request()
 
 
