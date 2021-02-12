@@ -1,41 +1,50 @@
-$(document).ready(function() {
+// $(document).ready(function() {
 
-    // Prevent closing from click inside dropdown
-    $(document).on('click', '.dropdown-menu', function (e) {
-      e.stopPropagation();
-    });
+//     // Prevent closing from click inside dropdown
+//     $(document).on('click', '.dropdown-menu', function (e) {
+//       e.stopPropagation();
+//     });
 
-    $(document).on('tap', '.dropdown-menu', function (e) {
-      e.stopPropagation();
-    });
+//     // $(document).on('tap', '.dropdown-menu', function (e) {
+//     //   e.stopPropagation();
+//     // });
 
-    // make it as accordion for smaller screens
-    if ($(window).width() < 992) {
+//     // make it as accordion for smaller screens
+//     if ($(window).width() < 992) {
 
-      $('.dropdown-menu a').click(function(e){
-        e.preventDefault();
-          if ($(this).next('.submenu').length){
-            $(this).next('.submenu').toggle();
-          }
-          $('.dropdown').on('hide.bs.dropdown', function () {
-        $(this).find('.submenu').hide();
-      })
-      });
-
-
-      $('.dropdown-menu a').on('tap', function(e){
-        e.preventDefault();
-          if ($(this).next('.submenu').length){
-            $(this).next('.submenu').toggle();
-          }
-          $('.dropdown').on('hide.bs.dropdown', function() {
-        $(this).find('.submenu').hide();
-      })
-      });
+//       $('.dropdown-menu a').click(function(e){
+//         e.preventDefault();
+//           if ($(this).next('.submenu').length){
+//             $(this).next('.submenu').toggle();
+//           }
+//           $('.dropdown').on('hide.bs.dropdown', function () {
+//         $(this).find('.submenu').hide();
+//       })
+//       });
 
 
-    }
+//       // $('.dropdown-menu a').on('tap', function(e){
+//       //   e.preventDefault();
+//       //     if ($(this).next('.submenu').length){
+//       //       $(this).next('.submenu').toggle();
+//       //     }
+//       //     $('.dropdown').on('hide.bs.dropdown', function() {
+//       //   $(this).find('.submenu').hide();
+//       // })
+//       // });
 
+
+//     }
+
+
+
+
+  $(document).on('click', '.dropdown-menu', function(e) {
+    e.preventDefault();
+    $(this).next('.submenu').toggle();
+    $('.dropdown').on('hide.bs.dropdown', function () {
+      $(this).find('.submenu').hide();
+  });
 
 
     // window.onclick = function(event) {
@@ -61,4 +70,4 @@ $(document).ready(function() {
     //   $($(this).data('parent')).find('.panel-collapse.in').collapse('hide');
     //   $($(this).attr('href')).collapse('show');
     // });
-});
+// });

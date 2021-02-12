@@ -12,7 +12,7 @@
 
         <a href="#" id="scroll" class="fas fa-chevron-circle-up" data-toggle="tooltip" data-placement="top" title="Jump to Top"><span></span></a>
 
-        <h2 class="page-header">Members of Wayzata Class of '76</h2>
+        <h2 class="page-header">Wayzata Class of '76 Roll Call</h2>
         <div style="margin: auto; text-align: center;">
             <label class="custom-select-label" for="customSelectFilter"><h5><strong>Filter: </strong></h5></label>
             <select class="table-view-select text-center" id="customSelectFilter">
@@ -35,16 +35,17 @@
                     {% endif %}
                 {% endfor %}
             </div>
-            <div class="btn-group btn-group-sm row small-alpha">
+            <nav class="btn-group btn-group-sm small-alpha text-center row">
                 {% for letter in alphabet %}
 
-                    {% if forloop.counter0 == 0 or forloop.counter0 == 9 or forloop.counter0 == 17 %}
-                        <div class="col-12 row">
+                    {% if forloop.counter0 == 0 or forloop.counter0 == 13 %}
+                        <div class="col-12 nav" style="margin:0 auto;padding:5px;">
                     {% endif %}
 
-                    <a class="btn scrollLink col" href="#{{ letter }}">{{ letter }}</a>
+                    <a class="nav-link" href="#{{ letter }}">{{ letter }}</a>
+                    <!-- <a class="btn scrollLink col" href="#{{ letter }}">{{ letter }}</a> -->
 
-                    {% if forloop.counter0 == 8 or forloop.counter0 == 16 or forloop.counter0 == 25 %}
+                    {% if forloop.counter0 == 12 or forloop.counter0 == 25 %}
                         </div>
                     {% endif %}
                 {% endfor %}
@@ -108,21 +109,22 @@
                     {% endif %}
                 {% endfor %}
             </div>
-            <div class="btn-group btn-group-sm row small-alpha">
+            <div class="btn-group btn-group-sm small-alpha text-center row">
                 {% for letter in alphabet %}
 
                 {% if forloop.counter0 == 0 or forloop.counter0 == 9 or forloop.counter0 == 17 %}
-                        <div class="col-12 row">
+                    <nav class="nav nav-justified justify-content-center col-xs-12 col-md-4">
                 {% endif %}
-                    <a class="btn scrollLink col" href="#{{ letter }}-MIA">{{ letter }}</a>
+                    <a class="nav-link" href="#{{ letter }}-MIA">{{ letter }}</a>
+                    <!-- <a class="btn scrollLink col" href="#{{ letter }}-MIA">{{ letter }}</a> -->
                 {% if forloop.counter0 == 8 or forloop.counter0 == 16 or forloop.counter0 == 25 %}
-                            </div>
+                    </nav>
                 {% endif %}
 
                 {% endfor %}
             </div>
            
-            <p class="update-link"><sub class="white">See anything that's incorrect or dated? Updates can be made <a href="{% url 'contact_info' %}">here</a>.</sub></p>
+            <p class="update-link"><sub>See anything that's incorrect or dated? Updates can be made <a href="{% url 'contact_info' %}">here</a>.</sub></p>
             <hr>
             <table class="table table-striped table-dark table-bordered">
                 <title>M.I.A Classmates</title>
@@ -198,16 +200,17 @@
                     {% endif %}
                 {% endfor %}
             </div>
-            <div class="btn-group btn-group-sm row small-alpha text-center">
+            <div class="btn-group btn-group-sm small-alpha text-center row">
                 {% for letter in alphabet %}
-                {% if forloop.counter0 == 0 or forloop.counter0 == 9 or forloop.counter0 == 17 %}
-                    <div class="col-12 row text-center">
-                {% endif %}
-
-                    <a class="btn scrollLink col" href="#{{ letter }}-IN-C">{{ letter }}</a>
-                {% if forloop.counter0 == 8 or forloop.counter0 == 16 or forloop.counter0 == 25 %}
-                    </div>
-                {% endif %}
+                    {% if forloop.counter0 == 0 or forloop.counter0 == 9 or forloop.counter0 == 17 %}
+                        <!-- <div class="col-12 row text-center"> -->
+                        <nav class="nav nav-justified justify-content-center col-xs-12 col-md-4">
+                    {% endif %}
+                        <a class="nav-link" href="#{{ letter }}-IN-C">{{ letter }}</a>
+                        <!-- <a class="btn scrollLink col" href="#{{ letter }}-IN-C">{{ letter }}</a> -->
+                    {% if forloop.counter0 == 8 or forloop.counter0 == 16 or forloop.counter0 == 25 %}
+                        </nav>
+                    {% endif %}
                 {% endfor %}
             </div>
             <p class="update-link"><sub>See anything that's incorrect or dated? Updates can be made <a href="{% url 'contact_info' %}">here</a>.</sub></p>

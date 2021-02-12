@@ -8,10 +8,12 @@ from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.staticfiles.storage import staticfiles_storage
+from django.core.mail import BadHeaderError, send_mail, mail_admins, EmailMultiAlternatives
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.template.loader import render_to_string
 from django.templatetags.static import static
 from django.urls import reverse, reverse_lazy
 from django.views.decorators.csrf import ensure_csrf_cookie
@@ -103,6 +105,13 @@ def questionnaire(request):
         return render(request, "main/questionnaire.html")
 
 
+def email_contact_update_notification(request, contact_info_instance):
+    email_msg = f'A contact information update form has been submitted:\n\n{contact_info_instance}\n\nPlease review the data. To update/add a Person/Address, please use the admin panel (wayzata76.herokuapp.com/admin).\n\nAutomatically Generated Email - Do Not Reply\nwayzata76.com'
+    email_subject = 'ADMIN: Contact Form Submission Received -- Review Required'
+    send_mail(email_subject, email_msg, 'wayzata1976.admin@gmail.com', ['jkboline@gmail.com', 'wayzata1976@gmail.com'])
+    return
+
+
 def contact_info(request):
     if request.method == "POST":
         form = ContactUpdateForm(request.POST)
@@ -115,6 +124,11 @@ def contact_info(request):
                 request,
                 message="Updated contact information has been submitted. Please allow 1-2 days for the  Thank you.",
             )
+            email_contact_update_notification(request, contact_info)
+            if os.getenv('DEPLOYMENT') == 'DEV':
+                deleted = contact_info.delete()
+                print(f'deleted contact_info = {deleted}')
+            return redirect('index')
             # TODO - if submitter is logged in user, check to see if user is attatched to a person -- update corresponding fields
             # TODO - check if all Address fields contain data, create new Address if so, linking it to Person
     else:

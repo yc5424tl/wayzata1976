@@ -33,6 +33,12 @@ if os.getenv('DEPLOYMENT') == 'DEV':
     if os.path.isfile(dotenv_file):
         dotenv.load_dotenv(dotenv_file)
 
+    EMAIL_BACKEND = (
+        "django.core.mail.backends.console.EmailBackend"
+    )
+    # EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+    # EMAIL_FILE_PATH = str(BASE_DIR.joinpath("sent_emails"))
+
 
 
 
@@ -166,8 +172,14 @@ LOGIN_URL = reverse_lazy("login")
 LOGIN_REDIRECT_URL = reverse_lazy("index")
 LOGOUT_REDIRECT_URL = reverse_lazy("index")
 
-EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-EMAIL_FILE_PATH = str(BASE_DIR.joinpath("sent_emails"))
+if os.getenv('DEPLOYMENT') == 'PROD':
+    EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
+    EMAIL_HOST = os.getenv('EMAIL_HOST')
+    EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+    EMAIL_PORT = os.getenv('EMAIL_PORT')
+    EMAIL_USE_TLS = os.getenv('USE_TLS') == 'TRUE'
+
 
 if os.getenv("USE_S3") == "TRUE":
 

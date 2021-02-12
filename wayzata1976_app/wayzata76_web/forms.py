@@ -1,5 +1,6 @@
 import os
 import uuid
+import pytz
 
 import requests
 from django import forms
@@ -39,6 +40,8 @@ class CustomUserChangeForm(UserChangeForm):
 
 class ContactUpdateForm(forms.ModelForm):
 
+    COUNTRY_CHOICES = [(k,pytz.country_names[k]) for k in pytz.country_names]
+
     first_name = forms.CharField(max_length=100)
     middle_initial = forms.CharField(max_length=10, required=False)
     last_name = forms.CharField(max_length=100)
@@ -46,7 +49,7 @@ class ContactUpdateForm(forms.ModelForm):
     city = forms.CharField(max_length=100, required=False)
     state_province = forms.CharField(max_length=100, required=False)
     zip_code = forms.CharField(max_length=15, required=False)
-    country = forms.CharField(max_length=100, required=False)
+    country = forms.ChoiceField(choices=COUNTRY_CHOICES, initial=('US', 'United States'), required=False)
     phone = forms.CharField(max_length=30, required=False)
     email = forms.EmailField(max_length=100, required=False)
     spouse_is_classmate = forms.CheckboxInput()

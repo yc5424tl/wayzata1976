@@ -68,6 +68,10 @@
                     {{ form.city.errors }}
                     {% render_field form.city class="form-control" placeholder="City" %}
                 </div>
+                <div class="col form-group">
+                    {{ form.zip_code.errors }}
+                    {% render_field form.zip_code class="form-control" placeholder="ZIP" %}
+                </div>
             </div>
             <div class="form-row">
                 <div class="col form-group">
@@ -75,8 +79,8 @@
                     {% render_field form.state_province class="form-control" placeholder="State/Province" %}
                 </div>
                 <div class="col form-group">
-                    {{ form.zip_code.errors }}
-                    {% render_field form.zip_code class="form-control" placeholder="ZIP" %}
+                    {{ form.country.errors }}
+                    {% render_field form.country class="form-control" %}
                 </div>
             </div>
             <div class="form-row">
