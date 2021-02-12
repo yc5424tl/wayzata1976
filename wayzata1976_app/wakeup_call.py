@@ -12,11 +12,12 @@ if __name__ == "__main__":
 
     # function()
     # response = requests.get('url')
+    send_request()
 
 
-    def send_request(url):
+    def send_request():
         response = requests.get('https://wayzata76.herokuapp.com')
         if response.status_code == http.HTTPStatus.OK:
-            pass
+            print(response)
         else:
-            pass
+            print(response)
