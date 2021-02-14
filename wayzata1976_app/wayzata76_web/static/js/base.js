@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $(document).on('click', '.dropdown-menu', function (e) {
+  $(document).on('click', '.dropdown-menu:not(.active-link)', function (e) {
     e.stopPropagation();
   });
   
