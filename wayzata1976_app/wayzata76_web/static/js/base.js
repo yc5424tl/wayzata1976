@@ -1,4 +1,11 @@
 $(document).ready(function() {
+
+  $('.active-link').click(function() {
+    window.location = $(this).attr('href');
+  });
+
+
+
   $(document).on('click', '.dropdown-menu:not(.active-link)', function (e) {
     e.stopPropagation();
   });
