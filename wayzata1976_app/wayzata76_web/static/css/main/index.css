@@ -7,3 +7,15 @@ div.custom-blockquote {
 div.index-div {
   background-color: rgba(0, 0, 0, 0.8);
 }
+
+ul {
+  list-style-type: none;
+  list-style: none;
+}
+
+small {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+}
