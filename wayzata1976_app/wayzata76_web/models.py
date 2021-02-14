@@ -8,6 +8,7 @@ from django import forms
 from .storage_backends import PublicMediaStorage
 import pytz
 
+
 class CustomUser(AbstractUser):
     pass
 
@@ -100,16 +101,17 @@ class Image(models.Model):
 
 
 def remove_extra_periods(target_str):
-    for period in range(target_str.count('.')-1):
+    for period in range(target_str.count(".") - 1):
         for x in target_str:
-            if x == '.':
+            if x == ".":
                 if target_str.find(x) != target_str.rfind(x):
-                    target_str = target_str.replace(x, '_', 1)
+                    target_str = target_str.replace(x, "_", 1)
     return target_str
-    
+
+
 def gallery_for_image(instance, filename):
     cleaned_filename = remove_extra_periods(filename)
-    name, ext = cleaned_filename.replace(' ', '_').split(".")
+    name, ext = cleaned_filename.replace(" ", "_").split(".")
     file_path = f"{instance.gallery.working_name}/{instance.uuid}.{ext}"
     return file_path
 
@@ -172,7 +174,9 @@ class Person(models.Model):
     )
     last_name = models.CharField(max_length=100, null=False, blank=False)
     first_name = models.CharField(max_length=100, null=False, blank=False)
-    middle_initial = models.CharField(max_length=10, null=True, blank=True, default=None)
+    middle_initial = models.CharField(
+        max_length=10, null=True, blank=True, default=None
+    )
     nickname = models.CharField(max_length=100, null=True, blank=True, default=None)
     phone = models.CharField(max_length=30, null=True, blank=True)
     email = models.EmailField(max_length=100, null=True, blank=True)
@@ -203,7 +207,13 @@ class ContactInfo(models.Model):
     state_province = models.CharField(max_length=100, null=True, blank=True)
     zip_code = models.CharField(max_length=20, null=True, blank=True)
     # country = models.CharField(max_length=100, null=True, blank=True)
-    country = models.CharField(max_length=2, choices=pytz.country_names.items(), null=True, blank=True, default=None)
+    country = models.CharField(
+        max_length=2,
+        choices=pytz.country_names.items(),
+        null=True,
+        blank=True,
+        default=None,
+    )
     phone = models.CharField(max_length=30, null=True, blank=True)
     email = models.EmailField(max_length=100, null=True, blank=True)
     spouse_is_classmate = models.BooleanField(default=False)
@@ -220,7 +230,22 @@ class ContactInfo(models.Model):
     )
 
     def __str__(self):
-        return f"First Name: {self.first_name}\nMiddle: {self.middle_initial if self.middle_initial else '--'}\nLast Name: {self.last_name}\nStreet Address: {self.street_address if self.street_address else '--'}\nCity: {self.city if self.city else '--'}\nState/Province: {self.state_province if self.state_province else '--'}\nZip Code: {self.zip_code if self.zip_code else '--'}\nCountry: {self.country if self.country else '--'}\nPhone: {self.phone if self.phone else '--'}\nEmail: {self.email if self.email else '--'}\nSpouse is Classmate: {self.spouse_is_classmate}\nSpouse is Alumni: {self.spouse_is_alumni}\nSpouse First Name: {self.spouse_first_name if self.spouse_first_name else '--'}\nSpouse Middle: {self.spouse_middle_initial if self.spouse_middle_initial else '--'}\nSpouse Last Name: {self.spouse_last_name if self.spouse_last_name else '--'}\nSubmitted by: {self.user.username if self.user else 'Anonymous'}"
+        return f"First Name: {self.first_name}\n\
+        Middle: {self.middle_initial if self.middle_initial else '--'}\n\
+        Last Name: {self.last_name}\n\
+        Street Address: {self.street_address if self.street_address else '--'}\n\
+        City: {self.city if self.city else '--'}\n\
+        State/Province: {self.state_province if self.state_province else '--'}\n\
+        Zip Code: {self.zip_code if self.zip_code else '--'}\n\
+        Country: {self.country if self.country else '--'}\n\
+        Phone: {self.phone if self.phone else '--'}\n\
+        Email: {self.email if self.email else '--'}\n\
+        Spouse is Classmate: {self.spouse_is_classmate}\n\
+        Spouse is Alumni: {self.spouse_is_alumni}\n\
+        Spouse First Name: {self.spouse_first_name if self.spouse_first_name else '--'}\n\
+        Spouse Middle: {self.spouse_middle_initial if self.spouse_middle_initial else '--'}\n\
+        Spouse Last Name: {self.spouse_last_name if self.spouse_last_name else '--'}\n\
+        Submitted by: {self.user.username if self.user else 'Anonymous'}"
 
 
 class SurveyResult(models.Model):

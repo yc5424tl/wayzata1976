@@ -236,8 +236,7 @@
                     {% endif %}
                 </ul>
                 {% if request.user.is_authenticated %}
-                <span id='outside-username' class="navbar-text bg-dark text-light text-right ml-auto mr-1">Hello, {{
-                    request.user.username }}</span>
+                <span id='outside-username' class="navbar-text bg-dark text-light text-right ml-auto mr-1">Hello, {{ request.user.username }}</span>
                 <a id='outside-logout' class="outside btn btn-outline-warning btn-sm my-2 my-sm-0 ml-2" role="button"
                     href="{% url 'logout' %}">Log Out</a>
                 {% else %}
