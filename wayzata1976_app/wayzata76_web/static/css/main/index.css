@@ -1,12 +1,9 @@
 div.custom-blockquote {
-  background-color: rgb(0, 0, 0);
   opacity: 0.5;
   border: 1pt solid grey;
 }
 
-div.index-div {
-  background-color: rgba(0, 0, 0, 0.8);
-}
+
 
 ul {
   list-style-type: none;
@@ -17,5 +14,8 @@ small {
   width: 100%;
   margin: 0 auto;
   text-align: center;
-  display: block;
+}
+
+ul.inner-ul li {
+  margin-right: 10%;
 }

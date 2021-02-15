@@ -104,6 +104,7 @@ table.table.table-striped.table-dark.table-bordered {
 a.nav-link {
   padding: 3px;
   display: inline-block;
+  background-color: transparent;
 }
 
 @media (min-width: 576px) {

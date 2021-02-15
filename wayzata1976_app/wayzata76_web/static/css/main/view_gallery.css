@@ -136,7 +136,7 @@ body {
 }
 
 .gal-container {
-  padding-top: 75px;
+  /* padding-top: 75px; */
   padding-bottom: 75px;
 }
 
@@ -160,3 +160,18 @@ body {
   background-color: transparent;
 }
 
+a.nav-link.related-gallery {
+  background-color: transparent;
+}
+
+span.nav-link.related-gallery-header {
+  font-size: 11pt;
+  display: inline;
+  margin-bottom: 0;
+  background-color: transparent;
+}
+
+nav.nav.justify-content-center a.nav-link.related-gallery,
+nav.nav.justify-content-center h6.nav-link.related-gallery-header {
+  padding: 8px;
+}
