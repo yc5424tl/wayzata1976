@@ -101,7 +101,7 @@ table.table.table-striped.table-dark.table-bordered {
   overflow-x: scroll;
 }
 
-a.nav-link {
+a.nav-link.active-link {
   padding: 3px;
   display: inline-block;
   background-color: transparent;

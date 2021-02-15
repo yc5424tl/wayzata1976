@@ -31,24 +31,24 @@
     <h5>Sorted Alphabetically by Last Name</h5>
     <div class="btn-group btn-group-sm large-alpha">
         {% for letter in alphabet %}
-        {% if letter in no_target_all %}
-        <a class="btn scrollLink" href="#">{{ letter }}</a>
-        {% else %}
-        <a class="btn scrollLink" href="#{{ letter }}">{{ letter }}</a>
-        {% endif %}
+            {% if letter in no_target_all %}
+                <a class="btn scrollLink" href="#">{{ letter }}</a>
+            {% else %}
+                <a class="btn scrollLink" href="#{{ letter }}">{{ letter }}</a>
+            {% endif %}
         {% endfor %}
     </div>
     <nav class="btn-group btn-group-sm small-alpha text-center row">
         {% for letter in alphabet %}
-        {% if forloop.counter0 == 0 or forloop.counter0 == 13 %}
-        <div class="col-12 nav" style="margin:0 auto;padding:5px;">
+            {% if forloop.counter0 == 0 or forloop.counter0 == 13 %}
+                <div class="col-12 nav" style="margin:0 auto;padding:5px;">
             {% endif %}
-            <a class="nav-link" href="#{{ letter }}">{{ letter }}</a>
+                <a class="nav-link active" href="#{{ letter }}">{{ letter }}</a>
             {% if forloop.counter0 == 12 or forloop.counter0 == 25 %}
-        </div>
-        {% endif %}
+                </div>
+            {% endif %}
         {% endfor %}
-</div>
+    </div>
 <p class="update-link"><sub>See anything that's incorrect or dated? Updates can be made <a
             href="{% url 'contact_info' %}">here</a>.</sub></p>
 <hr>
@@ -112,13 +112,13 @@
     <div class="btn-group btn-group-sm small-alpha text-center row">
         {% for letter in alphabet %}
 
-        {% if forloop.counter0 == 0 or forloop.counter0 == 9 or forloop.counter0 == 17 %}
-        <nav class="nav nav-justified justify-content-center col-xs-12 col-md-4">
+        {% if forloop.counter0 == 0 or forloop.counter0 == 13 %}
+        <div class="col-12 nav" style="margin:0 auto;padding:5px;">
             {% endif %}
-            <a class="nav-link" href="#{{ letter }}-MIA">{{ letter }}</a>
+            <a class="nav-link active-link" href="#{{ letter }}-MIA">{{ letter }}</a>
 
-            {% if forloop.counter0 == 8 or forloop.counter0 == 16 or forloop.counter0 == 25 %}
-        </nav>
+            {% if forloop.counter0 == 12 or forloop.counter0 == 25 %}
+        </div>
         {% endif %}
 
         {% endfor %}
@@ -205,11 +205,11 @@
     <div class="btn-group btn-group-sm small-alpha text-center row">
         {% for letter in alphabet %}
         {% if forloop.counter0 == 0 or forloop.counter0 == 9 or forloop.counter0 == 17 %}
-        <nav class="nav nav-justified justify-content-center col-xs-12 col-md-4">
+            <div class="col-12 nav" style="margin:0 auto;padding:5px;">
             {% endif %}
-            <a class="nav-link" href="#{{ letter }}-IN-C">{{ letter }}</a>
+            <a class="nav-link active-link" href="#{{ letter }}-IN-C">{{ letter }}</a>
             {% if forloop.counter0 == 8 or forloop.counter0 == 16 or forloop.counter0 == 25 %}
-        </nav>
+            </div>
         {% endif %}
         {% endfor %}
     </div>
