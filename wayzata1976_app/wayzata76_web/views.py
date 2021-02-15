@@ -189,6 +189,20 @@ def view_zietgeist(request):
     )
 
 
+def build_classmate_nav(person_instance_list, ignored_letter_list):
+    alphabet = list(string.ascii_uppercase)
+    link_dict = {letter: None for letter in alphabet}
+    for letter_key in link_dict:
+        if letter_key in ignored_letter_list:
+            continue
+        else:
+            for classmate in person_instance_list:
+                if classmate.last_name[0] == letter_key:
+                    link_dict[letter_key] = classmate
+                    break
+    return link_dict
+
+
 def view_classmates(request):
 
     classmates = (
@@ -218,41 +232,18 @@ def view_classmates(request):
         .select_related("address")
     )
 
-    alphabet = list(string.ascii_uppercase)
     no_target_all = ['X']
     no_target_mia = ['X', 'Q', 'U', 'X', 'V', 'Z']
-    no_target_inc = ['I', 'U', 'X']
+    no_target_passed = ['A', 'G', 'I', 'J', 'K', 'N', 'O', 'Q', 'R', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    no_target_in_c = ['I', 'U', 'X']
     #  Create a dictionary with null values to be replaced by the first student (alphabetically) for each letter, the resulting dictionary contains the Person objects to be targeted with anchor links in the classmates list jump menu.
 
-    all_link_dict = {letter: None for letter in alphabet}
-    for letter_key in all_link_dict:
-        if letter_key in no_target_all:
-            continue
-        else:
-            for classmate in classmates:
-                if classmate.last_name[0] == letter_key:
-                    all_link_dict[letter_key] = classmate
-                    break
+    all_link_dict = build_classmate_nav(classmates, no_target_all)
+    mia_link_dict = build_classmate_nav(mia_list, no_target_mia)
+    passed_link_dict = build_classmate_nav(passed_list, no_target_passed)
+    in_c_link_dict = build_classmate_nav(in_contact_list, no_target_in_c)
 
-    mia_link_dict = {letter: None for letter in alphabet}
-    for letter_key in mia_link_dict:
-        if letter_key in no_target_mia:
-            continue
-        else:
-            for classmate in mia_list:
-                if classmate.last_name[0] == letter_key:
-                    mia_link_dict[letter_key] = classmate
-                    break
-
-    in_c_link_dict = {letter: None for letter in alphabet}
-    for letter_key in in_c_link_dict:
-        if letter_key in no_target_inc:
-            continue
-        else:
-            for classmate in in_contact_list:
-                if classmate.last_name[0] == letter_key:
-                    in_c_link_dict[letter_key] = classmate
-                    break
+    alphabet = list(string.ascii_uppercase)
 
     return render(
         request,
@@ -267,53 +258,11 @@ def view_classmates(request):
             "in_c_link_dict": in_c_link_dict,
             "no_target_all": no_target_all,
             "no_target_mia": no_target_mia,
-            "no_target_inc": no_target_inc,
+            "no_target_passed": no_target_passed,
+            "no_target_in_c": no_target_in_c,
             "alphabet": alphabet,
         },
     )
-
-
-class ClassmateList(ListView):
-    template_name = "main/view_classmates.html"
-    paginate_by = 50
-    context_object_name = "classmates"
-
-    def get_queryset(self):
-        self.queryset = (
-            Person.objects.filter(address=None)
-            .only(
-                "last_name", "first_name", "middle_initial", "address", "is_classmate"
-            )
-            .order_by("last_name")
-            .select_related("address")
-        )
-        return self.queryset
-
-    def get_context_data(self, **kwargs):
-        context = super(ClassmateList, self).get_context_data(**kwargs)
-        context["classmates"] = self.queryset
-        context["mia_list"] = (
-            Person.objects.filter(address=None)
-            .only(
-                "last_name", "first_name", "middle_initial", "address", "is_classmate"
-            )
-            .order_by("last_name")
-            .select_related("address")
-        )
-        context["passed_list"] = (
-            Person.objects.filter(address__city="passed")
-            .only(
-                "last_name", "first_name", "middle_initial", "address", "is_classmate"
-            )
-            .order_by("last_name")
-            .select_related("address")
-        )
-        context["in_contact_list"] = (
-            Person.objects.exclude(address__city="passed", address=None)
-            .order_by("last_name")
-            .select_related("address")
-        )
-        return context
 
 
 def view_news(request):

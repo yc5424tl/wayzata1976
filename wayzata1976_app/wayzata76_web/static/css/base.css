@@ -334,11 +334,11 @@ a.nav-link {
     display: none;
   }
 
-  .nav-link {
+  .navbar-collapse .nav-link {
     background-color: rgba(52, 58, 64, 0.85);
   }
 
-  .nav-item {
+  .navbar-collapse .nav-item {
     background-color: transparent;
   }
 }

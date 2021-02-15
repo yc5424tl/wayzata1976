@@ -74,13 +74,10 @@ div.btn.btn-group-sm {
 }
 
 div.btn.btn-group-sm a {
-  display: flex;
+  display: inline;
   width: 5rem;
 }
 
-div.btn-group.btn-group-small.row.small-alpha.text-center > div.col-12.row {
-  margin-right: 0;
-}
 
 div.col-12.row.text-center {
   margin-right: 0;
@@ -101,11 +98,29 @@ table.table.table-striped.table-dark.table-bordered {
   overflow-x: scroll;
 }
 
-div.btn.btn-group-sm a.nav-link.active-link {
+a.nav-link.active-link {
   padding: 3px;
   display: inline;
   background-color: transparent;
 }
+
+
+div.col-12.nav {
+  width: 100%;
+  margin: 0 auto;
+}
+
+a.btn.scrollLink.no-target,
+a.nav-link.active-link.no-target {
+  cursor: not-allowed;
+}
+
+nav.btn-group.btn-group-sm.small-alpha.text-center.row {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
 
 @media (min-width: 576px) {
   table.table {
