@@ -32,32 +32,40 @@
                 aria-labelledby="nav-music-tab">
                 <table class="table table-striped table-dark table-bordered music-table table-hover">
                     <thead class="thead-light text-center">
-                        <tr>
-                            <th>Position</th>
-                            <th>Single</th>
-                            <th>Artist</th>
-                            <th>Peak</th>
-                            <th>Weeks @ Peak</th>
-                            <th>Weeks Top 10</th>
-                            <th>Weeks Top 40</th>
+                        <tr class="song-tr">
+                            <th class="song-th">Position</th>
+                            <th class="song-th">Single</th>
+                            <th class="song-th">Artist</th>
+                            <th class="song-th">Peak</th>
+                            <th class="song-th">Weeks @ Peak</th>
+                            <th class="song-th">Weeks Top 10</th>
+                            <th class="song-th">Weeks Top 40</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for song in songs %}
-                        <tr>
-                            <td>{{ song.position }}</td>
-                            <td>{{ song.single }}</td>
-                            <td>{{ song.artist }}</td>
-                            <td>{{ song.peak }}</td>
-                            <td>{{ song.weeks_peak }}</td>
-                            <td>{{ song.weeks_10 }}</td>
-                            <td>{{ song.weeks_40 }}</td>
+                        <tr class="song-tr">
+                            <td class="song-td">{{ song.position }}</td>
+                            <td class="song-td">{{ song.single }}</td>
+                            <td class="song-td">{{ song.artist }}</td>
+                            <td class="song-td">{{ song.peak }}</td>
+                            <td class="song-td">{{ song.weeks_peak }}</td>
+                            <td class="song-td">{{ song.weeks_10 }}</td>
+                            <td class="song-td">{{ song.weeks_40 }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
             </div>
             <div class="tab-pane fade bg-dark text-light" id="nav-tv" role="tabpanel" aria-labelledby="nav-tv-tab">
+                <table class="table table-striped table-dark table-bordered tv-table table-hover">
+                    <thead class="thead-light text-center">
+                        <tr>
+                            <th>Title</th>
+                            <th>Awards</th>
+                            <th>Actors</th>
+                            <th>Poster</th>
+                
                 <ol class="list-group text-center">
                     <li class="list-item list-item-dark">ABC Monday Night Movie</li>
                     <li class="list-item list-item-dark">ABC Sunday Night Movie</li>

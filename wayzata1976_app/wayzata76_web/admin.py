@@ -92,11 +92,17 @@ class GalleryAdmin(admin.ModelAdmin):
 
 @admin.register(GalleryImage)
 class GalleryImageAdmin(admin.ModelAdmin):
-    list_display = ("uuid", "date_created", "title", "subtitle", "uploaded_by", "image")
-    list_editable = ("title", "subtitle")
-    list_filter = ("date_created", "title", "uploaded_by")
+    list_display = ["gallery", "uuid", "date_created", "title", "subtitle", "uploaded_by", "image", 'thumbnail_preview']
+    list_editable = ("gallery", "title", "subtitle")
+    list_filter = ("gallery", "date_created", "title", "uploaded_by")
     list_display_links = ("uploaded_by",)
+    readonly_fields = ('thumbnail_preview', )
 
+    def thumbnail_preview(self, obj):
+        return obj.thumbnail_preview
+
+    thumbnail_preview.short_description = 'Thumbnail'
+    # thumbnail_preview.allow_tags = True
 
 @admin.register(NewsPost)
 class NewsPostAdmin(admin.ModelAdmin):

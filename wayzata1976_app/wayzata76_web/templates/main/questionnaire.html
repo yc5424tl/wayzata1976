@@ -14,23 +14,24 @@
 
 <h2 class="page-header">QUESTIONNAIRE</h2>
 <div class="form-wrapper">
-    <form>
+    <form method="POST" action="/survey/">
+        {% csrf_token %}
         <div class="form-group">
-            <label for="keepTextArea">If you attended the 40th reunion, what did you like most about it?</label>
-            <textarea class="form-control" id="keepTextArea" rows="3" name='likedInput'></textarea>
+            <label for="liked-textarea">If you attended the 40th reunion, what did you like most about it?</label>
+            <textarea class="form-control" id="liked-textarea" rows="3" name='liked_input'></textarea>
         </div>
         <div class="form-group">
-            <label for="changeTextArea">If you attended the 40th reunion, what would you have changed to make it
+            <label for="disliked-textarea">If you attended the 40th reunion, what would you have changed to make it
                 better?</label>
-            <textarea class="form-control" id="changeTextArea" rows="3" name='dislikedInput'></textarea>
+            <textarea class="form-control" id="disliked-textarea" rows="3" name='disliked_input'></textarea>
         </div>
         <div class="form-group">
-            <label for="locationTextArea">Where would you like the 45th reunion to be held?</label>
-            <textarea class="form-control" id="locationTextArea" rows="3" name='locationInput'></textarea>
+            <label for="location-textarea">Where would you like the 45th reunion to be held?</label>
+            <textarea class="form-control" id="location-textarea" rows="3" name='location_input'></textarea>
         </div>
         <div class="form-group">
-            <label for="musicSelect">What would you choose for musical enjoyment?</label>
-            <select class="form-control" id="musicSelect" name='musicInput'>
+            <label for="music-select">What would you choose for musical enjoyment?</label>
+            <select class="form-control" id="music-select" name='music_input'>
                 <option value='band'>Live Band</option>
                 <option value='dj'>Professional DJ</option>
                 <option value='karoke'>Karoke</option>
@@ -38,33 +39,33 @@
                 <option value='other'>Other (select to explain)</option>
             </select>
         </div>
-        <div class="form-row" id='otherDiv'>
+        <div class="form-row" id='other-div'>
             <div class="col">
                 <textarea class="form-control" rows="3" placeholder="Tell us your idea here."
-                    name='otherInput'></textarea>
+                    name='music_other_input'></textarea>
             </div>
         </div>
         <div class="form-group">
-            <label for="foodTextArea">What kind of food yould you like to have available?</label>
-            <textarea class="form-control" id="foodTextArea" rows="3" name='foodInput'></textarea>
+            <label for="food-textarea">What kind of food yould you like to have available?</label>
+            <textarea class="form-control" id="food-textarea" rows="3" name='food_input'></textarea>
         </div>
         <div class="form-group">
-            <label for="miscTextArea">Any other ideas, questions, requests, suggestions, recommendations, remarks,
+            <label for="misc-textarea">Any other ideas, questions, requests, suggestions, recommendations, remarks,
                 revelations, declarations, perspectives, pontifiations, comments, addendums, declarations, decrees,
                 edicts, anecdotes, elucidations, musings, witticisms, inquiries, sentiments, assessments, allegories
                 and/or general observations you'd like to share?</label>
-            <textarea class="form-control" id="miscTextArea" rows="3" name="miscInput"></textarea>
+            <textarea class="form-control" id="misc-textarea" rows="3" name="misc_input"></textarea>
             <!-- utterances, pronouncements, dictums, decrees, edicts, assertions, remarks, affirmations, reflections, revelations, declarations, exclamations, notes, assessments, insights, notions, elucidations, promulgations*, testimoy, endorsemenets -->
         </div>
         <div class="form-row">
             <div class="col">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="*Name" name='nameInput'>
+                    <input type="text" class="form-control" placeholder="*Name" name='name_input'>
                 </div>
             </div>
             <div class="col">
                 <div class="form-group">
-                    <input type="email" class="form-control" id="emailInput" name='emailInput' placeholder="* Email">
+                    <input type="email" class="form-control" id="email-input" name='email_input' placeholder="* Email">
                 </div>
             </div>
         </div>
@@ -77,5 +78,5 @@
 {% endblock %}
 
 {% block javascript %}
-<script type="text/javascript" src="{% static 'js/questionnaire.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/questionnaire.js' %}"></script>
 {% endblock %}

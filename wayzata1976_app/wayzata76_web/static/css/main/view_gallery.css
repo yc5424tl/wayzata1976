@@ -25,11 +25,11 @@ body {
   -o-object-fit: cover;
 }
 
-.gal-item a:focus {
+.gal-item a.gal-item-img-anchor:focus {
   outline: none;
 }
 
-.gal-item a:after {
+.gal-item a.gal-item-img-anchor:after {
   content: "\f002";
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
@@ -49,7 +49,7 @@ body {
   transition: all 0.5s ease-in-out 0s;
 }
 
-.gal-item a:hover:after {
+.gal-item a.gal-item-img-anchor:hover:after {
   opacity: 1;
 }
 
@@ -123,8 +123,15 @@ body {
 
 @media (min-width: 768px) {
   .gal-container .modal-dialog {
-    width: 55%;
-    margin: 50 auto;
+    /* width: 55%; */
+    /* width: 40%; */
+    /* margin: 50% auto; */
+    /* max-width: 40%; */
+    max-width: 40%;
+    margin: 1.75rem auto;
+    max-height: 50%;
+    height: auto;
+    width: auto;
   }
 }
 

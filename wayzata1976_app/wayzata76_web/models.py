@@ -95,6 +95,7 @@ class Image(models.Model):
 
     class Meta:
         abstract = True
+        ordering = ('-pk',)
 
     def __str__(self):
         return f"{self.title} - {self.date_created} ({self.uploaded_by})"
@@ -117,6 +118,9 @@ def gallery_for_image(instance, filename):
 
 
 class GalleryImage(Image):
+
+     
+
     gallery = models.ForeignKey(
         Gallery, on_delete=models.PROTECT, related_name="gallery_images"
     )
@@ -128,6 +132,15 @@ class GalleryImage(Image):
         on_delete=models.PROTECT,
         related_name="gallery_images",
     )
+
+  
+
+    @property
+    def thumbnail_preview(self):
+        from django.utils.html import mark_safe
+        if self.image:
+            return mark_safe('<img src="{}" width="150" height="150" object-fit="cover"/>'.format(self.image.url))        
+
 
 
 class NewsPost(models.Model):
@@ -254,6 +267,7 @@ class SurveyResult(models.Model):
     location = models.CharField(max_length=1000, null=True, blank=True)
     music = models.CharField(max_length=1000, null=True, blank=True)
     music_other = models.CharField(max_length=1000, null=True, blank=True)
+    food = models.CharField(max_length=1000, null=True, blank=True)
     misc = models.CharField(max_length=1000, null=True, blank=True)
     submitted_by = models.CharField(max_length=100, null=True, blank=True)
     email = models.EmailField(max_length=100, null=True, blank=True)
@@ -274,6 +288,7 @@ class SurveyResult(models.Model):
             "location",
             "music",
             "music_other",
+            "food",
             "misc",
             "submitted_by",
             "email",

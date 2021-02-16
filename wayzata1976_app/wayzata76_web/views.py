@@ -68,16 +68,44 @@ def index(request):
     return render(template_name="main/index.html", request=request)
 
 
+def email_questionnaire_notification(request, survey_result_instance):
+    try:
+        email_message = f'New Questionnaire Submission:\n\n\
+                        Date:                     {survey_result_instance.readable_date_created}\n\
+                        Submitted By:             {survey_result_instance.submitted_by if survey_result_instance.submitted_by else "--"}\n\
+                        Email:                    {survey_result_instance.email if survey_result_instance.email else "--"}\n\
+                        Previous Positive:        {survey_result_instance.liked if survey_result_instance.liked else "--"}\n\
+                        Previous Negative:        {survey_result_instance.disliked if survey_result_instance.disliked else "--"}\n\
+                        Preferred Location:       {survey_result_instance.location if survey_result_instance.location else "--"}\n\
+                        Musical Entertainment:    {survey_result_instance.music if survey_result_instance.music else "--"}\n\
+                        Alt Music Entertainment:  {survey_result_instance.music_other if survey_result_instance.music_other else "--"}\n\
+                        Food Preferences:         {survey_result_instance.food if survey_result_instance.food else "--"}\n\
+                        Misc/Other:               {survey_result_instance.misc if survey_result_instance else "--"}\n\n\
+                        wayzata76.com\n\
+                        ___________________________________________________________________________________________________\n\
+                        Automatically Generated Email - DO NOT REPLY\n'
+
+
+        email_subject = 'ADMIN: New Questionnaire Submission Received'
+
+        send_mail(email_subject, email_message, 'wayzata1976@gmail.com', ['jkboline@gmail.com', 'wayzata1976@gmail.com'])
+        return True
+    except:
+        return False
+
+
 def questionnaire(request):
     if request.method == "POST":
-        liked = request.POST["liked"]
-        disliked = request.POST["disliked"]
-        location = request.POST["location"]
-        music = request.POST["music"]
-        music_other = request.POST["music_other"]
-        misc = request.POST["misc"]
-        submitted_by = request.POST["name"]
-        email = request.POST["email"]
+        print('in POST')
+        liked = request.POST["liked_input"]
+        disliked = request.POST["disliked_input"]
+        location = request.POST["location_input"]
+        music = request.POST["music_input"]
+        music_other = request.POST["music_other_input"]
+        food = request.POST["food_input"]
+        misc = request.POST["misc_input"]
+        submitted_by = request.POST["name_input"]
+        email = request.POST["email_input"]
 
         new_result = SurveyResult(
             liked=liked,
@@ -85,20 +113,30 @@ def questionnaire(request):
             location=location,
             music=music,
             music_other=music_other,
+            food=food,
             misc=misc,
             submitted_by=submitted_by,
             email=email,
         )
         if new_result.has_content:
+            print('has content')
             new_result.save()
-            messages.success(
-                request, "Thank you, your questionnaire has been submitted!"
-            )
+
+            email_sent = email_questionnaire_notification(request, new_result)
+
+            if email_sent:
+                print('email sent')
+                messages.success(request, message="Questionnaire Submitted Successfully. Thank You!")
+            else:
+                print('email not sent')
+                messages.warning(request, message="Questionnaire Submitted Successfully. Error Delivering Data to Administration. If the problem persists, please contact us @ wayzata1976.admin@google.com")
+
             return render(request, "main/index.html")
         else:
+            print('do not have content')
             new_result.delete()
             messages.warning(
-                request, "A blank questionnaire cannot be submitted, please try again."
+                request, message="A blank questionnaire cannot be submitted, please try again."
             )
             return render(request, "main/questionnaire.html")
     else:
@@ -123,14 +161,16 @@ def contact_info(request):
             if request.user.is_authenticated:
                 contact_info.user = request.user
             contact_info.save()
-            messages.success(
-                request,
-                message="Updated contact information has been submitted. Please allow 1-2 days for the  Thank you.",
-            )
+
             email_sent = email_contact_update_notification(request=request, contact_info_instance=contact_info)
             if email_sent:
+                messages.success(
+                request,
+                message="Updated contact information has been submitted. Please allow 1-2 days for updates to be approved and applied. Thank you.",
+            )
                 return redirect('index')
             else:
+                messages.warning(request, message="Updated Contact Information Submitted Successfully, Error Delivering Data to Administration. If the problem persists, please contact us @ wayzata1976.admin@gmail.com",)
                 print('email not sent')
             # if os.getenv('DEPLOYMENT') == 'DEV':
             #     deleted = contact_info.delete()
@@ -162,7 +202,7 @@ def view_gallery(request, pk):
     # page_number = request.GET.get('page')
     # page_obj = paginator.get_page(page_number)
     # return render(request, "main/view_gallery.html", {"gallery": gallery})
-    return render(request, 'main/view_gallery.html', {'page_obj': page_obj, 'gallery': gallery})
+    return render(request, 'main/view_gallery.html', {'page_obj': page_obj, 'gallery': gallery, 'paginator': paginator})
 
 
 def view_zietgeist(request):
@@ -256,6 +296,7 @@ def view_classmates(request):
             "link_dict": all_link_dict,
             "mia_link_dict": mia_link_dict,
             "in_c_link_dict": in_c_link_dict,
+            'passed_link_dict': passed_link_dict,
             "no_target_all": no_target_all,
             "no_target_mia": no_target_mia,
             "no_target_passed": no_target_passed,

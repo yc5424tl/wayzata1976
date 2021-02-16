@@ -33,12 +33,17 @@ if os.getenv('DEPLOYMENT') == 'DEV':
     if os.path.isfile(dotenv_file):
         dotenv.load_dotenv(dotenv_file)
 
-    EMAIL_BACKEND = (
-        "django.core.mail.backends.console.EmailBackend"
-    )
+    # EMAIL_BACKEND = (
+    #     "django.core.mail.backends.console.EmailBackend"
+    # )
     # EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
     # EMAIL_FILE_PATH = str(BASE_DIR.joinpath("sent_emails"))
-
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS') == 'TRUE'
 
 
 
@@ -125,12 +130,12 @@ if 'ENABLE_SERVER_SIDE_CURSORS' in os.environ:
     DISABLE_SERVER_SIDE_CURSORS = False
 
 
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-#         'TIMEOUT': 86400
-#     }
-# }
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'TIMEOUT': 86400
+    }
+}
 
 
 # Password validation

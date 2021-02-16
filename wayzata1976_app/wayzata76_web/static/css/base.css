@@ -288,7 +288,7 @@ a.nav-link {
   a.nav-link.btn.btn-warning.btn-sm.inside:hover,
   a.nav-link.btn.btn-warning.btn-sm.inside:focus,
   a.nav-link.btn.btn-warning.btn-sm.inside:active {
-    background-color: rgba(236, 142, 0, 0.74);
+    background-color: rgba(209, 155, 5, 0.74);
   }
 
   .navbar-collapse.offcanvas-collapse {

@@ -1,13 +1,13 @@
 $(document).ready(function() {
 
-    $('#otherDiv').hide();
+    $('#other-div').hide();
 
-    $('#musicSelect').change(function() {
+    $('#music-select').change(function() {
         if ($(this).val() === 'other') {
-            $('#otherDiv').show();
+            $('#other-div').show();
         }
         else {
-            $('#otherDiv').hide();
+            $('#other-div').hide();
         }
     });
 });
