@@ -44,7 +44,7 @@ option {
   -moz-border-radius: 60px;
   border-radius: 60px;
   filter: drop-shadow(0pt 0pt 30pt 20pt #088fb1c9);
-  /*box-shadow: 0pt 0pt 30pt 20pt #088fb1c9;*/
+  box-shadow: 0pt 0pt 30pt 20pt #088fb1c9;
   transition: 0.45s;
   -webkit-transition: 0.45s;
   -moz-transition: 0.45s;
