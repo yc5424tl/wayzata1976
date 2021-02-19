@@ -4,6 +4,9 @@ div.custom-blockquote {
 }
 
 
+div > ul {
+  padding: 0;
+}
 
 ul {
   list-style-type: none;

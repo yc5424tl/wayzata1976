@@ -1,32 +1,57 @@
+// sm-576+  md 768+   lg 992+  xl 1200+
+
 $(document).ready(function() {
 
-    $('a.carousel-control-prev').on('click', function() {
-        $('.carousel').carousel('prev');
-    });
+    let windowXS = window.matchMedia("(max-width:575px)");
+    let windowSM = window.matchMedia("(min-width:576px) and (max-width:767px)");
+    let windowMD = window.matchMedia("(min-width:768px) and (max-width:991px)");
+    let windowLG = window.matchMedia("(min-width:992px) and (max-width:1199px)");
+    let windowXL = window.matchMedia("(min-width:1200px)");
 
-    $('a.carousel-control-next').click(function() {
-        $('.carousel').carousel('next');
-    });
+    $('.modal-content').resizable();
+    $('.model-dialog').draggable();
 
-    $('a.gal-item-img-anchor::after')on('click', function() {
-        // let imageIndex = $(this).id;
-        
-        $('div.carousel-item.text-center.active').removeClass('active');
-        $((`div.carousel-item.text-center:nth-of-type(${$(this).attr('id')})`.addClass('active');
+    function updateModal() {
+        if (windowXS.matches || windowSM.matches) {
+            $('.modal-dialog').removeClass().addClass('modal-dialog modal-sm modal-dialog-centered');
+        };
 
-        $('#carousel').carousel($(this).attr('id'));
-        alert('Index = ' + $(this).attr('id'));
-        
-      
-    });
+        if (windowMD.matches) {
+            $('.modal-dialog').removeClass().addClass('modal-dialog modal-dialog-centered');
+        };
 
+        if (windowLG.matches) {
+            $('.modal-dialog').removeClass().addClass('modal-dialog modal-lg modal-dialog-centered');
+        };
 
-    String.prototype.format = function () {
-        var a = this;
-        for (var k in arguments) {
-            a = a.replace(new RegExp("\\{" + k + "\\}", 'g'), arguments[k]);
-        }
-        return a
+        if (windowXL.matches) {
+            $('.modal-dialog').removeClass().addClass('modal-dialog modal-xl modal-dialog-centered');
+        };
+
+        return;
     }
 
-});
+    updateModal();
+
+    window.onresize = updateModal;
+
+    $('.carousel').on('slide.bs.carousel', function() {
+        // $('#galleryModal').data('bs.modal').handleUpdate()
+       
+        $(this).carousel('cycle');
+  
+        $('#galleryModal').modal('handleUpdate');
+        
+
+        if (window.innerHeight > window.innerWidth) {
+            $('.modal-dialog').css('width:auto;height:90%;');
+        };
+    
+        if (window.innerHeight < window.innerWidth) {
+            $('.modal-dialog').css('width:90%;height:auto;');
+        };
+    })
+
+   
+
+})
