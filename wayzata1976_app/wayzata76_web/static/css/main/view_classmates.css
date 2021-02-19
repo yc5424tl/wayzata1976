@@ -43,7 +43,8 @@ option {
   -webkit-border-radius: 60px;
   -moz-border-radius: 60px;
   border-radius: 60px;
-  box-shadow: 0pt 0pt 30pt 20pt #088fb1c9;
+  filter: drop-shadow(0pt 0pt 30pt 20pt #088fb1c9;
+  /*box-shadow: 0pt 0pt 30pt 20pt #088fb1c9;*/
   transition: 0.45s;
   z-index: 401;
 }
@@ -90,6 +91,8 @@ p.update-link {
 
 div.table-wrapper.text-center.toggle-hidden {
   align-content: center;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 
