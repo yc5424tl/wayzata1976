@@ -90,6 +90,8 @@ p.update-link {
 
 div.table-wrapper.text-center.toggle-hidden {
   align-content: center;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 
@@ -125,7 +127,7 @@ nav.btn-group.btn-group-sm.small-alpha.text-center.row {
 @media (min-width: 576px) {
   table.table {
     padding: 5rem;
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
   }
 }
