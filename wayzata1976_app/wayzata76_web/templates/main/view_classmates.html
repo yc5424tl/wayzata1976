@@ -72,34 +72,42 @@
         </thead>
         <tbody>
             {% for classmate in classmates %}
-            {% if link_dict|get_item:classmate.last_name.0 == classmate %}
-            <tr id="{{ classmate.last_name.0 }}">
+
+                {% if link_dict|get_item:classmate.last_name.0 == classmate %}
+                <tr id="{{ classmate.last_name.0 }}">
                 {% else %}
-            <tr>
+                <tr>
                 {% endif %}
-                <td>{{ classmate.last_name }}</td>
-                {% if classmate.middle_initial %}
-                <td>{{ classmate.middle_initial }}</td>
-                {% else %}
-                <td> -- </td>
-                {% endif %}
-                <td>{{ classmate.first_name }}</td>
-                {% if classmate.address.city %}
-                <td>{{ classmate.address.city }}</td>
-                {% else %}
-                <td> -- </td>
-                {% endif %}
-                {% if classmate.address.state_province %}
-                <td>{{ classmate.address.state_province }}</td>
-                {% else %}
-                <td> -- </td>
-                {% endif %}
-                {% if classmate.address.zip_code %}
-                <td>{{ classmate.address.zip_code }}</td>
-                {% else %}
-                <td> -- </td>
-                {% endif %}
-            </tr>
+
+                    <td>{{ classmate.last_name }}</td>
+
+                    {% if classmate.middle_initial %}
+                    <td>{{ classmate.middle_initial }}</td>
+                    {% else %}
+                    <td> -- </td>
+                    {% endif %}
+
+                    <td>{{ classmate.first_name }}</td>
+
+                    {% if classmate.address.city %}
+                    <td>{{ classmate.address.city }}</td>
+                    {% else %}
+                    <td> -- </td>
+                    {% endif %}
+
+                    {% if classmate.address.state_province %}
+                    <td>{{ classmate.address.state_province }}</td>
+                    {% else %}
+                    <td> -- </td>
+                    {% endif %}
+
+                    {% if classmate.address.zip_code %}
+                    <td>{{ classmate.address.zip_code }}</td>
+                    {% else %}
+                    <td> -- </td>
+                    {% endif %}
+
+                </tr>
             {% endfor %}
         </tbody>
     </table>
@@ -205,8 +213,7 @@
             {% endif %}
         {% endfor %}
     </nav>
-    <p class="update-link"><sub>See anything that's incorrect or dated? Updates can be made <a
-                href="{% url 'contact_info' %}">here</a>.</sub></p>
+    <p class="update-link"><sub>See anything that's incorrect or dated? Updates can be made <a href="{% url 'contact_info' %}">here</a>.</sub></p>
     <hr>
     <table class="table table-striped table-dark table-bordered">
         <title>Passed Classmates</title>
@@ -249,11 +256,11 @@
     <h5>Sorted Alphabetically by Last Name</h5>
     <div class="btn-group btn-group-sm large-alpha">
         {% for letter in alphabet %}
-        {% if letter in no_target_in_c %}
-        <a class="btn scrollLink no-target">{{ letter }}</a>
-        {% else %}
-        <a class="btn scrollLink" href="#{{ letter }}-IN-C">{{ letter }}</a>
-        {% endif %}
+            {% if letter in no_target_in_c %}
+                <a class="btn scrollLink no-target">{{ letter }}</a>
+            {% else %}
+                <a class="btn scrollLink" href="#{{ letter }}-IN-C">{{ letter }}</a>
+            {% endif %}
         {% endfor %}
     </div>
     <nav class="btn-group btn-group-sm small-alpha text-center row">
@@ -290,40 +297,45 @@
         </thead>
         <tbody>
             {% for classmate in in_contact_list %}
+
             {% if in_c_link_dict|get_item:classmate.last_name.0 == classmate %}
-            <tr id="{{ classmate.last_name.0 }}-IN-C">
-                {% else %}
-            <tr>
-                {% endif %}
-                <td>{{ classmate.last_name }}</td>
+                    <tr id="{{ classmate.last_name.0 }}-IN-C">
+            {% else %}
+                    <tr>
+            {% endif %}
+
+                    <td>{{ classmate.last_name }}</td>
+
                 {% if classmate.middle_initial %}
-                <td>{{ classmate.middle_initial }}</td>
+                    <td>{{ classmate.middle_initial }}</td>
                 {% else %}
-                <td> -- </td>
+                    <td> -- </td>
                 {% endif %}
+
                 <td>{{ classmate.first_name }}</td>
                 <td>{{ classmate.address.city }}</td>
                 <td>{{ classmate.address.state_province }}</td>
                 <td>{{ classmate.address.zip_code }}</td>
-            </tr>
+                    </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
+
 {% if is_paginated %}
-<div class="pagination pagination-centered">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-        {% endif %}
-        <span class="current_page">
-            {{ page_obj.number }}
+    <div class="pagination pagination-centered">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+            <span class="current_page">
+                {{ page_obj.number }}
+            </span>
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+            {% endif %}
         </span>
-        {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}">next</a>
-        {% endif %}
-    </span>
-</div>
+    </div>
 {% endif %}
 
 {% endblock %}
