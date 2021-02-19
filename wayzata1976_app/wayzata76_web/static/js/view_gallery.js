@@ -39,6 +39,9 @@ $(document).ready(function() {
         // $('#galleryModal').data('bs.modal').handleUpdate()
        
         $(this).carousel('cycle');
+        $(this).carousel({
+            interval: 3000
+        })
   
         $('#galleryModal').modal('handleUpdate');
         
