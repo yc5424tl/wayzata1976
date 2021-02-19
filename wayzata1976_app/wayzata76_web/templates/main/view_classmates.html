@@ -32,7 +32,7 @@
     <div class="btn-group btn-group-sm large-alpha">
         {% for letter in alphabet %}
             {% if letter in no_target_all %}
-                <a class="btn scrollLink no-target">{{ letter }}</a>
+                <a class="btn scrollLink no-target" href="#">{{ letter }}</a>
             {% else %}
                 <a class="btn scrollLink" href="#{{ letter }}">{{ letter }}</a>
             {% endif %}

@@ -138,6 +138,9 @@ a.btn.btn-dark {
   border-radius: 0;
   border: none;
   transition: 0.35s;
+  -webkit-transition: 0.35s;
+    -moz-transition: 0.35s;
+    -o-transition: 0.35s;
   font-size: 11pt;
 }
 
@@ -150,6 +153,9 @@ ul.dropdown-menu {
   padding-top: 0;
   padding-bottom: 0;
   transition: 0.35s;
+  -webkit-transition: all 0.35s;
+  -moz-transition: all 0.35s;
+  -o-transition: all 0.35s;
 }
 
 a.nav-link.dropdown-toggle {
@@ -302,6 +308,8 @@ a.nav-link {
     padding-left: 1rem;
     overflow-y: auto;
     background-color: var(--gray-dark);
+    -moz-transition: transform 0.3s ease-in-out;
+    -o-transition: transform 0.3s ease-in-out;
     transition: -webkit-transform 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
@@ -349,6 +357,15 @@ a.nav-link {
   input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0.btn-block {
     display: block;
     width: 100%;
+    background-color: rgba(240, 179, 17, 0.75);
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+  }
+
+  input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0.btn-block:hover {
+    background-color: rgba(209, 155, 5, 0.74);
   }
 
   input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0.non-block {
@@ -363,6 +380,15 @@ a.nav-link {
 
   input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0.non-block {
     display: inline-flex;
+    background-color: rgba(240, 179, 17, 0.75);
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+  }
+
+  input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0.non-block:hover {
+    background-color: rgba(209, 155, 5, 0.74);
   }
 }
 

@@ -43,9 +43,12 @@ option {
   -webkit-border-radius: 60px;
   -moz-border-radius: 60px;
   border-radius: 60px;
-  filter: drop-shadow(0pt 0pt 30pt 20pt #088fb1c9;
+  filter: drop-shadow(0pt 0pt 30pt 20pt #088fb1c9);
   /*box-shadow: 0pt 0pt 30pt 20pt #088fb1c9;*/
   transition: 0.45s;
+  -webkit-transition: 0.45s;
+  -moz-transition: 0.45s;
+  -o-transition: 0.45s;
   z-index: 401;
 }
 
@@ -67,6 +70,9 @@ option {
   color: white;
   box-shadow: 0pt 0pt 30pt 15pt rgba(231, 123, 0, 0.911);
   transition: 0.45s;
+  -webkit-transition: 0.45s;
+  -moz-transition: 0.45s;
+  -o-transition: 0.45s;
 }
 
 div.btn.btn-group-sm {
@@ -128,7 +134,7 @@ nav.btn-group.btn-group-sm.small-alpha.text-center.row {
 @media (min-width: 576px) {
   table.table {
     padding: 5rem;
-    width: 85%;
+    width: 80%;
     margin: 0 auto;
   }
 }
@@ -207,12 +213,8 @@ nav.btn-group.btn-group-sm.small-alpha.text-center.row {
 }
 
 
-
-
-
-
 @media (max-width: 991.9px) {
-  
+
   div.small-alpha {
     display: block;
     margin: 0 auto;
@@ -223,9 +225,7 @@ nav.btn-group.btn-group-sm.small-alpha.text-center.row {
     width: 100%;
     margin: 0 auto;
     display: block;
-    /* padding-right: 0; */
     min-width: 100%;
- 
   }
 
   nav.nav.nav-justified.nav-content-center a.nav-link {
