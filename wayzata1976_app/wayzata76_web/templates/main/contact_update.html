@@ -13,9 +13,7 @@
 
         <form method="post" action="" novalidate>
             {% csrf_token %}
-
             {{ form.non_field_errors }}
-
             {{ form.source.errors }}
             {{ form.source }}
 
@@ -40,13 +38,13 @@
                     {% if form.last_name.errors %}
                         {% render_field form.last_name|append_attr:"required" class="form-control is-invalid" placeholder="* Last Name" %}
                         {% for error in form.last_name.errors %}
-                        <div class="invalid-feedback">
-                            {{ error }}
-                        </div>
-                    {% endfor %}
-                {% else %}
-                    {% render_field form.last_name|append_attr:"required" class="form-control" placeholder="* Last Name" %}
-                {% endif %}
+                            <div class="invalid-feedback">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        {% render_field form.last_name|append_attr:"required" class="form-control" placeholder="* Last Name" %}
+                    {% endif %}
                 </div>
             </div>
             <div class="form-row">

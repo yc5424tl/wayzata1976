@@ -1,4 +1,3 @@
-// sm-576+  md 768+   lg 992+  xl 1200+
 
 $(document).ready(function() {
 
@@ -8,10 +7,10 @@ $(document).ready(function() {
     let windowLG = window.matchMedia("(min-width:992px) and (max-width:1199px)");
     let windowXL = window.matchMedia("(min-width:1200px)");
 
-    // $('.modal-content').resizable();
-    // $('.model-dialog').draggable();
+
 
     function updateModal() {
+
         if (windowXS.matches || windowSM.matches) {
             $('.modal-dialog').removeClass().addClass('modal-dialog modal-sm modal-dialog-centered');
         };
@@ -36,26 +35,18 @@ $(document).ready(function() {
     window.onresize = updateModal;
 
     $('.carousel').on('slide.bs.carousel', function() {
-        // $('#galleryModal').data('bs.modal').handleUpdate()
-       
-        // $(this).carousel({
-        //     interval: 3000
-        // })
+     
         $(this).carousel('cycle');
-       
-  
+
         $('#galleryModal').modal('handleUpdate');
-        
 
         if (window.innerHeight > window.innerWidth) {
             $('.modal-dialog').css('width:auto;height:90%;');
         };
-    
+
         if (window.innerHeight < window.innerWidth) {
             $('.modal-dialog').css('width:90%;height:auto;');
         };
     })
-
-   
 
 })

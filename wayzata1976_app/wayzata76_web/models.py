@@ -1,12 +1,14 @@
+import uuid
+
+import pytz
+from django import forms
+from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.conf import settings
-from s3direct.fields import S3DirectField
-import uuid
 from geopy.geocoders import Nominatim
-from django import forms
+from s3direct.fields import S3DirectField
+
 from .storage_backends import PublicMediaStorage
-import pytz
 
 
 class CustomUser(AbstractUser):
@@ -33,7 +35,7 @@ class Address(models.Model):
             try:
                 locator = geolocator
                 # geolocator = Nominatim(user_agent='wayzata76_web')
-                location = locator.geocode(self.zip)
+                location = locator.geocode(self.zip_code)
 
                 if location.longitude and location.latitude:
                     self.longitude = location.longitude
@@ -119,7 +121,6 @@ def gallery_for_image(instance, filename):
 
 class GalleryImage(Image):
 
-     
 
     gallery = models.ForeignKey(
         Gallery, on_delete=models.PROTECT, related_name="gallery_images"
@@ -133,13 +134,11 @@ class GalleryImage(Image):
         related_name="gallery_images",
     )
 
-  
-
     @property
     def thumbnail_preview(self):
         from django.utils.html import mark_safe
         if self.image:
-            return mark_safe('<img src="{}" width="150" height="150" object-fit="cover"/>'.format(self.image.url))        
+            return mark_safe('<img src="{}" width="150" height="150" object-fit="cover"/>'.format(self.image.url))
 
 
 

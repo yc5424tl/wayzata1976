@@ -9,7 +9,7 @@ class Command(BaseCommand):
     help = "Instantiates Gallery Objects from Target JSON file"
 
     def handle(self, *args, **kwargs):
-        json_file = "staticfiles/json/gallery.json"  # Works locally when relative path is from folder containing 'manage.py' aka wayzata76_app aka PROJECT_ROOT
+        json_file = "staticfiles/json/gallery.json"  # relative path is from folder calling the command -->'manage.py' aka wayzata76_app aka PROJECT_ROOT
         with open(json_file) as gallery_json:
             json_data = json.load(gallery_json)
             gallery_count = 0

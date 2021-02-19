@@ -36,7 +36,9 @@ $(document).ready(function() {
     // https://stackoverflow.com/a/50097818/15027952
     $('a.scrollLink').click(function(event) {
       event.preventDefault();
-      $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 500);
+      $('html, body').animate({
+        scrollTop: $($(this).attr('href')).offset().top
+      }, 500);
     });
 
     $('a.scrollLink').on('tap', function(event) {

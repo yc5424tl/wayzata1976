@@ -24,11 +24,9 @@ class Command(BaseCommand):
                 zip_code = record["zip"]
 
                 new_address = None
-                if (
-                    record["city"] != "UNKNOWN"
-                    and record["city"].strip() != ""
-                    and record["city"] != "passed"
-                ):
+
+                if record['city'].strip() not in ['UNKNOWN', 'passed', '']:
+
                     new_address = Address(
                         city=city, state_province=state, zip_code=zip_code
                     )

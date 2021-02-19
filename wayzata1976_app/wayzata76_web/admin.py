@@ -102,7 +102,7 @@ class GalleryImageAdmin(admin.ModelAdmin):
         return obj.thumbnail_preview
 
     thumbnail_preview.short_description = 'Thumbnail'
-    # thumbnail_preview.allow_tags = True
+
 
 @admin.register(NewsPost)
 class NewsPostAdmin(admin.ModelAdmin):

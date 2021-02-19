@@ -1,42 +1,40 @@
-{% extends "base.html" %} 
-{% load static %} 
+{% extends "base.html" %}
+{% load static %}
 
-{% block title %} {{ block.super }}- Home {% endblock %} 
+{% block title %} {{ block.super }}- Home {% endblock %}
 
-{% block style %} 
+{% block style %}
     {{ block.super }}
     <link rel="stylesheet" href="{% static 'css/main/index.css' %}">
-{% endblock %} {% block content %}
+{% endblock %}
 
+{% block content %}
     <h2 class="page-header">Wayzata High School Class of 1976</h2>
-
-
-<div>
-    <h4 class="text-center">45th Reunion: What You Can Do</h4>
-    <br />
-
-    <ul>
-        <li>
-            We want to hear from you! Please take a moment to weigh in on some of the finer aspects of reunion planning with <a href="{% url 'questionnaire' %}">this</a> questionnaire.
-            <ul>
-                <li style="margin-right: 10%;">
-                    <small>
-                        (Guaranteed to be less than seven questions unless we add more!)
-                    </small>
-                </li>
-            </ul>
-        </li>
+    <div>
+        <h4 class="text-center">45th Reunion: What You Can Do</h4>
         <br />
-        <li>
-            We still have many classmates that we're not able to locate. Please visit the <a href="{% url 'view_classmates' %}">classmates</a> page to see if you or someone you know is listed.
-            <ul>
-                <li style="margin-right: 10%;">
-                    <small class="text-center">
-                        (select the <i>M.I.A.</i> option from the dropdown menu to view the complete list of classmates we need help finding)
-                    </small>
-                </li>
-            </ul>
-        </li>
-    </ul>
-</div>
+        <ul>
+            <li>
+                We want to hear from you! Please take a moment to weigh in on some of the finer aspects of reunion planning with <a href="{% url 'questionnaire' %}">this</a> questionnaire.
+                <ul>
+                    <li style="margin-right: 10%;">
+                        <small>
+                            (Guaranteed to be less than seven questions unless we add more!)
+                        </small>
+                    </li>
+                </ul>
+            </li>
+            <br />
+            <li>
+                We still have many classmates that we're not able to locate. Please visit the <a href="{% url 'view_classmates' %}">classmates</a> page to see if you or someone you know is listed.
+                <ul>
+                    <li style="margin-right: 10%;">
+                        <small class="text-center">
+                            (select the <i>M.I.A.</i> option from the dropdown menu to view the complete list of classmates we need help finding)
+                        </small>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 {% endblock %}
