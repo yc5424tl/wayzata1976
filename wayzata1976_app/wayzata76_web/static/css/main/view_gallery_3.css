@@ -110,9 +110,9 @@
     opacity: 1;
   } */
 
-  @media (min-width: 768px) {
+  /* @media (min-width: 768px) {
     .gal-container .modal-dialog {
-      /* width: 55%; */
+      width: 55%; */
       /* width: 40%; */
       /* margin: 50% auto; */
       /* max-width: 40%; */
@@ -120,9 +120,9 @@
       margin: 1.75rem auto;
       max-height: 80%;
       height: auto;
-      width: auto; */
+      width: auto;
     }
-  }
+  } */
 
 
   @media (max-width: 768px) {

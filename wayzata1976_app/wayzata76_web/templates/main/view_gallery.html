@@ -72,7 +72,7 @@
                                     {% for image in page_obj %}
                                         {% if forloop.first %}
                                             <div class="carousel-item active">
-                                                <img class="d-block w-100" src="{{ image.image.url }}" alt="" data-toggle="tooltip" placement="top" title="Use the arrows to once and the images will automatically cycle">
+                                                <img class="d-block w-100" src="{{ image.image.url }}" alt="">
                                                 <div class="carousel-caption d-none d-md-block">
                                                     {% if image.subtitle %}
                                                         <p>{{ image.subtitle }}</p>
@@ -86,7 +86,7 @@
                                                     {% if image.subtitle %}
                                                         <p>{{ image.subtitle }}</p>
                                                     {% endif %}
-                                                  </div>  
+                                                  </div>
                                             </div>
                                         {% endif %}
                                     {% endfor %}

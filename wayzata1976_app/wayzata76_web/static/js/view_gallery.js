@@ -8,8 +8,8 @@ $(document).ready(function() {
     let windowLG = window.matchMedia("(min-width:992px) and (max-width:1199px)");
     let windowXL = window.matchMedia("(min-width:1200px)");
 
-    $('.modal-content').resizable();
-    $('.model-dialog').draggable();
+    // $('.modal-content').resizable();
+    // $('.model-dialog').draggable();
 
     function updateModal() {
         if (windowXS.matches || windowSM.matches) {
@@ -38,10 +38,11 @@ $(document).ready(function() {
     $('.carousel').on('slide.bs.carousel', function() {
         // $('#galleryModal').data('bs.modal').handleUpdate()
        
+        // $(this).carousel({
+        //     interval: 3000
+        // })
         $(this).carousel('cycle');
-        $(this).carousel({
-            interval: 3000
-        })
+       
   
         $('#galleryModal').modal('handleUpdate');
         
