@@ -47,4 +47,8 @@ $(document).ready(function() {
       }, 500);
     });
 
+    $('a.btn.scrollLink.no-target').click(function() {
+      $(this).preventDefault();
+    });
+
 });
