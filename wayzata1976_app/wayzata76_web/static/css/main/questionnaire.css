@@ -1,11 +1,33 @@
 .form-group,
 .form-row {
   margin: 3rem auto;
+  background-color: transparent
 }
 
 .form-wrapper {
-  background-color: rgba(8, 12, 15, 0.8);
+  /* background-color: rgba(8, 12, 15, 0.8); */
+  /* background-color: transparent; */
+  /* background-color: rgba(45,75,114,0.8); */
+  background-color: rgba(0,0,0,0.5);
+  box-shadow: var(--box-shadow-md);
+  text-shadow: var(--text-shadow);
   color: #f1f1f1;
   padding: 2rem;
   border-radius: 7pt;
+  width: 90%;
+  align-content: center;
+  text-align:center;
+  margin: 0 auto;
+}
+  
+
+form {
+  /* background-color: transparent; */
+  margin: 0 auto;
+  width: 70%;
+  border: none;
+}
+
+div.form-group {
+  background-color: transparent;
 }

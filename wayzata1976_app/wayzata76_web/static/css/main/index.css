@@ -21,3 +21,8 @@ small {
 ul.inner-ul li {
   margin-right: 10%;
 }
+
+div.index-div {
+  height: 100%;
+  min-height: 100%;
+}

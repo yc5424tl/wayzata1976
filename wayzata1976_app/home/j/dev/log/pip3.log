@@ -1,0 +1,116 @@
+2021-02-21T19:24:57,845 Non-user install because user site-packages disabled
+2021-02-21T19:24:57,945 Created temporary directory: /tmp/pip-ephem-wheel-cache-oe552leu
+2021-02-21T19:24:57,945 Created temporary directory: /tmp/pip-req-tracker-20bmp0xd
+2021-02-21T19:24:57,945 Initialized build tracking at /tmp/pip-req-tracker-20bmp0xd
+2021-02-21T19:24:57,946 Created build tracker: /tmp/pip-req-tracker-20bmp0xd
+2021-02-21T19:24:57,946 Entered build tracker: /tmp/pip-req-tracker-20bmp0xd
+2021-02-21T19:24:57,946 Created temporary directory: /tmp/pip-install-rhsn63sm
+2021-02-21T19:24:57,957 1 location(s) to search for versions of django-material-icons:
+2021-02-21T19:24:57,957 * https://pypi.org/simple/django-material-icons/
+2021-02-21T19:24:57,957 Fetching project page and analyzing links: https://pypi.org/simple/django-material-icons/
+2021-02-21T19:24:57,957 Getting page https://pypi.org/simple/django-material-icons/
+2021-02-21T19:24:57,958 Found index url https://pypi.org/simple
+2021-02-21T19:24:57,959 Looking up "https://pypi.org/simple/django-material-icons/" in the cache
+2021-02-21T19:24:57,959 Request header has "max_age" as 0, cache bypassed
+2021-02-21T19:24:57,966 Starting new HTTPS connection (1): pypi.org:443
+2021-02-21T19:24:58,039 https://pypi.org:443 "GET /simple/django-material-icons/ HTTP/1.1" 200 531
+2021-02-21T19:24:58,040 Updating cache with response from "https://pypi.org/simple/django-material-icons/"
+2021-02-21T19:24:58,040 Caching due to etag
+2021-02-21T19:24:58,084   Found link https://files.pythonhosted.org/packages/c8/04/b10bad56446f29b97da95322f15a335924078ddd991a4c043dca976d745f/django-material-icons-0.1.0.tar.gz#sha256=f4b1e78aa848af3b68f4a28e0ad540042e469681d452d4306606f65274e8aa2f (from https://pypi.org/simple/django-material-icons/), version: 0.1.0
+2021-02-21T19:24:58,085   Found link https://files.pythonhosted.org/packages/d5/40/481d783babc0ae7bbb98ddc8718e0615ab39898ba623ac9976649ff41fc8/django-material-icons-0.1.1.tar.gz#sha256=82b7ebfee82e4b631e9f514adbea1088f6e0b23efc95443aa7e881a47b933300 (from https://pypi.org/simple/django-material-icons/), version: 0.1.1
+2021-02-21T19:24:58,085   Found link https://files.pythonhosted.org/packages/c9/80/9eb9fa7c766d458ef5bd9c9727e491d053530b9276c6ec53689c8b63b6aa/django-material-icons-0.1.2.tar.gz#sha256=7fd8b5c5623fc5777885e7db3d3e9332a2d8a4638cef8f414b3296ff5feecb63 (from https://pypi.org/simple/django-material-icons/), version: 0.1.2
+2021-02-21T19:24:58,086 Given no hashes to check 3 links for project 'django-material-icons': discarding no candidates
+2021-02-21T19:24:58,086 Using version 0.1.2 (newest of versions: 0.1.0, 0.1.1, 0.1.2)
+2021-02-21T19:24:58,102 Collecting django-material-icons
+2021-02-21T19:24:58,103   Created temporary directory: /tmp/pip-unpack-yk_au3yl
+2021-02-21T19:24:58,103   Looking up "https://files.pythonhosted.org/packages/c9/80/9eb9fa7c766d458ef5bd9c9727e491d053530b9276c6ec53689c8b63b6aa/django-material-icons-0.1.2.tar.gz" in the cache
+2021-02-21T19:24:58,104   No cache entry available
+2021-02-21T19:24:58,105   Starting new HTTPS connection (1): files.pythonhosted.org:443
+2021-02-21T19:24:58,249   https://files.pythonhosted.org:443 "GET /packages/c9/80/9eb9fa7c766d458ef5bd9c9727e491d053530b9276c6ec53689c8b63b6aa/django-material-icons-0.1.2.tar.gz HTTP/1.1" 200 2100
+2021-02-21T19:24:58,250   Downloading django-material-icons-0.1.2.tar.gz (2.1 kB)
+2021-02-21T19:24:58,251   Ignoring unknown cache-control directive: immutable
+2021-02-21T19:24:58,251   Updating cache with response from "https://files.pythonhosted.org/packages/c9/80/9eb9fa7c766d458ef5bd9c9727e491d053530b9276c6ec53689c8b63b6aa/django-material-icons-0.1.2.tar.gz"
+2021-02-21T19:24:58,251   Caching due to etag
+2021-02-21T19:24:58,280   Added django-material-icons from https://files.pythonhosted.org/packages/c9/80/9eb9fa7c766d458ef5bd9c9727e491d053530b9276c6ec53689c8b63b6aa/django-material-icons-0.1.2.tar.gz#sha256=7fd8b5c5623fc5777885e7db3d3e9332a2d8a4638cef8f414b3296ff5feecb63 to build tracker '/tmp/pip-req-tracker-20bmp0xd'
+2021-02-21T19:24:58,280     Running setup.py (path:/tmp/pip-install-rhsn63sm/django-material-icons/setup.py) egg_info for package django-material-icons
+2021-02-21T19:24:58,281     Running command python setup.py egg_info
+2021-02-21T19:24:58,585     running egg_info
+2021-02-21T19:24:58,586     creating /tmp/pip-install-rhsn63sm/django-material-icons/pip-egg-info/django_material_icons.egg-info
+2021-02-21T19:24:58,586     writing /tmp/pip-install-rhsn63sm/django-material-icons/pip-egg-info/django_material_icons.egg-info/PKG-INFO
+2021-02-21T19:24:58,587     writing dependency_links to /tmp/pip-install-rhsn63sm/django-material-icons/pip-egg-info/django_material_icons.egg-info/dependency_links.txt
+2021-02-21T19:24:58,587     writing requirements to /tmp/pip-install-rhsn63sm/django-material-icons/pip-egg-info/django_material_icons.egg-info/requires.txt
+2021-02-21T19:24:58,587     writing top-level names to /tmp/pip-install-rhsn63sm/django-material-icons/pip-egg-info/django_material_icons.egg-info/top_level.txt
+2021-02-21T19:24:58,587     writing manifest file '/tmp/pip-install-rhsn63sm/django-material-icons/pip-egg-info/django_material_icons.egg-info/SOURCES.txt'
+2021-02-21T19:24:58,732     reading manifest file '/tmp/pip-install-rhsn63sm/django-material-icons/pip-egg-info/django_material_icons.egg-info/SOURCES.txt'
+2021-02-21T19:24:58,732     reading manifest template 'MANIFEST.in'
+2021-02-21T19:24:58,733     writing manifest file '/tmp/pip-install-rhsn63sm/django-material-icons/pip-egg-info/django_material_icons.egg-info/SOURCES.txt'
+2021-02-21T19:24:58,750   Source in /tmp/pip-install-rhsn63sm/django-material-icons has version 0.1.2, which satisfies requirement django-material-icons from https://files.pythonhosted.org/packages/c9/80/9eb9fa7c766d458ef5bd9c9727e491d053530b9276c6ec53689c8b63b6aa/django-material-icons-0.1.2.tar.gz#sha256=7fd8b5c5623fc5777885e7db3d3e9332a2d8a4638cef8f414b3296ff5feecb63
+2021-02-21T19:24:58,750   Removed django-material-icons from https://files.pythonhosted.org/packages/c9/80/9eb9fa7c766d458ef5bd9c9727e491d053530b9276c6ec53689c8b63b6aa/django-material-icons-0.1.2.tar.gz#sha256=7fd8b5c5623fc5777885e7db3d3e9332a2d8a4638cef8f414b3296ff5feecb63 from build tracker '/tmp/pip-req-tracker-20bmp0xd'
+2021-02-21T19:24:58,767 Requirement already satisfied: django in /home/j/dev/repo/wayzata1976/venv/lib/python3.7/site-packages (from django-material-icons) (3.1.5)
+2021-02-21T19:24:58,784 Requirement already satisfied: pytz in /home/j/dev/repo/wayzata1976/venv/lib/python3.7/site-packages (from django->django-material-icons) (2020.5)
+2021-02-21T19:24:58,787 Requirement already satisfied: asgiref<4,>=3.2.10 in /home/j/dev/repo/wayzata1976/venv/lib/python3.7/site-packages (from django->django-material-icons) (3.3.1)
+2021-02-21T19:24:58,791 Requirement already satisfied: sqlparse>=0.2.2 in /home/j/dev/repo/wayzata1976/venv/lib/python3.7/site-packages (from django->django-material-icons) (0.4.1)
+2021-02-21T19:24:58,792 Building wheels for collected packages: django-material-icons
+2021-02-21T19:24:58,793   Created temporary directory: /tmp/pip-wheel-5h8euzzh
+2021-02-21T19:24:58,793   Destination directory: /tmp/pip-wheel-5h8euzzh
+2021-02-21T19:24:58,793   Running command /home/j/dev/repo/wayzata1976/venv/bin/python -u -c 'import sys, setuptools, tokenize; sys.argv[0] = '"'"'/tmp/pip-install-rhsn63sm/django-material-icons/setup.py'"'"'; __file__='"'"'/tmp/pip-install-rhsn63sm/django-material-icons/setup.py'"'"';f=getattr(tokenize, '"'"'open'"'"', open)(__file__);code=f.read().replace('"'"'\r\n'"'"', '"'"'\n'"'"');f.close();exec(compile(code, __file__, '"'"'exec'"'"'))' bdist_wheel -d /tmp/pip-wheel-5h8euzzh
+2021-02-21T19:24:58,965   running bdist_wheel
+2021-02-21T19:24:58,983   running build
+2021-02-21T19:24:58,983   running build_py
+2021-02-21T19:24:59,034   creating build
+2021-02-21T19:24:59,034   creating build/lib
+2021-02-21T19:24:59,034   creating build/lib/django_material_icons
+2021-02-21T19:24:59,035   copying django_material_icons/__init__.py -> build/lib/django_material_icons
+2021-02-21T19:24:59,035   running egg_info
+2021-02-21T19:24:59,037   writing django_material_icons.egg-info/PKG-INFO
+2021-02-21T19:24:59,037   writing dependency_links to django_material_icons.egg-info/dependency_links.txt
+2021-02-21T19:24:59,038   writing requirements to django_material_icons.egg-info/requires.txt
+2021-02-21T19:24:59,038   writing top-level names to django_material_icons.egg-info/top_level.txt
+2021-02-21T19:24:59,039   reading manifest file 'django_material_icons.egg-info/SOURCES.txt'
+2021-02-21T19:24:59,039   reading manifest template 'MANIFEST.in'
+2021-02-21T19:24:59,040   writing manifest file 'django_material_icons.egg-info/SOURCES.txt'
+2021-02-21T19:24:59,040   creating build/lib/django_material_icons/templates
+2021-02-21T19:24:59,040   creating build/lib/django_material_icons/templates/django_material_icons
+2021-02-21T19:24:59,040   copying django_material_icons/templates/django_material_icons/icon.html -> build/lib/django_material_icons/templates/django_material_icons
+2021-02-21T19:24:59,041   creating build/lib/django_material_icons/templatetags
+2021-02-21T19:24:59,041   copying django_material_icons/templatetags/__init__.py -> build/lib/django_material_icons/templatetags
+2021-02-21T19:24:59,041   copying django_material_icons/templatetags/django_material_icons.py -> build/lib/django_material_icons/templatetags
+2021-02-21T19:24:59,042   installing to build/bdist.linux-x86_64/wheel
+2021-02-21T19:24:59,042   running install
+2021-02-21T19:24:59,042   running install_lib
+2021-02-21T19:24:59,044   creating build/bdist.linux-x86_64
+2021-02-21T19:24:59,044   creating build/bdist.linux-x86_64/wheel
+2021-02-21T19:24:59,044   creating build/bdist.linux-x86_64/wheel/django_material_icons
+2021-02-21T19:24:59,044   creating build/bdist.linux-x86_64/wheel/django_material_icons/templates
+2021-02-21T19:24:59,044   creating build/bdist.linux-x86_64/wheel/django_material_icons/templates/django_material_icons
+2021-02-21T19:24:59,044   copying build/lib/django_material_icons/templates/django_material_icons/icon.html -> build/bdist.linux-x86_64/wheel/django_material_icons/templates/django_material_icons
+2021-02-21T19:24:59,044   copying build/lib/django_material_icons/__init__.py -> build/bdist.linux-x86_64/wheel/django_material_icons
+2021-02-21T19:24:59,045   creating build/bdist.linux-x86_64/wheel/django_material_icons/templatetags
+2021-02-21T19:24:59,045   copying build/lib/django_material_icons/templatetags/__init__.py -> build/bdist.linux-x86_64/wheel/django_material_icons/templatetags
+2021-02-21T19:24:59,045   copying build/lib/django_material_icons/templatetags/django_material_icons.py -> build/bdist.linux-x86_64/wheel/django_material_icons/templatetags
+2021-02-21T19:24:59,045   running install_egg_info
+2021-02-21T19:24:59,047   Copying django_material_icons.egg-info to build/bdist.linux-x86_64/wheel/django_material_icons-0.1.2.egg-info
+2021-02-21T19:24:59,048   running install_scripts
+2021-02-21T19:24:59,080   adding license file "LICENSE" (matched pattern "LICEN[CS]E*")
+2021-02-21T19:24:59,080   creating build/bdist.linux-x86_64/wheel/django_material_icons-0.1.2.dist-info/WHEEL
+2021-02-21T19:24:59,081   creating '/tmp/pip-wheel-5h8euzzh/django_material_icons-0.1.2-py3-none-any.whl' and adding 'build/bdist.linux-x86_64/wheel' to it
+2021-02-21T19:24:59,081   adding 'django_material_icons/__init__.py'
+2021-02-21T19:24:59,081   adding 'django_material_icons/templates/django_material_icons/icon.html'
+2021-02-21T19:24:59,082   adding 'django_material_icons/templatetags/__init__.py'
+2021-02-21T19:24:59,082   adding 'django_material_icons/templatetags/django_material_icons.py'
+2021-02-21T19:24:59,082   adding 'django_material_icons-0.1.2.dist-info/LICENSE'
+2021-02-21T19:24:59,082   adding 'django_material_icons-0.1.2.dist-info/METADATA'
+2021-02-21T19:24:59,082   adding 'django_material_icons-0.1.2.dist-info/WHEEL'
+2021-02-21T19:24:59,082   adding 'django_material_icons-0.1.2.dist-info/top_level.txt'
+2021-02-21T19:24:59,083   adding 'django_material_icons-0.1.2.dist-info/RECORD'
+2021-02-21T19:24:59,083   removing build/bdist.linux-x86_64/wheel
+2021-02-21T19:24:59,104   Created wheel for django-material-icons: filename=django_material_icons-0.1.2-py3-none-any.whl size=3219 sha256=7f95bad683a4bb59c2b68fa9878bef3ddfba9d611853f8c9564f625113f4359c
+2021-02-21T19:24:59,104   Stored in directory: /root/.cache/pip/wheels/a9/8d/cf/8719c85b732343ba410401243937a4d2818b2cef7cb1e08ec2
+2021-02-21T19:24:59,105 Successfully built django-material-icons
+2021-02-21T19:24:59,675 Installing collected packages: django-material-icons
+2021-02-21T19:24:59,677   Created temporary directory: /tmp/pip-unpacked-wheel-7n_kahec
+
+2021-02-21T19:24:59,740 Successfully installed django-material-icons-0.1.2
+2021-02-21T19:24:59,740 Cleaning up...
+2021-02-21T19:24:59,740   Removing source in /tmp/pip-install-rhsn63sm/django-material-icons
+2021-02-21T19:24:59,741 Removed build tracker: '/tmp/pip-req-tracker-20bmp0xd'

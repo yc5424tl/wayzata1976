@@ -2,13 +2,35 @@
 {% load static %}
 
 {% block style %}
-{{ block.super }}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'zietgeist_2.css' %}" type="text/css"></link>
 {% endblock %}
 
 {% block content %}
 
 
-<section id="tabs">
+<div class="btns-wrapper">
+    <button role="button" class="btn-neumo active">
+        <span style="display:block" class="inner-wrapper">
+            <!-- <i class="material-icons-round"></i> -->
+            <i class="material-icons">play_arrow</i>
+        </span>
+    </button>
+    <div role="button" type="button" class="btn-neumo">
+        <div class="inner-wrapper">
+            <!-- <i class="material-icons-round"></i> -->
+            <i class="material-icons">pause</i>
+        </div>
+    </div>
+    <div role="button" type="button" class="btn btn-neumo">
+        <div class="inner-wrapper">
+            <!-- <i class="material-icons-round"></i> -->
+            <i class="material-icons">skip_next</i>
+        </div>
+    </div>
+</div>
+
+<!-- <section id="tabs"> -->
 
     <h2 class="page-header">The Wayback Machine<br><small>Happenings of 1976</small></h2>
 
@@ -155,5 +177,9 @@
         </div>
     </div>
     </div>
-</section>
+<!-- </section> -->
+{% endblock %}
+
+{% block javascript %}
+    <script type="application/javascript" url="{% static 'js/zietgeist.js' %}"></script>
 {% endblock %}

@@ -1,4 +1,5 @@
 {% load static %}
+
 <!doctype html>
 
 <html lang='en'>
@@ -20,6 +21,29 @@
         <link
             href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
             rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Codystar&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Rhodium+Libre&display=swap" rel="stylesheet">
+            <link href="http://fonts.cdnfonts.com/css/budmo-jiggler-jigglish" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+<link href="http://fonts.cdnfonts.com/css/disco-diva" rel="stylesheet">
+            <!-- <link href="http://fonts.cdnfonts.com/css/geldotica" rel="stylesheet">
+            <link href="http://fonts.cdnfonts.com/css/needlework-perfect" rel="stylesheet">
+            <link href="http://fonts.cdnfonts.com/css/dotmatrix" rel="stylesheet">
+            <link href="http://fonts.cdnfonts.com/css/budmo" rel="stylesheet">
+            <link href="http://fonts.cdnfonts.com/css/minecart-lcd" rel="stylesheet">
+            <link href="http://fonts.cdnfonts.com/css/synthetique" rel="stylesheet">   -->
+            <!-- <link href="http://fonts.cdnfonts.com/css/hnrumine" rel="stylesheet">
+            <link href="http://fonts.cdnfonts.com/css/secret-files-ii" rel="stylesheet">
+            <link href="http://fonts.cdnfonts.com/css/dymo" rel="stylesheet">
+            <link href="http://fonts.cdnfonts.com/css/underwood-champion" rel="stylesheet">
+            <link href="http://fonts.cdnfonts.com/css/jmh-typewriter" rel="stylesheet">
+            <link href="http://fonts.cdnfonts.com/css/mechanical" rel="stylesheet"> -->
+                
+                    
+                
         <link
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -29,8 +53,11 @@
             rel="stylesheet"
             type="text/css"
             href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
-        <link 
-            rel="stylesheet" 
+            <!-- <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet"> -->
+            <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link
+            rel="stylesheet"
             href="{% static 'css/base.css' %}">
     {% endblock %}
 
@@ -49,6 +76,8 @@
 
         <script src="{% static 'fontawesome_free/js/all.min.js' %}"></script>
 
+        <!-- <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script> -->
+
         <script type="text/javascript"
                 src="{% static 'js/offcanvas.js' %}"></script>
 
@@ -59,7 +88,7 @@
 </head>
 
 <body>
-    <div class="d-flex flex-column container">
+    <div class="d-flex flex-column container-fluid">
         <nav class="navbar navbar-expand-xl fixed-top navbar-dark bg-dark" id="header">
             <a class="navbar-brand" href="{% url 'index' %}">
                 <img src="{% static 'img/wide_logo.png' %}" class="logo" height="80px">
@@ -279,20 +308,22 @@
             {% endblock %}
 
         </div>
-
-        <footer>
-            <nav class="navbar navbar-dark navbar-expand-xl bg-dark text-light">
-                <hr>
-                <div class="text-center footer-row">
-                    <address class="text-center">
-                        <small><a style="text-decoration: underline 1pt solid;" href="mailto:wayzata1976.admin@gmail.com"
-                                target="_blank">Email Us</a><br>Reunion Committee @ P.O.Box 124 Wayzata, MN 55391</small>
-                    </address>
-                </div>
-            </nav>
-        </footer>
-        {% block javascript %}
-        {% endblock %}
     </div>
+
+    <footer>
+        <nav class="navbar  navbar-expand-xl text-light">
+            <hr>
+            <div class="text-center footer-row">
+                <address class="text-center">
+                    <small><a style="text-decoration: underline 1pt solid;" href="mailto:wayzata1976.admin@gmail.com"
+                            target="_blank">Email Us</a><br>Reunion Committee @ P.O.Box 124 Wayzata, MN 55391</small>
+                </address>
+            </div>
+        </nav>
+    </footer>
+    
+    {% block javascript %}
+    {% endblock %}
+
 </body>
 </html>

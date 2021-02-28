@@ -1,37 +1,149 @@
+@import url('http://fonts.cdnfonts.com/css/dotcirful');
+
+
+
+/* TO TRY */
+/* <link href="http://fonts.cdnfonts.com/css/helvetidoodle-by-ed-t" rel="stylesheet">
+font-family: 'Helvetidoodle by Ed T', sans-serif;
+
+<link href="http://fonts.cdnfonts.com/css/loco-tv" rel="stylesheet">
+font-family: 'loco tv', sans-serif;
+                                                
+<link href="http://fonts.cdnfonts.com/css/tf2" rel="stylesheet">
+font-family: 'TF2', sans-serif;
+                                                
+<link href="http://fonts.cdnfonts.com/css/codon" rel="stylesheet">
+font-family: 'CODON', sans-serif;
+                                                
+<link href="http://fonts.cdnfonts.com/css/alba" rel="stylesheet">
+font-family: 'Alba', sans-serif;
+font-family: 'Alba Matter', sans-serif;
+font-family: 'Alba Super', sans-serif;
+
+<link href="http://fonts.cdnfonts.com/css/rolloglide" rel="stylesheet">
+font-family: 'Rolloglide', sans-serif;
+                                                
+<link href="http://fonts.cdnfonts.com/css/varsity" rel="stylesheet">
+font-family: 'Varsity Regular', sans-serif;
+                                                
+<link href="http://fonts.cdnfonts.com/css/academic-m54" rel="stylesheet">
+font-family: 'Academic M54', sans-serif;
+                                                
+<link href="http://fonts.cdnfonts.com/css/the-maple-origins" rel="stylesheet">
+font-family: 'THE MAPLE ORIGINS', sans-serif;
+                               
+<link href="http://fonts.cdnfonts.com/css/hard-rock" rel="stylesheet">
+font-family: 'HARD ROCK', sans-serif;
+                                                
+<link href="http://fonts.cdnfonts.com/css/flatpack" rel="stylesheet">
+font-family: 'FlatPack', sans-serif;
+                                                                
+<link href="http://fonts.cdnfonts.com/css/budmo-jiggler-jigglish" rel="stylesheet">
+font-family: 'Budmo Jiggler', sans-serif;
+font-family: 'Budmo Jigglish', sans-serif;
+
+<link href="http://fonts.cdnfonts.com/css/noir-et-blanc" rel="stylesheet">
+font-family: 'Noir-et-Blanc', sans-serif;
+                                                
+<link href="http://fonts.cdnfonts.com/css/zebrra" rel="stylesheet">
+font-family: 'Zebrra', sans-serif;
+                                                                
+<link href="http://fonts.cdnfonts.com/css/mental-freak" rel="stylesheet">
+font-family: 'MENTAL FREAK', sans-serif;
+                                                
+<link href="http://fonts.cdnfonts.com/css/vtks-encantar" rel="stylesheet">
+font-family: 'vtks encantar', sans-serif;
+                                                                
+<link href="http://fonts.cdnfonts.com/css/vtc-coppa-kroma" rel="stylesheet">
+font-family: 'VTC CoppaKroma', sans-serif;
+                                                                
+<link href="http://fonts.cdnfonts.com/css/designer-notes" rel="stylesheet">
+font-family: 'Designer Notes', sans-serif;
+font-family: 'Designer Notes Bold', sans-serif; */
+
+:root {
+
+  --bg-lightest: #E8F6FB;
+  --bg-lighter: #DDF1EA;
+  --bg-light: #D6F0FA;
+  --dark-yellow: #E19857;
+  --gunmetal: #112B31;
+
+
+  --box-shadow-btn: 4px 2px 16px rgba(136, 165, 191, 0.48), -4px -2px 16px #FFFFFF;
+  --box-shadow-sm-inset: inset 1px 1px 3px rgba(136, 165, 191, 0.48), inset -1px -1px 3px #FFFFFF;
+  --box-shadow-sm: 1px 1px 3px rgba(136, 165, 191, 0.48), -1px -1px 3px #FFFFFF;
+  --box-shadow-md: 3px 3px 7px rgba(136, 165, 191, 0.48), -3px -3px 7px #FFFFFF;
+  --box-shadow-md-inset: inset 3px 3px 7px rgba(136, 165, 191, 0.48), inset -3px -3px 7px #FFFFFF; 
+
+  --box-shadow-md-inset-no-b: inset 3px 0 3px rgba(136,165,191,0.48), inset -3px 0px 3px #FFFFFF;
+
+  --text-shadow: 2px 2px 2px #d6e1ef99, 0 0 0 #000, 2px 2px 2px #d6e1ef00;
+  --text-shadow-inset: 1px 1px 1px #d6e1ef99, 0 0 0 #000, 1px 1px 1px #d6e1ef00;
+}
+
+
 .page-header {
-  font-variant: small-caps;
-  text-decoration: 3pt solid underline black;
-  margin-top: 5rem;
+  padding: 40px;
+  margin-top: 6rem;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2rem;
   text-align: center;
-  border: 0.5pt single black;
+  font-family: "Codystar", cursive;
+  line-height: 70%;
+  box-shadow: var(--box-shadow-md);
+  font-size: 60pt;
+  font-weight: bold;
+  text-shadow: inset 1px 1px 3px #d6e1ef99, 0 0 2px #000, inset -1px -1px 3px #d6e1ef00;
+  filter: drop-shadow(3px 3px 7px rgba(136, 165, 191, 0.48)) drop-shadow(-3px -3px 7px #FFFFFF);
+}
+
+.page-header small {
+  font-weight: bold;
+  font-size: 24pt;
+  filter: drop-shadow(3px 3px 3px rgba(136, 165, 191, 0.48)) drop-shadow(-3px -3px 3px #FFFFFF);
+
+}
+
+
+
+
+.rabbet {
+  -webkit-clip-path: polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%);
+      clip-path: polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%);
+}
+
+.page-header-wrapper {
+  filter: drop-shadow(3px 3px 3px rgba(136, 165, 191, 0.48)) drop-shadow(-3px -3px 3px #FFFFFF);
+}
+
+@media only screen and (max-width: 575.98px) {
+  h2.page-header {
+      font-size: 48pt; 
+  }
 }
 
 #header {
   background-color: rgba(44, 48, 52, 0.7);
+  box-shadow:  0 0 20px 40px rgba(44, 48, 52, 0.7);
 }
+
 
 div.d-flex.flex-column {
   width: 100%;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  margin-bottom: 60px;
 }
 
 address {
   margin-bottom: 0;
-}
-
-div.content.container {
-  width: 70%;
-  max-width: 85%;
-  margin-left: 10%;
-  margin-right: 10%;
-  background-color: transparent;
-  color: rgb(0, 0, 0);
-  margin-top: 5vh;
-  margin-bottom: 5vh;
 }
 
 html,
@@ -40,10 +152,13 @@ body {
   /* Prevent scroll on narrow devices */
   font-size: medium;
   font-family: "Roboto", sans-serif;
+  
+                                                
 }
 
 body {
-  padding-top: 116px;
+  padding-top: 106px;
+  background: linear-gradient(318.32deg, #C3D1E4 0%, #DDE7F3 55%, #D4E0ED 100%);
 }
 
 .box-shadow {
@@ -53,6 +168,9 @@ body {
 .navbar-nav {
   margin-right: 0;
   display: inline-flex;
+  font-family: "Codystar", cursive;
+  color: rgba(235, 235, 235, 0.75);
+  font-weight: bold;
 }
 
 .navbar.navbar-expand-xl {
@@ -80,10 +198,16 @@ body {
 
 body,
 div.container-fluid.content {
+  text-align: center;
   min-height: 100%;
   height: 100%;
-  margin-bottom: 60px;
   bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+div.container-fluid.content {
+  flex: 1;
 }
 
 .footer-row {
@@ -95,18 +219,24 @@ thead.thead-light {
   border: 5pt solid rgb(33, 37, 41);
 }
 
-th {
-  border: 1pt solid rgb(44, 48, 52);
-}
 
 footer {
-  position: fixed;
+  top: 100%;
+  position: static;
+  margin-top: auto;
   height: 60px;
   width: 100%;
   bottom: 0;
   left: 0;
   right: 0;
   margin-bottom: 0;
+  box-shadow: 0 0 5px 10px rgba(52,58,64,0.7);
+  background-image: linear-gradient(
+    318.32deg, 
+    rgba(195, 209, 228, 0.8) 0%,
+    rgba(221, 231, 243, 0.7) 55%, 
+    rgba(212, 224, 237, 0.6) 100%);
+  color: rgb(52,58,64);
 }
 
 table {
@@ -122,12 +252,14 @@ ul.list-group.list-group-flush.list-group-dark.nav-ul {
 a.nav-link.dropdown-toggle {
   background-color: rgba(44, 48, 52, 0.85);
   color: rgba(235, 235, 235, 80);
+  font-size: 16pt;
 }
 
 .dropdown-menu li a,
 .dropdown-menu li,
 .dropdown-menu {
   border-collapse: collapse;
+  font-weight: bold;
 }
 
 a.btn.btn-dark {
@@ -138,9 +270,6 @@ a.btn.btn-dark {
   border-radius: 0;
   border: none;
   transition: 0.35s;
-  -webkit-transition: 0.35s;
-    -moz-transition: 0.35s;
-    -o-transition: 0.35s;
   font-size: 11pt;
 }
 
@@ -153,9 +282,6 @@ ul.dropdown-menu {
   padding-top: 0;
   padding-bottom: 0;
   transition: 0.35s;
-  -webkit-transition: all 0.35s;
-  -moz-transition: all 0.35s;
-  -o-transition: all 0.35s;
 }
 
 a.nav-link.dropdown-toggle {
@@ -197,6 +323,25 @@ a.nav-link {
   font-size: 11pt;
 }
 
+form.form-inline.outside input[type="input"],
+form.form-inline.outside input[type="password"] {
+  background-color: rgb(94,100,107);
+  box-shadow: var(--box-shadow-sm-inset);
+  border: none;
+  border-radius: 18pt;
+  color: rgba(221, 231, 243, 0.8);
+
+}
+
+.form-control.form-control-sm.mr-sm-2 {
+  width: 120px;
+}
+.form-control.form-control-sm.mr-sm-2::placeholder {
+  color: rgba(52, 58, 64, 0.75);
+  font-weight: bold;
+  text-align: center;
+}
+
 @media (min-width: 1200px) {
   #outside-logout,
   #outside-username {
@@ -218,6 +363,7 @@ a.nav-link {
 }
 
 @media (min-width: 992px) {
+
   .dropdown-menu .dropdown-toggle:after {
     border-top: 0.3em solid transparent;
     border-right: 0;
@@ -258,6 +404,7 @@ a.nav-link {
 /*                  MAX-WIDTH 1199.98px               */
 /* ================================================ */
 @media (max-width: 1199.98px) {
+
   nav.navbar.navbar-expand-xl.fixed-top.navbar-dark.bg-dark {
     height: 60px;
     background-color: rgba(52, 58, 64, 0.75);
@@ -285,7 +432,6 @@ a.nav-link {
 
   a.nav-link.btn.btn-warning.btn-sm.inside {
     display: block;
-    /* color: rgba(44, 48, 52, 0.75); */
     color: rgba(235, 235, 235, 0.75);
     background-color: rgba(240, 179, 17, 0.75);
     text-shadow: 3xp 3px 3px black;
@@ -308,13 +454,16 @@ a.nav-link {
     padding-left: 1rem;
     overflow-y: auto;
     background-color: var(--gray-dark);
-    -moz-transition: transform 0.3s ease-in-out;
-    -o-transition: transform 0.3s ease-in-out;
-    transition: -webkit-transform 0.3s ease-in-out;
-    transition: transform 0.3s ease-in-out;
-    transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
-    -webkit-transform: translateX(100%);
+
     transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+
+    -ms-transform: translateX(100%);
+    transition: -ms-transform 0.3s ease-in-out;
+
+    -webkit-transform: translateX(100%);
+    transition: -webkit-transform 0.3s ease-in-out;
+
     background-image: url("../img/class_of_76_2.png");
     background-position-y: 90%;
     background-position-x: center;
@@ -323,8 +472,9 @@ a.nav-link {
   }
 
   .offcanvas-collapse.open {
-    -webkit-transform: translateX(-1rem);
     transform: translateX(-1rem);
+    -ms-transform: translateX(-1rem);
+    -webkit-transform: translateX(-1rem);
     /* Account for horizontal padding on navbar */
   }
 
@@ -353,15 +503,16 @@ a.nav-link {
 
 /*                        MAX-WIDTH 575px */
 /* ================================================================= */
+
 @media (max-width: 575px) {
   input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0.btn-block {
     display: block;
     width: 100%;
     background-color: rgba(240, 179, 17, 0.75);
     transition: all 0.3s ease-in-out;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
+    color: rgba(52, 58, 64, 0.85);
+    font-weight: bolder;
+    font-size: 14pt;
   }
 
   input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0.btn-block:hover {
@@ -382,9 +533,6 @@ a.nav-link {
     display: inline-flex;
     background-color: rgba(240, 179, 17, 0.75);
     transition: all 0.3s ease-in-out;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
   }
 
   input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0.non-block:hover {
@@ -455,6 +603,31 @@ a.dropdown-item:focus {
 
 a.nav-link.btn.btn-sm.btn-dark.text-lighter {
   background-color: rgba(52, 56, 64, 0.85);
+  font-weight: bold;
+  font-size: 14pt;
 }
 
+@media (min-width: 1400px) {
+  a.nav-link.btn-sm.btn-dark.text-lighter,
+  a.nav-link.dropdown-toggle {
+    font-size: 14pt;
+  }
+}
 
+@media (min-width: 1300px) and (max-width: 1399.98px) {
+  a.nav-link.btn.btn-sm.btn-dark.text-lighter,
+  a.nav-link.dropdown-toggle  {
+    font-size: 12pt;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1299px) {
+  a.nav-link.btn.btn-sm.btn-dark.text-lighter,
+  a.nav-link.dropdown-toggle  {
+    font-size: 10pt;
+  }
+}
+
+footer address {
+  color: rgb(52,58,64);
+}

@@ -35,4 +35,5 @@ urlpatterns = [
         name="password_reset",
     ),
     path("logout/", LogoutView.as_view(), name="logout"),
+    path("neumorphism/", views.neumorphism, name='neumorphism'),
 ]

@@ -76,6 +76,7 @@ INSTALLED_APPS = [
     "widget_tweaks",
     "storages",
     "s3file",
+    "django_material_icons",
 ]
 
 MIDDLEWARE = [
@@ -130,12 +131,12 @@ if 'ENABLE_SERVER_SIDE_CURSORS' in os.environ:
     DISABLE_SERVER_SIDE_CURSORS = False
 
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-        'TIMEOUT': 86400
-    }
-}
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+#         'TIMEOUT': 86400
+#     }
+# }
 
 
 # Password validation

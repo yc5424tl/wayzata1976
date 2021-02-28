@@ -221,11 +221,17 @@ def view_zietgeist(request):
         songs = json.load(json_file)
     else:
         json_file = staticfiles_storage.open('json/songs.json')
+        
         songs = json.load(json_file)
+    # return render(
+    #     request,
+    #     # "main/zietgeist.html",
+    #     {"yearbooks": yearbooks, "songs": songs, "awards": awards},
+    # )
+
     return render(
         request,
-        "main/zietgeist.html",
-        {"yearbooks": yearbooks, "songs": songs, "awards": awards},
+        "neumorphism.html",{"yearbooks": yearbooks, "songs": songs, "awards": awards},
     )
 
 
@@ -412,3 +418,26 @@ def upload_multi_gallery_image(request):
     else:
         form = GalleryImageUploadForm()
         return render(request, "upload/gallery_image_upload.html", {"form": form})
+
+def neumorphism(request):
+    awards = [
+        {"award": "Best Picture", "winner": "Rocky"},
+        {"award": "Best Actor", "winner": "Peter Finch (Network)"},
+        {"award": "Best Actress", "winner": "Faye Dunaway (Network)"},
+        {"award": "Best Supporting Actor", "winner": "Jason Robards (All the President's Men)"},
+        {"award": "Best Supporting Actress", "winner": "Beatrice Straight (Network)"},
+        {"award": "Best Director", "winner": "John Avildsen (Rocky)"},
+    ]
+    yearbooks = Yearbook.objects.all()
+    songs = None
+    if os.getenv('USE_S3') == 'TRUE':
+        json_file = urlopen(static('json/songs.json'))
+        songs = json.load(json_file)
+    else:
+        json_file = staticfiles_storage.open('json/songs.json')
+        songs = json.load(json_file)
+    return render(
+        request,
+        'neumorphism.html',
+        {"yearbooks": yearbooks, "songs": songs, "awards": awards},
+    )
