@@ -92,6 +92,7 @@ font-family: 'Designer Notes Bold', sans-serif; */
   text-align: center;
   font-family: "Codystar", cursive;
   line-height: 70%;
+  -webkit-box-shadow: var(--box-shadow-md);
   box-shadow: var(--box-shadow-md);
   font-size: 60pt;
   font-weight: bold;
@@ -126,6 +127,7 @@ font-family: 'Designer Notes Bold', sans-serif; */
 
 #header {
   background-color: rgba(44, 48, 52, 0.7);
+  -webkit-box-shadow:  0 0 20px 40px rgba(44, 48, 52, 0.7);
   box-shadow:  0 0 20px 40px rgba(44, 48, 52, 0.7);
 }
 
@@ -162,6 +164,7 @@ body {
 }
 
 .box-shadow {
+  -webkit-box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
   box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
 }
 
@@ -230,6 +233,7 @@ footer {
   left: 0;
   right: 0;
   margin-bottom: 0;
+  -webkit-box-shadow: 0 0 5px 10px rgba(52, 58, 64, 0.7);
   box-shadow: 0 0 5px 10px rgba(52,58,64,0.7);
   background-image: linear-gradient(
     318.32deg, 
@@ -326,6 +330,7 @@ a.nav-link {
 form.form-inline.outside input[type="input"],
 form.form-inline.outside input[type="password"] {
   background-color: rgb(94,100,107);
+  -webkit-box-shadow: var(--box-shadow-sm-inset);
   box-shadow: var(--box-shadow-sm-inset);
   border: none;
   border-radius: 18pt;
