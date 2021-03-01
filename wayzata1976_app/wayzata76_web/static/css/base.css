@@ -80,6 +80,17 @@ font-family: 'Designer Notes Bold', sans-serif; */
 
   --text-shadow: 2px 2px 2px #d6e1ef99, 0 0 0 #000, 2px 2px 2px #d6e1ef00;
   --text-shadow-inset: 1px 1px 1px #d6e1ef99, 0 0 0 #000, 1px 1px 1px #d6e1ef00;
+
+
+  --accent-1-on: #80BEAF;    / 
+  --accent-1-off: #B3DDD1;    /
+  --bg-primary: #D1DCE2;
+  --bg-light: #ebebeb;
+  --bg-shadow: #3f5864;
+  --accent-2-on: #F5B994;        
+  --accent-2-off: #EE9C6C;
+  --accent-dark: #343a40;
+
 }
 
 
@@ -91,7 +102,7 @@ font-family: 'Designer Notes Bold', sans-serif; */
   margin-bottom: 2rem;
   text-align: center;
   font-family: "Codystar", cursive;
-  line-height: 70%;
+  line-height: 80%;
   -webkit-box-shadow: var(--box-shadow-md);
   box-shadow: var(--box-shadow-md);
   font-size: 60pt;
