@@ -70,17 +70,23 @@ font-family: 'Designer Notes Bold', sans-serif; */
   --gunmetal: #112B31;
 
 
-  --box-shadow-btn: 4px 2px 16px rgba(136, 165, 191, 0.48), -4px -2px 16px #FFFFFF;
-  --box-shadow-sm-inset: inset 1px 1px 3px rgba(136, 165, 191, 0.48), inset -1px -1px 3px #FFFFFF;
-  --box-shadow-sm: 1px 1px 3px rgba(136, 165, 191, 0.48), -1px -1px 3px #FFFFFF;
-  --box-shadow-md: 3px 3px 7px rgba(136, 165, 191, 0.48), -3px -3px 7px #FFFFFF;
-  --box-shadow-md-inset: inset 3px 3px 7px rgba(136, 165, 191, 0.48), inset -3px -3px 7px #FFFFFF; 
+  /* --box-shadow-btn: 4px 2px 16px rgba(136, 165, 191, 0.48), -4px -2px 16px #FFFFFF; */
+  --box-shadow-btn: 4px 6px 16px #3F5864, -4px -4px 10px #FFFFFFCC /*#EBEBEBCC*/;
+  --box-shadow-sm-inset: inset 1px 1px 3px #3F586480, inset -1px -1px 3px #FFFFFF;
+  --box-shadow-sm: 1px 1px 3px #3F586480, -1px -1px 3px #FFFFFF;
+  --box-shadow-md: 3px 3px 7px #3F586480, -3px -3px 7px #FFFFFF;
+  /* --box-shadow-md-inset: inset 3px 3px 7px rgba(136, 165, 191, 0.48), inset -3px -3px 7px #FFFFFF;  */
+  --box-shadow-md-inset: inset 3px 3px 7px #3F586480, inset -3px -3px 7px #EBEBEBCC;
 
-  --box-shadow-md-inset-no-b: inset 3px 0 3px rgba(136,165,191,0.48), inset -3px 0px 3px #FFFFFF;
+  --box-shadow-md-inset-no-b: inset 3px 0 3px #3F586480, inset -3px 0px 3px #FFFFFF;
 
-  --text-shadow: 2px 2px 2px #d6e1ef99, 0 0 0 #000, 2px 2px 2px #d6e1ef00;
-  --text-shadow-inset: 1px 1px 1px #d6e1ef99, 0 0 0 #000, 1px 1px 1px #d6e1ef00;
+  --text-shadow: 2px 2px 2px #cedadf80, 0 0 0 #000, 2px 2px 2px #cedadf80;
+  --text-shadow-inset: 1px 1px 1px #cedadf80, 0 0 0 #000, 1px 1px 1px #cedadf80;
+  /* --text-shadow: 2px 2px 2px #d6e1ef99, 0 0 0 #000, 2px 2px 2px #d6e1ef00; */
+  /* --text-shadow-inset: 1px 1px 1px #d6e1ef99, 0 0 0 #000, 1px 1px 1px #d6e1ef00; */
 }
+
+/* background: linear-gradient(318.32deg, #C3D1E4 0%, #DDE7F3 55%, #D4E0ED 100%); */
 
 
 .page-header {
@@ -91,7 +97,7 @@ font-family: 'Designer Notes Bold', sans-serif; */
   margin-bottom: 2rem;
   text-align: center;
   font-family: "Codystar", cursive;
-  line-height: 70%;
+  line-height: 100%;
   -webkit-box-shadow: var(--box-shadow-md);
   box-shadow: var(--box-shadow-md);
   font-size: 60pt;
@@ -158,7 +164,8 @@ body {
 
 body {
   padding-top: 106px;
-  background: linear-gradient(318.32deg, #C3D1E4 0%, #DDE7F3 55%, #D4E0ED 100%);
+  /* background: linear-gradient(318.32deg, #C3D1E4 0%, #DDE7F3 55%, #D4E0ED 100%); */
+  background: linear-gradient(318.32deg, #ebebeb 0% #d1dce2 10%, #CDD9DF 55%, #c1d0d7 100%);
 }
 
 .box-shadow {
