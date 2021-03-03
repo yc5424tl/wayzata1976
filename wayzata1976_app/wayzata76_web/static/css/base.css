@@ -1,3 +1,5 @@
+
+ 
 @import url('http://fonts.cdnfonts.com/css/dotcirful');
 
 
@@ -5,7 +7,6 @@
 /* TO TRY */
 /* <link href="http://fonts.cdnfonts.com/css/helvetidoodle-by-ed-t" rel="stylesheet">
 font-family: 'Helvetidoodle by Ed T', sans-serif;
-
 <link href="http://fonts.cdnfonts.com/css/loco-tv" rel="stylesheet">
 font-family: 'loco tv', sans-serif;
                                                 
@@ -19,7 +20,6 @@ font-family: 'CODON', sans-serif;
 font-family: 'Alba', sans-serif;
 font-family: 'Alba Matter', sans-serif;
 font-family: 'Alba Super', sans-serif;
-
 <link href="http://fonts.cdnfonts.com/css/rolloglide" rel="stylesheet">
 font-family: 'Rolloglide', sans-serif;
                                                 
@@ -41,7 +41,6 @@ font-family: 'FlatPack', sans-serif;
 <link href="http://fonts.cdnfonts.com/css/budmo-jiggler-jigglish" rel="stylesheet">
 font-family: 'Budmo Jiggler', sans-serif;
 font-family: 'Budmo Jigglish', sans-serif;
-
 <link href="http://fonts.cdnfonts.com/css/noir-et-blanc" rel="stylesheet">
 font-family: 'Noir-et-Blanc', sans-serif;
                                                 
@@ -63,52 +62,46 @@ font-family: 'Designer Notes Bold', sans-serif; */
 
 :root {
 
-  --bg-lightest: #E8F6FB;
-  --bg-lighter: #DDF1EA;
-  --bg-light: #D6F0FA;
-  --dark-yellow: #E19857;
-  --gunmetal: #112B31;
-
-
-  /* --box-shadow-btn: 4px 2px 16px rgba(136, 165, 191, 0.48), -4px -2px 16px #FFFFFF;
+  --box-shadow-btn: 4px 2px 16px rgba(136, 165, 191, 0.48), -4px -2px 16px #FFFFFF;
   --box-shadow-sm-inset: inset 1px 1px 3px rgba(136, 165, 191, 0.48), inset -1px -1px 3px #FFFFFF;
   --box-shadow-sm: 1px 1px 3px rgba(136, 165, 191, 0.48), -1px -1px 3px #FFFFFF;
   --box-shadow-md: 3px 3px 7px rgba(136, 165, 191, 0.48), -3px -3px 7px #FFFFFF;
   --box-shadow-md-inset: inset 3px 3px 7px rgba(136, 165, 191, 0.48), inset -3px -3px 7px #FFFFFF; 
-
   --box-shadow-md-inset-no-b: inset 3px 0 3px rgba(136,165,191,0.48), inset -3px 0px 3px #FFFFFF;
+  --text-shadow: 2px 2px 2px #d6e1ef99, 0 0 1px #000, 2px 2px 2px #d6e1ef00;
+  --text-shadow-inset: 1px 1px 1px #d6e1ef99, 0 0 1px #000, 1px 1px 1px #d6e1ef00;
+  /* --box-shadow-inset-dark: inset 3px 3px 7px #141515, inset -3px -3px -7px  #4e5355; */
+  --box-shadow-inset-dark: inset 3px 3px 3px #000, inset -3px -3px 3px #FFF;
 
-  --text-shadow: 2px 2px 2px #d6e1ef99, 0 0 0 #000, 2px 2px 2px #d6e1ef00;
-  --text-shadow-inset: 1px 1px 1px #d6e1ef99, 0 0 0 #000, 1px 1px 1px #d6e1ef00; */
-
-
-  
-
-  --accent-1-on: #80BEAF;    / 
-  --accent-1-off: #B3DDD1;    /
-  --bg-primary: #D1DCE2;          /* #d6e1ef99  (if not here than up one */
-  --bg-tint: #E6ECEF;
-  --bg-shade: #CDD9DF;
+  --accent-1-on: #80beaf;    / 
+  --accent-1-off: #b3ddd1;    /
+  --bg-primary: #d1dce2;          /* #d6e1ef99  (if not here than up one */
+  --bg-tint: #e6ecef;
+  --bg-shade: #cdd9df;
   --bg-bright; #ebebeb;         /* #FFFfff 8?*/
   --bg-shadow: #3f5864;         /* rgb(136, 165, 191) baby blue grey  OR 1555,155,255,0.3 @ active btn lavender) */
-  --accent-2-on: #F5B994;        
-  --accent-2-off: #EE9C6C;
+  --accent-2-off: #f5b994cc;        
+  --accent-2-on: #ee9c6c;
   --accent-dark: #343a40;
-  --accent-dark-tr: #343a40CC;
-  --accent-darker: #212529CC;
-
-
-  --box-shadow-btn: 4px 2px 16px #3f5864, -4px -2px 16px #ebebeb;
-  --box-shadow-sm-inset: inset 1px 1px 3px #3f5864, inset -1px -1px 3px #ebebeb;
-  --box-shadow-sm: 1px 1px 3px #3f5864, -1px -1px 3px #ebebeb;
-  --box-shadow-md: 3px 3px 7px #3f5864, -3px -3px 7px #ebebeb;
-  --box-shadow-md-inset: inset 3px 3px 7px #3f5864, inset -3px -3px 7px #ebebeb; 
-
-  --box-shadow-md-inset-no-b: inset 3px 0 3px #3f5864, inset -3px 0px 3px #ebebeb;
-
-  --text-shadow: 2px 2px 2px #3f5864 0 0 0 #343a40CC, 2px 2px 2px #3f5864;
-  --text-shadow-inset: 1px 1px 1px #3f5864, 0 0 0 #343a40CC, 1px 1px 1px #3f5864;
-
+  --accent-dark-tr: #343a40cc;
+  --accent-darker: #212529;
+  --bs-dark: #292b2c;
+  --bs-dark-tint: #4e5355;
+  /* --bs-dark-tint: #45484a; */
+  --bs-dark-shade: #141515;
+  /* 
+    100% — FF
+    90% — E6
+    80% — CC
+    70% — B3
+    60% — 99
+    50% — 80
+    40% — 66
+    30% — 4D
+    20% — 33
+    10% — 1A
+    0%    00
+  */
 }
 
 
@@ -120,22 +113,19 @@ font-family: 'Designer Notes Bold', sans-serif; */
   margin-bottom: 2rem;
   text-align: center;
   font-family: "Codystar", cursive;
-  line-height: 80%;
+  line-height: 70%;
   -webkit-box-shadow: var(--box-shadow-md);
   box-shadow: var(--box-shadow-md);
   font-size: 60pt;
   font-weight: bold;
-  /* text-shadow: inset 1px 1px 3px #d6e1ef99, 0 0 2px #000, inset -1px -1px 3px #d6e1ef00; */
-  text-shadow: inset 1px 1px 3px var(--bg-bright), 0 0 2px var(--accent-dark-tr), inset -1px -1px 3px var(--bg-bright);
-  /* filter: drop-shadow(3px 3px 7px rgba(136, 165, 191, 0.48)) drop-shadow(-3px -3px 7px #FFFFFF) */
-  filter: drop-shadow(3px 3px 7px var(--bg-shadow)) drop-shadow(-3px -3px 7px var(--bg-bright));
+  text-shadow: inset 1px 1px 3px #d6e1ef99, 0 0 2px #000, inset -1px -1px 3px #d6e1ef00;
+  filter: drop-shadow(3px 3px 7px rgba(136, 165, 191, 0.48)) drop-shadow(-3px -3px 7px #FFFFFF);
 }
 
 .page-header small {
   font-weight: bold;
   font-size: 24pt;
-  /* filter: drop-shadow(3px 3px 3px rgba(136, 165, 191, 0.48)) drop-shadow(-3px -3px 3px #FFFFFF); */
-  filter: drop-shadow(3px 3px 3px var(--bg-shadow)) drop-shadow(-3px -3px 3px var(--bg-bright));
+  filter: drop-shadow(3px 3px 3px rgba(136, 165, 191, 0.48)) drop-shadow(-3px -3px 3px #FFFFFF);
 }
 
 .rabbet {
@@ -146,8 +136,7 @@ font-family: 'Designer Notes Bold', sans-serif; */
 }
 
 .page-header-wrapper {
-  /* filter: drop-shadow(3px 3px 3px rgba(136, 165, 191, 0.48)) drop-shadow(-3px -3px 3px #FFFFFF); */
-  filter: drop-shadow(3px 3px 3px var(--bg-shadow)) drop-shadow(-3px -3px 3px var(--bg-bright));
+  filter: drop-shadow(3px 3px 3px rgba(136, 165, 191, 0.48)) drop-shadow(-3px -3px 3px #FFFFFF);
 }
 
 @media only screen and (max-width: 575.98px) {
@@ -157,9 +146,9 @@ font-family: 'Designer Notes Bold', sans-serif; */
 }
 
 #header {
-  background-color: var(--accent-dark-tr);
-  -webkit-box-shadow:  0 0 20px 40px var(--accent-dark-tr);
-  box-shadow:  0 0 20px 40px var(--accent-dark-tr);
+  background-color: rgba(44, 48, 52, 0.7);
+  -webkit-box-shadow:  0 0 20px 40px rgba(44, 48, 52, 0.7);
+  box-shadow:  0 0 20px 40px rgba(44, 48, 52, 0.7);
 }
 
 
@@ -191,24 +180,19 @@ body {
 
 body {
   padding-top: 106px;
-  /* background: linear-gradient(318.32deg, #C3D1E4 0%, #DDE7F3 55%, #D4E0ED 100%); */
-  background: linear-gradient(318.32deg, #D1DCE2E6 0%, #D1DCE2CC) 55%, #D1DCE2B3 100%);
+  background: linear-gradient(318.32deg, #C3D1E4 0%, #DDE7F3 55%, #D4E0ED 100%);
 }
 
 .box-shadow {
-  /* -webkit-box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05); */
-  -webkit-box-shadow: 0 0.25rem 0.75rem var(--accent-dark-tr);
-  box-shadow: 0 0.25rem 0.75rem var(--accent-dark-tr);
-
+  -webkit-box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
 }
 
 .navbar-nav {
   margin-right: 0;
   display: inline-flex;
   font-family: "Codystar", cursive;
-  /* color: rgba(235, 235, 235, 0.75); */
-  color: var(--bg-bright);
+  color: rgba(235, 235, 235, 0.75);
   font-weight: bold;
 }
 
@@ -225,8 +209,7 @@ body {
 }
 
 .list-item-dark {
-  /* background-color: rgba(52, 58, 64, 0.85); */
-  background-color: var(--accent-dark-tr);
+  background-color: rgba(52, 58, 64, 0.85);
 }
 
 .footer-ul {
@@ -269,9 +252,14 @@ footer {
   left: 0;
   right: 0;
   margin-bottom: 0;
-  -webkit-box-shadow: 0 0 5px 10px var(--accent-dark-tr);
-  box-shadow: 0 0 5px 10px var(--accent-dark-tr);
-  background-image: linear-gradient(318.32deg, #D1DCE2E6 0%, #D1DCE2CC) 55%, #D1DCE2B3 100%);
+  -webkit-box-shadow: 0 0 5px 10px rgba(52, 58, 64, 0.7);
+  box-shadow: 0 0 5px 10px rgba(52, 58, 64, 0.7);
+  background-image: linear-gradient(
+                    318.32deg, 
+                    rgba(195, 209, 228, 0.8) 0%,
+                    rgba(221, 231, 243, 0.7) 55%, 
+                    rgba(212, 224, 237, 0.6) 100%);
+  color: rgb(52, 58, 64);
 }
 
 table {
@@ -285,8 +273,8 @@ ul.list-group.list-group-flush.list-group-dark.nav-ul {
 }
 
 a.nav-link.dropdown-toggle {
-  background-color: var(--accent-dark-tr);
-  color: var(--bg-bright);
+  background-color: rgba(44, 48, 52, 0.85);
+  color: rgba(235, 235, 235, 80);
   font-size: 16pt;
 }
 
@@ -309,18 +297,18 @@ a.btn.btn-dark {
 }
 
 a.btn.btn-dark.text-lighter {
-  background-color: var(--accent-dark-tr);
+  background-color: rgba(52, 58, 64, 0.85);
 }
 
 ul.dropdown-menu {
-  background-color: var(--accent-dark-tr);
+  background-color: rgba(52, 58, 64, 0.85);
   padding-top: 0;
   padding-bottom: 0;
   transition: 0.35s;
 }
 
 a.nav-link.dropdown-toggle {
-  background-color: var(--accent-dark-tr);
+  background-color: rgba(52, 58, 64, 0.85);
   transition: 0.35s;
 }
 
@@ -333,20 +321,20 @@ h6.nav-header.outside {
 .dropdown-menu li:focus,
 .dropdown-menu li:hover,
 .dropdown-menu li:focus-within {
-  background-color: var(--accent-darker);
+  background-color: rgba(33, 37, 41, 0.85);
   color: rgb(240, 179, 17);
 }
 
 .dropdown-menu li:hover > a,
 .dropdown-menu li:focus > a {
   color: rgb(240, 179, 17);
-  background-color: var(--accent-darker);
+  background-color: rgba(33, 37, 41, 0.85);
 }
 
 .dropdown-menu li:focus > ul > li > a {
   text-align: center;
   transition: 0.5s;
-  background-color: var(--accent-darker);
+  background-color: rgba(33, 37, 41, 0.85);
 }
 
 nav.navbar.navbar-expand-xl.fixed-top.navbar-dark.bg-dark a.navbar-brand {
@@ -373,7 +361,7 @@ form.form-inline.outside input[type="password"] {
   width: 120px;
 }
 .form-control.form-control-sm.mr-sm-2::placeholder {
-  color: var(--accent-dark-tr);
+  color: rgba(52, 58, 64, 0.75);
   font-weight: bold;
   text-align: center;
 }
@@ -429,7 +417,7 @@ form.form-inline.outside input[type="password"] {
   }
 
   .dropdown-menu > li:hover {
-    background-color: var(--accent-dark-tr);
+    background-color: rgba(52, 58, 64, 0.85);
   }
 
   .dropdown-menu > li:hover > .submenu {
@@ -443,7 +431,7 @@ form.form-inline.outside input[type="password"] {
 
   nav.navbar.navbar-expand-xl.fixed-top.navbar-dark.bg-dark {
     height: 60px;
-    background-color: var(--accent-dark);
+    background-color: rgba(52, 58, 64, 0.75);
   }
 
   li.nav-item a.nav-link {
@@ -468,7 +456,7 @@ form.form-inline.outside input[type="password"] {
 
   a.nav-link.btn.btn-warning.btn-sm.inside {
     display: block;
-    color: var(--bg-bright);
+    color: rgba(235, 235, 235, 0.75);
     background-color: rgba(240, 179, 17, 0.75);
     text-shadow: 3px 3px 3px black;
   }
@@ -529,7 +517,7 @@ form.form-inline.outside input[type="password"] {
   }
 
   .navbar-collapse .nav-link {
-    background-color: var(--accent-dark-tr);
+    background-color: rgba(52, 58, 64, 0.85);
   }
 
   .navbar-collapse .nav-item {
@@ -546,7 +534,7 @@ form.form-inline.outside input[type="password"] {
     width: 100%;
     background-color: rgba(240, 179, 17, 0.75);
     transition: all 0.3s ease-in-out;
-    color: var(--accent-dark-tr);
+    color: rgba(52, 58, 64, 0.85);
     font-weight: bolder;
     font-size: 14pt;
   }
@@ -614,7 +602,7 @@ form.form-inline.outside input[type="password"] {
   }
 
   .dropdown-menu > li:hover {
-    background-color: var(--accent-dark-tr);
+    background-color: rgba(52, 58, 64, 0.85);
   }
 
   .dropdown-menu > li:hover > .submenu {
@@ -634,11 +622,11 @@ a.text-lighter:active {
 
 a.dropdown-item:hover,
 a.dropdown-item:focus {
-  background-color: var(--accent-dark);
+  background-color: rgba(52, 56, 64, 0.85);
 }
 
 a.nav-link.btn.btn-sm.btn-dark.text-lighter {
-  background-color: var(--accent-dark-tr);
+  background-color: rgba(52, 56, 64, 0.85);
   font-weight: bold;
   font-size: 14pt;
 }
@@ -665,5 +653,6 @@ a.nav-link.btn.btn-sm.btn-dark.text-lighter {
 }
 
 footer address {
-  color: var(--accent-dark);
+  color: rgb(52,58,64);
 }
+
