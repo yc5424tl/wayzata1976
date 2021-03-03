@@ -65,6 +65,17 @@ $(document).ready(function() {
   
       $('#scroll').tooltip('show');
 
+
+      $('tbody tr td, tbody tr th').hover(
+        function() {
+          $(this).parent().children().css('background-color', '#292b2c');
+        }, function() {
+          $(this).parent().children().css('background-color', 'initial');
+        }
+      );
+      
+                
+
 });
 
 
