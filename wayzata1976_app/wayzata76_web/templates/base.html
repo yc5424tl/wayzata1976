@@ -88,239 +88,241 @@
 </head>
 
 <body>
-    <div class="d-flex flex-column container-fluid">
-        <nav class="navbar navbar-expand-xl fixed-top navbar-dark bg-dark" id="header">
-            <a class="navbar-brand" href="{% url 'index' %}">
-                <img src="{% static 'img/wide_logo.png' %}" class="logo" height="80px">
-            </a>
-            <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse offcanvas-collapse" id="offcanvas-div">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link btn btn-sm btn-dark text-lighter"
-                            href="{% url 'index' %}">Home<span class="sr-only">(current)</span></a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-sm btn-dark text-lighter"
-                            href="{% url 'view_news' %}">News</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-sm btn-dark text-lighter"
-                            href="{% url 'view_classmates' %}">Classmates</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-sm btn-dark text-lighter"
-                            href="{% url 'view_zietgeist' %}">The Wayback Machine</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-sm btn-dark text-lighter"
-                            href="{% url 'questionnaire' %}">Questionnaire</a></li>
-                    <li class="nav-item dropdown dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                            Pictures </a>
-                        <ul class="dropdown-menu dropdown-xl">
-                            <li>
-                                <a class="dropdown-item btn btn-sm btn-dark text-lighter" href="#"> Reunion Galleries&raquo; </a>
-                                <ul class="submenu dropdown-menu">
+    <div class="flex-wrapper">
+        <div class="d-flex flex-column container-fluid">
+            <nav class="navbar navbar-expand-xl fixed-top navbar-dark bg-dark" id="header">
+                <a class="navbar-brand" href="{% url 'index' %}">
+                    <img src="{% static 'img/wide_logo.png' %}" class="logo" height="80px">
+                </a>
+                <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse offcanvas-collapse" id="offcanvas-div">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link btn btn-sm btn-dark text-lighter"
+                                href="{% url 'index' %}">Home<span class="sr-only">(current)</span></a></li>
+                        <li class="nav-item"><a class="nav-link btn btn-sm btn-dark text-lighter"
+                                href="{% url 'view_news' %}">News</a></li>
+                        <li class="nav-item"><a class="nav-link btn btn-sm btn-dark text-lighter"
+                                href="{% url 'view_classmates' %}">Classmates</a></li>
+                        <li class="nav-item"><a class="nav-link btn btn-sm btn-dark text-lighter"
+                                href="{% url 'view_zietgeist' %}">The Wayback Machine</a></li>
+                        <li class="nav-item"><a class="nav-link btn btn-sm btn-dark text-lighter"
+                                href="{% url 'questionnaire' %}">Questionnaire</a></li>
+                        <li class="nav-item dropdown dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                Pictures </a>
+                            <ul class="dropdown-menu dropdown-xl">
+                                <li>
+                                    <a class="dropdown-item btn btn-sm btn-dark text-lighter" href="#"> Reunion Galleries&raquo; </a>
+                                    <ul class="submenu dropdown-menu">
+                                        <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                href="{% url 'view_gallery' pk=1 %}"> 5th Reunion (1981) </a></li>
+                                        <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                href="{% url 'view_gallery' pk=2 %}"> 10th Reunion (1986) </a></li>
+                                        <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                href="{% url 'view_gallery' pk=3 %}"> 15th Reunion (1991) </a></li>
+                                        <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                href="{% url 'view_gallery' pk=4 %}"> 20th Reunion (1996) </a></li>
+                                        <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                href="{% url 'view_gallery' pk=5 %}"> 25th Reunion (2001) </a></li>
+                                        <li><a class="dropdown-item btn btn-sm btn-dark text-lighter" role="button" href=""> 30th Reunion &raquo; </a>
+                                            <ul class="submenu dropdown-menu">
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=34 %}"> Reunion Party </a></li>
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=35 %}"> Tourney for Ted </a></li>
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=36 %}"> Reunion Eve at the Wayzata Legion </a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="dropdown-item btn btn-sm btn-dark text-lighter" role="button" href=""> 35th Reunion &raquo; </a>
+                                            <ul class="submenu dropdown-menu">
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=37 %}"> Reunion Party </a></li>
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=38 %}"> Reunion Committee </a></li>
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=39 %}"> Tourney for Ted </a></li>
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=40 %}"> Reunion Eve at the Wayzata Legion </a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="dropdown-item btn btn-sm btn-dark text-lighter" role="button" href=""> 40th Reunion &raquo; </a>
+                                            <ul class="submenu dropdown-menu">
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=41 %}"> Reunion Party </a></li>
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=42 %}"> Reunion Eve at the Wayzata Legion </a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item btn btn-sm btn-dark text-lighter" role="button" href=""> Student Life &raquo; </a>
+                                    <ul class="submenu dropdown-menu">
+                                        <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                href="{% url 'view_gallery' pk=9 %}"> Band </a></li>
+                                        <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                href="{% url 'view_gallery' pk=10 %}"> Cheer & Dance Line </a></li>
+                                        <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                href="{% url 'view_gallery' pk=11 %}"> Class Pictures </a></li>
+                                        <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link role="button"
+                                                href="{% url 'view_gallery' pk=12 %}"> Drama </a></li>
+                                        <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                href="{% url 'view_gallery' pk=13 %}"> Graduation </a></li>
+                                        <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                href="{% url 'view_gallery' pk=14 %}"> Pep Fests & Parades </a></li>
+                                        <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                href="{% url 'view_gallery' pk=15 %}"> School Pictures </a></li>
+                                        <li><a class="dropdown-item btn btn-sm btn-dark text-lighter" role="button" href=""> Sports &raquo; </a>
+                                            <ul class="submenu dropdown-menu">
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=19 %}"> Baseball </a></li>
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=20 %}"> Basketball </a></li>
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=21 %}"> Cross Country </a></li>
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=22 %}"> Fencing </a></li>
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=23 %}"> Football </a></li>
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=24 %}"> Gymnastics </a></li>
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=25 %}"> Hockey </a></li>
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=26 %}"> Soccer </a></li>
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=27 %}"> Track & Field </a></li>
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=28 %}"> Volleyball </a></li>
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=29 %}"> Wrestling </a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                href="{% url 'view_gallery' pk=17 %}"> Learning Enforcement Staff</a></li>
+                                        <li><a class="dropdown-item btn btn-sm btn-dark text-lighter" role="button" href=""> Yearbooks &raquo; </a>
+                                            <ul class="submenu dropdown-menu">
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=30 %}"> Covers </a></li>
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=31 %}"> Wayzata Junior High Yearbook 1970-71 </a></li>
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=32 %}"> Wayzata Junior High Yearbook 1971-72 </a></li>
+                                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                        href="{% url 'view_gallery' pk=33 %}"> Wayzata Junior High Yearbook 1972-73 </a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item btn btn-sm btn-dark text-lighter" role="button" href=""> The Stomping Grounds &raquo; </a>
+                                    <ul class="submenu dropdown-menu">
+                                        <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                href="{% url 'view_gallery' pk=43 %}"> Old Photos </a></li>
+                                        <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                                href="{% url 'view_gallery' pk=44 %}"> Misc. </a></li>
+                                    </ul>
+                                </li>
+                                {% if request.user.is_superuser %}
                                     <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                            href="{% url 'view_gallery' pk=1 %}"> 5th Reunion (1981) </a></li>
-                                    <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                            href="{% url 'view_gallery' pk=2 %}"> 10th Reunion (1986) </a></li>
-                                    <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                            href="{% url 'view_gallery' pk=3 %}"> 15th Reunion (1991) </a></li>
-                                    <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                            href="{% url 'view_gallery' pk=4 %}"> 20th Reunion (1996) </a></li>
-                                    <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                            href="{% url 'view_gallery' pk=5 %}"> 25th Reunion (2001) </a></li>
-                                    <li><a class="dropdown-item btn btn-sm btn-dark text-lighter" role="button" href=""> 30th Reunion &raquo; </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=34 %}"> Reunion Party </a></li>
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=35 %}"> Tourney for Ted </a></li>
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=36 %}"> Reunion Eve at the Wayzata Legion </a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a class="dropdown-item btn btn-sm btn-dark text-lighter" role="button" href=""> 35th Reunion &raquo; </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=37 %}"> Reunion Party </a></li>
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=38 %}"> Reunion Committee </a></li>
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=39 %}"> Tourney for Ted </a></li>
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=40 %}"> Reunion Eve at the Wayzata Legion </a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a class="dropdown-item btn btn-sm btn-dark text-lighter" role="button" href=""> 40th Reunion &raquo; </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=41 %}"> Reunion Party </a></li>
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=42 %}"> Reunion Eve at the Wayzata Legion </a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="dropdown-item btn btn-sm btn-dark text-lighter" role="button" href=""> Student Life &raquo; </a>
-                                <ul class="submenu dropdown-menu">
-                                    <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                            href="{% url 'view_gallery' pk=9 %}"> Band </a></li>
-                                    <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                            href="{% url 'view_gallery' pk=10 %}"> Cheer & Dance Line </a></li>
-                                    <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                            href="{% url 'view_gallery' pk=11 %}"> Class Pictures </a></li>
-                                    <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link role="button"
-                                            href="{% url 'view_gallery' pk=12 %}"> Drama </a></li>
-                                    <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                            href="{% url 'view_gallery' pk=13 %}"> Graduation </a></li>
-                                    <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                            href="{% url 'view_gallery' pk=14 %}"> Pep Fests & Parades </a></li>
-                                    <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                            href="{% url 'view_gallery' pk=15 %}"> School Pictures </a></li>
-                                    <li><a class="dropdown-item btn btn-sm btn-dark text-lighter" role="button" href=""> Sports &raquo; </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=19 %}"> Baseball </a></li>
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=20 %}"> Basketball </a></li>
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=21 %}"> Cross Country </a></li>
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=22 %}"> Fencing </a></li>
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=23 %}"> Football </a></li>
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=24 %}"> Gymnastics </a></li>
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=25 %}"> Hockey </a></li>
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=26 %}"> Soccer </a></li>
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=27 %}"> Track & Field </a></li>
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=28 %}"> Volleyball </a></li>
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=29 %}"> Wrestling </a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                            href="{% url 'view_gallery' pk=17 %}"> Learning Enforcement Staff</a></li>
-                                    <li><a class="dropdown-item btn btn-sm btn-dark text-lighter" role="button" href=""> Yearbooks &raquo; </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=30 %}"> Covers </a></li>
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=31 %}"> Wayzata Junior High Yearbook 1970-71 </a></li>
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=32 %}"> Wayzata Junior High Yearbook 1971-72 </a></li>
-                                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                                    href="{% url 'view_gallery' pk=33 %}"> Wayzata Junior High Yearbook 1972-73 </a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="dropdown-item btn btn-sm btn-dark text-lighter" role="button" href=""> The Stomping Grounds &raquo; </a>
-                                <ul class="submenu dropdown-menu">
-                                    <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                            href="{% url 'view_gallery' pk=43 %}"> Old Photos </a></li>
-                                    <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                            href="{% url 'view_gallery' pk=44 %}"> Misc. </a></li>
-                                </ul>
-                            </li>
-                            {% if request.user.is_superuser %}
-                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                        href="{% url 'upload_multi_gallery_image' %}"> Add Photos </a></li>
-                            {% endif %}
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="nav-links-dropdown" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">Links</a>
-                        <ul class="dropdown-menu" aria-labelledby="nav-links-dropdown">
-                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                    href="http://www.wayzata.k12.mn.us/whs/">
-                                    Wayzata High School Website</a></li>
-                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                    href="http://www.wayzata-alumni.com/1976.html">
-                                    Wayzata Alumni Page</a></li>
-                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                    href="http://www.classmates.com/cmo/user/school/list.jsp?startYear=1976&communityId=7000010706&endYear=1976">
-                                    Our Class @ Classmates.com</a></li>
-                            <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
-                                    href="http://www.wayzata.k12.mn.us/directory/?&MMN_position=10:10">
-                                    Wayzata Public Schools Staff Directory</a></li>
-                        </ul>
-                    </li>
-
-                    {% if request.user.is_superuser %}
-                        <li class="nav-item"><a class="nav-link btn btn-sm btn-dark text-lighter" href="/admin/">Admin</a></li>
-                    {% endif %}
-
-                    {% if request.user.is_authenticated %}
-                        <li class="nav-item inside"><a class="nav-link btn btn-outline-warning btn-sm inside text-lighter"
-                                href="{% url 'logout' %}">Log Out</a></li>
-                        <li class="nav-item inside"><a class="nav-link btn btn-warning btn-sm inside text-lighter"
-                                href="{% url 'logout' %}">Log Out</a></li>
-                    {% else %}
-                        <li class="nav-item inside">
-                            <form class="form-inline my-2 my-lg-0 " method="POST" action="{% url 'login' %}">
-                                {% csrf_token %}
-                                <input type="input" class="form-control form-control-sm mr-sm-2" name="username"
-                                    placeholder="username">
-                                <input type="password" class="form-control form-control-sm mr-sm-2" name="password"
-                                    placeholder="password">
-                                <input class="btn btn-outline-warning btn-sm my-2 my-sm-0 non-block" type="submit"
-                                    value="login">
-                                <input class="btn btn-outline-warning btn-sm my-2 my-sm-0 btn-block" type="submit"
-                                    value="login" style="color:rgba(52,58,64,0.85);">
-                                <input type="hidden" name="next" value="{{ next }}">
-                            </form>
+                                            href="{% url 'upload_multi_gallery_image' %}"> Add Photos </a></li>
+                                {% endif %}
+                            </ul>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="nav-links-dropdown" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">Links</a>
+                            <ul class="dropdown-menu" aria-labelledby="nav-links-dropdown">
+                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                        href="http://www.wayzata.k12.mn.us/whs/">
+                                        Wayzata High School Website</a></li>
+                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                        href="http://www.wayzata-alumni.com/1976.html">
+                                        Wayzata Alumni Page</a></li>
+                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                        href="http://www.classmates.com/cmo/user/school/list.jsp?startYear=1976&communityId=7000010706&endYear=1976">
+                                        Our Class @ Classmates.com</a></li>
+                                <li><a class="dropdown-item btn btn-sm btn-dark text-lighter active-link" role="button"
+                                        href="http://www.wayzata.k12.mn.us/directory/?&MMN_position=10:10">
+                                        Wayzata Public Schools Staff Directory</a></li>
+                            </ul>
+                        </li>
+
+                        {% if request.user.is_superuser %}
+                            <li class="nav-item"><a class="nav-link btn btn-sm btn-dark text-lighter" href="/admin/">Admin</a></li>
+                        {% endif %}
+
+                        {% if request.user.is_authenticated %}
+                            <li class="nav-item inside"><a class="nav-link btn btn-outline-warning btn-sm inside text-lighter"
+                                    href="{% url 'logout' %}">Log Out</a></li>
+                            <li class="nav-item inside"><a class="nav-link btn btn-warning btn-sm inside text-lighter"
+                                    href="{% url 'logout' %}">Log Out</a></li>
+                        {% else %}
+                            <li class="nav-item inside">
+                                <form class="form-inline my-2 my-lg-0 " method="POST" action="{% url 'login' %}">
+                                    {% csrf_token %}
+                                    <input type="input" class="form-control form-control-sm mr-sm-2" name="username"
+                                        placeholder="username">
+                                    <input type="password" class="form-control form-control-sm mr-sm-2" name="password"
+                                        placeholder="password">
+                                    <input class="btn btn-outline-warning btn-sm my-2 my-sm-0 non-block" type="submit"
+                                        value="login">
+                                    <input class="btn btn-outline-warning btn-sm my-2 my-sm-0 btn-block" type="submit"
+                                        value="login" style="color:rgba(52,58,64,0.85);">
+                                    <input type="hidden" name="next" value="{{ next }}">
+                                </form>
+                            </li>
+                        {% endif %}
+                    </ul>
+                    {% if request.user.is_authenticated %}
+                        <span id='outside-username' class="navbar-text bg-dark text-light text-right ml-auto mr-1">Hello, {{ request.user.username }}</span>
+                        <a id='outside-logout' class="outside btn btn-outline-warning btn-sm my-2 my-sm-0 ml-2" role="button" href="{% url 'logout' %}">Log Out</a>
+                    {% else %}
+                        <form action="{% url 'login' %}" method='POST' class="form-inline my-2 my-lg-0 outside">
+                            {% csrf_token %}
+                            <input type="input" class="form-control form-control-sm mr-sm-2" name="username"
+                                placeholder="username">
+                            <input type="password" class="form-control form-control-sm mr-sm-2" name="password"
+                                placeholder="password">
+                            <input class="btn btn-outline-warning btn-sm my-2 my-sm-0" type="submit" value="login">
+                            <input type="hidden" name="next" value="{{ next }}">
+                        </form>
                     {% endif %}
-                </ul>
-                {% if request.user.is_authenticated %}
-                    <span id='outside-username' class="navbar-text bg-dark text-light text-right ml-auto mr-1">Hello, {{ request.user.username }}</span>
-                    <a id='outside-logout' class="outside btn btn-outline-warning btn-sm my-2 my-sm-0 ml-2" role="button" href="{% url 'logout' %}">Log Out</a>
-                {% else %}
-                    <form action="{% url 'login' %}" method='POST' class="form-inline my-2 my-lg-0 outside">
-                        {% csrf_token %}
-                        <input type="input" class="form-control form-control-sm mr-sm-2" name="username"
-                            placeholder="username">
-                        <input type="password" class="form-control form-control-sm mr-sm-2" name="password"
-                            placeholder="password">
-                        <input class="btn btn-outline-warning btn-sm my-2 my-sm-0" type="submit" value="login">
-                        <input type="hidden" name="next" value="{{ next }}">
-                    </form>
-                {% endif %}
-            </div>
-        </nav>
-
-        <div class='container-fluid content'>
-
-            {% for message in messages %}
-                <div class="alert {{ message.tags }} alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true"> &times; </span>
-                    </button>
-                    {{ message }}
                 </div>
-            {% endfor %}
+            </nav>
 
-            {% block content %}
-            {% endblock %}
+            <div class='container-fluid content'>
 
-        </div>
-    </div>
+                {% for message in messages %}
+                    <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true"> &times; </span>
+                        </button>
+                        {{ message }}
+                    </div>
+                {% endfor %}
 
-    <footer>
-        <nav class="navbar  navbar-expand-xl text-light">
-            <hr>
-            <div class="text-center footer-row">
-                <address class="text-center">
-                    <small><a style="text-decoration: underline 1pt solid;" href="mailto:wayzata1976.admin@gmail.com"
-                            target="_blank">Email Us</a><br>Reunion Committee @ P.O.Box 124 Wayzata, MN 55391</small>
-                </address>
+                {% block content %}
+                {% endblock %}
+
             </div>
-        </nav>
-    </footer>
+        </div>
+
+        <footer>
+            <nav class="navbar  navbar-expand-xl text-light">
+                <hr>
+                <div class="text-center footer-row">
+                    <address class="text-center">
+                        <small><a style="text-decoration: underline 1pt solid;" href="mailto:wayzata1976.admin@gmail.com"
+                                target="_blank">Email Us</a><br>Reunion Committee @ P.O.Box 124 Wayzata, MN 55391</small>
+                    </address>
+                </div>
+            </nav>
+        </footer>
+    </div>
     
     {% block javascript %}
     {% endblock %}

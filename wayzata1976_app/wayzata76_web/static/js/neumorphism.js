@@ -2,7 +2,9 @@
 $(document).ready(function() {
 
     $('.tab').hide();
+    $('.tab-header').hide();
     $('.tab-music').show();
+    $('.music-header').show();
 
     $('.btn-neumo').click(function() {
         let hasActive = $(this).hasClass('active');
@@ -11,24 +13,26 @@ $(document).ready(function() {
             $(this).addClass('active');
         };
         $('.tab').hide();
-        $('.top-header').hide();
+        $('.tab-header').hide();
+        $('.sports-header .academy-header .movie-header .tv-header .music-header').hide();
         $($(this).data('activate')).show();
+        $($(this).data('header')).show();
         // $($(this).data('header')).show();
-        if ($(this).data('activate') === '.tab-music') {
-          $('.music-header').show();
-        };
-        if ($(this).data('activate') === '.tab-academy') {
-          $('.academy-header').show();
-        };
-        if ($(this).data('activate') === '.tab-sports') {
-          $('.sports-header').show();
-        };
-        if ($(this).data('activate') === '.tab-movie') {
-          $('.movie-header').show();
-        };
-        if ($(this).data('activate') === '.tab-tv') {
-          $('.tv-header').show();
-        };
+        // if ($(this).data('activate') === '.tab-music') {
+        //   $('.music-header').show();
+        // };
+        // if ($(this).data('activate') === '.tab-academy') {
+        //   $('.academy-header').show();
+        // };
+        // if ($(this).data('activate') === '.tab-sports') {
+        //   $('.sports-header').show();
+        // };
+        // if ($(this).data('activate') === '.tab-movie') {
+        //   $('.movie-header').show();
+        // };
+        // if ($(this).data('activate') === '.tab-tv') {
+        //   $('.tv-header').show();
+        // };
     });
 
     $(window).scroll(function() {
@@ -60,6 +64,17 @@ $(document).ready(function() {
       });
   
       $('#scroll').tooltip('show');
+
+
+      $('tbody tr td, tbody tr th').hover(
+        function() {
+          $(this).parent().children().css('background-color', '#292b2c');
+        }, function() {
+          $(this).parent().children().css('background-color', 'initial');
+        }
+      );
+      
+                
 
 });
 
