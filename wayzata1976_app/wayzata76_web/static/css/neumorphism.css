@@ -47,6 +47,7 @@ body {
     padding-top: 30px;
     gap: 12px;
     transform: scale(.8);
+    background-color: transparent;
 }
 
 .btn-neumo {
@@ -58,6 +59,7 @@ body {
     box-shadow: var(--box-shadow-btn);
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+    background-color: red;
 }
 
 .btn-neumo .inner-wrapper {
@@ -67,6 +69,7 @@ body {
     transition: all .22s ease-in-out;
     display: grid;
     place-items: center;
+    background-color:purple;
 }
 
 .btn-neumo .inner-wrapper i {
@@ -75,6 +78,8 @@ body {
     font-size: 32px;
     color: rgba(201, 215, 230, 0.8);
     text-shadow: var(--text-shadow);
+    background-color: green;
+    
 }
 
 .tab-header .inner-wrapper {
@@ -90,6 +95,7 @@ body {
 }
 
 .btn-neumo.active .inner-wrapper i {
+    
     text-shadow: var(--text-shadow-inset);
     
     /* color: rgba(45,75,114,0.5); */

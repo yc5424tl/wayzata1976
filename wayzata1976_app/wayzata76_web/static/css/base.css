@@ -105,6 +105,8 @@ font-family: 'Designer Notes Bold', sans-serif; */
   */
 }
 
+/* background: linear-gradient(318.32deg, #C3D1E4 0%, #DDE7F3 55%, #D4E0ED 100%); */
+
 
 .page-header {
   padding: 40px;
@@ -180,7 +182,8 @@ body {
 
 body {
   padding-top: 106px;
-  background: linear-gradient(318.32deg, #C3D1E4 0%, #DDE7F3 55%, #D4E0ED 100%);
+  /* background: linear-gradient(318.32deg, #C3D1E4 0%, #DDE7F3 55%, #D4E0ED 100%); */
+  background: linear-gradient(318.32deg, #ebebeb 0% #d1dce2 10%, #CDD9DF 55%, #c1d0d7 100%);
 }
 
 .box-shadow {
