@@ -93,7 +93,7 @@ CACHES = {
         'OPTIONS': {
             'username': memcache_username,
             'password': memcache_password,
-        }
+        },
         'MAX_ENTRIES': 15000,
     }
 }
