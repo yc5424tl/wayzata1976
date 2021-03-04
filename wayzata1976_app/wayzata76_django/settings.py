@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+
     "django.contrib.staticfiles",
 
     "wayzata76_web.apps.Wayzata76WebConfig",
@@ -77,7 +78,30 @@ INSTALLED_APPS = [
     "storages",
     "s3file",
     "django_material_icons",
+    
 ]
+
+memcache_servers = os.environ['MEMCACHIER_SERVERS']
+memcache_username = os.environ['MEMCACHIER_USERNAME']
+memcache_password = os.environ['MEMCACHIER_PASSWORD']
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_bmemcached.memcached.BMemcached',
+        'TIMEOUT': None,
+        'LOCATION': memcache_servers,
+        'OPTIONS': {
+            'username': memcache_username,
+            'password': memcache_password,
+        }
+        'MAX_ENTRIES': 15000,
+    }
+}
+
+
+if USE_S3 in os.environ:
+    INSTALLED_APPS.insert(5, 'collectfast')
+    COLLECTFAST_THREADS = 20
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -202,6 +226,7 @@ if os.getenv("USE_S3") == "TRUE":
     STATICFILES_STORAGE = "wayzata76_web.storage_backends.StaticStorage"
     DEFAULT_FILE_STORAGE = "wayzata76_web.storage_backends.PublicMediaStorage"
     STATICFILES_DIRS = [os.path.join(BASE_DIR, "wayzata76_web/static")]
+    COLLECTFAST_STRATEGY = "collectfast.strategies.boto3.Boto3Strategy"
 
 
 else:
