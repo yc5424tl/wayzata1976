@@ -84,26 +84,28 @@ INSTALLED_APPS = [
 
 if 'USE_S3' in os.environ:
 
-    CACHES = {
-    'default': {
-        'BACKEND': 'django_bmemcached.memcached.BMemcached',
-        'TIMEOUT': None,
-        'LOCATION': memcache_servers,
-        'OPTIONS': {
-            'username': memcache_username,
-            'password': memcache_password,
-            'MAX_ENTRIES': 15000,
-        },
-        
-    }
-}
-
-    COLLECTFAST_CACHE = 'default'
-    COLLECTFAST_THREADS = 20
 
     memcache_servers = os.environ['MEMCACHIER_SERVERS']
     memcache_username = os.environ['MEMCACHIER_USERNAME']
     memcache_password = os.environ['MEMCACHIER_PASSWORD']
+
+    CACHES = {
+        'default': {
+            'BACKEND': 'django_bmemcached.memcached.BMemcached',
+            'TIMEOUT': None,
+            'LOCATION': memcache_servers,
+            'OPTIONS': {
+                'username': memcache_username,
+                'password': memcache_password,
+                'MAX_ENTRIES': 15000,
+            },    
+        }
+    }
+
+    COLLECTFAST_CACHE = 'default'
+    COLLECTFAST_THREADS = 20
+
+    
 
 
 
