@@ -99,7 +99,7 @@ CACHES = {
 }
 
 
-if USE_S3 in os.environ:
+if 'USE_S3' in os.environ:
     INSTALLED_APPS.insert(5, 'collectfast')
     COLLECTFAST_THREADS = 20
 
