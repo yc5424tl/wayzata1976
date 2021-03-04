@@ -82,6 +82,11 @@ INSTALLED_APPS = [
     
 ]
 
+if 'USE_S3' in os.environ:
+    INSTALLED_APPS.insert(5, 'collectfast')
+    COLLECTFAST_CACHE = 'default'
+    COLLECTFAST_THREADS = 20
+
 memcache_servers = os.environ['MEMCACHIER_SERVERS']
 memcache_username = os.environ['MEMCACHIER_USERNAME']
 memcache_password = os.environ['MEMCACHIER_PASSWORD']
@@ -101,10 +106,7 @@ CACHES = {
 }
 
 
-if 'USE_S3' in os.environ:
-    INSTALLED_APPS.insert(5, 'collectfast')
-    COLLECTFAST_CACHE = 'default'
-    COLLECTFAST_THREADS = 20
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
