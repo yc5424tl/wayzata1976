@@ -94,14 +94,16 @@ CACHES = {
         'OPTIONS': {
             'username': memcache_username,
             'password': memcache_password,
+            'MAX_ENTRIES': 15000,
         },
-        'MAX_ENTRIES': 15000,
+        
     }
 }
 
 
 if 'USE_S3' in os.environ:
     INSTALLED_APPS.insert(5, 'collectfast')
+    COLLECTFAST_CACHE = 'default'
     COLLECTFAST_THREADS = 20
 
 MIDDLEWARE = [
