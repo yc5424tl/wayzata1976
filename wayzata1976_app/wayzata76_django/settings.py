@@ -70,7 +70,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "collectfast",
+    # "collectfast",
     "django.contrib.staticfiles",
 
     "wayzata76_web.apps.Wayzata76WebConfig",
@@ -102,8 +102,8 @@ if 'USE_S3' in os.environ:
         }
     }
 
-    COLLECTFAST_CACHE = 'default'
-    COLLECTFAST_THREADS = 20
+    # COLLECTFAST_CACHE = 'default'
+    # COLLECTFAST_THREADS = 20
 
     
 
