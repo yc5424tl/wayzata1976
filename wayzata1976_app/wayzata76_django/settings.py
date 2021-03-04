@@ -18,6 +18,7 @@ from django.contrib import messages
 from django.urls import reverse_lazy
 
 import dj_database_url
+import collectfast
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
