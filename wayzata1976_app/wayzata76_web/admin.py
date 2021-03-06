@@ -15,6 +15,7 @@ from .models import (
     Address,
     ContactInfo,
     Yearbook,
+    Song,
 )
 
 
@@ -178,6 +179,18 @@ class PersonAdmin(admin.ModelAdmin):
     list_display_links = ("user",)
 
 
+@admin.register(Song)
+class SongAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'artist',
+        'position',
+        'peak',
+        'weeks_peak',
+        'weeks_top10',
+        'weeks_top40',
+    )
+ 
 @admin.register(SurveyResult)
 class SurveyResultAdmin(admin.ModelAdmin):
     list_display = (

@@ -39,6 +39,7 @@ from .models import (
     Person,
     SurveyResult,
     Yearbook,
+    Song
 )
 
 
@@ -215,14 +216,14 @@ def view_zietgeist(request):
         {"award": "Best Director", "winner": "John Avildsen (Rocky)"},
     ]
     yearbooks = Yearbook.objects.all()
-    songs = None
+    songs = Song.objects.order_by('position')
     if os.getenv('USE_S3') == 'TRUE':
         json_file = urlopen(static('json/songs.json'))
-        songs = json.load(json_file)
+        # songs = json.load(json_file)
     else:
         json_file = staticfiles_storage.open('json/songs.json')
         
-        songs = json.load(json_file)
+        # songs = json.load(json_file)
     # return render(
     #     request,
     #     # "main/zietgeist.html",

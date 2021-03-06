@@ -1,4 +1,5 @@
 import uuid
+import os
 
 import pytz
 from django import forms
@@ -9,7 +10,7 @@ from geopy.geocoders import Nominatim
 from s3direct.fields import S3DirectField
 
 from .storage_backends import PublicMediaStorage
-
+from googleapiclient import discovery, errors
 
 class CustomUser(AbstractUser):
     pass
@@ -259,6 +260,41 @@ class ContactInfo(models.Model):
         Spouse Last Name: {self.spouse_last_name if self.spouse_last_name else '--'}\n\
         Submitted by: {self.user.username if self.user else 'Anonymous'}"
 
+
+class Song(models.Model):
+
+    name = models.CharField(max_length=200, null=False, blank=False, unique=True)
+    artist = models.CharField(max_length=200, null=False, blank=False)
+    position = models.PositiveSmallIntegerField(null=False, blank=False)
+    peak = models.PositiveSmallIntegerField(null=False, blank=False)
+    weeks_peak = models.PositiveSmallIntegerField(null=False, blank=False)
+    weeks_top10 = models.PositiveSmallIntegerField(null=False, blank=False)
+    weeks_top40 = models.PositiveSmallIntegerField(null=False, blank=False)
+    url = models.URLField(null=True, blank=False, max_length=400)
+    video_id = models.CharField(null=True, blank=False, max_length=100)
+
+
+    def get_video_id(self):
+        api_key = os.environ.get('YOUTUBE_API_KEY')
+        youtube = discovery.build('youtube', 'v3', developerKey=api_key)
+        req = youtube.search().list(
+            q=f'{self.name} "{self.artist}"',
+            part="snippet",
+            type="video",
+            maxResults="1",
+            pageToken=None)
+        res = req.execute()
+        video_id = res['items'][0]['id']['videoId']
+        print(f'video_id = {video_id}')
+        self.video_id = video_id
+
+
+    def get_url(self):
+        base_url = "http://www.youtube.com/embed/"
+        origin_url = "&origin=http://wayzata76.com"
+        video_url = f'{base_url}{self.video_id}{origin_url}'
+        print(f'video_url = {video_url}')
+        self.url = video_url
 
 class SurveyResult(models.Model):
     liked = models.CharField(max_length=1000, null=True, blank=True)

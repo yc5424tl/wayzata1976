@@ -63,7 +63,7 @@
   
         <div class="tab tab-music">
             
-            <table class="table table-striped table-hover table-responsive-sm">
+            <table class="table table-striped table-hover table-responsive-sm music-table">
                 <!-- <caption>Top 100 Songs of 1976</caption> -->
                 <colgroup>
                     <col>
@@ -87,14 +87,57 @@
                 </thead>
                 <tbody>
                     {% for song in songs %}
-                        <tr>
+                        <tr class="song-row" data-player="#player-{{ song.position }}-row" data-url="{{ song.url }}">
                             <th class="song-pos" scope="row">{{ song.position }}</th>
-                            <td>{{ song.single }}</td>
+                            <td>{{ song.name }}</td>
                             <td>{{ song.artist }}</td>
                             <td>{{ song.peak }}</td>
                             <td>{{ song.weeks_peak }}</td>
-                            <td>{{ song.weeks_10 }}</td>
-                            <td>{{ song.weeks_40 }}</td>
+                            <td>{{ song.weeks_top10 }}</td>
+                            <td>{{ song.weeks_top40 }}</td>
+                        </tr>
+                        <tr class="youtube-player" id="player-{{ song.position }}-row">
+                            <td colspan="7">
+                                <iframe type="text/html" width="100%" height="200" src="{{ song.url }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                </iframe>
+                            </td>
+                            <!-- <td colspan="6">
+                                <script>
+                                    var tag = document.createElement('script');
+                                    tag.src = "https://www.youtube.com/iframe_api";
+                                    var scriptTag = document.getElementsByTagName('script')['{{ song.position }}'];
+                                    scriptTag.parentNode.insertBefore(tag, scriptTag);
+
+                                    var player;
+                                    function onYouTubeIframeAPIReady() {
+                                        player = new YT.Player('player', {
+                                            height: '200',
+                                            width: 'auto',
+                                            videoId: {{ song.video_id }},
+                                            events: {
+                                                'onReady': onPlayerReady,
+                                                'onStateChange': onPlayerStateChange
+                                            } 
+                                        });
+                                    }
+
+                                    function onPlayerReady(event) {
+                                        event.target.playVideo();
+                                    }
+
+
+                                    var done = false;
+                                    function onPlayerStateChange(event) {
+                                        if (event.data == YT.PlayerState.PLAYING && !done) {
+                                            setTimeout(stopVideo, 6000);
+                                            done = true;
+                                        }
+                                    }
+                                    function stopVideo() {
+                                        player.stopVideo();
+                                    }
+                                </script>
+                            </td> -->
                         </tr>
                     {% endfor %}
                 </tbody>
