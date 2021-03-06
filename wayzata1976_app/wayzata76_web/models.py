@@ -282,6 +282,7 @@ class Song(models.Model):
             part="snippet",
             type="video",
             maxResults="1",
+            videoEmbeddable="true",
             pageToken=None)
         res = req.execute()
         video_id = res['items'][0]['id']['videoId']
