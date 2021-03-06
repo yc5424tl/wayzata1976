@@ -10,8 +10,8 @@ from geopy.geocoders import Nominatim
 from s3direct.fields import S3DirectField
 
 from .storage_backends import PublicMediaStorage
-from googleapiclient import discovery, errors
-
+# from googleapiclient import discovery, errors
+import googleapiclient.discovery
 class CustomUser(AbstractUser):
     pass
 
