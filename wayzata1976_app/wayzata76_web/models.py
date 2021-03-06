@@ -285,15 +285,16 @@ class Song(models.Model):
             pageToken=None)
         res = req.execute()
         video_id = res['items'][0]['id']['videoId']
-        print(f'video_id = {video_id}')
+        # print(f'video_id = {video_id}')
         self.video_id = video_id
 
 
     def get_url(self):
-        base_url = "http://www.youtube.com/embed/"
-        origin_url = "&origin=http://wayzata76.com"
-        video_url = f'{base_url}{self.video_id}{origin_url}'
-        print(f'video_url = {video_url}')
+        base_url = "https://www.youtube.com/embed/"
+        # origin_url = "&origin=http://wayzata76.com"
+        # video_url = f'{base_url}{self.video_id}{origin_url}'
+        video_url = f'{base_url}{self.video_id}'
+        # print(f'video_url = {video_url}')
         self.url = video_url
 
 class SurveyResult(models.Model):
