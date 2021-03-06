@@ -10,8 +10,8 @@ from geopy.geocoders import Nominatim
 from s3direct.fields import S3DirectField
 
 from .storage_backends import PublicMediaStorage
-# from googleapiclient import discovery, errors
 import googleapiclient.discovery
+
 class CustomUser(AbstractUser):
     pass
 
@@ -283,19 +283,16 @@ class Song(models.Model):
             type="video",
             maxResults="1",
             videoEmbeddable="true",
+            videoSyndicated="true",
             pageToken=None)
         res = req.execute()
         video_id = res['items'][0]['id']['videoId']
-        # print(f'video_id = {video_id}')
         self.video_id = video_id
 
 
     def get_url(self):
         base_url = "https://www.youtube.com/embed/"
-        # origin_url = "&origin=http://wayzata76.com"
-        # video_url = f'{base_url}{self.video_id}{origin_url}'
         video_url = f'{base_url}{self.video_id}'
-        # print(f'video_url = {video_url}')
         self.url = video_url
 
 class SurveyResult(models.Model):

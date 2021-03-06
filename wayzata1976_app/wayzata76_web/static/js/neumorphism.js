@@ -65,7 +65,6 @@ $(document).ready(function() {
     // $('#scroll').tooltip.show();
 
 
-
     $('tbody tr td, tbody tr th').hover(
         function() {
             $(this).parent().children().css('background-color', '#292b2c');
@@ -74,9 +73,7 @@ $(document).ready(function() {
         }
     );
 
-  
     $('tbody tr.song-row td, tbody tr.song-row th').click(function() {
-        // alert('clicked');
         let player = $($(this).parent().data('player'));
         let visible = player.is(':visible');
         $('.youtube-player').hide();
@@ -84,47 +81,6 @@ $(document).ready(function() {
             player.show();
         }
     });
-
-    // alert('pre-alert');
-
-    // $('tbody tr.song-row td, tbody tr.song-row th').click(function() {
-    //     alert('clicked');
-    //     $(this).css('color', 'green');
-    //     sleep(2000);
-    //     if ($('.youtube-player')[0]) {
-    //         alert('in 1st if - player exists in this row');
-    //         $(this).css('color', 'red');
-    //         sleep(2000)
-    //         if ( $(this).parent().next().hasClass('youtube-player') ) {
-    //             alert('in 2nd if');
-    //             $(this).css('color', 'blue');
-    //             document.remove('.youtube-player');
-    //         } else {
-    //             alert('in 1st else - player exists in different row');
-    //             $(this).css('color', 'pink');
-    //             sleep(2000);
-    //             document.remove('.youtube-player');
-    //             $(this).parent().after( document.createElement('<tr class="youtube-player"><td colspan="7"><iframe type="text/html" width="100%" height="200" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></td></tr>') );
-    //             $('.youtube-player').attr('src', $(this).parent().data('url'));
-
-    //             // let url = $($(this).parent().data('url'));
-    //             // let player =  document.createElement('<tr class="youtube-player"><td colspan="7"><iframe type="text/html" width="100%" height="200" src="$(url)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></td></tr>');
-    //             // $(this).parent().after(player);
-    //             // player.insertAfter($(this).parent())
-    //         }
-    //     } else {
-    //         alert('in 2nd else - no player exists');
-    //         $(this).css('color', 'orange');
-    //         sleep(2000);
-    //         $(this).parent().after( document.createElement('<tr class="youtube-player"><td colspan="7"><iframe type="text/html" width="100%" height="200" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></td></tr>') );
-    //         $('.youtube-player').attr('src', $($(this).parent().data('url')));
-    //         // let url = $($(this).parent().data('url'));
-    //         // let player =  document.createElement('<tr class="youtube-player"><td colspan="7"><iframe type="text/html" width="100%" height="200" src="$(url)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></td></tr>');
-    //         // $(this).parent().after(player);
-    //     }
-    // });
-
-    // alert('post-alert');
 
 });
 

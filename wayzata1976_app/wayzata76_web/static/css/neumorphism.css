@@ -4,7 +4,8 @@
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     width: 100%;
     height: 100%;
     margin: 0;
@@ -95,7 +96,7 @@ body {
 }
 
 .btn-neumo.active {
-    background-color: rgba(0,0,0,0.05);
+    background-color: rgba(0, 0, 0, 0.05);
     transition: 0.35s ease-in-out;
 }
 
@@ -143,7 +144,8 @@ table.table {
     font-weight: 700;
 }
 
-th,td {
+th,
+td {
     border: none;
     border-bottom: 1px solid #d6e1ef;
 }
@@ -170,7 +172,8 @@ th,td {
     margin-top: 3rem;
 }
 
-thead, th {
+thead,
+th {
     border: none;
     background-color: transparent;
     background-clip: border-box;
@@ -197,12 +200,12 @@ thead.text-center {
     border-top-left-radius: 18pt;
 }
 
-.table thead  th:last-of-type {
+.table thead th:last-of-type {
     background-clip: border-box;
     border-top-right-radius: 18pt;
 }
 
-thead > tr {
+thead>tr {
     border-top-left-radius: 18pt;
     border-top-right-radius: 18pt;
     padding-left: 24px;
@@ -253,7 +256,7 @@ tbody tr:focus {
         padding-left: 24px;
     }   */
 
-    /* padding-top: 16px;
+/* padding-top: 16px;
         position: sticky;
         top: 0;
         margin-top: 60px;
@@ -334,6 +337,7 @@ tbody tr:focus {
 } */
 
 @media only screen and (min-width: 992px) {
+
     .tab-music th:nth-of-type(5),
     .tab-music th:nth-of-type(6),
     .tab-music th:nth-of-type(7),
@@ -394,6 +398,7 @@ tbody tr:focus {
     table.table {
         table-layout: auto;
     }
+
     .tab-music tr td:nth-of-type(n+4) {
         text-align: right;
     }
@@ -598,12 +603,13 @@ h6.top-header.tab-header {
     border-image-repeat: round space;
     background-clip: border-box;
     border-radius: 3px;
-    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.8)) drop-shadow(-2px -2px 2px #FFFFFF);
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.8)) drop-shadow(-2px -2px 2px #FFFFFF);
     font-family: "Codystar", cursive;
 }
 
-.tab-movie, .tab-tv {
-    background-color: rgba(0,0,0,0.5);
+.tab-movie,
+.tab-tv {
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .tab-movie card:first-of-type {
@@ -631,7 +637,8 @@ table.table.table-hover tbody tr:hover {
         display: none;
     }
 
-    .music-table td, .music-table th.song-pos {
+    .music-table td,
+    .music-table th.song-pos {
         display: inline-block;
         width: 100%;
         min-width: 100%;
@@ -647,7 +654,7 @@ table.table.table-hover tbody tr:hover {
         border: 2pt solid rgba(235, 235, 235, 0.7) none;
     }
 
-    .music-table  th.song-pos:before {
+    .music-table th.song-pos:before {
         content: 'Position';
         min-width: 10rem;
         float: left;
@@ -657,12 +664,72 @@ table.table.table-hover tbody tr:hover {
         font-family: "Roboto", sans-serif;
         text-shadow: 1px 1px 1px #d6e1ef99, 0 0 1px #000, -1px -1px 1px #d6e1ef00;
     }
-    .music-table td:nth-of-type(1):before {content: 'Single';       min-width: 10rem; float: left; left: 0; margin-left: 0; text-align: left; font-family: "Roboto", sans-serif;text-shadow: 1px 1px 1px #d6e1ef99, 0 0 1px #000, -1px -1px 1px #d6e1ef00;}
-    .music-table td:nth-of-type(2):before {content: 'Artist';       min-width: 10rem; float: left; left: 0; margin-left: 0; text-align: left; font-family: "Roboto", sans-serif;text-shadow: 1px 1px 1px #d6e1ef99, 0 0 1px #000, -1px -1px 1px #d6e1ef00;}
-    .music-table td:nth-of-type(3):before {content: 'Peak';         min-width: 10rem; float: left; left: 0; margin-left: 0; text-align: left; font-family: "Roboto", sans-serif;text-shadow: 1px 1px 1px #d6e1ef99, 0 0 1px #000, -1px -1px 1px #d6e1ef00;}
-    .music-table td:nth-of-type(4):before {content: 'Weeks @ Peak'; min-width: 10rem; float: left; left: 0; margin-left: 0; text-align: left; font-family: "Roboto", sans-serif;text-shadow: 1px 1px 1px #d6e1ef99, 0 0 1px #000, -1px -1px 1px #d6e1ef00;}
-    .music-table td:nth-of-type(5):before {content: 'Weeks Top 10'; min-width: 10rem; float: left; left: 0; margin-left: 0; text-align: left; font-family: "Roboto", sans-serif;text-shadow: 1px 1px 1px #d6e1ef99, 0 0 1px #000, -1px -1px 1px #d6e1ef00;}
-    .music-table td:nth-of-type(6):before {content: 'Weeks Top 40'; min-width: 10rem; float: left; left: 0; margin-left: 0; text-align: left; font-family: "Roboto", sans-serif;text-shadow: 1px 1px 1px #d6e1ef99, 0 0 1px #000, -1px -1px 1px #d6e1ef00;}
+
+    .music-table td:nth-of-type(1):before {
+        content: 'Single';
+        min-width: 10rem;
+        float: left;
+        left: 0;
+        margin-left: 0;
+        text-align: left;
+        font-family: "Roboto", sans-serif;
+        text-shadow: 1px 1px 1px #d6e1ef99, 0 0 1px #000, -1px -1px 1px #d6e1ef00;
+    }
+
+    .music-table td:nth-of-type(2):before {
+        content: 'Artist';
+        min-width: 10rem;
+        float: left;
+        left: 0;
+        margin-left: 0;
+        text-align: left;
+        font-family: "Roboto", sans-serif;
+        text-shadow: 1px 1px 1px #d6e1ef99, 0 0 1px #000, -1px -1px 1px #d6e1ef00;
+    }
+
+    .music-table td:nth-of-type(3):before {
+        content: 'Peak';
+        min-width: 10rem;
+        float: left;
+        left: 0;
+        margin-left: 0;
+        text-align: left;
+        font-family: "Roboto", sans-serif;
+        text-shadow: 1px 1px 1px #d6e1ef99, 0 0 1px #000, -1px -1px 1px #d6e1ef00;
+    }
+
+    .music-table td:nth-of-type(4):before {
+        content: 'Weeks @ Peak';
+        min-width: 10rem;
+        float: left;
+        left: 0;
+        margin-left: 0;
+        text-align: left;
+        font-family: "Roboto", sans-serif;
+        text-shadow: 1px 1px 1px #d6e1ef99, 0 0 1px #000, -1px -1px 1px #d6e1ef00;
+    }
+
+    .music-table td:nth-of-type(5):before {
+        content: 'Weeks Top 10';
+        min-width: 10rem;
+        float: left;
+        left: 0;
+        margin-left: 0;
+        text-align: left;
+        font-family: "Roboto", sans-serif;
+        text-shadow: 1px 1px 1px #d6e1ef99, 0 0 1px #000, -1px -1px 1px #d6e1ef00;
+    }
+
+    .music-table td:nth-of-type(6):before {
+        content: 'Weeks Top 40';
+        min-width: 10rem;
+        float: left;
+        left: 0;
+        margin-left: 0;
+        text-align: left;
+        font-family: "Roboto", sans-serif;
+        text-shadow: 1px 1px 1px #d6e1ef99, 0 0 1px #000, -1px -1px 1px #d6e1ef00;
+    }
 
     .music-table.table td,
     .music-table th.song-pos {

@@ -97,7 +97,6 @@ def email_questionnaire_notification(request, survey_result_instance):
 
 def questionnaire(request):
     if request.method == "POST":
-        print('in POST')
         liked = request.POST["liked_input"]
         disliked = request.POST["disliked_input"]
         location = request.POST["location_input"]
@@ -120,21 +119,17 @@ def questionnaire(request):
             email=email,
         )
         if new_result.has_content:
-            print('has content')
             new_result.save()
 
             email_sent = email_questionnaire_notification(request, new_result)
 
             if email_sent:
-                print('email sent')
                 messages.success(request, message="Questionnaire Submitted Successfully. Thank You!")
             else:
-                print('email not sent')
                 messages.warning(request, message="Questionnaire Submitted Successfully. Error Delivering Data to Administration. If the problem persists, please contact us @ wayzata1976.admin@google.com")
 
             return render(request, "main/index.html")
         else:
-            print('do not have content')
             new_result.delete()
             messages.warning(
                 request, message="A blank questionnaire cannot be submitted, please try again."
@@ -173,9 +168,6 @@ def contact_info(request):
             else:
                 messages.warning(request, message="Updated Contact Information Submitted Successfully, Error Delivering Data to Administration. If the problem persists, please contact us @ wayzata1976.admin@gmail.com",)
                 print('email not sent')
-            # if os.getenv('DEPLOYMENT') == 'DEV':
-            #     deleted = contact_info.delete()
-            #     print(f'deleted contact_info = {deleted}')
             return redirect('index')
             # TODO - if submitter is logged in user, check to see if user is attatched to a person -- update corresponding fields
             # TODO - check if all Address fields contain data, create new Address if so, linking it to Person
@@ -197,12 +189,6 @@ def view_gallery(request, pk):
     except EmptyPage:
         page_obj = paginator.page(paginator.num_pages)
 
-
-    # gallery_images = gallery.gallery_images.all()
-    # paginator = Paginator(gallery_images, 30)
-    # page_number = request.GET.get('page')
-    # page_obj = paginator.get_page(page_number)
-    # return render(request, "main/view_gallery.html", {"gallery": gallery})
     return render(request, 'main/view_gallery.html', {'page_obj': page_obj, 'gallery': gallery, 'paginator': paginator})
 
 
@@ -215,20 +201,15 @@ def view_zietgeist(request):
         {"award": "Best Supporting Actress", "winner": "Beatrice Straight (Network)"},
         {"award": "Best Director", "winner": "John Avildsen (Rocky)"},
     ]
+
     yearbooks = Yearbook.objects.all()
     songs = Song.objects.order_by('position')
+
     if os.getenv('USE_S3') == 'TRUE':
         json_file = urlopen(static('json/songs.json'))
-        # songs = json.load(json_file)
+
     else:
         json_file = staticfiles_storage.open('json/songs.json')
-        
-        # songs = json.load(json_file)
-    # return render(
-    #     request,
-    #     # "main/zietgeist.html",
-    #     {"yearbooks": yearbooks, "songs": songs, "awards": awards},
-    # )
 
     return render(
         request,
