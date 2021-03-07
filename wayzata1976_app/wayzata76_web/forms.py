@@ -77,6 +77,18 @@ class ContactUpdateForm(forms.ModelForm):
             "spouse_middle_initial",
             "spouse_last_name",
         )
+        widgets = {
+            "first_name": forms.TextInput(attrs={"autocomplete":"given-name"}),
+            "middle_initial": forms.TextInput(attrs={"autocomplete":"additional-name"}),
+            "last_name": forms.TextInput(attrs={"autocomplete":"family-name"}),
+            "street_address": forms.TextInput(attrs={"autocomplete":"street-address"}),
+            "city": forms.TextInput(attrs={'autocomplete': 'address-level1'}),
+            "state_province": forms.TextInput(attrs={'autocomplete': 'address-level2'}),
+            "zip_code": forms.TextInput(attrs={'autocomplete': 'postal-code'}),
+            "country": forms.TextInput(attrs={'autocomplete': 'country'}),
+            "phone": forms.TextInput(attrs={'autocomplete': 'tel'}),
+            "email": forms.EmailInput(attrs={'autocomplete': 'email'}),
+        }
 
 
 class NewsPostForm(forms.ModelForm):
@@ -206,6 +218,7 @@ class CustomAuthenticationForm(AuthenticationForm):
                 "type": "text",
                 "placeholder": "username",
                 "aria-label": "username",
+                "autocomplete": "username",
             }
         )
     )
@@ -216,6 +229,7 @@ class CustomAuthenticationForm(AuthenticationForm):
                 "type": "password",
                 "placeholder": "password",
                 "aria-label": "password",
+                "autocomplete": "password",
             }
         )
     )

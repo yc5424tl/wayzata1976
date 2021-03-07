@@ -8,7 +8,7 @@
   /* background-color: rgba(8, 12, 15, 0.8); */
   /* background-color: transparent; */
   /* background-color: rgba(45,75,114,0.8); */
-  background-color: var(--bg-shadow);
+  /* background-color: var(--bg-shadow); */
   box-shadow: var(--box-shadow-md);
   text-shadow: var(--text-shadow-inset);
   color: var(--bg-primary);
@@ -20,6 +20,15 @@
   margin: 0 auto;
 }
   
+
+input[type=text],
+input[type=email],
+textarea,
+select {
+  border: 1pt solid transparent;
+  border-radius: 18pt;
+  box-shadow: var(--box-shadow-md-inset);
+}
 
 form {
   /* background-color: transparent; */

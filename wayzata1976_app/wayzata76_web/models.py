@@ -11,6 +11,7 @@ from s3direct.fields import S3DirectField
 
 from .storage_backends import PublicMediaStorage
 import googleapiclient.discovery
+from googleapiclient import discovery
 
 class CustomUser(AbstractUser):
     pass
@@ -278,7 +279,7 @@ class Song(models.Model):
         api_key = os.environ.get('YOUTUBE_API_KEY')
         youtube = discovery.build('youtube', 'v3', developerKey=api_key)
         req = youtube.search().list(
-            q=f'{self.name} "{self.artist}"',
+            q=f'{self.name} "{self.artist}" audio only',
             part="snippet",
             type="video",
             maxResults="1",

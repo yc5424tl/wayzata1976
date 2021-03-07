@@ -9,8 +9,10 @@
 {% block content %}
 
 
-<h2 class="page-header">News & Updates</h2>
+<div class="page-header-wrapper">
+    <h2 class="page-header rabbet">News & Updates</h2>
 
+</div>
 {% if request.user.is_superuser %}
 <a class="btn btn-danger-outline btn-block" role="button" href="{% url 'create_news_post' %}">Create New Post</a>
 {% endif %}

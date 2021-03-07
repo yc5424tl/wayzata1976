@@ -1,7 +1,116 @@
+* {
+  box-sizing: border-box;
+}
+
 input[type="checkbox"] {
   margin-left: 15px;
 }
 
 .form-check-label {
   margin-right: 15px;
+}
+
+form {
+  margin: auto 5%;
+}
+
+input,
+select {
+  border: 1pt solid transparent;
+  border-radius: 12pt;
+  -webkit-box-shadow: var(--box-shadow-md);
+  box-shadow: var(--box-shadow-md);
+  background-color: transparent;
+  text-shadow: var(--text-shadow-inset);
+}
+
+input[type=text],
+input[type=email],
+input[type=checkbox],
+label {
+  background-color: transparent;
+  text-shadow: var(--text-shadow-inset);
+}
+
+input::placeholder {
+  text-shadow: var(--text-shadow-inset);
+}
+
+body,
+html {
+  background: linear-gradient(318.32deg, #c3d1e4 0%, #dde7f3 55%, #d4e0ed 100%);
+}
+
+div {
+  background-color: transparent;
+}
+
+select option,
+select {
+  background-color: transparent;
+  text-shadow: var(--text-shadow-inset);
+}
+
+.btn-neumo:hover .inner-wrapper p {
+  color: var(--accent-dark-tr);
+  transition: 0.32s ease-in-out;
+}
+
+
+.btn-neumo .inner-wrapper {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  transition: all .22s ease-in-out;
+  display: grid;
+  place-items: center;
+}
+
+
+
+.btn-neumo {
+  width: 100%;
+  height: 62px;
+  border-radius: 18px;
+  padding: 2px;
+  -webkit-box-shadow: var(--box-shadow-btn-wide);
+  box-shadow: var(--box-shadow-btn-wide);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  border: 1pt solid transparent;
+}
+
+.btn-neumo .inner-wrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  transition: all .22s ease-in-out;
+  display: grid;
+  place-items: center;
+  background-color: transparent;
+}
+
+.btn-neumo .inner-wrapper p {
+  user-select: none;
+  transition: all .22s ease-in-out;
+  font-size: 32px;
+  color: rgba(201, 215, 230, 0.8);
+  text-shadow: var(--text-shadow-inset);
+}
+
+.btn-neumo.active .inner-wrapper p {
+  text-shadow: var(--text-shadow-inset);
+  color: var(--accent-dark-tr);
+}
+
+.btn-neumo.active {
+  background-color: rgba(0, 0, 0, 0.05);
+  transition: 0.35s ease-in-out;
+}
+
+.btn-neumo.active .inner-wrapper {
+    -webkit-box-shadow: var(--box-shadow-md-inset);
+    box-shadow: var(--box-shadow-md-inset);
 }

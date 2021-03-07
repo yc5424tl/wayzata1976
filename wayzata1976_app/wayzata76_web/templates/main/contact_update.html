@@ -9,7 +9,10 @@
     {% endblock %}
 
     {% block content %}
-        <h2 class="page-header">Update Contact Information</h2>
+        <div class="page-header-wrapper">
+            <h2 class="page-header rabbet">Update Contact Information</h2>
+        </div>
+
 
         <form method="post" action="" novalidate>
             {% csrf_token %}
@@ -116,7 +119,17 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-block btn-primary">Submit</button>
+            <!-- <div class="btn btn-neumo btn-block" type="submit" role="button">
+                <div class="inner-wrapper">
+                    <p>SUBMIT</p>
+                </div>
+            </div> -->
+
+            <button class="btn btn-neumo btn-block" type="submit">
+                <div class="inner-wrapper">
+                    <p>SUBMIT</p>
+                </div>
+            </button>
 
         </form>
 

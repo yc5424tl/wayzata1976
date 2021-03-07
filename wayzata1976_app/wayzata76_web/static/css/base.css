@@ -1,86 +1,28 @@
 
- 
 @import url('http://fonts.cdnfonts.com/css/dotcirful');
 
-
-
-/* TO TRY */
-/* <link href="http://fonts.cdnfonts.com/css/helvetidoodle-by-ed-t" rel="stylesheet">
-font-family: 'Helvetidoodle by Ed T', sans-serif;
-<link href="http://fonts.cdnfonts.com/css/loco-tv" rel="stylesheet">
-font-family: 'loco tv', sans-serif;
-                                                
-<link href="http://fonts.cdnfonts.com/css/tf2" rel="stylesheet">
-font-family: 'TF2', sans-serif;
-                                                
-<link href="http://fonts.cdnfonts.com/css/codon" rel="stylesheet">
-font-family: 'CODON', sans-serif;
-                                                
-<link href="http://fonts.cdnfonts.com/css/alba" rel="stylesheet">
-font-family: 'Alba', sans-serif;
-font-family: 'Alba Matter', sans-serif;
-font-family: 'Alba Super', sans-serif;
-<link href="http://fonts.cdnfonts.com/css/rolloglide" rel="stylesheet">
-font-family: 'Rolloglide', sans-serif;
-                                                
-<link href="http://fonts.cdnfonts.com/css/varsity" rel="stylesheet">
-font-family: 'Varsity Regular', sans-serif;
-                                                
-<link href="http://fonts.cdnfonts.com/css/academic-m54" rel="stylesheet">
-font-family: 'Academic M54', sans-serif;
-                                                
-<link href="http://fonts.cdnfonts.com/css/the-maple-origins" rel="stylesheet">
-font-family: 'THE MAPLE ORIGINS', sans-serif;
-                               
-<link href="http://fonts.cdnfonts.com/css/hard-rock" rel="stylesheet">
-font-family: 'HARD ROCK', sans-serif;
-                                                
-<link href="http://fonts.cdnfonts.com/css/flatpack" rel="stylesheet">
-font-family: 'FlatPack', sans-serif;
-                                                                
-<link href="http://fonts.cdnfonts.com/css/budmo-jiggler-jigglish" rel="stylesheet">
-font-family: 'Budmo Jiggler', sans-serif;
-font-family: 'Budmo Jigglish', sans-serif;
-<link href="http://fonts.cdnfonts.com/css/noir-et-blanc" rel="stylesheet">
-font-family: 'Noir-et-Blanc', sans-serif;
-                                                
-<link href="http://fonts.cdnfonts.com/css/zebrra" rel="stylesheet">
-font-family: 'Zebrra', sans-serif;
-                                                                
-<link href="http://fonts.cdnfonts.com/css/mental-freak" rel="stylesheet">
-font-family: 'MENTAL FREAK', sans-serif;
-                                                
-<link href="http://fonts.cdnfonts.com/css/vtks-encantar" rel="stylesheet">
-font-family: 'vtks encantar', sans-serif;
-                                                                
-<link href="http://fonts.cdnfonts.com/css/vtc-coppa-kroma" rel="stylesheet">
-font-family: 'VTC CoppaKroma', sans-serif;
-                                                                
-<link href="http://fonts.cdnfonts.com/css/designer-notes" rel="stylesheet">
-font-family: 'Designer Notes', sans-serif;
-font-family: 'Designer Notes Bold', sans-serif; */
 
 :root {
 
   --box-shadow-btn: 4px 2px 16px rgba(136, 165, 191, 0.48), -4px -2px 16px #FFFFFF;
+  --box-shadow-btn-wide: 6px 3px 12px rgba(136, 165, 191, 0.48), -6px -3px 12px #FFFFFF;
   --box-shadow-sm-inset: inset 1px 1px 3px rgba(136, 165, 191, 0.48), inset -1px -1px 3px #FFFFFF;
   --box-shadow-sm: 1px 1px 3px rgba(136, 165, 191, 0.48), -1px -1px 3px #FFFFFF;
   --box-shadow-md: 3px 3px 7px rgba(136, 165, 191, 0.48), -3px -3px 7px #FFFFFF;
-  --box-shadow-md-inset: inset 3px 3px 7px rgba(136, 165, 191, 0.48), inset -3px -3px 7px #FFFFFF; 
+  --box-shadow-md-inset: inset 3px 3px 7px rgba(136, 165, 191, 0.48), inset -3px -3px 7px #FFFFFF;
   --box-shadow-md-inset-no-b: inset 3px 0 3px rgba(136,165,191,0.48), inset -3px 0px 3px #FFFFFF;
   --text-shadow: 2px 2px 2px #d6e1ef99, 0 0 1px #000, 2px 2px 2px #d6e1ef00;
   --text-shadow-inset: 1px 1px 1px #d6e1ef99, 0 0 1px #000, -1px -1px 1px #d6e1ef00;
-  /* --box-shadow-inset-dark: inset 3px 3px 7px #141515, inset -3px -3px -7px  #4e5355; */
   --box-shadow-inset-dark: inset 3px 3px 3px #000, inset -3px -3px 3px #FFF;
 
-  --accent-1-on: #80beaf;    / 
-  --accent-1-off: #b3ddd1;    /
-  --bg-primary: #d1dce2;          /* #d6e1ef99  (if not here than up one */
+  --accent-1-on: #80beaf;
+  --accent-1-off: #b3ddd1;
+  --bg-primary: #d1dce2;
   --bg-tint: #e6ecef;
   --bg-shade: #cdd9df;
-  --bg-bright; #ebebeb;         /* #FFFfff 8?*/
-  --bg-shadow: #3f5864;         /* rgb(136, 165, 191) baby blue grey  OR 1555,155,255,0.3 @ active btn lavender) */
-  --accent-2-off: #f5b994cc;        
+  --bg-bright; #ebebeb;
+  --bg-shadow: #3f5864;
+  --accent-2-off: #f5b994cc;
   --accent-2-on: #ee9c6c;
   --accent-dark: #343a40;
   --accent-dark-tr: #343a40cc;
@@ -88,9 +30,11 @@ font-family: 'Designer Notes Bold', sans-serif; */
   --bs-dark: #292b2c;
   --bs-dark-tr: #292b2c80;
   --bs-dark-tint: #4e5355;
-  /* --bs-dark-tint: #45484a; */
   --bs-dark-shade: #141515;
-  /* 
+
+
+
+  /* HEX ALPHA CODES
     100% — FF
     90% — E6
     80% — CC
@@ -138,6 +82,10 @@ font-family: 'Designer Notes Bold', sans-serif; */
     0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%);
 }
 
+div, p, ul, input[type=checkbox], input[type=text], input[type=email], select, option, h1, h2, h3, h4, h5, h6, form 
+, label, button, nav, table, td, tr, th, thead, tbody, footer, span, section, ol, li, small, textarea {
+  background-color: transparent;
+}
 .page-header-wrapper {
   filter: drop-shadow(3px 3px 3px rgba(136, 165, 191, 0.48)) drop-shadow(-3px -3px 3px #FFFFFF);
 }
@@ -176,14 +124,14 @@ body {
   /* Prevent scroll on narrow devices */
   font-size: medium;
   font-family: "Roboto", sans-serif;
-  
-                                                
+  background: linear-gradient(318.32deg, #c3d1e4 0%, #dde7f3 55%, #d4e0ed 100%);
+
 }
 
 body {
   padding-top: 106px;
   /* background: linear-gradient(318.32deg, #C3D1E4 0%, #DDE7F3 55%, #D4E0ED 100%); */
-  background: linear-gradient(318.32deg, #ebebeb 0% #d1dce2 10%, #CDD9DF 55%, #c1d0d7 100%);
+  /* background: linear-gradient(318.32deg, #ebebeb 0% #d1dce2 10%, #CDD9DF 55%, #c1d0d7 100%); */
 }
 
 .box-shadow {
@@ -257,17 +205,12 @@ footer {
   margin-bottom: 0;
   -webkit-box-shadow: 0 0 5px 10px rgba(52, 58, 64, 0.7);
   box-shadow: 0 0 5px 10px rgba(52, 58, 64, 0.7);
-  /* background-image: linear-gradient(
-                    318.32deg, 
-                    rgba(195, 209, 228, 0.8) 0%,
-                    rgba(221, 231, 243, 0.7) 55%, 
-                    rgba(212, 224, 237, 0.6) 100%); */
-                    background-image: linear-gradient(
-                    318.32deg, 
-                    var(--bs-dark-shade) 0%,
-                    var(--bs-dark) 55%, 
-                    var(--bs-dark-tint) 100%);
-  color: var(--bg-primary);
+  background-image: linear-gradient(
+    318.32deg, 
+    var(--bs-dark-shade) 0%,
+    var(--bs-dark) 55%, 
+    var(--bs-dark-tint) 100%);
+    color: var(--bg-primary);
 }
 
 table {
@@ -358,11 +301,11 @@ form.form-inline.outside input[type="input"],
 form.form-inline.outside input[type="password"] {
   background-color: rgb(94, 100, 107)!important;
   background: rgb(94, 100, 107);
-  -webkit-box-shadow: inset 1px 1px 3px rgba(136, 165, 191, 0.48), 
-                      inset 0 0 0 rgb(94, 100, 107), 
+  -webkit-box-shadow: inset 1px 1px 3px rgba(136, 165, 191, 0.48),
+                      inset 0 0 0 rgb(94, 100, 107),
                       inset -1px -1px 3px #FFFFFF;
-  box-shadow: inset 1px 1px 3px rgba(136, 165, 191, 0.48), 
-              inset 0 0 0 rgb(94, 100, 107), 
+  box-shadow: inset 1px 1px 3px rgba(136, 165, 191, 0.48),
+              inset 0 0 0 rgb(94, 100, 107),
               inset -1px -1px 3px #FFFFFF;
   border: none;
   border-radius: 18pt;
@@ -384,7 +327,7 @@ form.form-inline.outside input[type="password"] {
 @media (min-width: 1200px) {
   #outside-logout,
   #outside-username {
-    display: inline-block;     
+    display: inline-block;
   }
 
   .navbar-collapse.offcanvas-collapse {
@@ -486,7 +429,7 @@ form.form-inline.outside input[type="password"] {
     position: fixed;
     top: 60px;
     /* navbar height */
-    bottom: 60px;
+    bottom: 0;
     /* footer height */
     width: 100%;
     padding-right: 1rem;
@@ -532,7 +475,7 @@ form.form-inline.outside input[type="password"] {
   }
 
   .navbar-collapse .nav-link {
-    background-color: rgba(52, 58, 64, 0.85);
+    background-color: rgba(52, 58, 64, 0.75);
   }
 
   .navbar-collapse .nav-item {

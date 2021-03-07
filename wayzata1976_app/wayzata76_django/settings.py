@@ -79,7 +79,7 @@ INSTALLED_APPS = [
     "storages",
     "s3file",
     "django_material_icons",
-    
+
 ]
 
 if os.getenv('USE_S3') == "TRUE":
@@ -98,14 +98,14 @@ if os.getenv('USE_S3') == "TRUE":
                 'username': memcache_username,
                 'password': memcache_password,
                 'MAX_ENTRIES': 15000,
-            },    
+            },
         }
     }
 
     # COLLECTFAST_CACHE = 'default'
     # COLLECTFAST_THREADS = 20
 
-    
+
 
 
 

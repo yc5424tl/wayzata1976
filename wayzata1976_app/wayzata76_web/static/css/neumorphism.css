@@ -226,9 +226,9 @@ tbody tr:focus {
     background-color: var(--bs-dark);
 }
 
-.navbar.navbar-expand-xl {
+/* .navbar.navbar-expand-xl {
     margin-bottom: 30px;
-}
+} */
 
 /* @media only screen and (max-width: 575.98px) {
     .tab-music th:nth-of-type(4),

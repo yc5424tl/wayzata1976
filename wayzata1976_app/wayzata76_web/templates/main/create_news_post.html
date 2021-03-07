@@ -10,8 +10,9 @@
 
 
 {% block content %}
-
-    <h2 class="page-header">Create News Post</h3>
+    <div class="page-header-wrapper">
+        <h2 class="page-header rabbet">Create News Post</h2>
+    </div>
 
     <form method="post" action="#" enctype="multipart/form-data" novalidate>
         {% csrf_token %}
