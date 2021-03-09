@@ -84,9 +84,9 @@ body {
 
 
 
-body {
+/* body {
   padding-top: 106px;
-}
+} */
 
 
 
@@ -115,8 +115,8 @@ div.d-flex.flex-column {
   align-items: center;
   margin: 0 auto;
   padding: 0;
-  padding-bottom: 60px;
-  padding-top: 106px;
+  /* padding-bottom: 60px; */
+  /* padding-top: 106px; */
   /* display: flex; */
   /* flex-direction: column; */
   /* min-height: calc(100% - 166px); */
@@ -170,7 +170,7 @@ div.d-flex.flex-column {
  *
  */
 
-.navbar.navbar-expand-xl {
+/* .navbar.navbar-expand-xl {
   text-align: center;
   border-image-source: url('../img/border/fractal_8.jpg');
   border-image-width: 0px 0px 7px 0px;
@@ -178,7 +178,7 @@ div.d-flex.flex-column {
   border-image-repeat: repeat;
   border-image-slice: 48% 19% 66% 72%;
   border-bottom: 1pt solid transparent;
-}
+} */
 
 .navbar-nav {
   margin-right: 0;
@@ -688,11 +688,7 @@ address {
     display: none;
   }
 
-  input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0.non-block {
-    display: inline-flex;
-    background-color: rgba(240, 179, 17, 0.75);
-    transition: all 0.3s ease-in-out;
-  }
+
 
   input.btn.btn-outline-warning,
   div.btn-outline-warning-wrapper {
@@ -702,6 +698,8 @@ address {
   input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0.non-block:hover {
     background-color: rgba(209, 155, 5, 0.74);
   }
+
+
 }
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 
@@ -845,6 +843,34 @@ address {
  /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
  @media (max-width: 1199.98px) {
 
+  div.non-block-wrapper {
+    align-content: center;
+    text-align: center;
+    padding: 0;
+    width: 100%;
+    min-width: 100%;
+    background-color: rgba(240, 179, 17, 0.75);
+    border-radius: 8pt;
+    /* box-shadow: var(--box-shadow-md-inset); */
+  }
+
+  input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0.non-block {
+    display: inline-flex;
+    /* background-color: rgba(240, 179, 17, 0.75); */
+    background-color: transparent;
+    transition: all 0.3s ease-in-out;
+    color: var(--bs-dark-tr);
+    width: 7rem;
+    margin: 0 auto;
+    font-weight: 900;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+  }
+  input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0:hover {
+    backround-color: transparent;
+  }
+
+
   nav.navbar.navbar-expand-xl.fixed-top.navbar-dark.bg-dark {
     height: 80px;
     background-color: rgba(52, 58, 64, 0.75);
@@ -895,8 +921,18 @@ address {
     display: block;
     color: rgba(235, 235, 235, 0.75);
     background-color: rgba(240, 179, 17, 0.75);
-    text-shadow: 3px 3px 3px black;
+    /* text-shadow: 3px 3px 3px black; */
+    color: var(--bs-dark-tr);
+    font-weight: 900;
+    font-size: 1.15rem;
+    font-family: "Roboto", sans-serif;
   }
+
+  /* a.nav-link.btn.btn-warning.btn-sm.inside::placeholder {
+    color: var(--bs-dark-tr);
+    font-weight: 900;
+    font-size: 1rem;
+  } */
 
   a.nav-link.btn.btn-warning.btn-sm.inside:hover,
   a.nav-link.btn.btn-warning.btn-sm.inside:focus,
@@ -926,11 +962,11 @@ address {
     -webkit-transform: translateX(100%);
     transition: -webkit-transform 0.3s ease-in-out;
 
-    background-image: url("../img/class_of_76_2.png");
+    /* background-image: url("../img/class_of_76_2.png");
     background-position-y: 50%;
     background-position-x: center;
     background-repeat: no-repeat;
-    background-size: 30%;
+    background-size: 30%; */
 
   }
 
@@ -969,13 +1005,22 @@ address {
     font-size: .6rem;
   }
 
-  div,navbar-collapse.offcanvas-collapse .navbar-nav {
+  div.navbar-collapse.offcanvas-collapse .navbar-nav {
     padding-top: 1.5rem;
   }
 
   li.nav-item.inside input.form-control.form-control-sm.mr-sm-2 {
     background: var(--bs-dark-tr);
-    color: var(--bs-dark-tint);
+    color: #FFFFFF;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    font-weight: 900;
+    font-size: 1rem;
+  }
+  li.nav-item.inside input.form-control.form-control-sm.mr-sm-2::placeholder {
+    font-size: 1rem;
+    font-weight: 900;
+    font-family: "Roboto", sans-serif;
   }
 
 }
@@ -1026,7 +1071,7 @@ address {
   .nav-item .submenu {
     display: none;
     position: absolute;
-    left: 100%;
+    left: 100%;em;
     top: -7px;
   }
 
