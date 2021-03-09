@@ -115,8 +115,8 @@ div.d-flex.flex-column {
   align-items: center;
   margin: 0 auto;
   padding: 0;
-  /* padding-bottom: 60px; */
-  /* padding-top: 106px; */
+  padding-bottom: 60px;
+  padding-top: 106px;
   /* display: flex; */
   /* flex-direction: column; */
   /* min-height: calc(100% - 166px); */
@@ -170,7 +170,7 @@ div.d-flex.flex-column {
  *
  */
 
-.d-flex .navbar.navbar-expand-xl {
+.navbar.navbar-expand-xl {
   text-align: center;
   border-image-source: url('../img/border/fractal_8.jpg');
   border-image-width: 0px 0px 7px 0px;
@@ -225,10 +225,11 @@ a.btn.btn-dark {
 }
 
 a.btn.btn-dark.text-lighter {
+  /* background-color: rgba(52, 58, 64, 0.85); */
   width: 100%;
   background-color: transparent;
-  padding-left: .6rem;
-  padding-right: .6rem;
+  padding-left: .25rem;
+  padding-right: .25rem;
 }
 
 ul.dropdown-menu {
@@ -389,7 +390,7 @@ input.btn.btn-outline-warning {
   transition: all .22s ease-in-out;
   text-align: center;
   font-weight: 300;
-  /* padding: .4rem; */
+  padding: .4rem;
   border: none;
   text-shadow: 2px 2px 2px #12121299, 0 0 1px #000, 2px 2px 2px #12121200;
 }
@@ -568,10 +569,6 @@ footer {
   max-width: 100%;
 }
 
-div.footer-row {
-  padding-top: 0;
-}
-
 .footer-ul {
   list-style-type: none;
   text-align: center;
@@ -628,6 +625,7 @@ address {
 
   input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0.btn-block:hover {
     background-color: rgba(209, 155, 5, 0.74);
+    color:  var(--bs-dark-tr);
   }
 
   input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0.non-block {
@@ -637,7 +635,7 @@ address {
   a.nav-link.btn.btn-sm.btn-dark.text-lighter,
   a.nav-link.dropdown-toggle,
   a.nav-link.dropdown-toggle li {
-    font-size: 1.5rem;
+    font-size: 1rem;
     padding-top: 0;
     padding-bottom: 0;
   }
@@ -647,38 +645,10 @@ address {
   } */
 
   .navbar-collapse.offcanvas-collapse {
-    position: fixed;
-    top: 80px;
-    bottom: 0;
-    width: 100%;
-    padding-right: .25rem;
-    padding-left: .25rem;
-    height: 100%;
-    background-color: var(--gray-dark);
-
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
-
-    -ms-transform: translateX(100%);
-    transition: -ms-transform 0.3s ease-in-out;
-
-    -webkit-transform: translateX(100%);
-    transition: -webkit-transform 0.3s ease-in-out;
-
-    background-image: url("../img/class_of_76_2.png");
     overflow-y: scroll;
     background-position-y: 70%;
-    background-position-x: center;
-    background-repeat: no-repeat;
-    background-size: 50%;
   }
 
-  .offcanvas-collapse.open {
-    transform: translateX(-1rem);
-    -ms-transform: translateX(-1rem);
-    -webkit-transform: translateX(-1rem);
-    /* Account for horizontal padding on navbar */
-  }
 
 }
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
@@ -751,53 +721,18 @@ address {
   }
 }
 
-@media (min-width: 576px) {
-  .navbar-collapse.offcanvas-collapse {
-    position: fixed;
-    top: 80px;
-    /* navbar height */
-    bottom: 60px;
-    /* footer height */
-    width: 100%;
-    padding-right: .25rem;
-    padding-left: .25rem;
-    overflow-y: scroll;
-    height: 100%;
-    background-color: var(--gray-dark);
-
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
-
-    -ms-transform: translateX(100%);
-    transition: -ms-transform 0.3s ease-in-out;
-
-    -webkit-transform: translateX(100%);
-    transition: -webkit-transform 0.3s ease-in-out;
-
-    background-image: url("../img/class_of_76_2.png");
-    background-position-y: 50%;
-    background-position-x: center;
-    background-repeat: no-repeat;
-    background-size: 30%;
-
-  }
-}
-
 @media (min-width: 768px) {
   html,
   body {
     font-size: 2.25vmin;
   }
 
-  .navbar-collapse.offcanvas-collapse {
-    background-position-y: 80%;
-  }
   /* .d-flex .navbar-nav {
     width: auto;
     display: inline-block;
-  }
+  } */
 
-  .d-flex .navbar-nav > li {
+  /* .d-flex .navbar-nav > li {
     display: inline-block;
   } */
 
@@ -809,12 +744,10 @@ address {
   a.nav-link.btn.btn-sm.btn-dark.text-lighter,
   a.nav-link.dropdown-toggle,
   a.nav-link.dropdown-toggle li {
-    font-size: 1.25rem;
+    font-size: 1.75rem;
     padding-top: 0;
     padding-bottom: 0;
   }
-
-
 }
 
 
@@ -971,12 +904,12 @@ address {
     background-color: rgba(209, 155, 5, 0.74);
   }
 
-  /* .navbar-collapse.offcanvas-collapse {
+  .navbar-collapse.offcanvas-collapse {
     position: fixed;
     top: 80px;
-    /* navbar height * /
+    /* navbar height */
     bottom: 0;
-    /* footer height * /
+    /* footer height */
     width: 100%;
     padding-right: .25rem;
     padding-left: .25rem;
@@ -999,7 +932,7 @@ address {
     background-repeat: no-repeat;
     background-size: 30%;
 
-  } */
+  }
 
   .offcanvas-collapse.open {
     transform: translateX(-1rem);
@@ -1036,31 +969,14 @@ address {
     font-size: .6rem;
   }
 
-  div.navbar-collapse.offcanvas-collapse .navbar-nav {
+  div,navbar-collapse.offcanvas-collapse .navbar-nav {
     padding-top: 1.5rem;
   }
 
   li.nav-item.inside input.form-control.form-control-sm.mr-sm-2 {
-    background: rgba(0,0,0,0.1);
-    color: var(--bg-bright);
-    border-radius: 18pt;
-    margin-bottom: 1rem;
-    margin: 1rem .75rem;
+    background: var(--bs-dark-tr);
+    color: var(--bs-dark-tint);
   }
-
-  .nav-item.inside .btn.btn-outline-warning {
-    color: var(--bs-dark-tr);
-    font-weight: 900;
-    text-align: center;
-    align-content: center;
-    margin: 0 auto;
-  }
-
-  div.thumbnail-container {
-    padding-top: 0;
-  }
-
-
 
 }
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
@@ -1089,10 +1005,6 @@ address {
 
   a.nav-link.btn.btn-warning.btn-sm.inside {
     display: none;
-  }
-
-  input.btn.btn-outline-warning {
-    padding: 0.4rem;
   }
 
   .dropdown-menu .dropdown-toggle:after {
@@ -1181,7 +1093,7 @@ address {
  @media (min-width: 1200px) and (max-width: 1299px) {
   a.nav-link.btn.btn-sm.btn-dark.text-lighter,
   a.nav-link.dropdown-toggle  {
-    font-size: .7rem;
+    font-size: .6rem;
   }
 }
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
@@ -1206,7 +1118,7 @@ address {
  @media (min-width: 1300px) and (max-width: 1459.98px) {
   a.nav-link.btn.btn-sm.btn-dark.text-lighter,
   a.nav-link.dropdown-toggle  {
-    font-size: .72rem;
+    font-size: .65rem;
   }
 }
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
@@ -1231,7 +1143,7 @@ address {
 @media (min-width: 1460px) {
   a.nav-link.btn.btn-sm.btn-dark.text-lighter,
   a.nav-link.dropdown-toggle {
-    font-size: .85rem;
+    font-size: .75rem;
   }
 }
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
