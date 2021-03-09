@@ -21,7 +21,7 @@
             {% if gallery.parent_gallery %}
 
                 <nav class="nav justify-content-center">
-                    <span class="nav-link related-gallery-header">>Related Galleries:</span>
+                    <span class="nav-link related-gallery-header">Related Galleries:</span>
                     {% for sub_gallery in gallery.parent_gallery.sub_galleries.all %}
                     {% if sub_gallery != gallery %}
                     <a class="nav-link related-gallery" href="{% url 'view_gallery' pk=sub_gallery.pk %}"> {{ sub_gallery.display_name }} </a>
@@ -117,29 +117,32 @@
             <nav aria-label="Page navigation">
                 <ul class="pagination justify-content-center">
                     {% if page_obj.has_previous %}
-                    <li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
-                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a>
-                    </li>
+                        <li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
+                        {% if page_obj.previous_page_number != 1%}
+                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a></li>
+                        {% else %}
+                        <li class="page-item"><a class="page-link page-link-disabled">previous</a></li>
+                        {% endif %}
                     {% else %}
-                    <li class="page-item"><a class="page-link" href="#" disabled>&laquo; first</a></li>
-                    <li class="page-item"><a class="page-link" href="#" disabled>previous</a></li>
+                        <li class="page-item"><a class="page-link page-link-disabled">&laquo; first</a></li>
+                        <li class="page-item"><a class="page-link page-link-disabled">previous</a></li>
                     {% endif %}
-
                     <span class="current mx-3">
                         Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
                     </span>
-
                     {% if page_obj.has_next %}
-                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a></li>
-                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-                    </li>
+                        {% if page_obj.next_page_number != page_obj.paginator.num_pages %}
+                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a></li>
+                        {% else %}
+                            <li class="page-item"><a class="page-link page-link-disabled">next</a></li>
+                        {% endif %}
+                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a></li>
                     {% else %}
-                    <li class="page-item"><a class="page-link" href="#" disabled>next</a></li>
-                    <li class="page-item"><a class="page-link" href="#" disabled>last &raquo;</a></li>
+                    <li class="page-item"><a class="page-link page-link-disabled">next</a></li>
+                    <li class="page-item"><a class="page-link page-link-disabled">last &raquo;</a></li>
                     {% endif %}
                 </ul>
             </nav>
-
         </div>
     </section>
 

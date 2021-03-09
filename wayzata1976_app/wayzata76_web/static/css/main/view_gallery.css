@@ -155,20 +155,51 @@
 
 a.nav-link.related-gallery {
   background-color: transparent;
+  font-size: 1.25rem;
+  display: inline;
 }
 
-a.nav-link.related-gallery {
-  background-color: transparent;
-}
 
 span.nav-link.related-gallery-header {
-  font-size: 11pt;
+  font-size: 1.25rem;
   display: inline;
-  margin-bottom: 0;
+  /* margin-bottom: 0; */
   background-color: transparent;
 }
 
 nav.nav.justify-content-center a.nav-link.related-gallery,
 nav.nav.justify-content-center h6.nav-link.related-gallery-header {
   padding: 8px;
+  font-size: 1.25rem;
+  margin: 0 auto;
+}
+
+a.page-link.page-link-disabled {
+  background-color: var(--bs-dark-tint);
+  color: var(--bg-shadow);
+}
+
+a.page-link.page-link-disabled:hover {
+  background-color: var(--bs-dark-tint);
+  color: var(--bg-shadow);
+  cursor: not-allowed;
+
+}
+
+a.thumbnail-anchor,
+.thumbnail-container {
+  -webkit-box-shadow: var(--box-shadow-md);
+  box-shadow: var(--box-shadow-md);
+  /* border: 1pt solid transparent; */
+}
+
+a.thumbnail-anchor img,
+a.thumbnail-anchor,
+.thumbnail-container,
+.gal-item {
+  border-radius: 1rem;
+  /* border: 1pt solid transparent; */
+  background-clip: border-box;
+  filter: drop-shadow(-1px -1px 1px #FFFFFF) drop-shadow(1px 1px 1px #00000080);
+
 }

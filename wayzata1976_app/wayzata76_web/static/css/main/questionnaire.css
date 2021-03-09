@@ -1,7 +1,7 @@
-.form-group,
-.form-row {
+div.form-wrapper form div.form-group,
+div.form-wrapper form div.form-row {
   margin: 3rem auto;
-  background-color: transparent
+  background-color: transparent;
 }
 
 .form-wrapper {
@@ -10,31 +10,65 @@
   /* background-color: rgba(45,75,114,0.8); */
   /* background-color: var(--bg-shadow); */
   box-shadow: var(--box-shadow-md);
-  text-shadow: var(--text-shadow-inset);
-  color: var(--bg-primary);
+  /* text-shadow: var(--text-shadow-inset); */
+  color: var(--bs-dark);
   padding: 2rem;
   border-radius: 16pt;
   width: 90%;
-  align-content: center;
-  text-align:center;
+  align-content: left;
+  text-align: left;
   margin: 0 auto;
 }
-  
+
 
 input[type=text],
 input[type=email],
-textarea,
-select {
+textarea.form-control {
   border: 1pt solid transparent;
-  border-radius: 18pt;
+  border-radius: 8pt;
   box-shadow: var(--box-shadow-md-inset);
 }
 
-form {
+select,
+option,
+textarea.form-control {
+  background: transparent;
+  text-shadow: var(--text-shadow-inset);
+}
+
+select:focus {
+  background-color: rgba(0,0,0,0.5);
+}
+text-area.form-control {
+  box-shadow: var(--box-shadow-md-inset);
+  border: none;
+  font-weight: 700;
+  outline: none;
+}
+textarea.form-control:focus {
+  /* background: linear-gradient(338.32deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.7) 15%, rgba(0,0,0,0.6) 85%, rgba(0,0,0,0.2) 100%); */
+  /* color: var(--bg-primary); */
+  background: transparent;
+  box-shadow: var(--box-shadow-md-inset);
+  outline: none;
+  border: 1pt solid transparent;
+}
+
+div.form-wrapper label {
+  margin-left: 1rem;
+  text-shadow: var(--text-shadow);
+  font-weight: 700;
+  color: var(--bs-dark-tr);
+  font-size: 1rem;
+}
+
+div.form-wrapper form {
   /* background-color: transparent; */
   margin: 0 auto;
   width: 70%;
   border: none;
+  text-shadow: var(--text-shadow-inset);
+  text-align: left;
 }
 
 div.form-group {

@@ -28,15 +28,17 @@ body {
 }
 
 .btn-neumo:hover .inner-wrapper i {
-    color: var(--accent-dark-tr);
+    /* color: var(--accent-dark-tr); */
+    color: rgba(201, 215, 230, 0.8);
     transition: 0.32s ease-in-out;
 }
 
 .btn-neumo.active:hover .inner-wrapper i {
     text-shadow: var(--text-shadow-inset);
     transition: 0.32s ease-in-out;
-    color: initial;
-    filter: drop-shadow(1px 0 1px #3eceff33) drop-shadow(0 1px 1px #3eceff33) drop-shadow(-1px 0 1px #3eceff33) drop-shadow(0 -1px 1px #3eceff33);
+    color: rgba(201, 215, 230, 0.8);
+    /* color: initial; */
+    /* filter: drop-shadow(1px 0 1px #3eceff33) drop-shadow(0 1px 1px #3eceff33) drop-shadow(-1px 0 1px #3eceff33) drop-shadow(0 -1px 1px #3eceff33); */
 }
 
 .btns-wrapper {
@@ -92,7 +94,7 @@ body {
 
 .btn-neumo.active .inner-wrapper i {
     text-shadow: var(--text-shadow-inset);
-    color: var(--accent-dark-tr);
+    /* color: var(--accent-dark-tr); */
 }
 
 .btn-neumo.active {
