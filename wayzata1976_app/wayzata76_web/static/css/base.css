@@ -225,7 +225,6 @@ a.btn.btn-dark {
 }
 
 a.btn.btn-dark.text-lighter {
-  /* background-color: rgba(52, 58, 64, 0.85); */
   width: 100%;
   background-color: transparent;
   padding-left: .6rem;
@@ -1037,7 +1036,7 @@ address {
     font-size: .6rem;
   }
 
-  div,navbar-collapse.offcanvas-collapse .navbar-nav {
+  div.navbar-collapse.offcanvas-collapse .navbar-nav {
     padding-top: 1.5rem;
   }
 

@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
+
 {% load static %}
 {% load get_dict_key %}
 
 
 {% block style %}
-{{ block.super }}
-<link rel="stylesheet" href="{% static 'css/main/view_classmates.css' %}">
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/main/view_classmates.css' %}">
 {% endblock %}
 
 {% block content %}
