@@ -80,6 +80,8 @@ body {
   background: linear-gradient(318.32deg, #c3d1e4 0%, #dde7f3 55%, #d4e0ed 100%);
   /* font-size: calc(vmin * .175)px; */
   font-size: calc(1.75vmin);
+  align-content: center;
+  text-align: center;
 }
 
 
@@ -102,6 +104,7 @@ body {
 
 div.container-fluid.content {
   text-align: center;
+  padding: 0;
 }
 
 div.flex-wrapper {
@@ -264,6 +267,7 @@ a.nav-link.btn.btn-sm.btn-dark.text-lighter {
   background-color: rgba(52, 56, 64, 0.85);
   font-weight: 900;
   font-size: .6rem;
+  margin-bottom: .1rem;
 }
 
 h6.nav-header.outside {
@@ -323,18 +327,19 @@ form.form-inline.outside {
 }
 
 /* username + password inputs */
-.form-control.form-control-sm.mr-sm-2 {
+.form-control.form-control-sm {
   width: 6.5vw;
-  margin: 0;
+  margin: 0 0.25rem;
   font-size: .65rem;
-  margin-right: 0.25rem;
+  /* margin-right: 0.25rem; */
   padding: 0.25rem 0.1rem;
   text-align: center;
 }
-.form-control.form-control-sm.mr-sm-2::placeholder {
+.form-control.form-control-sm::placeholder {
   /* color: rgba(52, 58, 64, 0.75); */
-  color: #e6ecef4d;
-  font-weight: 700;
+  /* color: #e6ecef4d; */
+  color: var(--bs-dark);
+  font-weight: 400;
   font-size: .65rem;
 }
 
@@ -451,13 +456,18 @@ div.container-fluid.content {
  *
  */
 
-.page-header-wrapper {
+div.page-header-wrapper {
   filter: drop-shadow(3px 3px 3px rgba(136, 165, 191, 0.48)) drop-shadow(-3px -3px 3px #FFFFFF);
+  margin-left: auto;
+  margin-right: auto;
+  width: 80vw;
+  padding: 0;
+  margin-top: 3.5rem;
 }
 
-.page-header {
-  padding: 40px;
-  margin-top: 1.5rem;
+h2.page-header.rabbet {
+  margin-top: 3.5rem;
+  padding: 40px;;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2.5rem;
@@ -605,9 +615,19 @@ address {
   html,
   body {
     font-size: 4vmin;
+    align-content: center;
   }
   div.page-header-wrapper h2.page-header.rabbet {
-    font-size: 3rem;
+    font-size: 2rem;
+    margin-top: 3.5rem;
+  }
+
+  h2.page-header.rabbet {
+    padding: 20px;
+    font-size: 2rem;
+    width: 275px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0.btn-block {
@@ -681,10 +701,13 @@ address {
   }
 
   div.page-header-wrapper h2.page-header.rabbet {
-    font-size: 3rem;
+    font-size: 2rem;
+    margin-top: 3.5rem;
     padding: 10px;
   }
-  input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0.btn-block {
+
+  input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0.btn-block,
+  input.btn-outline-warning.btn-block {
     display: none;
   }
 
@@ -708,7 +731,8 @@ address {
 
 @media (min-width: 576px) and (max-width: 767.98px) {
   div.page-header-wrapper h2.page-header.rabbet {
-    font-size: 3rem;
+    font-size: 2rem;
+    margin-top: 3.5rem;
     padding: 15px;
   }
 
@@ -735,16 +759,16 @@ address {
   } */
 
   div.page-header-wrapper h2.page-header.rabbet {
-    font-size: 2rem;
-    padding: 20px;
+    font-size:2rem;
+    margin-top: 5rem;
+    padding: 35px;
   }
 
   a.nav-link.btn.btn-sm.btn-dark.text-lighter,
   a.nav-link.dropdown-toggle,
   a.nav-link.dropdown-toggle li {
     font-size: 1.75rem;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0 .75rem;
   }
 }
 
@@ -764,6 +788,13 @@ address {
  /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 
 @media (min-width: 992px) {
+
+  h2.page-header.rabbet {
+    margin-top: (106px + 6rem);
+  }
+  .page-header-wrapper {
+    margin-top: 5rem;
+  }
 
   html,
   body {
@@ -826,7 +857,22 @@ address {
 
 
 
+@media(min-width: 576px) and (max-width: 1199.98px) {
 
+  input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0.non-block {
+    display: inline-flex;
+    /* background-color: rgba(240, 179, 17, 0.75); */
+    background-color: transparent;
+    transition: all 0.3s ease-in-out;
+    color: var(--bs-dark-tr);
+    width: 7rem;
+    margin: 0 auto;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+  }
+
+}
 
 
 
@@ -854,18 +900,7 @@ address {
     /* box-shadow: var(--box-shadow-md-inset); */
   }
 
-  input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0.non-block {
-    display: inline-flex;
-    /* background-color: rgba(240, 179, 17, 0.75); */
-    background-color: transparent;
-    transition: all 0.3s ease-in-out;
-    color: var(--bs-dark-tr);
-    width: 7rem;
-    margin: 0 auto;
-    font-weight: 900;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.5rem;
-  }
+
   input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0:hover {
     backround-color: transparent;
   }
@@ -889,7 +924,7 @@ address {
     padding: 0;
   } */
 
-  input.form-control.form-control-sm.mr-sm-2 {
+  input.form-control.form-control-sm {
     width: 5rem;
     min-width: 40%;
     margin: 0 auto;
@@ -1009,15 +1044,14 @@ address {
     padding-top: 1.5rem;
   }
 
-  li.nav-item.inside input.form-control.form-control-sm.mr-sm-2 {
+  li.nav-item.inside input.form-control.form-control-sm {
     background: var(--bs-dark-tr);
     color: #FFFFFF;
-    margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
+    margin: 1.5rem auto;
     font-weight: 900;
     font-size: 1rem;
   }
-  li.nav-item.inside input.form-control.form-control-sm.mr-sm-2::placeholder {
+  li.nav-item.inside input.form-control.form-control-sm::placeholder {
     font-size: 1rem;
     font-weight: 900;
     font-family: "Roboto", sans-serif;
@@ -1113,7 +1147,13 @@ address {
 
   div.page-header-wrapper h2.page-header.rabbet {
     padding: 40px;
+    margin-top: 10rem;
   }
+
+  /* a.nav-link.btn.btn-sm.btn-dark.text-lighter,
+  a.nav-link.dropdown-toggle {
+    font-size: 1rem;
+  } */
 
 }
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
@@ -1138,7 +1178,7 @@ address {
  @media (min-width: 1200px) and (max-width: 1299px) {
   a.nav-link.btn.btn-sm.btn-dark.text-lighter,
   a.nav-link.dropdown-toggle  {
-    font-size: .6rem;
+    font-size: .7rem;
   }
 }
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
@@ -1163,7 +1203,7 @@ address {
  @media (min-width: 1300px) and (max-width: 1459.98px) {
   a.nav-link.btn.btn-sm.btn-dark.text-lighter,
   a.nav-link.dropdown-toggle  {
-    font-size: .65rem;
+    font-size: .8rem;
   }
 }
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
@@ -1188,7 +1228,7 @@ address {
 @media (min-width: 1460px) {
   a.nav-link.btn.btn-sm.btn-dark.text-lighter,
   a.nav-link.dropdown-toggle {
-    font-size: .75rem;
+    font-size: .95rem;
   }
 }
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */

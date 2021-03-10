@@ -264,14 +264,14 @@
                             <li class="nav-item inside">
                                 <form class="form-inline my-2 my-lg-0 " method="POST" action="{% url 'login' %}">
                                     {% csrf_token %}
-                                    <input type="input" class="form-control form-control-sm mr-sm-2" name="username"
-                                        placeholder="username">
-                                    <input type="password" class="form-control form-control-sm mr-sm-2" name="password"
-                                        placeholder="password">
+                                    <input type="input" class="form-control form-control-sm inside" name="username"
+                                        placeholder="username" autocomplete="username">
+                                    <input type="password" class="form-control form-control-sm inside" name="password"
+                                        placeholder="password" autocomplete="password">
                                     <div class="non-block-wrapper">
-                                        <input class="btn btn-outline-warning btn-sm my-2 my-sm-0 non-block" type="submit "value="login">
+                                        <input class="btn btn-outline-warning btn-sm my-2 my-sm-0 non-block inside" type="submit "value="login">
                                     </div>
-                                    <input class="btn btn-outline-warning btn-sm my-2 my-sm-0 btn-block" type="submit"
+                                    <input class="btn btn-outline-warning btn-sm my-2 my-sm-0 btn-block inside" type="submit"
                                         value="login" style="color:rgba(52,58,64,0.85);">
                                     <input type="hidden" name="next" value="{{ next }}">
                                 </form>
@@ -284,10 +284,10 @@
                     {% else %}
                         <form action="{% url 'login' %}" method='POST' class="form-inline my-2 my-lg-0 outside">
                             {% csrf_token %}
-                            <input type="input" class="form-control form-control-sm mr-sm-2" name="username"
+                            <input type="input" class="form-control form-control-sm mr-sm-2 outside" name="username"
                                 placeholder="username">
-                            <input type="password" class="form-control form-control-sm mr-sm-2" name="password"
-                                placeholder="password">
+                            <input type="password" class="form-control form-control-sm mr-sm-2 outside" name="password"
+                                placeholder="password" autocomplete="password">
                             <div class="btn-outline-warning-wrapper">
                                 <input class="btn btn-outline-warning btn-sm my-2 my-sm-0" type="submit" value="login">
                             </div>

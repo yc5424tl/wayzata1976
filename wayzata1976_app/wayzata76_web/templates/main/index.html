@@ -16,27 +16,35 @@
         <h4 class="text-center">45th Reunion: What You Can Do</h4>
         <br />
         <ul>
-            <li>
-                We want to hear from you! Please take a moment to weigh in on some of the finer aspects of reunion planning with <a href="{% url 'questionnaire' %}">this</a> questionnaire.
-                <ul>
-                    <li style="margin-right: 10%;">
-                        <small>
-                            (Guaranteed to be less than seven questions unless we add more!)
-                        </small>
-                    </li>
-                </ul>
+            <li class="to-do-item">
+                <div class=text-center>
+                    We want to hear from you! Please take a moment to weigh in on some of the finer aspects of reunion planning with <a href="{% url 'questionnaire' %}">this</a> questionnaire.
+                    <ul>
+                        <li>
+                            <small>
+                                (Guaranteed to be less than seven questions unless we add some!)
+                            </small>
+                        </li>
+                    </ul>
+                </div>
             </li>
             <br />
-            <li>
-                We still have many classmates that we're not able to locate. Please visit the <a href="{% url 'view_classmates' %}">classmates</a> page to see if you or someone you know is listed.
-                <ul>
-                    <li style="margin-right: 10%;">
-                        <small class="text-center">
-                            (select the <i>M.I.A.</i> option from the dropdown menu to view the complete list of classmates we need help finding)
-                        </small>
-                    </li>
-                </ul>
+            <li class="to-do-item">
+                <div class="text-center">
+                    We still have many classmates that we're not able to locate. Please visit the <a href="{% url 'view_classmates' %}">classmates</a> page to see if you or someone you know is listed.
+                    <ul>
+                        <li>
+                            <small>
+                                (select the <i>M.I.A.</i> option from the dropdown menu to view the complete list of classmates we need help finding)
+                            </small>
+                        </li>
+                    </ul>
+                </div>
             </li>
         </ul>
+    </div>
+    <div class="footer-image-top">
+        <div class="gradient-overlay">
+        </div>
     </div>
 {% endblock %}
