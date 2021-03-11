@@ -43,7 +43,7 @@ div.index-div > ul {
   background-size: contain, contain, contain;
   background-repeat: no-repeat, no-repeat, no-repeat;
   background-origin: border-box, border-box, border-box;
-  aspect-ratio: 13 / 5, 13 / 5, 13/ 5;
+  /* aspect-ratio: 13 / 5, 13 / 5, 13/ 5; */
   padding-top: 38.46%;
   bottom: 0;
   border: 1px solid transparent;
