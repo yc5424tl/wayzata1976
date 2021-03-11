@@ -41,10 +41,13 @@ div.index-div > ul {
                     url(../../img/gradient_image.jpeg);
   background-position: center;
   background-size: contain;
+  background-repeat: no-repeat;
   aspect-ratio: 13 / 5;
-  height: auto;
+  padding-top: 38.46%;
   bottom: 0;
-  border: 1p solid transparent;
+  border: 1px solid transparent;
+  object-fit: contain;
+  position: relative;
   /* min-height:835px; */
   /* background-color: transparent; */
 }
