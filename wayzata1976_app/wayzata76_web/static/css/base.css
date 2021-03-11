@@ -618,7 +618,7 @@ address {
     align-content: center;
   }
   div.page-header-wrapper h2.page-header.rabbet {
-    font-size: 2rem;
+    font-size: 1.85rem;
     margin-top: 3.5rem;
   }
 
@@ -902,12 +902,12 @@ address {
 
 
   input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0:hover {
-    backround-color: transparent;
+    background-color: transparent;
   }
 
 
   nav.navbar.navbar-expand-xl.fixed-top.navbar-dark.bg-dark {
-    height: 80px;
+    height: 60px;
     background-color: rgba(52, 58, 64, 0.75);
   }
 
@@ -945,7 +945,7 @@ address {
   }
 
   body {
-    padding-top: 80px;
+    padding-top: 60px;
   }
 
   a.nav-link.btn.btn-outline-warning.btn-sm.inside {
@@ -977,7 +977,7 @@ address {
 
   .navbar-collapse.offcanvas-collapse {
     position: fixed;
-    top: 80px;
+    top: 60px;
     /* navbar height */
     bottom: 0;
     /* footer height */
@@ -1055,6 +1055,11 @@ address {
     font-size: 1rem;
     font-weight: 900;
     font-family: "Roboto", sans-serif;
+  }
+
+  footer {
+    height: 40px;
+    padding-bottom: 7px;
   }
 
 }
@@ -1150,10 +1155,11 @@ address {
     margin-top: 10rem;
   }
 
-  /* a.nav-link.btn.btn-sm.btn-dark.text-lighter,
+  a.nav-link.btn.btn-sm.btn-dark.text-lighter,
   a.nav-link.dropdown-toggle {
-    font-size: 1rem;
-  } */
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+  }
 
 }
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */

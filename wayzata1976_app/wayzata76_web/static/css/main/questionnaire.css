@@ -9,6 +9,7 @@ div.form-wrapper form div.form-row {
   /* background-color: transparent; */
   /* background-color: rgba(45,75,114,0.8); */
   /* background-color: var(--bg-shadow); */
+  -webkit-box-shadow: var(--box-shadow-md);
   box-shadow: var(--box-shadow-md);
   /* text-shadow: var(--text-shadow-inset); */
   color: var(--bs-dark);
@@ -26,6 +27,7 @@ input[type=email],
 textarea.form-control {
   border: 1pt solid transparent;
   border-radius: 8pt;
+  -webkit-box-shadow: var(--box-shadow-md-inset);
   box-shadow: var(--box-shadow-md-inset);
 }
 
@@ -40,6 +42,7 @@ select:focus {
   background-color: rgba(0,0,0,0.5);
 }
 text-area.form-control {
+  -webkit-box-shadow: var(--box-shadow-md-inset);
   box-shadow: var(--box-shadow-md-inset);
   border: none;
   font-weight: 700;
@@ -49,6 +52,7 @@ textarea.form-control:focus {
   /* background: linear-gradient(338.32deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.7) 15%, rgba(0,0,0,0.6) 85%, rgba(0,0,0,0.2) 100%); */
   /* color: var(--bg-primary); */
   background: transparent;
+  -webkit-box-shadow: var(--box-shadow-md-inset);
   box-shadow: var(--box-shadow-md-inset);
   outline: none;
   border: 1pt solid transparent;
