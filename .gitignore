@@ -20,3 +20,7 @@ wayzata1976_app/mediafiles/
 wayzata1976_app/static/
 
 runtime.txt
+.gitignore
+node_modules
+package-lock.json
+requirements.txt.old
