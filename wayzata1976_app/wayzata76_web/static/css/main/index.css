@@ -35,7 +35,7 @@ div.index-div > ul {
 .footer-image-top {
   padding: 0;
   margin:0 auto;
-  width: 100%;
+  width: 100vw;
   background-image: linear-gradient(173deg, #dde7f3 0%, #dde7f3 1%, #dde7f3 10%, #d1dce280 20%, rgba(0,0,0,0) 30%),
                     linear-gradient(187deg, #d1deeb 0%, #d1deeb 1%, #dde7f3 10%, #d1dce280 20%, rgba(0,0,0,0) 30%),
                     url(../../img/gradient_image.jpeg);
