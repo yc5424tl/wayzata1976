@@ -149,6 +149,9 @@ nav.btn-group.btn-group-sm.small-alpha.text-center.row {
   display: block;
 }
 
+@media(max-width: 575.98px) {
+
+}
 
 @media (min-width: 576px) {
   table.table {

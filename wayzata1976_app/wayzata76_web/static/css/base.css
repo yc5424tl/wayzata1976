@@ -902,12 +902,12 @@ address {
 
 
   input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0:hover {
-    background-color: transparent;
+    backround-color: transparent;
   }
 
 
   nav.navbar.navbar-expand-xl.fixed-top.navbar-dark.bg-dark {
-    height: 60px;
+    height: 80px;
     background-color: rgba(52, 58, 64, 0.75);
   }
 
@@ -945,7 +945,7 @@ address {
   }
 
   body {
-    padding-top: 60px;
+    padding-top: 80px;
   }
 
   a.nav-link.btn.btn-outline-warning.btn-sm.inside {
@@ -977,7 +977,7 @@ address {
 
   .navbar-collapse.offcanvas-collapse {
     position: fixed;
-    top: 60px;
+    top: 80px;
     /* navbar height */
     bottom: 0;
     /* footer height */
@@ -1056,11 +1056,8 @@ address {
     font-weight: 900;
     font-family: "Roboto", sans-serif;
   }
-
-  footer {
-    height: 40px;
-    padding-bottom: 7px;
-  }
+ 
+  footer {}
 
 }
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
