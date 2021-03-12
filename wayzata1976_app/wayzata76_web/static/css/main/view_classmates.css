@@ -47,9 +47,6 @@ option {
   -webkit-box-shadow: 0pt 0pt 30pt 20pt #088fb1c9;
   box-shadow: 0pt 0pt 30pt 20pt #088fb1c9;
   transition: 0.45s;
-  /* -webkit-transition: 0.45s;
-  -moz-transition: 0.45s;
-  -o-transition: 0.45s; */
   z-index: 401;
 }
 
@@ -61,7 +58,7 @@ option {
   margin-right: -12px;
   height: 0;
   width: 0;
-  border: 8px solid transparent;
+  border: 8px solid rgba(255, 255, 255, 0);
   border-bottom-color: #ffffff;
   z-index: 400;
 }
@@ -69,6 +66,7 @@ option {
 #scroll:hover {
   background-color: rgba(255, 171, 15, 0.7);
   color: white;
+  -webkit-box-shadow: 0pt 0pt 30pt 15pt rgba(231, 123, 0, 0.911);
   box-shadow: 0pt 0pt 30pt 15pt rgba(231, 123, 0, 0.911);
   transition: 0.45s;
   -webkit-transition: 0.45s;
@@ -86,7 +84,6 @@ div.btn.btn-group-sm a {
   width: 5rem;
 }
 
-
 div.col-12.row.text-center {
   margin-right: 0;
 }
@@ -102,7 +99,6 @@ div.table-wrapper.text-center.toggle-hidden {
   padding-right: 0;
 }
 
-
 table.table.table-striped.table-dark.table-bordered {
   max-width: 100%;
   overflow-x: scroll;
@@ -114,15 +110,11 @@ thead {
   border-top-right-radius: 18pt;
   border-top-left-radius: 18pt;
 }
-/*
-tr:first-of-kind {
-  border-top-left-radius: 18pt;
-  border-top-right-radius: 18pt;
-} */
 
 table th:first-of-kind {
   border-top-left-radius: 18pt;
 }
+
 table th:last-of-kind {
   border-top-right-radius: 18pt;
 }
@@ -130,9 +122,8 @@ table th:last-of-kind {
 a.nav-link.active-link {
   padding: 3px;
   display: inline;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0);
 }
-
 
 div.col-12.nav {
   width: 100%;
@@ -150,10 +141,6 @@ nav.btn-group.btn-group-sm.small-alpha.text-center.row {
   display: block;
 }
 
-@media(max-width: 575.98px) {
-
-}
-
 @media (min-width: 576px) {
   table.table {
     padding: 5rem;
@@ -161,10 +148,6 @@ nav.btn-group.btn-group-sm.small-alpha.text-center.row {
     margin: 0 auto;
   }
 }
-
-
-
-
 
 @media (max-width: 991px) {
 
@@ -183,13 +166,9 @@ nav.btn-group.btn-group-sm.small-alpha.text-center.row {
         margin: auto 2rem;
         width: 100%;
     }
-
 }
 
 @media only screen and (max-width: 991.9px) {
-  /* thead th:not(:first-child) {
-    display: none;
-  } */
 
   thead th {
     display: none;
@@ -213,22 +192,17 @@ nav.btn-group.btn-group-sm.small-alpha.text-center.row {
   td:nth-of-type(1):before {
     content: 'Last Name';
     min-width: 18rem;
-    display: inline-block;
     float: left;
     left: 0;
     margin-left: 0;
     text-align: left;
   }
-  td:nth-of-type(2):before {content: 'Middle';
-    min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left;}
-  td:nth-of-type(3):before {content: 'First Name';
-    min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left;}
-  td:nth-of-type(4):before {content: 'City';
-    min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left;}
-  td:nth-of-type(5):before {content: 'State/Province';
-    min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left;}
-  td:nth-of-type(6):before {content: 'Zip Code';
-    min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left;}
+
+  td:nth-of-type(2):before {content: 'Middle'; min-width: 18rem; float: left; left: 0; margin-left: 0; text-align: left}
+  td:nth-of-type(3):before {content: 'First Name'; min-width: 18rem; float: left; left: 0; margin-left: 0; text-align:left;}
+  td:nth-of-type(4):before {content: 'City'; min-width: 18rem; float: left; left: 0; margin-left: 0; text-align: left;}
+  td:nth-of-type(5):before {content: 'State/Province'; min-width: 18rem; float: left; left: 0; margin-left: 0; text-align: left;}
+  td:nth-of-type(6):before {content: 'Zip Code'; min-width: 18rem; float: left; left: 0; margin-left: 0; text-align: left;}
 
   .btn-group.btn-group-sm {
     padding: 4px;
@@ -239,7 +213,6 @@ nav.btn-group.btn-group-sm.small-alpha.text-center.row {
     text-align: right;
     padding-right: 20px;
   }
-
 }
 
 
@@ -269,7 +242,6 @@ nav.btn-group.btn-group-sm.small-alpha.text-center.row {
   a.btn.scrollLink {
     padding: 5px;
   }
-
 }
 
 
@@ -278,15 +250,9 @@ nav.btn-group.btn-group-sm.small-alpha.text-center.row {
   div.large-alpha {
     display: block;
   }
+
   div.small-alpha,
   div.col-12.nav {
     display: none;
   }
-
 }
-
-
-
-
-
-

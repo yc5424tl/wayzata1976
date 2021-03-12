@@ -1,4 +1,4 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 {% load widget_tweaks %}
 {% load static %}
 
@@ -13,7 +13,7 @@
             <h2 class="page-header rabbet">Update Contact Information</h2>
         </div>
 
-        
+
 
         <form method="post" action="" novalidate>
             {% csrf_token %}
@@ -119,12 +119,6 @@
                     {% render_field form.spouse_last_name class="form-control" placeholder="Last Name" %}
                 </div>
             </div>
-
-            <!-- <div class="btn btn-neumo btn-block" type="submit" role="button">
-                <div class="inner-wrapper">
-                    <p>SUBMIT</p>
-                </div>
-            </div> -->
 
             <button class="btn btn-neumo btn-block" type="submit">
                 <div class="inner-wrapper">

@@ -2,12 +2,12 @@
 {% load static %}
 
 {% block title %}
-{{ block.super }} - Questionnaire
+    {{ block.super }} - Questionnaire
 {% endblock %}
 
 {% block style %}
-{{ block.super }}
-<link rel="stylesheet" href="{% static 'css/main/questionnaire.css' %}">
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/main/questionnaire.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -78,7 +78,6 @@
                 <p>SUBMIT</p>
             </div>
         </button>
-        <!-- <button type='submit' class='btn btn-block btn-primary'>Submit</button> -->
     </form>
 </div>
 <br>

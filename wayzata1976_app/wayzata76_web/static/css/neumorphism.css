@@ -18,7 +18,7 @@ body {
 }
 
 .container-fluid.content {
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0);
     display: grid;
     place-items: center;
     width: 100%;
@@ -28,7 +28,6 @@ body {
 }
 
 .btn-neumo:hover .inner-wrapper i {
-    /* color: var(--accent-dark-tr); */
     color: rgba(201, 215, 230, 0.8);
     transition: 0.32s ease-in-out;
 }
@@ -37,8 +36,6 @@ body {
     text-shadow: var(--text-shadow-inset);
     transition: 0.32s ease-in-out;
     color: rgba(201, 215, 230, 0.8);
-    /* color: initial; */
-    /* filter: drop-shadow(1px 0 1px #3eceff33) drop-shadow(0 1px 1px #3eceff33) drop-shadow(-1px 0 1px #3eceff33) drop-shadow(0 -1px 1px #3eceff33); */
 }
 
 .btns-wrapper {
@@ -60,7 +57,7 @@ body {
     -webkit-box-shadow: var(--box-shadow-btn);
     box-shadow: var(--box-shadow-btn);
     cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 
 .btn-neumo .inner-wrapper {
@@ -94,7 +91,6 @@ body {
 
 .btn-neumo.active .inner-wrapper i {
     text-shadow: var(--text-shadow-inset);
-    /* color: var(--accent-dark-tr); */
 }
 
 .btn-neumo.active {
@@ -109,12 +105,12 @@ body {
 .pack {
     width: 100%;
     padding: 1rem;
-    border: 1pt solid transparent;
+    border: 1pt solid rgba(255, 255, 255, 0);
     border-radius: 16pt;
     -webkit-box-shadow: var(--box-shadow-md);
     box-shadow: var(--box-shadow-md);
     text-shadow: var(--text-shadow);
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0);
     margin-top: 0;
 }
 
@@ -162,10 +158,11 @@ td {
 
 .tab-music {
     background-clip: border-box;
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
     position: relative;
     user-select: none;
     color: rgba(201, 215, 230, 0.8);
+    -webkit-box-shadow: var(--box-shadow-md-inset);
     box-shadow: var(--box-shadow-md-inset);
     width: 100%;
 }
@@ -177,7 +174,7 @@ td {
 thead,
 th {
     border: none;
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0);
     background-clip: border-box;
     border-collapse: collapse;
 }
@@ -185,15 +182,16 @@ th {
 .tab.tab-music table.table thead,
 table.table thead,
 thead.text-center {
-    border: 1pt solid transparent;
+    border: 1pt solid rgba(255, 255, 255, 0);
     border-top-left-radius: 18pt;
     border-top-right-radius: 18pt;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     background-color: var(--accent-dark);
-    color: transparent;
+    color: rgba(255, 255, 255, 0);
     background-clip: border-box;
     text-shadow: var(--text-shadow);
+    -webkit-box-shadow: var(--box-shadow-inset-dark);
     box-shadow: var(--box-shadow-inset-dark);
 }
 
@@ -212,9 +210,10 @@ thead>tr {
     border-top-right-radius: 18pt;
     padding-left: 24px;
     padding-right: 24px;
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0);
     background-clip: border-box;
     border: none;
+    -webkit-box-shadow: var(--box-shadow-inset-dark);
     box-shadow: var(--box-shadow-inset-dark);
 }
 
@@ -227,116 +226,6 @@ tbody tr:focus {
     color: var(--accent-2-on);
     background-color: var(--bs-dark);
 }
-
-/* .navbar.navbar-expand-xl {
-    margin-bottom: 30px;
-} */
-
-/* @media only screen and (max-width: 575.98px) {
-    .tab-music th:nth-of-type(4),
-    .tab-music tr td:nth-of-type(4) {
-        display: none;
-    }
-}
-
-@media only screen and (max-width: 991.9px) {
-
-    .tab-music th:nth-of-type(5),
-    .tab-music th:nth-of-type(6),
-    .tab-music th:nth-of-type(7),
-    .tab-music tr td:nth-of-type(5),
-    .tab-music tr td:nth-of-type(6),
-    .tab-music tr td:nth-of-type(7) {
-        display: none;
-    }
-
-    .tab-music th:nth-of-type(4) {
-        padding-right: 24px;
-    }
-
-    .tab-music tr td:first-of-type {
-        padding-left: 24px;
-    }   */
-
-/* padding-top: 16px;
-        position: sticky;
-        top: 0;
-        margin-top: 60px;
-    } * /
-
-    /* / * thead th:not(:first-child) {
-      display: none;
-    } * /
-    table.table {
-        margin-bottom: 0;
-    }
-    thead th {
-      display: none;
-    }
-    / * td, td::before {
-      display: inline-block;
-      width: 100%;
-      min-width: 100%;
-      margin: 0;
-      padding: 8px 45px;
-      border-collapse: collapse;
-      / * font-family: "Codystar", cursive;* /
-      font-family: "Roboto", sans-serif;
-      font-weight: bold;
-      text-shadow: 1px 1px 1px #d6e1ef99, 0 0 0 #000, 1px 1px 1px #d6e1ef00;
-    }
-    td {
-      display: inline-block;
-      width: 100%;
-      min-width: 100%;
-      margin: auto;
-      border-collapse: collapse;
-      font-family: "Roboto", sans-serif;
-      font-weight: bold;
-      text-shadow: 1px 1px 1px #d6e1ef99, 000 #000. 1px 1px 1px #d6e1ef00;
-    }
-    td::before {
-        padding-left: 20px;
-    }
-    tr {
-      width: 100%;
-      margin: 0 auto;
-      border-top: 2pt solid rgba(235,235,235,0.7);
-      border-bottom: 2pt solid rgba(235,235,235,0.7);
-    }
-    td:nth-of-type(1):before {
-        content: 'Position';
-        min-width: 18rem;
-        display: inline-block;
-        float: left;
-        left: 0;
-        margin-left: 0;
-        text-align: left;
-        font-family: "Roboto", sans-serif;
-        text-shadow: 2px 2px 2px #d6e1ef99, 0 0 0 #000, 2px 2px 2px #d6e1ef00;
-    }
-    td:nth-of-type(2):before {content: 'Single'; min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left; font-family: "Roboto", sans-serif;text-shadow: 2px 2px 2px #d6e1ef99, 0 0 0 #000, 2px 2px 2px #d6e1ef00;}
-    td:nth-of-type(3):before {content: 'Artist'; min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left; font-family: "Roboto", sans-serif;text-shadow: 2px 2px 2px #d6e1ef99, 0 0 0 #000, 2px 2px 2px #d6e1ef00;}
-    td:nth-of-type(4):before {content: 'Peak'; min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left; font-family: "Roboto", sans-serif;text-shadow: 2px 2px 2px #d6e1ef99, 0 0 0 #000, 2px 2px 2px #d6e1ef00;}
-    td:nth-of-type(5):before {content: 'Weeks @ Peak'; min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left; font-family: "Roboto", sans-serif;text-shadow: 2px 2px 2px #d6e1ef99, 0 0 0 #000, 2px 2px 2px #d6e1ef00;}
-    td:nth-of-type(6):before {content: 'Weeks Top 10'; min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left; font-family: "Roboto", sans-serif;text-shadow: 2px 2px 2px #d6e1ef99, 0 0 0 #000, 2px 2px 2px #d6e1ef00;;}
-    td:nth-of-type(7):before {content: 'Weeks Top 40'; min-width: 18rem; display: inline-block; float: left; left: 0; margin-left: 0; text-align: left; font-family: "Roboto", sans-serif;text-shadow: 2px 2px 2px #d6e1ef99, 0 0 0 #000, 2px 2px 2px #d6e1ef00;}
-    .btn-group.btn-group-sm {
-      padding: 4px;
-    }
-
-    .table td {
-      padding: 10px 20px 0 0;
-      text-align: right;
-
-    } */
-
-/* @media only screen and (min-width: 768px) {
-    .tab-music th:nth-of-type(5),
-    .tab-music tr td:nth-of-type(5) {
-        display: revert;
-    }
-} */
 
 @media only screen and (min-width: 992px) {
 
@@ -375,6 +264,7 @@ tbody tr:focus {
 }
 
 @media only screen and (min-width: 1400px) {
+
     .tab-music table.table {
         table-layout: auto;
     }
@@ -396,7 +286,9 @@ tbody tr:focus {
     }
 }
 
+
 @media only screen and (min-width: 992px) and (max-width: 1399.98px) {
+
     table.table {
         table-layout: auto;
     }
@@ -469,12 +361,12 @@ hr.raised {
 }
 
 .card-body {
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0);
     filter: drop-shadow(3px 3px 7px rgba(136, 165, 191, 0.48)) drop-shadow(-3px -3px 7px #FFFFFF);
 }
 
 .card-text {
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0);
 }
 
 .card-text small {
@@ -482,7 +374,7 @@ hr.raised {
 }
 
 .card-title {
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0);
     font-family: 'Permanent Marker', cursive;
     font-weight: bold;
     font-size: 20pt;
@@ -492,7 +384,7 @@ hr.raised {
 }
 
 .card-subtitle {
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0);
     font-size: 10pt;
     font-style: italic;
 }
@@ -573,7 +465,7 @@ hr.raised {
     margin-right: -12px;
     height: 0;
     width: 0;
-    border: 8px solid transparent;
+    border: 8px solid rgba(255, 255, 255, 0);
     border-bottom-color: #ffffff;
     z-index: 400;
 }
@@ -594,7 +486,7 @@ h6.top-header.tab-header {
     font-weight: 900;
     text-align: center;
     text-shadow: var(--text-shadow);
-    border: 1px solid transparent;
+    border: 1px solid rgba(255, 255, 255, 0);
     transform: translateX(-90deg) translateZ(1em);
     border-bottom: none;
     padding: 14px;
@@ -620,7 +512,7 @@ h6.top-header.tab-header {
 
 .tab {
     border: none;
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0);
     background-clip: border-box;
     border-radius: 18pt;
     margin-top: 0;

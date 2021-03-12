@@ -1,17 +1,12 @@
 div.form-wrapper form div.form-group,
 div.form-wrapper form div.form-row {
   margin: 3rem auto;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .form-wrapper {
-  /* background-color: rgba(8, 12, 15, 0.8); */
-  /* background-color: transparent; */
-  /* background-color: rgba(45,75,114,0.8); */
-  /* background-color: var(--bg-shadow); */
   -webkit-box-shadow: var(--box-shadow-md);
   box-shadow: var(--box-shadow-md);
-  /* text-shadow: var(--text-shadow-inset); */
   color: var(--bs-dark);
   padding: 2rem;
   border-radius: 16pt;
@@ -21,11 +16,10 @@ div.form-wrapper form div.form-row {
   margin: 0 auto;
 }
 
-
 input[type=text],
 input[type=email],
 textarea.form-control {
-  border: 1pt solid transparent;
+  border: 1pt solid rgba(255, 255, 255, 0);
   border-radius: 8pt;
   -webkit-box-shadow: var(--box-shadow-md-inset);
   box-shadow: var(--box-shadow-md-inset);
@@ -34,13 +28,14 @@ textarea.form-control {
 select,
 option,
 textarea.form-control {
-  background: transparent;
+  background: rgba(255, 255, 255, 0);
   text-shadow: var(--text-shadow-inset);
 }
 
 select:focus {
   background-color: rgba(0,0,0,0.5);
 }
+
 text-area.form-control {
   -webkit-box-shadow: var(--box-shadow-md-inset);
   box-shadow: var(--box-shadow-md-inset);
@@ -49,13 +44,11 @@ text-area.form-control {
   outline: none;
 }
 textarea.form-control:focus {
-  /* background: linear-gradient(338.32deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.7) 15%, rgba(0,0,0,0.6) 85%, rgba(0,0,0,0.2) 100%); */
-  /* color: var(--bg-primary); */
-  background: transparent;
+  background: rgba(255, 255, 255, 0);
   -webkit-box-shadow: var(--box-shadow-md-inset);
   box-shadow: var(--box-shadow-md-inset);
   outline: none;
-  border: 1pt solid transparent;
+  border: 1pt solid rgba(255, 255, 255, 0);
 }
 
 div.form-wrapper label {
@@ -67,7 +60,6 @@ div.form-wrapper label {
 }
 
 div.form-wrapper form {
-  /* background-color: transparent; */
   margin: 0 auto;
   width: 70%;
   border: none;
@@ -76,7 +68,7 @@ div.form-wrapper form {
 }
 
 div.form-group {
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .btn-neumo {
@@ -87,9 +79,9 @@ div.form-group {
   -webkit-box-shadow: var(--box-shadow-btn-wide);
   box-shadow: var(--box-shadow-btn-wide);
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  background-color: transparent;
-  border: 1pt solid transparent;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0);
+  border: 1pt solid rgba(255, 255, 255, 0);
 }
 
 .btn-neumo .inner-wrapper {
@@ -99,7 +91,7 @@ div.form-group {
   transition: all .22s ease-in-out;
   display: grid;
   place-items: center;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .btn-neumo .inner-wrapper p {
