@@ -29,10 +29,7 @@
   --accent-darker: #212529;
   --bs-dark: #292b2c;
   --bs-dark-tr: #292b2c80;
-  /* --bs-dark-tint: #4e5355; */
   --bs-dark-tint: #959B9D;
-  /* --bs-dark-shade: #141515; */
-  /* --bs-dark-shade: #0a0a0a; */
   --bs-dark-shade: #1D1F20;
   --bs-warning: #f0ad4e;
   --bs-primary: # 0275d8;
@@ -85,15 +82,7 @@ body {
 }
 
 
-
-/* body {
-  padding-top: 106px;
-} */
-
-
-
 body {
-/* div.container-fluid.content { */
   text-align: center;
   min-height: calc(100% - 166px);
   height: calc(100% - 166px);
@@ -118,11 +107,6 @@ div.d-flex.flex-column {
   align-items: center;
   margin: 0 auto;
   padding: 0;
-  /* padding-bottom: 60px; */
-  /* padding-top: 106px; */
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* min-height: calc(100% - 166px); */
   height: calc(100% - 322px);
 
 }
@@ -210,7 +194,6 @@ a.nav-link.dropdown-toggle {
 .dropdown-menu {
   border-collapse: collapse;
   font-weight: bold;
-  /* margin-left: .25rem; */
   padding: .2rem;
 }
 
@@ -228,7 +211,6 @@ a.btn.btn-dark {
 }
 
 a.btn.btn-dark.text-lighter {
-  /* background-color: rgba(52, 58, 64, 0.85); */
   width: 100%;
   background-color: rgba(255,255,255,0);
   padding-left: .25rem;
@@ -331,20 +313,18 @@ form.form-inline.outside {
   width: 6.5vw;
   margin: 0 0.25rem;
   font-size: .65rem;
-  /* margin-right: 0.25rem; */
   padding: 0.25rem 0.1rem;
   text-align: center;
 }
 .form-control.form-control-sm::placeholder {
-  /* color: rgba(52, 58, 64, 0.75); */
-  /* color: #e6ecef4d; */
   color: var(--bs-dark);
   font-weight: 400;
   font-size: .65rem;
 }
 
 div.btn-outline-warning-wrapper {
-  /* -webkit-box-shadow: 1px 1px 3px #8f6b00, -1px -1px 3px #ffdb70;
+  /* 
+  -webkit-box-shadow: 1px 1px 3px #8f6b00, -1px -1px 3px #ffdb70;
   box-shadow: 1px 1px 3px #8f6b00, -1px -1px 3px #ffdb70;
   margin: 0;
   padding: 0;
@@ -352,7 +332,8 @@ div.btn-outline-warning-wrapper {
   line-height: 1.5;
   border-radius: 0.2rem;
   border: none;
-  transition: .32s; */
+  transition: .32s; 
+  */
 
  -webkit-box-shadow: 4px 2px 16px var(--bs-dark-shade), -4px -2px 16px var(--bs-dark-tint);
  box-shadow: 4px 2px 16px rgba(0,0,0,0.8), -4px -2px 16px var(--bs-dark-tint);
@@ -366,29 +347,10 @@ div.btn-outline-warning-wrapper {
  border: none;
  line-height: 1.5;
  background: linear-gradient(var(--bs-dark-))
-
 }
 
 div.btn-outline-warning-wrapper:hover {
-  /* -webkit-box-shadow: inset 1px 1px 3px #ffdb70, inset -1px -1px 3px #8f6b00;
-  box-shadow: inset 1px 1px 3px #ffdb70, inset -1px -1px 3px #8f6b00; */
-  /* -webkit-box-shadow: inset 1px 1px 3px var(--bs-dark-tint), inset -1px -1px 3px var(--bs-dark-shade); */
-  /* box-shadow: inset 1px 1px 3px var(--bs-dark-tint), inset -1px -1px 3px var(--bs-dark-shade); */
   background-color: rgba(0,0,0,0.5);
-}
-
-input.btn.btn-outline-warning {
-  /* margin: 0;
-  -webkit-box-shadow:inset 3px 3px 3px #ffdb70, inset -3px -3px 3px #8f6b00;
-  box-shadow:inset 3px 3px 3px #ffdb70, inset -3px -3px 3px #8f6b00;
-  text-shadow: -1px -1px 1px #8f6b00, 1px 1px 1px #ffdb70;
-  border: none;
-  font-weight: 300;
-  padding: .5rem .75rem;
-  transition: .32s;
-  background: linear-gradient(318.32deg, #8f6b00 0%, rgb(240, 179, 17) 55%, #ffdb70 100%); */
-
-  /* background: linear-gradient(318.32deg, var(--bs-dark-shade) 0%, transparent 15%, transparent 80%, var(--bs-dark-tint) 100%), linear-gradient(277deg, var(--bs-dark-shade) 0%, transparent 15%, transparent 80%, var(--bs-dark-tint) 100%), linear-gradient(353deg, var(--bs-dark-shade) 0%, transparent 15%, transparent 80%, var(--bs-dark-tint) 100%); */
   width: 100%;
   height: 100%;
   border-radius: 0.75rem;
