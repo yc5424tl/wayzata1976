@@ -26,10 +26,11 @@ div.index-div {
   height: 100%;
   min-height: 100%;
   border: 1pt solid rgba(255,255,255,0);
-  background-image: -moz-linear-gradient(to top, rgb(217,228,240) 0%, rgba(217, 228, 240, 0.6) 5%, rgba(201, 214, 228, 0.5) 10%, rgba(0,0,0,0) 25%);
+  /* background-image: -moz-linear-gradient(to top, rgb(217,228,240) 0%, rgba(217, 228, 240, 0.6) 5%, rgba(201, 214, 228, 0.5) 10%, rgba(0,0,0,0) 25%);
   background-image: -ms-linear-gradient(to top, rgb(217,228,240) 0%, rgba(217, 228, 240, 0.6) 5%, rgba(201, 214, 228, 0.5) 10%, rgba(0,0,0,0) 25%);
-  background-image: -o-linear-gradient(to top, rgb(217,228,240) 0%, rgba(217, 228, 240, 0.6) 5%, rgba(201, 214, 228, 0.5) 10%, rgba(0,0,0,0) 25%);
-  background-image: linear-gradient(to top, rgb(217,228,240) 0%, rgba(217, 228, 240, 0.6) 5%, rgba(201, 214, 228, 0.5) 10%, rgba(0,0,0,0) 25%);
+  background-image: -o-linear-gradient(to top, rgb(217,228,240) 0%, rgba(217, 228, 240, 0.6) 5%, rgba(201, 214, 228, 0.5) 10%, rgba(0,0,0,0) 25%); */
+
+  background-image: linear-gradient(to top, rgb(217,228,240) 0%, rgba(217, 228, 240, 1) 15%, rgba(217, 228, 240, 0.8) 30%, rgba(0,0,0,0) 45%);
 }
 
 div.index-div > ul {
@@ -44,7 +45,7 @@ div.index-div > ul {
                     linear-gradient(187deg, #c8dbf1 0%, #c6d7e7 1%, #dde7f3 10%, #d1dce280 20%, rgba(0,0,0,0) 35%),
                     url(../../img/gradient_image.jpeg); */
 
-  background-image: linear-gradient(to bottom, rgb(217,228,240) 0%, rgb(201, 214, 228) 10%, rgba(0,0,0,0) 20%),url(../../img/gradient_image.jpeg);
+  background-image: linear-gradient(to bottom, rgb(217,228,240) 0%, rgba(201, 214, 228, 0.9) 5%, rgba(201, 214, 228, 0.8) 10%, rgba(201, 214, 228, 0.7) 15%, rgba(201, 214, 228, 0.6) 20%, rgba(201, 214, 228, 0.5) 25%, rgba(0,0,0,0) 60%), url(../../img/gradient_image.jpeg);
   background-position: center, center;
   background-size: contain, contain;
   background-repeat: no-repeat, no-repeat;
