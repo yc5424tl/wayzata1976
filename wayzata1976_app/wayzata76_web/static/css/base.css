@@ -69,7 +69,7 @@
 
 div, p, ul, input[type=checkbox], input[type=text], input[type=email], select, option, h1, h2, h3, h4, h5, h6, form
 , label, button, nav, table, td, tr, th, thead, tbody, footer, span, section, ol, li, small, textarea {
-  background-color: transparent;
+  background-color: rgba(255,255,255,0);
 }
 
 html,
@@ -180,7 +180,7 @@ div.d-flex.flex-column {
   border-image-outset: 0;
   border-image-repeat: repeat;
   border-image-slice: 48% 19% 66% 72%;
-  border-bottom: 1pt solid transparent;
+  border-bottom: 1pt solid rgba(255,255,255,0);
 } */
 
 .navbar-nav {
@@ -230,7 +230,7 @@ a.btn.btn-dark {
 a.btn.btn-dark.text-lighter {
   /* background-color: rgba(52, 58, 64, 0.85); */
   width: 100%;
-  background-color: transparent;
+  background-color: rgba(255,255,255,0);
   padding-left: .25rem;
   padding-right: .25rem;
 }
@@ -358,7 +358,7 @@ div.btn-outline-warning-wrapper {
  box-shadow: 4px 2px 16px rgba(0,0,0,0.8), -4px -2px 16px var(--bs-dark-tint);
  padding: 0;
  border-radius: 0.5rem;
- -webkit-tap-highlight-color: transparent;
+ -webkit-tap-highlight-color: rgba(255,255,255,0);
  transition: all .22s ease-in-out;
  display: inline-block;
  margin: 0;
@@ -807,9 +807,9 @@ footer > nav.navbar.navbar-expand-xl.text-light {
   }
 
   .dropdown-menu .dropdown-toggle:after {
-    border-top: 0.05rem solid transparent;
+    border-top: 0.05rem solid rgba(255,255,255,0);
     border-right: 0;
-    border-bottom: 0.05rem solid transparent;
+    border-bottom: 0.05rem solid rgba(255,255,255,0);
     border-left: 0.05rem solid;
   }
 
@@ -867,7 +867,7 @@ footer > nav.navbar.navbar-expand-xl.text-light {
   input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0.non-block {
     display: inline-flex;
     /* background-color: rgba(240, 179, 17, 0.75); */
-    background-color: transparent;
+    background-color: rgba(255,255,255,0);
     transition: all 0.3s ease-in-out;
     color: var(--bs-dark-tr);
     width: 7rem;
@@ -907,7 +907,7 @@ footer > nav.navbar.navbar-expand-xl.text-light {
 
 
   input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0:hover {
-    backround-color: transparent;
+    background-color: rgba(255,255,255,0);
   }
 
 
@@ -1036,7 +1036,7 @@ footer > nav.navbar.navbar-expand-xl.text-light {
   }
 
   .navbar-collapse .nav-item {
-    background-color: transparent;
+    background-color: rgba(255,255,255,0);
   }
 
   .btn.inside,
@@ -1093,9 +1093,9 @@ footer > nav.navbar.navbar-expand-xl.text-light {
   }
 
   .dropdown-menu .dropdown-toggle:after {
-    border-top: 0.05rem solid transparent;
+    border-top: 0.05rem solid rgba(255,255,255,0);
     border-right: 0;
-    border-bottom: 0.05rem solid transparent;
+    border-bottom: 0.05rem solid rgba(255,255,255,0);
     border-left: 0.05rem solid;
   }
 
