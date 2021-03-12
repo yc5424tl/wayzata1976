@@ -36,9 +36,9 @@
             <select class="form-control" id="music-select" name='music_input'>
                 <option value='band'>Live Band</option>
                 <option value='dj'>Professional DJ</option>
-                <option value='karoke'>Karoke</option>
+                <option value='karaoke'>Karaoke</option>
                 <option value='playlist'>Playlist of 70's Music</option>
-                <option value='other'>Other (select to explain)</option>
+                <option value='other'>Other</option>
             </select>
         </div>
         <div class="form-row" id='other-div'>
@@ -52,12 +52,14 @@
             <textarea class="form-control" id="food-textarea" rows="3" name='food_input'></textarea>
         </div>
         <div class="form-group">
-            <label for="misc-textarea">Any other ideas, questions, requests, suggestions, recommendations, remarks,
+            <label for="misc-textarea">Other questions, comments, suggestions, recommendations, remarks, requests, and/or targeted witticisms?</label>
+            <textarea class="form-control" id="misc-textarea" rows="3" name="misc_input"></textarea>
+            <!-- utterances, pronouncements, dictums, decrees, edicts, assertions, remarks, affirmations, reflections, revelations, declarations, exclamations, notes, assessments, insights, notions, elucidations, promulgations*, testimoy, endorsemenets
+
+                ideas, questions, requests, suggestions, recommendations, remarks,
                 revelations, declarations, perspectives, pontifiations, comments, addendums, declarations, decrees,
                 edicts, anecdotes, elucidations, musings, witticisms, inquiries, sentiments, assessments, allegories
-                and/or general observations you'd like to share?</label>
-            <textarea class="form-control" id="misc-textarea" rows="3" name="misc_input"></textarea>
-            <!-- utterances, pronouncements, dictums, decrees, edicts, assertions, remarks, affirmations, reflections, revelations, declarations, exclamations, notes, assessments, insights, notions, elucidations, promulgations*, testimoy, endorsemenets -->
+                and/or general observations you'd like to share?-->
         </div>
         <div class="form-row">
             <div class="col">
@@ -71,7 +73,12 @@
                 </div>
             </div>
         </div>
-        <button type='submit' class='btn btn-block btn-primary'>Submit</button>
+        <button class="btn btn-neumo btn-block" type="submit">
+            <div class="inner-wrapper">
+                <p>SUBMIT</p>
+            </div>
+        </button>
+        <!-- <button type='submit' class='btn btn-block btn-primary'>Submit</button> -->
     </form>
 </div>
 <br>
