@@ -21,17 +21,15 @@ import os
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('s3direct/', include('s3direct.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('', include('wayzata76_web.urls'))
+    path('', include('wayzata76_web.urls')),
+    path('tinymce/', include('tinymce.urls')),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if os.getenv('USE_S3') != 'TRUE':
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
-# if settings.DEBUG:
-#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 # accounts/login/ [name='login']

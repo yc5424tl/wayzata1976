@@ -13,42 +13,36 @@
 {% endblock %}
 
 {% block content %}
+
+    <div class="page-header-wrapper">
+        <h2 class="page-header rabbet">{{ gallery.display_name }} Gallery</h2>
+    </div>
+
+    {% if gallery.parent_gallery %}
+        <nav class="nav justify-content-center">
+            <span class="nav-link related-gallery-header">Related Galleries:</span>
+            {% for sub_gallery in gallery.parent_gallery.sub_galleries.all %}
+                {% if sub_gallery != gallery %}
+                    <a class="nav-link related-gallery" href="{% url 'view_gallery' pk=sub_gallery.pk %}"> {{ sub_gallery.display_name }} </a>
+                {% endif %}
+            {% endfor %}
+        </nav>
+    {% endif %}
+
     <section>
         <div class="container gal-container">
-            <div class="page-header-wrapper">
-                <h2 class="page-header rabbet">{{ gallery.display_name }} Gallery</h2>
-            </div>
-            {% if gallery.parent_gallery %}
-
-                <nav class="nav justify-content-center">
-                    <span class="nav-link related-gallery-header">Related Galleries:</span>
-                    {% for sub_gallery in gallery.parent_gallery.sub_galleries.all %}
-                    {% if sub_gallery != gallery %}
-                    <a class="nav-link related-gallery" href="{% url 'view_gallery' pk=sub_gallery.pk %}"> {{ sub_gallery.display_name }} </a>
-                    {% endif %}
-                    {% endfor %}
-                </nav>
-
-            {% endif %}
-
-
-
             <div class="row" id="gallery" data-toggle="modal" data-target="#galleryModal">
                 {% for image in page_obj %}
                     <div class="col-12 col-sm-6 col-lg-4 gal-item">
                         <div class="thumbnail-container">
                             <a href="#" class="thumbnail-anchor">
-                                <img src="{{ image.image.url }}" alt="" data-target="#carouselExample" data-slide-to="{{ forloop.counter0 }}">
+                                <img src="{{ image.image.url }}" alt="" data-target="#carouselExample" data-slide-to="{{ forloop.counter0 }}"
                             </a>
                         </div>
                     </div>
                 {% endfor %}
             </div>
 
-              <!-- Modal -->
-              <!--
-              This part is straight out of Bootstrap docs. Just a carousel inside a modal.
-              -->
               <div class="modal fade text-center" id="galleryModal" tabindex="-1" role="dialog" aria-hidden="true">
 
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -59,7 +53,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div id="carouselExample" class="carousel slide" data-ride="carousel" >
+                            <div id="carouselExample" class="carousel slide" data-ride="carousel"
                                 <ol class="carousel-indicators">
                                     {% for image in page_obj %}
                                         {% if forloop.first %}
@@ -105,13 +99,11 @@
                         {% if image.subtitle %}
                             <div class="modal-footer description img-subtitle">
                                 <h5>{{ image.subtitle }}</h5>
-                             <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>  -->
                             </div>
                         {% endif %}
                     </div>
                 </div>
             </div>
-
 
 
             <nav aria-label="Page navigation">
@@ -121,7 +113,7 @@
                         {% if page_obj.previous_page_number != 1%}
                             <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a></li>
                         {% else %}
-                        <li class="page-item"><a class="page-link page-link-disabled">previous</a></li>
+                            <li class="page-item"><a class="page-link page-link-disabled">previous</a></li>
                         {% endif %}
                     {% else %}
                         <li class="page-item"><a class="page-link page-link-disabled">&laquo; first</a></li>
@@ -138,15 +130,13 @@
                         {% endif %}
                         <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a></li>
                     {% else %}
-                    <li class="page-item"><a class="page-link page-link-disabled">next</a></li>
-                    <li class="page-item"><a class="page-link page-link-disabled">last &raquo;</a></li>
+                        <li class="page-item"><a class="page-link page-link-disabled">next</a></li>
+                        <li class="page-item"><a class="page-link page-link-disabled">last &raquo;</a></li>
                     {% endif %}
                 </ul>
             </nav>
         </div>
     </section>
-
-
 
     {% block javascript %}
         <script type="application/javascript" src="{% static 'js/view_gallery.js' %}"></script>

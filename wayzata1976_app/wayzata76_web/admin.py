@@ -16,6 +16,8 @@ from .models import (
     ContactInfo,
     Yearbook,
     Song,
+    HomepagePost,
+    HomepagePostImage,
 )
 
 
@@ -27,8 +29,6 @@ class CustomUserAdmin(UserAdmin):
         "email",
         "username",
     ]
-
-
 admin.site.register(CustomUser, CustomUserAdmin)
 
 
@@ -103,6 +103,28 @@ class GalleryImageAdmin(admin.ModelAdmin):
         return obj.thumbnail_preview
 
     thumbnail_preview.short_description = 'Thumbnail'
+
+
+class HomepagePostImageAdmin(admin.StackedInline):
+    model = HomepagePostImage
+
+
+@admin.register(HomepagePost)
+class HomepagePostAdmin(admin.ModelAdmin):
+
+    inlines = [HomepagePostImageAdmin]
+    list_display = ["title", "subtitle", "body", "footnote", "author", "active", "date_created"]
+    list_editable = ["title", "subtitle", "body", "footnote", "active"]
+    list_filter = ["author", "date_created", "active"]
+    list_display_links = None
+
+
+@admin.register(HomepagePostImage)
+class HomepagePostImageAdmin(admin.ModelAdmin):
+    list_display = ['image', 'caption', 'uploaded_by', 'homepage_post', 'date_created']
+    list_editable = ['image', 'caption', 'homepage_post']
+    list_filter = ['uploaded_by', 'date_created']
+    list_display_links = None
 
 
 @admin.register(NewsPost)
@@ -190,7 +212,8 @@ class SongAdmin(admin.ModelAdmin):
         'weeks_top10',
         'weeks_top40',
     )
- 
+
+
 @admin.register(SurveyResult)
 class SurveyResultAdmin(admin.ModelAdmin):
     list_display = (

@@ -1,4 +1,4 @@
-import os 
+import os
 from googleapiclient import discovery, errors
 
 api_key = os.environ('YOUTUBE_API_KEY')
@@ -56,7 +56,7 @@ def main():
         part="snippet",
         channelType="any",
         maxResults=1,
-        q=""chicago" "if you leave me now""
+        q="chicago 'if you leave me now'"
     )
     response = request.execute()
 

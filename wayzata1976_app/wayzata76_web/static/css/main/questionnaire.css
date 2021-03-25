@@ -118,3 +118,14 @@ div.form-group {
     -webkit-box-shadow: var(--box-shadow-md-inset);
     box-shadow: var(--box-shadow-md-inset);
 }
+
+.btn-neumo:hover .inner-wrapper p {
+  text-decoration: underline;
+  text-decoration-style: double;
+  transition: all .32s ease-in-out;
+  color: var(--bs-dark-tr);
+}
+
+.btn-neumo .inner-wrapper:hover p {
+  color: var(--bs-dark-tr);
+}

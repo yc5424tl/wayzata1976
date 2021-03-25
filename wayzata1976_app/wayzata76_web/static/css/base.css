@@ -61,7 +61,12 @@
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 
 
-
+div.alert.alert-dismissible {
+  width: 100%;
+  display: block;
+  height: 60px;
+  margin: 0 auto;
+}
 
 
 div, p, ul, input[type=checkbox], input[type=text], input[type=email], select, option, h1, h2, h3, h4, h5, h6, form
@@ -80,7 +85,6 @@ body {
   text-align: center;
 }
 
-
 body {
   text-align: center;
   min-height: calc(100% - 166px);
@@ -93,6 +97,7 @@ body {
 div.container-fluid.content {
   text-align: center;
   padding: 0;
+  flex: 1;
 }
 
 div.flex-wrapper {
@@ -106,12 +111,9 @@ div.d-flex.flex-column {
   align-items: center;
   margin: 0 auto;
   padding: 0;
-  height: calc(100% - 322px);
-
+  height: calc(100% - 166px);
+  padding-bottom: 0px;
 }
-/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
-
-
 
 #header {
   background-color: rgba(44, 48, 52, 0.7);
@@ -124,7 +126,6 @@ div.d-flex.flex-column {
   box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
 }
 
-
 .btn.btn-dark.mx-0 {
   width: 100%;
   min-width: 100%;
@@ -136,8 +137,6 @@ div.d-flex.flex-column {
 .list-item-dark {
   background-color: rgba(52, 58, 64, 0.85);
 }
-
-
 
 
 
@@ -156,16 +155,6 @@ div.d-flex.flex-column {
  *
  */
 
-/* .navbar.navbar-expand-xl {
-  text-align: center;
-  border-image-source: url('../img/border/fractal_8.jpg');
-  border-image-width: 0px 0px 7px 0px;
-  border-image-outset: 0;
-  border-image-repeat: repeat;
-  border-image-slice: 48% 19% 66% 72%;
-  border-bottom: 1pt solid rgba(255,255,255,0);
-} */
-
 .navbar-nav {
   margin-right: 0;
   display: inline-flex;
@@ -173,7 +162,6 @@ div.d-flex.flex-column {
   color: rgba(235, 235, 235, 0.75);
   font-weight: bold;
 }
-
 
 ul.list-group.list-group-flush.list-group-dark.nav-ul {
   list-style-type: none;
@@ -278,8 +266,6 @@ h6.nav-header.outside {
 
 nav.navbar.navbar-expand-xl.fixed-top.navbar-dark.bg-dark a.navbar-brand {
   margin-right: 0;
-  margin-top: 5px;
-  margin-bottom: 5px;
 }
 
 li.nav-item,
@@ -289,14 +275,21 @@ a.nav-link {
 
 form.form-inline.outside input[type="input"],
 form.form-inline.outside input[type="password"] {
-  background-color: rgb(19, 21, 24) !important;
   background: rgb(94, 100, 107);
   -webkit-box-shadow: inset 1px 1px 3px rgba(136, 165, 191, 0.48), inset 0 0 0 rgb(94, 100, 107), inset -1px -1px 3px #FFFFFF;
   box-shadow: inset 1px 1px 3px rgba(136, 165, 191, 0.48), inset 0 0 0 rgb(94, 100, 107), inset -1px -1px 3px #FFFFFF;
   border: none;
   border-radius: 18pt;
-  color: rgba(221, 231, 243, 0.8);
+  color: var(--bg-bright);
+  font-weight: 900;
   margin-right: 0.25rem;
+}
+
+form.form-inline.outside input[type="input"]::placeholder,
+form.form-inline.outside input[type="password"]::placeholder {
+  color: var(--bg-bright);
+  font-weight: 700;
+  font-size: 0.8rem;
 }
 
 form.form-inline.outside {
@@ -307,14 +300,16 @@ form.form-inline.outside {
 .form-control.form-control-sm {
   width: 6.5vw;
   margin: 0 0.25rem;
-  font-size: .65rem;
+  font-size: .7rem;
   padding: 0.25rem 0.1rem;
   text-align: center;
+  background: rgb(94, 100, 107);
 }
+
 .form-control.form-control-sm::placeholder {
   color: var(--bs-dark);
   font-weight: 400;
-  font-size: .65rem;
+  font-size: .7rem;
 }
 
 div.btn-outline-warning-wrapper {
@@ -329,18 +324,16 @@ div.btn-outline-warning-wrapper {
  margin-left: .2rem;
  border: none;
  line-height: 1.5;
- background: linear-gradient(var(--bs-dark-))
+ font-size: .8rem;
+ font-weight: 800;
+ background: linear-gradient(var(--bs-dark))
 }
 
 div.btn-outline-warning-wrapper:hover {
   background-color: rgba(0,0,0,0.5);
-  width: 100%;
-  height: 100%;
   border-radius: 0.75rem;
   transition: all .22s ease-in-out;
   text-align: center;
-  font-weight: 300;
-  padding: .4rem;
   border: none;
   text-shadow: 2px 2px 2px #12121299, 0 0 1px #000, 2px 2px 2px #12121200;
 }
@@ -348,8 +341,8 @@ div.btn-outline-warning-wrapper:hover {
 input.btn.btn-outline-warning:hover {
   text-shadow: 1px 1px 1px #12121299, 0 0 1px #000, -1px -1px 1px #12121200;
   filter: drop-shadow(0 0 2px rgba(240, 206, 15, 1));
-  -webkit-box-shadow: inset 3px 3px 7px var(--bs-dark-tr), inset -3px -3px 7px var(--bs-dark-tint);
-  box-shadow: inset 3px 3px 7px var(--bs-dark-tr), inset -3px -3px 7px var(--bs-dark-tint);
+  -webkit-box-shadow: inset 3px 3px 7px var(--bs-dark-tr), inset -3px -3px 7px rgba(255, 255, 255, 0.5);
+  box-shadow: inset 3px 3px 7px var(--bs-dark-tr), inset -3px -3px 7px rgba(255, 255, 255, 0.5));
 }
 
 ul.dropdown-menu.dropdown-xl a,
@@ -360,12 +353,6 @@ ul.dropdown-menu.links-dropdown a {
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 
 
-
-
-
-div.container-fluid.content {
-  flex: 1;
-}
 
 
 
@@ -464,6 +451,7 @@ table {
 thead.thead-light {
   border: 5pt solid rgb(33, 37, 41);
 }
+
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 
 
@@ -493,23 +481,22 @@ thead.thead-light {
 footer {
   font-size: .75rem;
   position: absolute;
-  margin-top: 1rem;
+  margin-top: 0;
   height: 60px;
   width: 100%;
   bottom: 0;
   left: 0;
   right: 0;
-  margin-bottom: 0;
   -webkit-box-shadow: 0 0 5px 10px rgba(52, 58, 64, 0.7);
   box-shadow: 0 0 5px 10px rgba(52, 58, 64, 0.7);
   background-image: linear-gradient(350.32deg, var(--bs-dark-shade) 0%, var(--bs-dark-tr) 70%, var(--bs-dark-tint) 100%), linear-gradient(318deg, var(--bs-dark-shade) 0%, var(--bs-dark-tr) 90%, var(--bs-dark-tint) 100%), linear-gradient(298deg, var(--bs-dark-shade) 0%, var(--bs-dark-tr) 80%, var(--bs-dark-tint) 100%);
   color: var(--bg-primary);
-  padding: 0;
 }
 
 .footer-row {
   width: 100%;
   max-width: 100%;
+  height: 100%;
 }
 
 .footer-ul {
@@ -520,12 +507,18 @@ footer {
 }
 
 address {
-  margin-bottom: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
 }
 
 footer > nav.navbar.navbar-expand-xl.text-light {
   padding: 0;
 }
+
+
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 
 
@@ -547,7 +540,8 @@ footer > nav.navbar.navbar-expand-xl.text-light {
  *
  */
  /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
-@media only screen and (max-width: 575.98px) {
+
+ @media only screen and (max-width: 575.98px) {
 
   html,
   body {
@@ -573,7 +567,7 @@ footer > nav.navbar.navbar-expand-xl.text-light {
     width: 100%;
     background-color: rgba(240, 179, 17, 0.75);
     transition: all 0.22s ease-in-out;
-    color: var(--bs-dark-tr);
+    color: var(--bs-dark);
     font-weight: 900;
     font-size: 1rem;
   }
@@ -583,7 +577,7 @@ footer > nav.navbar.navbar-expand-xl.text-light {
 
   input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0.btn-block:hover {
     background-color: rgba(209, 155, 5, 0.74);
-    color:  var(--bs-dark-tr);
+    color: var(--bs-dark-tr);
   }
 
   input.btn.btn-outline-warning.btn-sm.my-2.my-sm-0.non-block {
@@ -604,6 +598,7 @@ footer > nav.navbar.navbar-expand-xl.text-light {
   }
 
 }
+
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 
 
@@ -674,7 +669,9 @@ footer > nav.navbar.navbar-expand-xl.text-light {
   a.nav-link.dropdown-toggle li {
     font-size: 1.15rem;
   }
+
 }
+
 
 @media (min-width: 768px) {
 
@@ -695,6 +692,7 @@ footer > nav.navbar.navbar-expand-xl.text-light {
     font-size: 1.75rem;
     padding: 0 .75rem;
   }
+
 }
 
 
@@ -731,7 +729,7 @@ footer > nav.navbar.navbar-expand-xl.text-light {
     border-top: 0.05rem solid rgba(255,255,255,0);
     border-right: 0;
     border-bottom: 0.05rem solid rgba(255,255,255,0);
-    border-left: 0.05rem solid rgba(255, 255, 255, 0);
+    border-left: 0.05rem solid rgba(255,255,255,0);
   }
 
   .dropdown-menu .dropdown-menu {
@@ -779,6 +777,8 @@ footer > nav.navbar.navbar-expand-xl.text-light {
   }
 
 }
+
+
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 
 
@@ -790,12 +790,13 @@ footer > nav.navbar.navbar-expand-xl.text-light {
     display: inline-flex;
     background-color: rgba(255,255,255,0);
     transition: all 0.3s ease-in-out;
-    color: var(--bs-dark-tr);
-    width: 7rem;
+    color: var(--bs-dark);
+    width: 100%;
     margin: 0 auto;
-    font-weight: 400;
+    font-weight: 700;
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
+    border-radius: 8pt;
   }
 
 }
@@ -842,7 +843,7 @@ footer > nav.navbar.navbar-expand-xl.text-light {
   }
 
   a.navbar-brand img {
-    height: 45px;
+    height: 55px;
   }
 
   a.navbar-brand {
@@ -861,7 +862,7 @@ footer > nav.navbar.navbar-expand-xl.text-light {
     display: block;
     color: rgba(235, 235, 235, 0.75);
     background-color: rgba(240, 179, 17, 0.75);
-    color: var(--bs-dark-tr);
+    color: var(--bs-dark);
     font-weight: 900;
     font-size: 1.15rem;
     font-family: "Roboto", sans-serif;
@@ -897,9 +898,9 @@ footer > nav.navbar.navbar-expand-xl.text-light {
   }
 
   .offcanvas-collapse.open {
-    transform: translateX(-1rem);
     -ms-transform: translateX(-1rem);
     -webkit-transform: translateX(-1rem);
+    transform: translateX(-1rem);
     /* Account for horizontal padding on navbar */
   }
 
@@ -947,8 +948,11 @@ footer > nav.navbar.navbar-expand-xl.text-light {
     font-size: 1rem;
     font-weight: 900;
     font-family: "Roboto", sans-serif;
+    color: var(--bg-bright);
   }
+
 }
+
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 
 
@@ -1048,7 +1052,9 @@ footer > nav.navbar.navbar-expand-xl.text-light {
     padding-left: 0.3rem;
     padding-right: 0.3rem;
   }
+
 }
+
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 
 
@@ -1071,7 +1077,7 @@ footer > nav.navbar.navbar-expand-xl.text-light {
  @media (min-width: 1200px) and (max-width: 1299px) {
   a.nav-link.btn.btn-sm.btn-dark.text-lighter,
   a.nav-link.dropdown-toggle  {
-    font-size: .7rem;
+    font-size: .8rem;
   }
 }
 
@@ -1091,7 +1097,7 @@ footer > nav.navbar.navbar-expand-xl.text-light {
  @media (min-width: 1300px) and (max-width: 1459.98px) {
   a.nav-link.btn.btn-sm.btn-dark.text-lighter,
   a.nav-link.dropdown-toggle  {
-    font-size: .8rem;
+    font-size: .9rem;
   }
 }
 
@@ -1113,7 +1119,7 @@ footer > nav.navbar.navbar-expand-xl.text-light {
 @media (min-width: 1460px) {
   a.nav-link.btn.btn-sm.btn-dark.text-lighter,
   a.nav-link.dropdown-toggle {
-    font-size: .95rem;
+    font-size: 1.05rem;
   }
 }
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */

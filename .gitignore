@@ -1,8 +1,11 @@
+/venv2/*
+/venv/*
 .env
 .vscode
 /.vscode
 ./.vscode
 /venv
+/venv2
 /wayzata1976_app/media/1981/*
 /wayzata1976_app/media/1986/*
 wayzata1976_app/db.sqlite3
@@ -24,3 +27,7 @@ runtime.txt
 node_modules
 package-lock.json
 requirements.txt.old
+wayzata1976_app/wayzata76_web/templates/main
+wayzata1976_app/wayzata76_web/templates/email
+wayzata1976_app/wayzata76_web/static/img/page_end/1606833795629.jpeg
+wayzata1976_app/venv2

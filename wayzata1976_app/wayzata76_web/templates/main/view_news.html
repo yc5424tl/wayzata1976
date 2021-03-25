@@ -2,40 +2,47 @@
 {% load static %}
 
 {% block style %}
-{{ block.super }}
-<link rel="stylesheet" href="{% static 'main/css/view_news.css' %}">
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/main/view_news.css' %}">
 {% endblock %}
 
 {% block content %}
 
-
-<div class="page-header-wrapper">
-    <h2 class="page-header rabbet">News & Updates</h2>
-
-</div>
-{% if request.user.is_superuser %}
-<a class="btn btn-danger-outline btn-block" role="button" href="{% url 'create_news_post' %}">Create New Post</a>
-{% endif %}
-
-<div class="container news-container text-center">
-    {% for post in posts %}
-    <div class="card bg-dark text-white">
-        {% if post.news_post_image %}
-        <img class="card-img-top" src="{{ post.news_post_image.image.url }}">
-        {% endif %}
-        <div class="card-body">
-            <h5 class="card-title">{{ post.title }}</h5>
-            <p class="card-text">{{ post.body }}</p>
-            {% if post.link %}
-            <a href="{{ post.link }}" class="btn btn-primary">{{ post.link_text }}</a>
-            {% endif %}
-        </div>
+    <div class="page-header-wrapper">
+        <h2 class="page-header rabbet">News & Updates</h2>
     </div>
-    {% if not forloop.last %}
-    <hr>
+
+    {% if request.user.is_superuser %}
+        <a class="btn btn-neumo btn-block" href="{% url 'create_news_post' %}">
+            <div class="inner-wrapper">
+                <p>CREATE NEW POST</p>
+            </div>
+        </a>
     {% endif %}
-    {% empty %}
-    <h5>Coming Soon!</h5>
-    {% endfor %}
-</div>
+
+    <div class="news-container text-center">
+        {% for post in posts %}
+            <div class="card">
+                {% if post.news_post_image %}
+                    <img class="card-img-top" src="{{ post.news_post_image.image.url }}">
+                {% endif %}
+                <div class="card-body">
+                    <h2 class="card-title">{{ post.header }}</h2>
+                    <span><small>{{ post.readable_date_created }}</small></span>
+                    <hr>
+                    <p class="card-text">{{ post.body|safe }}</p>
+                </div>
+            </div>
+            {% if not forloop.last %}
+                <hr>
+            {% endif %}
+        {% empty %}
+            <h2>Coming Soon!</h2>
+        {% endfor %}
+    </div>
+
+    <div class="footer-image-top">
+        <div class="gradient-overlay"></div>
+    </div>
+
 {% endblock %}

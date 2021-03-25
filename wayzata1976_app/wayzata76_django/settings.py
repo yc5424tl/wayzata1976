@@ -20,6 +20,7 @@ from django.urls import reverse_lazy
 import dj_database_url
 # import collectfast
 
+from django.contrib.messages import constants as message_constants
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -60,7 +61,7 @@ DEBUG = os.getenv("DEBUG") == "TRUE"
 
 ALLOWED_HOSTS = ["wayzata76.herokuapp.com", "wayzata76.com", 'localhost']
 
-
+MESSAGE_LEVEL = message_constants.INFO
 
 # Application definition
 
@@ -70,37 +71,36 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    # "collectfast",
     "django.contrib.staticfiles",
-
     "wayzata76_web.apps.Wayzata76WebConfig",
     "fontawesome-free",
     "widget_tweaks",
     "storages",
     "s3file",
+    'djrichtextfield',
+    "tinymce",
     "django_material_icons",
-
 ]
 
-if os.getenv('USE_S3') == "TRUE":
+# if os.getenv('USE_S3') == "TRUE":
 
 
-    memcache_servers = os.environ['MEMCACHIER_SERVERS']
-    memcache_username = os.environ['MEMCACHIER_USERNAME']
-    memcache_password = os.environ['MEMCACHIER_PASSWORD']
+#     memcache_servers = os.environ['MEMCACHIER_SERVERS']
+#     memcache_username = os.environ['MEMCACHIER_USERNAME']
+#     memcache_password = os.environ['MEMCACHIER_PASSWORD']
 
-    CACHES = {
-        'default': {
-            'BACKEND': 'django_bmemcached.memcached.BMemcached',
-            'TIMEOUT': None,
-            'LOCATION': memcache_servers,
-            'OPTIONS': {
-                'username': memcache_username,
-                'password': memcache_password,
-                'MAX_ENTRIES': 15000,
-            },
-        }
-    }
+#     CACHES = {
+#         'default': {
+#             'BACKEND': 'django_bmemcached.memcached.BMemcached',
+#             'TIMEOUT': None,
+#             'LOCATION': memcache_servers,
+#             'OPTIONS': {
+#                 'username': memcache_username,
+#                 'password': memcache_password,
+#                 'MAX_ENTRIES': 15000,
+#             },
+#         }
+#     }
 
     # COLLECTFAST_CACHE = 'default'
     # COLLECTFAST_THREADS = 20
@@ -251,6 +251,98 @@ else:
     STATIC_ROOT = os.path.join(BASE_DIR, "static")
     MEDIA_URL = "/media/"
     MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+
+# DJRICHTEXTFIELD_CONFIG = {
+#     # 'js': ['//cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js'],
+#     'js': ['//cdn.ckeditor.com/4.14.0/standard/ckeditor.js'],
+#     # 'init_template': 'djrichtextfield/init/tinymce.js',
+#     'init_template': 'djrichtextfield/init/ckeditor.js',
+#     # 'settings': {  #TinyMCE
+#     #     'menubar': False,
+#     #     'plugins': 'link image',
+#     #     'toolbar': 'bold italic | link-image | removeformat',
+#     #     'width': 700
+#     # }
+#     'settings': {
+#         'toolbar': [
+#             {'items': ['Format', '-', 'Bold', 'Italic', '-', 'RemoveFormat']},
+#             {'items': ['Link', 'Unlink', 'Image', 'Table']},
+#             {'items': ['Source']}
+#         ],
+#         'format_tags': 'p;h1;h2;h3',
+#         'width': 700
+#     }
+# }
+
+# TINYMCE_CONFIG = {
+#     'js': ['//cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js'],
+#     'init_template': 'djrichtextfield/init/tinymce.js',
+#     'settings': {
+#         'menubar': False,
+#         'plugins': 'link image table code',
+#         'toolbar': 'formatselect | bold italic | removeformat |'
+#                    ' link unlink image table | code',
+#         'block_formats': 'Paragraph=p;Header 1=h1;Header 2=h2;Header 3=h3',
+#         'width': 700
+#     },
+#     'profiles': {
+#         'mini': {
+#             'toolbar': 'bold italic | removeformat'
+#         }
+#     }
+# }
+
+# CKEDITOR_CONFIG = {
+#     'js': ['//cdn.ckeditor.com/4.14.0/standard/ckeditor.js'],
+#     'init_template': 'djrichtextfield/init/ckeditor.js',
+#     'settings': {
+#         'toolbar': [
+#             {'items': ['Format', '-', 'Bold', 'Italic', '-', 'RemoveFormat']},
+#             {'items': ['Link', 'Unlink', 'Image', 'Table']},
+#             {'items': ['Source']}
+#         ],
+#         'format_tags': 'p;h1;h2;h3',
+#         'width': 700,
+#     },
+#     'profiles': {
+#         'mini': {
+#             'toolbar': [
+#                 {'items': ['Bold', 'Italic', '-', 'RemoveFormat']},
+#             ]
+#         }
+#     },
+#     'sanitizer': lambda value: 'foo' + value,
+#     'sanitizer_profiles': {
+#         'baz': lambda value: value + 'baz'
+#     }
+# }
+
+# DJRICHTEXTFIELD_CONFIG = CKEDITOR_CONFIG
+
+TINYMCE_JS_URL = os.path.join(STATIC_URL, "js/tinymce/tinymce.min.js")
+TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "js/tinymce")
+TINYMCE_DEFAULT_CONFIG = {
+    "theme": "silver",
+    "height": 500,
+    "menubar": False,
+    "statusbar": False,
+
+    "plugins": "advlist,autolink,lists,link,image,charmap,print,preview,anchor,searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste,code,help,wordcount",
+
+    "toolbar": "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist checklist | forecolor backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | fullscreen preview save print | insertfile image media pageembed template link anchor codesample | a11ycheck ltr rtl | showcomments addcomment code",
+
+    "cleanup_on_startup": True,
+
+    "selector": "textarea",
+
+    "contextmenu": "formats | link image",
+
+    "custom_undo_redo_levels": 10,
+}
+
+TINYMCE_SPELLCHECKER = True
+TINYMCE_COMPRESSOR = True
 
 
 MESSAGE_TAGS = {

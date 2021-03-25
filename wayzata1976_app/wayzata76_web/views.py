@@ -8,8 +8,10 @@ from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.staticfiles.storage import staticfiles_storage
-from django.core.mail import BadHeaderError, send_mail, mail_admins, EmailMultiAlternatives
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.core.exceptions import ObjectDoesNotExist
+from django.core.mail import (BadHeaderError, EmailMultiAlternatives,
+                              mail_admins, send_mail)
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
@@ -20,53 +22,42 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView
 
-from .forms import (
-    ContactUpdateForm,
-    CustomUserCreationForm,
-    ExtendedNewsPostForm,
-    GalleryImageUploadForm,
-    NewsPostForm,
-    UploadGalleryImageForm,
-    UploadNewsPostImageForm,
-)
-from .models import (
-    ContactInfo,
-    CustomUser,
-    Gallery,
-    GalleryImage,
-    NewsPost,
-    NewsPostImage,
-    Person,
-    SurveyResult,
-    Yearbook,
-    Song
-)
+from .forms import (ContactUpdateForm, CustomUserCreationForm,
+                    GalleryImageForm, HomepagePostForm, HomepagePostImageForm,
+                    NewsPostForm, NewsPostImageForm, QuestionnaireForm)
+from .models import (ContactInfo, CustomUser, Gallery, GalleryImage,
+                     HomepagePost, HomepagePostImage, NewsPost, NewsPostImage,
+                     Person, Song, SurveyResult, Yearbook)
 
 
 def SignUpView(CreateView):
     form_class = CustomUserCreationForm
-    succes_url = reverse_lazy("login")
+    success_url = reverse_lazy("login")
     template_name = "registration.signup.html"
 
 
 def login(request):
     if request.method == "GET":
-        return render("registration/login.html")
+        return render(request, "registration/login.html", {})
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.success(request, "Login Successful")
+            messages.info(request, "Login Successful")
             return redirect("index")
         else:
-            messages.warning(request, "Username/Password Incorrect")
+            messages.info(request, "Username/Password Incorrect")
             return redirect("index")
 
 
 def index(request):
-    return render(template_name="main/index.html", request=request)
+    try:
+        homepage = HomepagePost.objects.get(active=True)
+    except ObjectDoesNotExist:
+        homepage = None
+    return render(template_name="main/index.html", context={'homepage': homepage}, request=request)
 
 
 def email_questionnaire_notification(request, survey_result_instance):
@@ -86,57 +77,31 @@ def email_questionnaire_notification(request, survey_result_instance):
                         ___________________________________________________________________________________________________\n\
                         Automatically Generated Email - DO NOT REPLY\n'
 
-
         email_subject = 'ADMIN: New Questionnaire Submission Received'
-
         send_mail(email_subject, email_message, 'wayzata1976@gmail.com', ['jkboline@gmail.com', 'wayzata1976@gmail.com'])
         return True
+
     except:
         return False
 
 
 def questionnaire(request):
-    if request.method == "POST":
-        liked = request.POST["liked_input"]
-        disliked = request.POST["disliked_input"]
-        location = request.POST["location_input"]
-        music = request.POST["music_input"]
-        music_other = request.POST["music_other_input"]
-        food = request.POST["food_input"]
-        misc = request.POST["misc_input"]
-        submitted_by = request.POST["name_input"]
-        email = request.POST["email_input"]
-
-        new_result = SurveyResult(
-            liked=liked,
-            disliked=disliked,
-            location=location,
-            music=music,
-            music_other=music_other,
-            food=food,
-            misc=misc,
-            submitted_by=submitted_by,
-            email=email,
-        )
-        if new_result.has_content:
-            new_result.save()
-
-            email_sent = email_questionnaire_notification(request, new_result)
-
-            if email_sent:
-                messages.success(request, message="Questionnaire Submitted Successfully. Thank You!")
-            else:
-                messages.warning(request, message="Questionnaire Submitted Successfully. Error Delivering Data to Administration. If the problem persists, please contact us @ wayzata1976.admin@google.com")
-
-            return render(request, "main/index.html")
+    if request.method == 'POST':
+        form = QuestionnaireForm(request.POST)
+        if all(form.is_valid(), form.has_content()):
+                new_survey_result = form.save()
+                email_sent = email_questionnaire_notification(request, new_survey_result)
+                if email_sent:
+                    messages.info(request, "Questionnaire Submitted Successfully. Thank You!")
+                else:
+                    messages.info(request, "Questionnaire Submitted Successfully. Error Delivering Data to Administration. If the problem persists, please contact us @ wayzata1976.admin@google.com")
+                return render(request, "main/index.html")
         else:
-            new_result.delete()
-            messages.warning(
-                request, message="A blank questionnaire cannot be submitted, please try again."
-            )
-            return render(request, "main/questionnaire.html")
+            messages.info(request, 'Failure: Empty Form')
+            return render(request, 'main/questionnaire.html', {'form': form})
     else:
-        return render(request, "main/questionnaire.html")
+        form = QuestionnaireForm()
+        return render(request, 'main/questionnaire.html', {'form': form})
 
 
 def email_contact_update_notification(request, contact_info_instance):
@@ -149,7 +114,7 @@ def email_contact_update_notification(request, contact_info_instance):
         return False
 
 
-def contact_info(request):
+def update_contact_info(request):
     if request.method == "POST":
         form = ContactUpdateForm(request.POST)
         if form.is_valid():
@@ -160,21 +125,58 @@ def contact_info(request):
 
             email_sent = email_contact_update_notification(request=request, contact_info_instance=contact_info)
             if email_sent:
-                messages.success(
-                request,
-                message="Updated contact information has been submitted. Please allow 1-2 days for updates to be approved and applied. Thank you.",
-            )
-                return redirect('index')
+                messages.info(request, "Updated contact information has been submitted. Please allow 1-2 days for updates to be approved and applied. Thank you.")
             else:
-                messages.warning(request, message="Updated Contact Information Submitted Successfully, Error Delivering Data to Administration. If the problem persists, please contact us @ wayzata1976.admin@gmail.com",)
-                print('email not sent')
+                messages.info(request, "Updated Contact Information Submitted Successfully, Error Delivering Data to Administration. If the problem persists, please contact us @ wayzata1976.admin@gmail.com")
             return redirect('index')
-            # TODO - if submitter is logged in user, check to see if user is attatched to a person -- update corresponding fields
-            # TODO - check if all Address fields contain data, create new Address if so, linking it to Person
+            # TODO - if submitter is logged in user, check to see if user is attached to a person -- update corresponding fields
+            # TODO - migrate address out of contact info, used a combined form in place of this one ---> +1 for creating new addresses and not having crap code
     else:
         form = ContactUpdateForm()
         # TODO -- if request.user.is_authenticated --> prefill email/name/address on form
     return render(request, "main/contact_update.html", {"form": form})
+
+
+def check_null_empty(target:str) -> str or None:
+    if (target is None) or (target.replace(' ', '') == '') :
+        return None
+    else:
+        return target
+
+
+def update_homepage(request):
+
+    if request.method == 'POST':
+
+        homepage_post_form = HomepagePostForm(request.POST)
+        homepage_post_image_form = HomepagePostImageForm(request.POST, request.FILES)
+
+        if homepage_post_form.is_valid():
+
+            if homepage_post_form.cleaned_data.get('active'):
+                HomepagePost.objects.filter(active=True).update(active=False)
+            new_homepage_post = homepage_post_form.save(commit=False)
+            new_homepage_post.author = request.user
+            new_homepage_post.save()
+
+            if (homepage_post_image_form.is_valid()):
+                if (homepage_post_image_form.cleaned_data.get('image')):
+                    new_homepage_post_image = homepage_post_image_form.save(commit=False)
+                    new_homepage_post_image.homepage_post = new_homepage_post
+                    new_homepage_post_image.uploaded_by = request.user
+                    new_homepage_post_image.save()
+
+            messages.info(request, 'New Homepage Content Saved')
+            return redirect("index")
+        else:
+            homepage_post_form = HomepagePostForm()
+            homepage_post_image_form = HomepagePostImageForm()
+            messages.info(request, 'Error: Form Contains Invalid Field(s)')
+            return render(request, "main/create_homepage_post.html", {'homepage_post_form': homepage_post_form, 'homepage_post_image_form': homepage_post_image_form})
+    else:
+        homepage_post_form = HomepagePostForm()
+        homepage_post_image_form = HomepagePostImageForm()
+        return render(request, "main/create_homepage_post.html", {'homepage_post_form': homepage_post_form, 'homepage_post_image_form': homepage_post_image_form})
 
 
 def view_gallery(request, pk):
@@ -201,24 +203,22 @@ def view_zietgeist(request):
         {"award": "Best Supporting Actress", "winner": "Beatrice Straight (Network)"},
         {"award": "Best Director", "winner": "John Avildsen (Rocky)"},
     ]
-
     yearbooks = Yearbook.objects.all()
     songs = Song.objects.order_by('position')
 
     if os.getenv('USE_S3') == 'TRUE':
         json_file = urlopen(static('json/songs.json'))
-
     else:
         json_file = staticfiles_storage.open('json/songs.json')
 
     return render(
         request,
-        "neumorphism.html",{"yearbooks": yearbooks, "songs": songs, "awards": awards},
+        "main/view_zietgeist.html",{"yearbooks": yearbooks, "songs": songs, "awards": awards},
     )
 
 
-def build_classmate_nav(person_instance_list, ignored_letter_list):
-    alphabet = list(string.ascii_uppercase)
+def build_classmate_nav(person_instance_list, ignored_letter_list, alphabet):
+
     link_dict = {letter: None for letter in alphabet}
     for letter_key in link_dict:
         if letter_key in ignored_letter_list:
@@ -233,32 +233,10 @@ def build_classmate_nav(person_instance_list, ignored_letter_list):
 
 def view_classmates(request):
 
-    classmates = (
-        Person.objects.filter(is_classmate=True)
-        .only("last_name", "first_name", "middle_initial", "address", "is_classmate")
-        .order_by("last_name")
-        .select_related("address")
-    )
-
-    mia_list = (
-        Person.objects.filter(address=None, is_classmate=True)
-        .only("last_name", "first_name", "middle_initial", "address", "is_classmate")
-        .order_by("last_name")
-        .select_related("address")
-    )
-
-    passed_list = (
-        Person.objects.filter(address__city="passed")
-        .only("last_name", "first_name", "middle_initial", "address", "is_classmate")
-        .order_by("last_name")
-        .select_related("address")
-    )
-
-    in_contact_list = (
-        Person.objects.exclude(Q(address__city="passed") | Q(address=None))
-        .order_by("last_name")
-        .select_related("address")
-    )
+    classmates = Person.people.classmates()
+    mia_list = Person.people.mia()
+    passed_list = Person.people.passed()
+    in_contact_list = Person.people.in_contact()
 
     no_target_all = ['X']
     no_target_mia = ['X', 'Q', 'U', 'X', 'V', 'Z']
@@ -266,12 +244,12 @@ def view_classmates(request):
     no_target_in_c = ['I', 'U', 'X']
     #  Create a dictionary with null values to be replaced by the first student (alphabetically) for each letter, the resulting dictionary contains the Person objects to be targeted with anchor links in the classmates list jump menu.
 
-    all_link_dict = build_classmate_nav(classmates, no_target_all)
-    mia_link_dict = build_classmate_nav(mia_list, no_target_mia)
-    passed_link_dict = build_classmate_nav(passed_list, no_target_passed)
-    in_c_link_dict = build_classmate_nav(in_contact_list, no_target_in_c)
-
     alphabet = list(string.ascii_uppercase)
+
+    all_link_dict = build_classmate_nav(classmates, no_target_all, alphabet)
+    mia_link_dict = build_classmate_nav(mia_list, no_target_mia, alphabet)
+    passed_link_dict = build_classmate_nav(passed_list, no_target_passed, alphabet)
+    in_c_link_dict = build_classmate_nav(in_contact_list, no_target_in_c, alphabet)
 
     return render(
         request,
@@ -299,89 +277,43 @@ def view_news(request):
     return render(request, "main/view_news.html", {"posts": posts})
 
 
-def upload_news_post_image(request, pk):
-    if request.method == "POST":
-        form = UploadNewsPostImageForm(request.POST, request.FILES)
-        if form.is_valid():
-            newspost = NewsPost.objects.get(pk=request.POST.get("newspost_id"))
-            news_post_image = form.save(commit=False)
-            news_post_image.uploaded_by = request.user
-            news_post_image.news_post = newspost
-            news_post_image.save()
-            return redirect("view_news")
-        else:
-            form = UploadNewsPostImageForm()
-            return render(
-                request, "upload/upload_news_post_image.html", {"form": form, "pk": pk}
-            )
-    else:
-        newspost = get_object_or_404(NewsPost, pk=pk)
-        form = UploadNewsPostImageForm()
-        return render(
-            request,
-            "upload/upload_news_post_image.html",
-            {"form": form, "newspost_pk": pk},
-        )
-
-
-def upload_gallery_image(request):
-
-    if request.method == "POST":
-        form = UploadGalleryImageForm(request.POST, request.FILES, request=request)
-
-        if form.is_valid():
-            gallery_image = form.save(commit=False)
-            gallery_image.uploaded_by = request.user
-            gallery_image.save()
-            return redirect("index")
-    else:
-        form = UploadGalleryImageForm()
-    return render(request, "upload/local_image_upload.html", {"form": form})
-
-
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
 def create_news_post(request):
     if request.method == "POST":
-        form = ExtendedNewsPostForm(request.POST)
-        if form.is_valid():
-            new_post = form.save(commit=False)
+
+        news_post_form = NewsPostForm(request.POST)
+        news_post_image_form = NewsPostImageForm(request.POST, request.FILES)
+
+        if news_post_form.is_valid():
+            new_post = news_post_form.save(commit=False)
             new_post.author = request.user
             new_post.save()
 
-            new_post = NewsPost(
-                header=form.cleaned_data.get("header"),
-                body=form.cleaned_data.get("body"),
-                author=request.user,
-                link=form.cleaned_data.get("link"),
-                link_text=form.cleaned_data.get("link_text"),
-            )
+            if (news_post_image_form.is_valid() and request.FILES["image"]):
+                new_post_image = news_post_image_form.save(commit=False)
+                new_post_image.news_post = new_post
+                new_post_image.uploaded_by = request.user
+                new_post_image.save()
 
-            new_post.save()
-
-            if request.FILES["image"]:
-                post_image = NewsPostImage(
-                    image=request.FILES["image"],
-                    subtitle=form.cleaned_data["subtitle"],
-                    uploaded_by=request.user,
-                    news_post=new_post,
-                )
-                post_image.save()
+            messages.info(request, 'News Post Created')
             return redirect("view_news")
         else:
-            messages.info(request, form.errors)
-            form = ExtendedNewsPostForm()
-            return render(request, "main/create_news_post.html", {"form": form})
+            messages.info(request, message=f'{news_post_form.errors}; {news_post_image_form.errors}')
+            news_post_form = NewsPostForm()
+            news_post_image_form = NewsPostImageForm()
+            return render(request, "main/create_news_post.html", {"news_post_form": news_post_form, "news_post_image_form": news_post_image_form})
     else:
-        form = ExtendedNewsPostForm()
-        return render(request, "main/create_news_post.html", {"form": form})
+        news_post_form = NewsPostForm()
+        news_post_image_form = NewsPostImageForm()
+        return render(request, "main/create_news_post.html", {"news_post_form": news_post_form, "news_post_image_form": news_post_image_form})
 
 
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
 def upload_multi_gallery_image(request):
     if request.method == "POST":
-        form = GalleryImageUploadForm(request.POST, request.FILES)
+        form = GalleryImageForm(request.POST, request.FILES)
         if form.is_valid():
             form_gallery = request.POST["gallery"]
             gallery_instance = get_object_or_404(Gallery, pk=int(form_gallery))
@@ -398,28 +330,6 @@ def upload_multi_gallery_image(request):
             return redirect("view_gallery", pk=int(form_gallery))
 
     else:
-        form = GalleryImageUploadForm()
+        form = GalleryImageForm()
         return render(request, "upload/gallery_image_upload.html", {"form": form})
 
-def neumorphism(request):
-    awards = [
-        {"award": "Best Picture", "winner": "Rocky"},
-        {"award": "Best Actor", "winner": "Peter Finch (Network)"},
-        {"award": "Best Actress", "winner": "Faye Dunaway (Network)"},
-        {"award": "Best Supporting Actor", "winner": "Jason Robards (All the President's Men)"},
-        {"award": "Best Supporting Actress", "winner": "Beatrice Straight (Network)"},
-        {"award": "Best Director", "winner": "John Avildsen (Rocky)"},
-    ]
-    yearbooks = Yearbook.objects.all()
-    songs = None
-    if os.getenv('USE_S3') == 'TRUE':
-        json_file = urlopen(static('json/songs.json'))
-        songs = json.load(json_file)
-    else:
-        json_file = staticfiles_storage.open('json/songs.json')
-        songs = json.load(json_file)
-    return render(
-        request,
-        'neumorphism.html',
-        {"yearbooks": yearbooks, "songs": songs, "awards": awards},
-    )

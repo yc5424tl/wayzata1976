@@ -9,7 +9,7 @@
     {{ block.super }}
     <link rel="stylesheet" href="{% static 'css/main/questionnaire.css' %}">
 {% endblock %}
-
+{% load widget_tweaks %}
 {% block content %}
 <div class="page-header-wrapper">
     <h2 class="page-header rabbet">QUESTIONNAIRE</h2>
@@ -19,65 +19,57 @@
     <form method="POST" action="/survey/">
         {% csrf_token %}
         <div class="form-group">
-            <label for="liked-textarea">If you attended the 40th reunion, what did you like most about it?</label>
-            <textarea class="form-control" id="liked-textarea" rows="3" name='liked_input'></textarea>
+            {{ form.liked.errors }}
+            {{ form.liked.label_tag }}
+            {% render_field form.liked class="form-control" id="liked-textarea" rows="3" name="liked_input" %}
         </div>
         <div class="form-group">
-            <label for="disliked-textarea">If you attended the 40th reunion, what would you have changed to make it
-                better?</label>
-            <textarea class="form-control" id="disliked-textarea" rows="3" name='disliked_input'></textarea>
+            {{ form.disliked.errors }}
+            {{ form.disliked.label_tag }}
+            {% render_field form.disliked class="form-control" id="disliked-textarea" rows="3" name="disliked_input" %}
         </div>
         <div class="form-group">
-            <label for="location-textarea">Where would you like the 45th reunion to be held?</label>
-            <textarea class="form-control" id="location-textarea" rows="3" name='location_input'></textarea>
+            {{ form.location.errors }}
+            {{ form.location.label_tag }}
+            {% render_field form.location class="form-control" id="location-textarea" rows="3" name="location_input" %}
         </div>
         <div class="form-group">
-            <label for="music-select">What would you choose for musical enjoyment?</label>
-            <select class="form-control" id="music-select" name='music_input'>
-                <option value='band'>Live Band</option>
-                <option value='dj'>Professional DJ</option>
-                <option value='karaoke'>Karaoke</option>
-                <option value='playlist'>Playlist of 70's Music</option>
-                <option value='other'>Other</option>
-            </select>
+            {{ form.music.errors }}
+            {{ form.music.label_tag }}
+            {% render_field form.music class="form-control" id="music-select" name="music_input" %}
         </div>
-        <div class="form-row" id='other-div'>
+        <div class="form-row" id="other-div">
             <div class="col">
-                <textarea class="form-control" rows="3" placeholder="Tell us your idea here."
-                    name='music_other_input'></textarea>
+                {{ form.music_other.errors }}
+                {% render_field form.music_other class="form-control" rows="3" placeholder="Tell us your idea here." name="music_other_input" %}
             </div>
         </div>
         <div class="form-group">
-            <label for="food-textarea">What kind of food yould you like to have available?</label>
-            <textarea class="form-control" id="food-textarea" rows="3" name='food_input'></textarea>
+            {{ form.food.errors }}
+            {{ form.food.label_tag }}
+            {% render_field form.food class="form-control" id="food-textarea" rows="3" name="food_input" %}
         </div>
         <div class="form-group">
-            <label for="misc-textarea">Other questions, comments, suggestions, recommendations, remarks, requests, and/or targeted witticisms?</label>
-            <textarea class="form-control" id="misc-textarea" rows="3" name="misc_input"></textarea>
-            <!-- utterances, pronouncements, dictums, decrees, edicts, assertions, remarks, affirmations, reflections, revelations, declarations, exclamations, notes, assessments, insights, notions, elucidations, promulgations*, testimoy, endorsemenets
-
-                ideas, questions, requests, suggestions, recommendations, remarks,
-                revelations, declarations, perspectives, pontifiations, comments, addendums, declarations, decrees,
-                edicts, anecdotes, elucidations, musings, witticisms, inquiries, sentiments, assessments, allegories
-                and/or general observations you'd like to share?-->
+            {{ form.misc.errors }}
+            {{ form.misc.label_tag }}
+            {% render_field form.misc class="form-control" id="misc-textarea" rows="3" name="misc_input" %}
         </div>
         <div class="form-row">
             <div class="col">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="*Name" name='name_input'>
+                    {{ form.name.errors }}
+                    {% render_field form.submitted_by class="form-control" placeholder="* Name" name="name_input" %}
                 </div>
             </div>
             <div class="col">
                 <div class="form-group">
-                    <input type="email" class="form-control" id="email-input" name='email_input' placeholder="* Email">
+                    {{ form.email.errors }}
+                    {% render_field form.email class="form-control" placeholder="* Email" name="email_input" %}
                 </div>
             </div>
         </div>
-        <button class="btn btn-neumo btn-block" type="submit">
-            <div class="inner-wrapper">
-                <p>SUBMIT</p>
-            </div>
-        </button>
+        {% include 'fragments/submit_btn.html' %}
+     
     </form>
 </div>
 <br>

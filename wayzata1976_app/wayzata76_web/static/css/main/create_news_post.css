@@ -1,0 +1,17 @@
+textarea.form-control.tinymce {
+    visibility: visible;
+}
+
+div.form-wrapper form div.form-group,
+div.form-wrapper form div.form-row {
+  margin: 0.3rem auto;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+button {
+    margin-top: 2rem;
+}
+
+div.form-wrapper {
+  padding-bottom: 120px;
+}

@@ -5,15 +5,13 @@
 
     {% block style %}
         {{ block.super }}
-        <link rel="stylesheet" href="{% static 'css/main/contact_update.css' %}">
+        <link rel="stylesheet" href="{% static 'css/main/form_page.css' %}">
     {% endblock %}
 
     {% block content %}
         <div class="page-header-wrapper">
             <h2 class="page-header rabbet">Update Contact Information</h2>
         </div>
-
-
 
         <form method="post" action="" novalidate>
             {% csrf_token %}
@@ -119,13 +117,7 @@
                     {% render_field form.spouse_last_name class="form-control" placeholder="Last Name" %}
                 </div>
             </div>
-
-            <button class="btn btn-neumo btn-block" type="submit">
-                <div class="inner-wrapper">
-                    <p>SUBMIT</p>
-                </div>
-            </button>
-
+            {% include 'fragments/submit_btn.html' %}
         </form>
 
     {% endblock %}

@@ -1,50 +1,75 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %} {{ block.super }} - Home {% endblock %}
+{% block title %}
+    {{ block.super }} - Home
+{% endblock %}
 
 {% block style %}
     {{ block.super }}
     <link rel="stylesheet" href="{% static 'css/main/index.css' %}">
 {% endblock %}
 
+
 {% block content %}
+
     <div class="page-header-wrapper">
         <h2 class="page-header rabbet">Wayzata High School Class of 1976</h2>
     </div>
-    <div class="index-div">
-        <h4 class="text-center">45th Reunion: What You Can Do</h4>
-        <br />
-        <ul>
-            <li class="to-do-item">
-                <div class=text-center>
-                    We want to hear from you! Please take a moment to weigh in on some of the finer aspects of reunion planning with <a href="{% url 'questionnaire' %}">this</a> questionnaire.
-                    <ul>
-                        <li>
-                            <small>
-                                (Guaranteed to be less than seven questions unless we add some!)
-                            </small>
-                        </li>
-                    </ul>
+
+    {% if request.user.is_superuser %}
+        <a href="{% url 'update_homepage' %}">
+            <div role="button" type="button" class="btn-neumo">
+                <div class="inner-wrapper">
+                    <small>MODIFY HOMEPAGE CONTENT</small>
                 </div>
-            </li>
-            <br />
-            <li class="to-do-item">
-                <div class="text-center">
-                    We still have many classmates that we're not able to locate. Please visit the <a href="{% url 'view_classmates' %}">classmates</a> page to see if you or someone you know is listed.
-                    <ul>
-                        <li>
-                            <small>
-                                (select the <i>M.I.A.</i> option from the dropdown menu to view the complete list of classmates we need help finding)
-                            </small>
-                        </li>
-                    </ul>
+            </div>
+        </a>
+    {% endif %}
+
+    {% if homepage %}
+        <div class="index-div" style="width:90%;margin:0 auto;">
+            <h4 class="text-center">{{ homepage.title }}</h4>
+
+            {% if homepage.subtitle %}
+                <h6 class="text-center">{{ homepage.subtitle }}</h6>
+                <sup>{{ homepage.readable_date_created }} by {{ homepage.author.username }}</sup>
+            {% endif %}
+
+            <br>
+
+            {% if homepage.homepage_post_image %}
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-xs-10 col-sm-8 col-md-7 index-image-wrapper">
+                        <img class="index-image" src="{{ homepage.homepage_post_image.image.url }}">
+                    </div>
+                    <div class="col"></div>
                 </div>
-            </li>
-        </ul>
-    </div>
-    <div class="footer-image-top">
-        <div class="gradient-overlay">
+
+                {% if homepage.homepage_post_image.caption %}
+                    <h6 class="text-center index-caption"><small>{{ homepage.homepage_post_image.caption }}</small></h6>
+                {% endif %}
+
+            {% endif %}
+
+            <br>
+
+            <div class="index-body text-center">
+                {{ homepage.body|safe }}
+                {% if homepage.footnote %}
+                    <br>
+                    <div class="footnote-wrapper"></div>
+                        <sup class="index-footnote">{{ homepage.footnote }}</sup>
+                    </div>
+                {% endif %}
+            </div>
+
         </div>
+    {% endif %}
+
+    <div class="footer-image-top">
+        <div class="gradient-overlay"></div>
     </div>
+
 {% endblock %}

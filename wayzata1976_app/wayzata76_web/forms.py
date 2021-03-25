@@ -3,6 +3,7 @@ import uuid
 import pytz
 
 import requests
+from django.utils.translation import ugettext_lazy as _
 from django import forms
 from django.conf import settings
 from django.contrib import messages
@@ -13,7 +14,7 @@ from django.contrib.auth.forms import (
 )
 from django.template.loader import render_to_string
 from django.urls import reverse
-from django.utils.translation import ugettext_lazy as _
+
 
 from .models import (
     ContactInfo,
@@ -23,7 +24,12 @@ from .models import (
     NewsPost,
     NewsPostImage,
     SurveyResult,
+    HomepagePost,
+    HomepagePostImage,
 )
+
+from tinymce.widgets import TinyMCE
+
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -36,6 +42,67 @@ class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = CustomUser
         fields = ("username", "email")
+
+
+class QuestionnaireForm(forms.ModelForm):
+
+    MUSIC_CHOICES = [
+        ('band', 'Live Band'),
+        ('dj', 'Professional DJ'),
+        ('karaoke', 'Karaoke'),
+        ('playlist', 'Playlist of 70\'s music'),
+        ('other', 'Other')
+    ]
+
+    music = forms.ChoiceField(choices=MUSIC_CHOICES, label="What would you choose for musical enjoyment?")
+    submitted_by = forms.CharField(required=True, max_length=100)
+    email = forms.CharField(required=True, max_length=100)
+
+    class Meta:
+        model = SurveyResult
+        exclude = ['date_created']
+        labels = {
+            'liked': _('If you attended the 40th reunion, what did you like most about it?'),
+            'disliked': _('If you attended the 40th reunion, what would you have changed to make it better?'),
+            'location': _('Where would you like the 45th reunion to be held?'),
+            'music': _('What would you choose for musical enjoyment?'),
+            'food': _('What kind of food would you like to have available?'),
+            'misc': _('Other questions, comments, suggestions, recommendations, or cryptic messages?'),
+            'submitted_by': _('Name'),
+        }
+        widgets = {
+            'liked': forms.widgets.Textarea(attrs={'cols':80, 'rows': 10}),
+            'disliked': forms.widgets.Textarea(attrs={'cols':80, 'rows': 10}),
+            'location': forms.widgets.Textarea(attrs={'cols':80, 'rows': 10}),
+            'music_other': forms.widgets.Textarea(attrs={'cols':80, 'rows': 10}),
+            'food': forms.widgets.Textarea(attrs={'cols':80, 'rows': 10}),
+            'misc': forms.widgets.Textarea(attrs={'cols':80, 'rows': 10}),
+        }
+
+
+    def has_value(self, field):
+        try:
+            return bool(
+                getattr(self, field).strip()
+            )
+        except:
+            return False
+
+    def has_content(self):
+        field_checks = [
+            self.fields['liked'],
+            self.fields['disliked'],
+            self.fields['location'],
+            self.fields['food'],
+            self.fields['misc'],
+            self.fields['submitted_by'],
+            self.fields['email']
+        ]
+        for field in field_checks:
+            if self.has_value(field):
+                return True
+        return False
+
 
 
 class ContactUpdateForm(forms.ModelForm):
@@ -91,78 +158,50 @@ class ContactUpdateForm(forms.ModelForm):
         }
 
 
+class HomepagePostForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop("request", None)
+        super(HomepagePostForm, self).__init__(*args, **kwargs)
+
+    title = forms.CharField(max_length=500, required=True)
+    subtitle = forms.CharField(max_length=500, required=False)
+    footnote = forms.CharField(max_length=500, required=False)
+    body=forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 15}), max_length=20000, required=False)
+
+    class Meta:
+        model = HomepagePost
+        exclude = ['author', 'date_created']
+        labels = {'active': 'Publish Now: ' }
+
+
+class HomepagePostImageForm(forms.ModelForm):
+    class Meta:
+        model = HomepagePostImage
+        fields = ['image', 'caption']
+        labels = {'image': 'Upload Image: '}
+
+
 class NewsPostForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop("request", None)
         super(NewsPostForm, self).__init__(*args, **kwargs)
 
+    header = forms.CharField(max_length=100, required=True)
+    body = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 15}), max_length=5000, required=False)
+
     class Meta:
         model = NewsPost
-
-        fields = (
-            "link",
-            "link_text",
-            "body",
-            'header'
-        )
-        widgets = {
-            "body": forms.Textarea(
-                attrs={
-                    "height": "60vh",
-                    "width": "90%",
-                    "overflow-y": "scroll",
-                    "padding": "1em",
-                }
-            )
-        }
+        fields = ('body', 'header')
 
 
-class ExtendedNewsPostForm(NewsPostForm):
-
-    image = forms.ImageField(allow_empty_file=True, required=False, label="Image (opt.)")
-    subtitle = forms.CharField(max_length=100, required=False)
-
-    class Meta(NewsPostForm.Meta):
-        fields = NewsPostForm.Meta.fields + ('image', 'subtitle', )
-
-
-#  For Adding to Existing News Post
-class UploadNewsPostImageForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        self.request = kwargs.pop("request", None)
-        super(UploadNewsPostImageForm, self).__init__(*args, **kwargs)
-
-    title = forms.CharField(required=False, label="title", max_length=100)
-    subtitle = forms.CharField(required=False, label="subtitle", max_length=100)
-
+class NewsPostImageForm(forms.ModelForm):
     class Meta:
         model = NewsPostImage
-        fields = ("image",)
+        fields = ['image', 'subtitle']
+        labels = {'image': 'Upload Image'}
 
-
-class UploadGalleryImageForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        self.request = kwargs.pop("request", None)
-        super(UploadGalleryImageForm, self).__init__(*args, **kwargs)
-
-
-    title = forms.CharField(required=False, label="title", max_length=100)
-    subtitle = forms.CharField(required=False, label="Subtitle")
-
-    class Meta:
-        model = GalleryImage
-
-        fields = (
-            "image",
-            "gallery",
-        )
-        widgets = {
-            "gallery": forms.Select(
-                choices=Gallery.objects.all().filter(abstract_gallery=False),
-                attrs={"class": "form-control"},
-            ),
-        }
 
 class CreateGalleryForm(forms.ModelForm):
 
@@ -187,13 +226,13 @@ class CreateGalleryForm(forms.ModelForm):
 
 
 def gallery_choices():
-    return ((x.id, x.display_name) for x in GalleryImageUploadForm.GALLERY_OPTIONS)
+    return ((x.id, x.display_name) for x in GalleryImageForm.GALLERY_OPTIONS)
 
 
-class GalleryImageUploadForm(forms.ModelForm):
+class GalleryImageForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop("request", None)
-        super(GalleryImageUploadForm, self).__init__(*args, **kwargs)
+        super(GalleryImageForm, self).__init__(*args, **kwargs)
 
     image = forms.FileField(widget=forms.ClearableFileInput(attrs={"multiple": True}))
 

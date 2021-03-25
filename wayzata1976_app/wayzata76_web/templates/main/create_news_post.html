@@ -2,9 +2,13 @@
 {% load widget_tweaks %}
 {% load static %}
 
+{% block head %}
+    {{ form.media }}
+{% endblock %}
 
 {% block style %}
     {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/main/questionnaire.css' %}">
     <link rel="stylesheet" href="{% static 'css/main/create_news_post.css' %}">
 {% endblock %}
 
@@ -14,60 +18,85 @@
         <h2 class="page-header rabbet">Create News Post</h2>
     </div>
 
-    <form method="post" action="#" enctype="multipart/form-data" novalidate>
-        {% csrf_token %}
-        {{ form.non_field_errors }}
-        {{ form.source.errors }}
-        {{ form.source }}
+    <div class="form-wrapper">
+        <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ news_post_form.non_field_errors }}
+            {{ news_post_form.source.errors }}
+            {{ news_post_form.source }}
+            {{ news_post_image_form.non_field_errors }}
+            {{ news_post_image_form.source.errors }}
+            {{ news_post_image_form.source }}
 
-        <div class="form-row">
-            <div class="form-group col">
-                {% if form.header.errors %}
-                    {% render_field form.header|append_attr:"required" class="form-control is-invalid" placeholder="* Title" %}
-                    {% for error in form.header.errors %}
-                        <div class="invalid-feedback">
-                            {{ error }}
-                        </div>
-                    {% endfor %}
-                {% else %}
-                    {% render_field form.header|append_attr:"required" class="form-control" placeholder="* Title" %}
-                {% endif %}
+
+            <div class="form-row">
+                <div class="form-group col">
+                    {% if news_post_form.header.errors %}
+                        {% render_field news_post_form.header|append_attr:"required" class="form-control is-invalid" placeholder="* Title" %}
+                        {% for error in news_post_form.header.errors %}
+                            <div class="invalid-feedback">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        {% render_field news_post_form.header|append_attr:"required" class="form-control" placeholder="* Title" %}
+                    {% endif %}
+                </div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col">
-                {% if form.body.errors %}
-                    {% render_field form.body|append_attr:"required" class="form-control is-invalid" placeholder="* Body" %}
-                    {% for error in forms.body.errors %}
-                        <div class="invalid-feedback">
-                            {{ error }}
-                        </div>
-                    {% endfor %}
-                {% else %}
-                    {% render_field form.body|append_attr:"required" class="form-control" placeholder="* Body" %}
-                {% endif %}
+            <div class="form-row">
+                <div class="form-group col">
+                    {% if news_post_form.body.errors %}
+                        {% render_field news_post_form.body class="form-control is-invalid" placeholder="* Body" %}
+                        {% for error in news_post_form.body.errors %}
+                            <div class="invalid-feedback">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        {% render_field news_post_form.body class="form-control" placeholder="* Body" %}
+                    {% endif %}
+                </div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col">
-                {{ form.link.errors }}
-                {% render_field form.link class="form-control" placeholder="URL (optional: include a link)" %}
+            <div class="form-row">
+                <div class="form-group col">
+                    {{ news_post_image_form.image.errors }}
+                    {% render_field news_post_image_form.image class="form-control" %}
+                </div>
+                <div class="form-group col">
+                    {{ news_post_image_form.subtitle.errors }}
+                    {% render_field news_post_image_form.subtitle class="form-control" placeholder="Image Subtitle" %}
+                </div>
             </div>
-            <div class="form-group col">
-                {{ form.link_text.errors }}
-                {% render_field form.link_text class="form-control" placeholder="Link Text (optional: text displayed for link)" %}
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col">
-                {{ form.image.errors }}
-                {% render_field form.image class="form-control" %}
-            </div>
-            <div class="form-group col">
-                {{ form.subtitle.errors }}
-                {% render_field form.subtitle class="form-control" placeholder="Image Subtitle" %}
-            </div>
-        </div>
-        <button type="submit" class="btn btn-block btn-primary">Submit</button>
-    </form>
+            <button class="btn btn-neumo btn-block" type="submit">
+                <div class="inner-wrapper">
+                    <p>SUBMIT</p>
+                </div>
+            </button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="https://cdn.tiny.cloud/1/u3ul8racbrpslgqtrqqi29o7k06rh2tyxnvrcbtdu8yh3xzl/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+   <script>
+                // tinymce.remove();
+                tinymce.init({
+                    selector:'textarea',
+                    // skin: "oxide-dark",
+                    // content_css: "dark",
+                    cache_suffix: '?v=4.1.6',
+                    setup: function(editor) {
+                        editor.on('change', function() {
+                            tinymce.triggerSave();
+                        });
+                    },
+                    init_instance_callback: function(editor) {
+                        let editorH = editor.editorContainer.offsetHeight;
+                        $('#formTranslation_trad').css({
+                            'position':'absolute',
+                            'height':editorH
+                        }).show();
+                    },
+                });
+            </script>
 {% endblock %}

@@ -1,51 +1,33 @@
-div.custom-blockquote {
-  opacity: 0.5;
-  border: 1pt solid grey;
-}
-
-div > ul {
-  padding: 0;
-}
-
-ul {
-  list-style-type: none;
-  list-style: none;
-}
-
 small {
   width: 100%;
   margin: 0 auto;
   text-align: center;
 }
 
-ul.inner-ul li {
-  margin-right: 10%;
-}
-
 div.index-div {
   height: 100%;
   min-height: 100%;
   border: 1pt solid rgba(255,255,255,0);
-  /* background-image: -moz-linear-gradient(to top, rgb(217,228,240) 0%, rgba(217, 228, 240, 0.6) 5%, rgba(201, 214, 228, 0.5) 10%, rgba(0,0,0,0) 25%);
-  background-image: -ms-linear-gradient(to top, rgb(217,228,240) 0%, rgba(217, 228, 240, 0.6) 5%, rgba(201, 214, 228, 0.5) 10%, rgba(0,0,0,0) 25%);
-  background-image: -o-linear-gradient(to top, rgb(217,228,240) 0%, rgba(217, 228, 240, 0.6) 5%, rgba(201, 214, 228, 0.5) 10%, rgba(0,0,0,0) 25%); */
-
-  background-image: linear-gradient(to top, rgb(217,228,240) 0%, rgba(217, 228, 240, 1) 15%, rgba(217, 228, 240, 0.8) 30%, rgba(0,0,0,0) 45%);
-}
-
-div.index-div > ul {
-  border: 1pt solid rgba(255,255,255,0);
+  width: 90%;
+  background-color: rgba(255,255,255,0);
+  margin: 0 auto;
+  padding: 10px;
+  color: var(--bg-bright);
 }
 
 .footer-image-top {
   padding: 0;
   margin:0 auto;
   width: 100vw;
-  /* background-image: linear-gradient(173deg, #dde7f3 0%, #dde7f3 1%, #dde7f3 10%, #d1dce280 20%, rgba(0,0,0,0) 30%),
-                    linear-gradient(187deg, #c8dbf1 0%, #c6d7e7 1%, #dde7f3 10%, #d1dce280 20%, rgba(0,0,0,0) 35%),
-                    url(../../img/gradient_image.jpeg); */
-
-  background-image: linear-gradient(to bottom, rgb(217,228,240) 0%, rgba(201, 214, 228, 0.9) 5%, rgba(201, 214, 228, 0.8) 10%, rgba(201, 214, 228, 0.7) 15%, rgba(201, 214, 228, 0.6) 20%, rgba(201, 214, 228, 0.5) 25%, rgba(0,0,0,0) 60%), url(../../img/gradient_image.jpeg);
+  background-image: linear-gradient(to bottom,
+                    rgb(217,228,240) 0%,
+                    rgba(201, 214, 228, 0.9) 5%,
+                    rgba(201, 214, 228, 0.8) 10%,
+                    rgba(201, 214, 228, 0.7) 15%,
+                    rgba(201, 214, 228, 0.6) 20%,
+                    rgba(201, 214, 228, 0.5) 25%,
+                    rgba(0,0,0,0) 60%),
+                    url(../../img/gradient_image.jpeg);
   background-position: center, center;
   background-size: contain, contain;
   background-repeat: no-repeat, no-repeat;
@@ -58,9 +40,80 @@ div.index-div > ul {
   position: relative;
 }
 
-li.to-do-item {
+div.index-image-wrapper {
+  padding: 0;
+  margin: 0 auto;
+  border: none;
+  width: 100%;
+  text-align: center;
+  align-content: center;
+  display: block;
+}
+
+div.index-image-wrapper:before {
+  display: block;
+  content: '';
+  position: absolute;
   width: 100%;
   height: 100%;
-  padding: 1.25rem auto;
-  border: 1pt solid rgba(255,255,255,0);
+  -webkit-box-shadow: inset 3px 3px 7px rgba(136, 165, 191, 0.48),
+                      inset 2px 2px 4px rgba(136, 165, 191, 0.48),
+                      inset 1px 1px 2px rgba(136, 165, 191, 0.48),
+                      inset -3px -3px 7px #FFFFFF,
+                      inset -2px -2px 4px #FFFFFF,
+                      inset -1px -1px 2px #FFFFFF;
+  box-shadow: inset 3px 3px 7px rgba(136, 165, 191, 0.48),
+              inset 2px 2px 4px rgba(136, 165, 191, 0.48),
+              inset 1px 1px 2px rgba(136, 165, 191, 0.48),
+              inset -3px -3px 7px #FFFFFF,
+              inset -2px -2px 4px #FFFFFF,
+              inset -1px -1px 2px #FFFFFF;
+  border-radius: 20pt;
+  background-clip: border-box;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+img.index-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 20pt;
+  background-clip: border-box;
+  padding: 0;
+  margin: 0 auto;
+  border: none;
+}
+
+.index-footnote {
+  width: 100%;
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  display: inline-block;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.footnote-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0);
+  align-content: center;
+}
+
+footer {
+  position: initial;
+}
+
+
+div.index-body-wrapper {
+  height: 100%;
+  width: 100%;
+  padding: 10% 0;
+}
+
+.index-caption small {
+  color: var(--bs-dark-tint);
 }

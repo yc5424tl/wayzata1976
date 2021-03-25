@@ -8,18 +8,10 @@ urlpatterns = [
     path("photo/gallery/<int:pk>/", views.view_gallery, name="view_gallery"),
     path("zietgeist/", views.view_zietgeist, name="view_zietgeist"),
     path("classmates/", views.view_classmates, name="view_classmates"),
-    path("contact/", views.contact_info, name="contact_info"),
+    path("contact/", views.update_contact_info, name="update_contact_info"),
     path("news/view/", views.view_news, name="view_news"),
     path("news/post/", views.create_news_post, name="create_news_post"),
     path("survey/", views.questionnaire, name="questionnaire"),
-    path(
-        "photo/upload/gallery/", views.upload_gallery_image, name="upload_gallery_image"
-    ),
-    path(
-        "photo/upload/newspost/",
-        views.upload_news_post_image,
-        name="upload_news_post_image",
-    ),
     path(
         "photo/upload/multi/",
         views.upload_multi_gallery_image,
@@ -35,5 +27,5 @@ urlpatterns = [
         name="password_reset",
     ),
     path("logout/", LogoutView.as_view(), name="logout"),
-    path("neumorphism/", views.neumorphism, name='neumorphism'),
+    path('index/post/', views.update_homepage, name="update_homepage"),
 ]

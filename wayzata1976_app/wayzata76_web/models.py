@@ -1,6 +1,6 @@
 import uuid
 import os
-
+import json
 import pytz
 from django import forms
 from django.conf import settings
@@ -8,10 +8,13 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from geopy.geocoders import Nominatim
 from s3direct.fields import S3DirectField
-
+from django.db.utils import IntegrityError
 from .storage_backends import PublicMediaStorage
 import googleapiclient.discovery
 from googleapiclient import discovery
+from .managers import PersonManager
+import tinymce.models as tinymce_models
+
 
 class CustomUser(AbstractUser):
     pass
@@ -143,17 +146,67 @@ class GalleryImage(Image):
             return mark_safe('<img src="{}" width="150" height="150" object-fit="cover"/>'.format(self.image.url))
 
 
+def homepage_post_image_path(instance, filename):
+    name, ext = filename.split(".")
+    file_path = f"homepage_post_image/{instance.uuid}.{ext}"
+    return file_path
+
+
+class HomepagePost(models.Model):
+    title = models.CharField(max_length=500, null=False, blank=False)
+    subtitle = models.CharField(max_length=500, null=True, blank=True)
+    body = tinymce_models.HTMLField(max_length=20000, null=True, blank=True)
+    footnote = models.CharField(max_length=500, null=True, blank=True)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    date_created = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=True)
+
+    @property
+    def readable_date_created(self):
+        return f"{self.date_created.month}, {self.date_created.day}, {self.date_created.year}"
+
+
+# TODO: Create form and template for homepage post, migrate db, (see django-richtextfield)
+
+class HomepagePostImage(Image):
+    homepage_post = models.OneToOneField(
+        HomepagePost, on_delete=models.CASCADE, related_name="homepage_post_image"
+    )
+    image = models.ImageField(
+        storage=PublicMediaStorage,
+        upload_to=homepage_post_image_path,
+        null=True,
+        blank=True,
+    )
+    caption = models.CharField(max_length=150, blank=True, null=True)
+    uploaded_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.PROTECT,
+        related_name="homepage_post_image",
+    )
+
+    def __name__(self):
+        return "homepage_post_image"
+
+        def thumbnail_preview(self):
+            from django.utils.html import mark_safe
+            if self.image:
+                return mark_safe('<img src="{}" width="150" height="150" object-fit="cover" />'.format(self.image.url))
+
+
 
 class NewsPost(models.Model):
     header = models.CharField(max_length=100, null=False, blank=False)
-    body = models.CharField(max_length=5000, null=False, blank=False)
+    body = tinymce_models.HTMLField(max_length=5000, null=True, blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     date_created = models.DateTimeField(auto_now_add=True)
-    link = models.URLField(null=True, blank=True)
-    link_text = models.CharField(max_length=30, null=True, blank=True)
 
     class Meta:
         ordering = ["-date_created"]
+
+    @property
+    def readable_date_created(self):
+        return f"{self.date_created.month}, {self.date_created.day}, {self.date_created.year}"
 
 
 def news_post_image_path(instance, filename):
@@ -205,6 +258,8 @@ class Person(models.Model):
         null=True,
         default=None,
     )
+
+    people = PersonManager()
 
     def __str__(self):
         return (
@@ -304,8 +359,8 @@ class SurveyResult(models.Model):
     music_other = models.CharField(max_length=1000, null=True, blank=True)
     food = models.CharField(max_length=1000, null=True, blank=True)
     misc = models.CharField(max_length=1000, null=True, blank=True)
-    submitted_by = models.CharField(max_length=100, null=True, blank=True)
-    email = models.EmailField(max_length=100, null=True, blank=True)
+    submitted_by = models.CharField(max_length=100, null=False, blank=False)
+    email = models.EmailField(max_length=100, null=False, blank=False)
     date_created = models.DateTimeField(auto_now_add=True)
 
     def has_form_field(self, field_name):
@@ -322,7 +377,6 @@ class SurveyResult(models.Model):
             "disliked",
             "location",
             "music",
-            "music_other",
             "food",
             "misc",
             "submitted_by",
@@ -371,3 +425,44 @@ class Yearbook(models.Model):
     @property
     def working_name(self):
         return f"{self.school}_{self.year}"
+
+
+def build_objects_from_classlist(json_file):
+    json_data = json.load(open(json_file))
+    for record in json_data:
+        try:
+            new_person = extract_person(record)
+            if new_person:
+                new_address = extract_address(record)
+                if new_address:
+                    new_person.address = new_address
+                new_person.save()
+        except IntegrityError as iE:
+            continue
+
+
+def extract_address(record):
+    try:
+        city = record["city"]
+        state = record["state"]
+        zip_code = record["zip"]
+        new_address = Address(city=city, state_province=state, zip_code=zip_code)
+        new_address.save()
+        return new_address
+    except KeyError as kE:
+        return None
+
+
+def extract_person(record):
+    try:
+        last_name = record["last_name"]
+        first_name = record["first_name"]
+        middle_initial = record["middle_initial"]
+        new_person = Person(
+            last_name=last_name, first_name=first_name, middle_initial=middle_initial
+        )
+        return new_person
+    except KeyError as kE:
+        return None
+    except IntegrityError as iE:
+        return None
