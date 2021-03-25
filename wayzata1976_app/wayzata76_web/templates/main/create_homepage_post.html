@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+
+    {% block head %}
+        {{ homepage_post_form.media }}
+
+    {% endblock %}
+
+    {% block style %}
+        {{ block.super }}
+        <link rel="stylesheet" href="{% static 'css/main/form_page.css' %}">
+    {% endblock %}
+
+    {% block content %}
+        <div class="page-header-wrapper">
+            <h2 class="page-header rabbet">Create Homepage Post</h2>
+        </div>
+        <div class="form-wrapper">
+            <form method="POST" action="" enctype="multipart/form-data" id="form">
+                {% csrf_token %}
+                {{ homepage_post_form.non_field_errors }}
+                {{ homepage_post_form.source.errors }}
+                {{ homepage_post_form.source }}
+                {{ homepage_post_image_form.non_field_errors }}
+                {{ homepage_post_image_form.source.errors }}
+                {{ homepage_post_image_form.source }}
+                    <div class="form-row">
+                    <div class="form-group col">
+                        {{ homepage_post_form.title.errors }}
+                        {% render_field homepage_post_form.title|append_attr:"required" class="form-control" placeholder="* Title" name="title_field_value" %}
+                    </div>
+                    <div class="form-group col">
+                        {{ homepage_post_form.subtitle.errors }}
+                        {% render_field homepage_post_form.subtitle class="form-control" placeholder="Subtitle" name="subtitle_field_value" %}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        {{ homepage_post_form.body.errors }}
+                        {% render_field homepage_post_form.body name="body_field_value" placeholder="* Body"  %}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-auto">
+                        <label class="file-input-label" for="image-upload-input" style="margin-bottom: 0; height: 100%;padding-top:4px;">Image Upload: </label>
+                    </div>
+                    <div class="form-group col-auto">
+                        {{ homepage_post_image_form.image.errors }}
+                        {% render_field homepage_post_image_form.image id="image-upload-input" name="image_field_value" class="form-control-file" style="padding:4px;padding-left:5px;" %}
+                    </div>
+                    <div class="form-group col">
+                        {{ homepage_post_image_form.caption.errors }}
+                        {% render_field homepage_post_image_form.caption class="form-control" placeholder="Image Caption" name="caption_field_value" %}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        {{ homepage_post_form.footnote.errors }}
+                        {% render_field homepage_post_form.footnote class="form-control" placeholder="Footnote" name="footnote_field_value" %}
+                    </div>
+                    <div class="form-check form-check-inline form-group col-auto">
+                        <label for="publish_input" class="form-check-inline" style="margin-bottom: 0;padding-left:5px;">Publish Now: </label>
+                        {{ homepage_post_form.active.errors }}
+                        {% render_field homepage_post_form.active class="form-check-input" id="publish_input" name="publish_field_value" %}
+                    </div>
+                </div>
+                {% include 'fragments/submit_btn.html' %}
+            </form>
+        </div>
+    {% endblock %}
+
+    {% block header-scripts %}
+        {{ block.super }}
+        <script src="https://cdn.tiny.cloud/1/u3ul8racbrpslgqtrqqi29o7k06rh2tyxnvrcbtdu8yh3xzl/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        <script>
+            // tinymce.remove();
+            tinymce.init({
+                selector:'textarea',
+                // skin: "oxide-dark",
+                // content_css: "dark",
+                cache_suffix: '?v=4.1.6',
+                setup: function(editor) {
+                    editor.on('change', function() {
+                        tinymce.triggerSave();
+                    });
+                },
+                init_instance_callback: function(editor) {
+                    let editorH = editor.editorContainer.offsetHeight;
+                    $('#formTranslation_trad').css({
+                        'position':'absolute',
+                        'height':editorH
+                    }).show();
+                },
+            });
+        </script>
+    {% endblock %}
