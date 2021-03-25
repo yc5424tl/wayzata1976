@@ -24,6 +24,7 @@ django-richtextfield==1.6
 django-s3direct==1.1.8
 django-s3file==5.2.0
 django-storages==1.11.1
+django-tinymce==3.2.0
 django-upload-form==0.4.3
 django-widget-tweaks==1.4.8
 fontawesome-free==5.15.2
