@@ -36,7 +36,7 @@
                     <div class="col-12 col-sm-6 col-lg-4 gal-item">
                         <div class="thumbnail-container">
                             <a href="#" class="thumbnail-anchor">
-                                <img src="{{ image.image.url }}" alt="" data-target="#carouselExample" data-slide-to="{{ forloop.counter0 }}"
+                                <img src="{{ image.image.url }}" alt="" data-target="#carouselExample" data-slide-to="{{ forloop.counter0 }}" class="image-thumbnail">
                             </a>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div id="carouselExample" class="carousel slide" data-ride="carousel"
+                            <div id="carouselExample" class="carousel slide" data-ride="carousel" >
                                 <ol class="carousel-indicators">
                                     {% for image in page_obj %}
                                         {% if forloop.first %}
