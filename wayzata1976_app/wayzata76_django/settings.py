@@ -48,7 +48,6 @@ EMAIL_PORT = os.getenv('EMAIL_PORT')
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS') == 'TRUE'
 
 
-
 DATABASE_URL = os.environ.get('DATABASE_URL')
 
 # Quick-start development settings - unsuitable for production

@@ -93,7 +93,9 @@ class GalleryAdmin(admin.ModelAdmin):
 
 @admin.register(GalleryImage)
 class GalleryImageAdmin(admin.ModelAdmin):
-    list_display = ["gallery", "uuid", "date_created", "title", "subtitle", "uploaded_by", "image", 'thumbnail_preview']
+    # fields = ('thumbnail_preview', 'subtitle', 'gallery', 'title', 'date_created', 'uploaded_by', 'image', 'uuid')
+    # list_display = ["gallery", "uuid", "date_created", "title", "subtitle", "uploaded_by", "image", 'thumbnail_preview']
+    list_display = ['thumbnail_preview', 'subtitle', 'gallery', 'date_created', 'uploaded_by', 'image', 'title', 'uuid']
     list_editable = ("gallery", "title", "subtitle")
     list_filter = ("gallery", "date_created", "title", "uploaded_by")
     list_display_links = ("uploaded_by",)
@@ -101,6 +103,12 @@ class GalleryImageAdmin(admin.ModelAdmin):
 
     def thumbnail_preview(self, obj):
         return obj.thumbnail_preview
+
+    # def get_fields(self, request, obj=None, **kwargs):
+    #     fields = super().get_fields(request, obj, **kwargs)
+    #     fields.remove('parent')
+    #     fields.append('parent')  # can also use insert
+    #     return fields
 
     thumbnail_preview.short_description = 'Thumbnail'
 

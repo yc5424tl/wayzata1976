@@ -25,6 +25,7 @@ from django.views.generic.edit import CreateView
 from .forms import (ContactUpdateForm, CustomUserCreationForm,
                     GalleryImageForm, HomepagePostForm, HomepagePostImageForm,
                     NewsPostForm, NewsPostImageForm, QuestionnaireForm)
+
 from .models import (ContactInfo, CustomUser, Gallery, GalleryImage,
                      HomepagePost, HomepagePostImage, NewsPost, NewsPostImage,
                      Person, Song, SurveyResult, Yearbook)
@@ -34,6 +35,7 @@ def SignUpView(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
     template_name = "registration.signup.html"
+    return render
 
 
 def login(request):
@@ -88,7 +90,7 @@ def email_questionnaire_notification(request, survey_result_instance):
 def questionnaire(request):
     if request.method == 'POST':
         form = QuestionnaireForm(request.POST)
-        if all(form.is_valid(), form.has_content()):
+        if form.is_valid() and form.has_content():
                 new_survey_result = form.save()
                 email_sent = email_questionnaire_notification(request, new_survey_result)
                 if email_sent:
@@ -145,7 +147,7 @@ def check_null_empty(target:str) -> str or None:
 
 
 def update_homepage(request):
-
+    from .forms import HomepagePostImageForm
     if request.method == 'POST':
 
         homepage_post_form = HomepagePostForm(request.POST)
@@ -159,8 +161,8 @@ def update_homepage(request):
             new_homepage_post.author = request.user
             new_homepage_post.save()
 
-            if (homepage_post_image_form.is_valid()):
-                if (homepage_post_image_form.cleaned_data.get('image')):
+            if homepage_post_image_form.is_valid():
+                if homepage_post_image_form.cleaned_data.get('image'):
                     new_homepage_post_image = homepage_post_image_form.save(commit=False)
                     new_homepage_post_image.homepage_post = new_homepage_post
                     new_homepage_post_image.uploaded_by = request.user
@@ -168,15 +170,26 @@ def update_homepage(request):
 
             messages.info(request, 'New Homepage Content Saved')
             return redirect("index")
-        else:
-            homepage_post_form = HomepagePostForm()
-            homepage_post_image_form = HomepagePostImageForm()
-            messages.info(request, 'Error: Form Contains Invalid Field(s)')
-            return render(request, "main/create_homepage_post.html", {'homepage_post_form': homepage_post_form, 'homepage_post_image_form': homepage_post_image_form})
-    else:
+
         homepage_post_form = HomepagePostForm()
         homepage_post_image_form = HomepagePostImageForm()
-        return render(request, "main/create_homepage_post.html", {'homepage_post_form': homepage_post_form, 'homepage_post_image_form': homepage_post_image_form})
+        messages.info(request, 'Error: Form Contains Invalid Field(s)')
+        return render(request, "main/create_homepage_post.html", {'homepage_post_form': homepage_post_form,
+                                                                      'homepage_post_image_form': homepage_post_image_form})
+    else:
+        try:
+            homepage_post_form = HomepagePostForm(instance=HomepagePost.objects.filter(active=True).first())
+        except ObjectDoesNotExist:
+            homepage_post_form = HomepagePostForm()
+        try:
+            homepage_post = HomepagePost.objects.get(active=True)
+            homepage_post_image = homepage_post.homepage_post_image
+            image_form = HomepagePostImageForm(instance=homepage_post_image)
+        except ObjectDoesNotExist:
+            image_form = HomepagePostImageForm()
+        # homepage_post_image_form = HomepagePostImageForm()
+        return render(request, "main/create_homepage_post.html", {'homepage_post_form': homepage_post_form, 'homepage_post_image_form': image_form})
+
 
 
 def view_gallery(request, pk):
@@ -290,7 +303,7 @@ def create_news_post(request):
             new_post.author = request.user
             new_post.save()
 
-            if (news_post_image_form.is_valid() and request.FILES["image"]):
+            if news_post_image_form.is_valid() and request.FILES["image"]:
                 new_post_image = news_post_image_form.save(commit=False)
                 new_post_image.news_post = new_post
                 new_post_image.uploaded_by = request.user

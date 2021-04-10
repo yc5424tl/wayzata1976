@@ -88,8 +88,9 @@ class Gallery(models.Model):
 
 
 class Image(models.Model):
-    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    subtitle = models.CharField(max_length=500, blank=True, null=True)
     date_created = models.DateTimeField(auto_now_add=True)
+    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=100, blank=True, null=True)
     # uploaded_by = models.ForeignKey(
     # settings.AUTH_USER_MODEL,
@@ -98,7 +99,7 @@ class Image(models.Model):
     # related_name='%(app_label)s_%(class)s_related',
     # related_query_name="%(app_label)s_%(class)ss",
     # )
-    subtitle = models.CharField(max_length=500, blank=True, null=True)
+
 
     class Meta:
         abstract = True
@@ -126,6 +127,11 @@ def gallery_for_image(instance, filename):
 
 class GalleryImage(Image):
 
+    @property
+    def thumbnail_preview(self):
+        from django.utils.html import mark_safe
+        if self.image:
+            return mark_safe('<img src="{}" width="150" height="150" object-fit="cover"/>'.format(self.image.url))
 
     gallery = models.ForeignKey(
         Gallery, on_delete=models.PROTECT, related_name="gallery_images"
@@ -139,11 +145,7 @@ class GalleryImage(Image):
         related_name="gallery_images",
     )
 
-    @property
-    def thumbnail_preview(self):
-        from django.utils.html import mark_safe
-        if self.image:
-            return mark_safe('<img src="{}" width="150" height="150" object-fit="cover"/>'.format(self.image.url))
+
 
 
 def homepage_post_image_path(instance, filename):
