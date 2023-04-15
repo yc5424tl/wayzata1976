@@ -23,7 +23,7 @@ from django.views.generic import ListView
 from django.views.generic.edit import CreateView
 
 from .forms import (ContactUpdateForm, CustomUserCreationForm,
-                    HomepagePostForm, HomepagePostImageForm,
+                    GalleryImageForm, HomepagePostForm, HomepagePostImageForm,
                     NewsPostForm, NewsPostImageForm, QuestionnaireForm)  # GalleryImageForm
 
 from .models import (ContactInfo, CustomUser, Gallery, GalleryImage,
@@ -322,7 +322,7 @@ def create_news_post(request):
         return render(request, "main/create_news_post.html", {"news_post_form": news_post_form, "news_post_image_form": news_post_image_form})
 
 
-'''
+
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
 def upload_multi_gallery_image(request):
@@ -346,4 +346,4 @@ def upload_multi_gallery_image(request):
     else:
         form = GalleryImageForm()
         return render(request, "upload/gallery_image_upload.html", {"form": form})
-'''
+
