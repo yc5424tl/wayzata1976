@@ -12,11 +12,11 @@ urlpatterns = [
     path("news/view/", views.view_news, name="view_news"),
     path("news/post/", views.create_news_post, name="create_news_post"),
     path("survey/", views.questionnaire, name="questionnaire"),
-    path(
-        "photo/upload/multi/",
-        views.upload_multi_gallery_image,
-        name="upload_multi_gallery_image",
-    ),
+    #path(
+    #   "photo/upload/multi/",
+    #    views.upload_multi_gallery_image,
+    #    name="upload_multi_gallery_image",
+    #),
     path(
         "password_reset",
         auth_views.PasswordResetView.as_view(
