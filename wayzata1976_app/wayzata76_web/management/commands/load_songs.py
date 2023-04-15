@@ -9,7 +9,7 @@ class Command(BaseCommand):
     help = "Instantiates Song objects from target JSON file"
 
     def handle(self, *args, **kwargs):
-        json_file = "static/json/songs.json"
+        json_file = "wayzata76_web/static/json/songs.json"
         with open(json_file) as songs_json:
             json_data = json.load(songs_json)
             for record in json_data:
