@@ -23,8 +23,8 @@ from django.views.generic import ListView
 from django.views.generic.edit import CreateView
 
 from .forms import (ContactUpdateForm, CustomUserCreationForm,
-                    '''GalleryImageForm,''' HomepagePostForm, HomepagePostImageForm,
-                    NewsPostForm, NewsPostImageForm, QuestionnaireForm)
+                    HomepagePostForm, HomepagePostImageForm,
+                    NewsPostForm, NewsPostImageForm, QuestionnaireForm)  # GalleryImageForm
 
 from .models import (ContactInfo, CustomUser, Gallery, GalleryImage,
                      HomepagePost, HomepagePostImage, NewsPost, NewsPostImage,
