@@ -10,7 +10,7 @@ class Command(BaseCommand):
     help = "Instantiates Person objects from target JSON file"
 
     def handle(self, *args, **kwargs):
-        json_file = "static/json/class_list.json"
+        json_file = "../../static/json/class_list.json"
         with open(json_file) as class_list_json:
             json_data = json.load(class_list_json)
             classmate_count = 0
