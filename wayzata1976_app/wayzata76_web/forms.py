@@ -229,6 +229,7 @@ def gallery_choices():
     return ((x.id, x.display_name) for x in GalleryImageForm.GALLERY_OPTIONS)
 
 
+'''
 class GalleryImageForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop("request", None)
@@ -244,7 +245,7 @@ class GalleryImageForm(forms.ModelForm):
                 choices=Gallery.objects.all().filter(abstract_gallery=False)
             )
         }
-
+'''
 
 class CustomAuthenticationForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
