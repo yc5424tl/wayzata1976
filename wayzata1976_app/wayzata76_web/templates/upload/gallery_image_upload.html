@@ -4,10 +4,22 @@
 
 <h3 class="page-header">Gallery Image Upload</h3>
 
-<form action="#" method="post" enctype="multipart/form-data" style="margin-top: 9rem;">
+# method=post enctype=multipart/form-data action="#"
+<form id="image-upload-form" hx-post="#" hx-encoding="multipart/form-data" style="margin-top: 9rem;">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Submit">
+    <progress id="progress" value="0" max="100"></progress>
 </form>
 
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script src="https://unpkg.com/htmx.org@1.9.0"></script>
+    <script>
+        htmx.on('#image-upload-form', 'htmx:xhr:progress', function(evt) {
+            htmx.find('#progress').setAttribute('value', evt.detail.loaded/evt.detail.total * 100)
+        });
+    </script>
 {% endblock %}
