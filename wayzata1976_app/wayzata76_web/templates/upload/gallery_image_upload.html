@@ -5,7 +5,7 @@
 <h3 class="page-header" style="margin-top: 4rem">Gallery Image Upload</h3>
 
 {# method=post enctype=multipart/form-data action="#" #}
-<form id="image-upload-form" hx-post="/photo/upload/multi" hx-encoding="multipart/form-data" style="margin-top: 9rem;">
+<form id="image-upload-form" hx-post="{% url 'upload_multi_gallery_image' %}" hx-encoding="multipart/form-data" style="margin-top: 9rem;">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Submit">
