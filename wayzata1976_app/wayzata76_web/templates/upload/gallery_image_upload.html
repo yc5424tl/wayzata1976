@@ -5,13 +5,13 @@
 <h3 class="page-header">Gallery Image Upload</h3>
 
 {# method=post enctype=multipart/form-data action="#" #}
-<form id="image-upload-form" hx-post="#" hx-encoding="multipart/form-data" style="margin-top: 9rem;">
+<form id="image-upload-form" hx-post="/photo/upload/multi" hx-encoding="multipart/form-data" style="margin-top: 9rem;">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Submit">
     <br />
-    <div class="row">
-        <div class="col-4 col-offset-4">
+    <div class="row text-center">
+        <div class="col-4 col-offset-4 text-center">
             <progress id="progress" value="0" max="100"></progress>
         </div>
     </div>
